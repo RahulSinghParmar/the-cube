@@ -5,6 +5,22 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.gradle/6.5/vcsMetadata-1" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/generated/res/pngs" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/generated/ap_generated_sources" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/incremental/mergeReleaseResources/stripped.dir" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/incremental/bundleReleaseResources" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/incremental/processReleaseResources" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/aar_metadata_check" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/app_integrity_config" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/compressed_assets" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/data_binding_layout_info_type_merge" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/duplicate_classes_check" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/generated_proguard_file" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/merged_assets" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/merged_jni_libs" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/merged_native_libs" />
+      <excludeFolder url="file://$MODULE_DIR$/app/build/intermediates/merged_shaders" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
