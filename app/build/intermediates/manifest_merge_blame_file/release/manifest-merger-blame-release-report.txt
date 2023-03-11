@@ -1,0 +1,285 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3    Copyright 2019 Google Inc. All Rights Reserved.
+4
+5     Licensed under the Apache License, Version 2.0 (the "License");
+6     you may not use this file except in compliance with the License.
+7     You may obtain a copy of the License at
+8
+9         http://www.apache.org/licenses/LICENSE-2.0
+10
+11     Unless required by applicable law or agreed to in writing, software
+12     distributed under the License is distributed on an "AS IS" BASIS,
+13     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14     See the License for the specific language governing permissions and
+15     limitations under the License.
+16-->
+17<!--
+18 The "package" attribute is rewritten by the Gradle build with the value of applicationId.
+19     It is still required here, as it is used to derive paths, for instance when referring
+20     to an Activity by ".MyActivity" instead of the full name. If more Activities are added to the
+21     application, the package attribute will need to reflect the correct path in order to use
+22     the abbreviated format.
+23-->
+24<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+25    package="the.cube"
+26    android:versionCode="1"
+27    android:versionName="1" >
+28
+29    <uses-sdk
+30        android:minSdkVersion="19"
+30-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml
+31        android:targetSdkVersion="31" />
+31-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml
+32
+33    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+33-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:26:9-80
+33-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:26:26-78
+34
+35    <queries>
+35-->[com.google.androidbrowserhelper:androidbrowserhelper:2.4.0] /Users/legion/.gradle/caches/transforms-2/files-2.1/2a4780e5ae3e94fb64dd0623d9799b3d/androidbrowserhelper-2.4.0/AndroidManifest.xml:26:5-34:15
+36        <intent>
+36-->[com.google.androidbrowserhelper:androidbrowserhelper:2.4.0] /Users/legion/.gradle/caches/transforms-2/files-2.1/2a4780e5ae3e94fb64dd0623d9799b3d/androidbrowserhelper-2.4.0/AndroidManifest.xml:27:9-33:18
+37            <action android:name="android.intent.action.VIEW" />
+37-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:133:17-68
+37-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:133:25-66
+38
+39            <category android:name="android.intent.category.BROWSABLE" />
+39-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:135:17-77
+39-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:135:27-75
+40
+41            <data android:scheme="https" />
+41-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:136:17-137:54
+41-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:136:23-45
+42        </intent>
+43    </queries>
+44
+45    <application
+45-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:35:5-180:19
+46        android:name="the.cube.Application"
+46-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:36:9-35
+47        android:allowBackup="true"
+47-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:37:9-35
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.1.0] /Users/legion/.gradle/caches/transforms-2/files-2.1/e601daed4ba62929db8b322b2974c8f8/core-1.1.0/AndroidManifest.xml:24:18-86
+49        android:icon="@mipmap/ic_launcher"
+49-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:38:9-43
+50        android:label="@string/appName"
+50-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:39:9-40
+51        android:manageSpaceActivity="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity"
+51-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:41:9-105
+52        android:supportsRtl="true"
+52-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:43:9-35
+53        android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+53-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:44:9-68
+54        <meta-data
+54-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:46:9-48:58
+55            android:name="asset_statements"
+55-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:47:13-44
+56            android:resource="@string/assetStatements" />
+56-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:48:13-55
+57        <meta-data
+57-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:51:13-53:58
+58            android:name="web_manifest_url"
+58-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:52:17-48
+59            android:value="@string/webManifestUrl" />
+59-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:53:17-55
+60        <meta-data
+60-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:56:9-58:52
+61            android:name="twa_generator"
+61-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:57:13-41
+62            android:value="@string/generatorApp" />
+62-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:58:13-49
+63
+64        <activity android:name="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity" >
+64-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:65:13-69:24
+64-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:65:23-104
+65            <meta-data
+65-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:66:13-68:53
+66                android:name="android.support.customtabs.trusted.MANAGE_SPACE_URL"
+66-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:67:17-83
+67                android:value="@string/launchUrl" />
+67-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:68:17-50
+68        </activity>
+69        <activity
+69-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:72:9-141:20
+70            android:name="the.cube.LauncherActivity"
+70-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:72:19-50
+71            android:alwaysRetainTaskState="true"
+71-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:73:13-49
+72            android:exported="true"
+72-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:75:13-36
+73            android:label="@string/launcherName" >
+73-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:74:13-49
+74            <meta-data
+74-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:76:13-77:53
+75                android:name="android.support.customtabs.trusted.DEFAULT_URL"
+75-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:76:24-85
+76                android:value="@string/launchUrl" />
+76-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:77:17-50
+77            <meta-data
+77-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:79:13-81:58
+78                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
+78-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:80:17-83
+79                android:resource="@color/colorPrimary" />
+79-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:81:17-55
+80            <meta-data
+80-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:83:13-85:61
+81                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR"
+81-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:84:17-87
+82                android:resource="@color/navigationColor" />
+82-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:85:17-58
+83            <meta-data
+83-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:87:13-89:65
+84                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR_DARK"
+84-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:88:17-92
+85                android:resource="@color/navigationColorDark" />
+85-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:89:17-62
+86            <meta-data
+86-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:91:13-93:68
+87                android:name="androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR"
+87-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:92:17-84
+88                android:resource="@color/navigationDividerColor" />
+88-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:93:17-65
+89            <meta-data
+89-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:95:13-97:72
+90                android:name="androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR_DARK"
+90-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:96:17-89
+91                android:resource="@color/navigationDividerColorDark" />
+91-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:97:17-69
+92            <meta-data
+92-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:99:13-100:54
+93                android:name="android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE"
+93-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:99:24-95
+94                android:resource="@drawable/splash" />
+94-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:100:17-52
+95            <meta-data
+95-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:102:13-103:60
+96                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR"
+96-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:102:24-104
+97                android:resource="@color/backgroundColor" />
+97-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:103:17-58
+98            <meta-data
+98-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:105:13-106:71
+99                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION"
+99-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:105:24-105
+100                android:value="@integer/splashScreenFadeOutDuration" />
+100-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:106:17-69
+101            <meta-data
+101-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:108:13-109:60
+102                android:name="android.support.customtabs.trusted.FILE_PROVIDER_AUTHORITY"
+102-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:108:24-97
+103                android:value="@string/providerAuthority" />
+103-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:109:17-58
+104            <meta-data
+104-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:111:13-97
+105                android:name="android.app.shortcuts"
+105-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:111:24-60
+106                android:resource="@xml/shortcuts" />
+106-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:111:61-94
+107            <meta-data
+107-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:113:13-114:56
+108                android:name="android.support.customtabs.trusted.FALLBACK_STRATEGY"
+108-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:113:24-91
+109                android:value="@string/fallbackType" />
+109-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:114:17-53
+110            <meta-data
+110-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:120:13-121:54
+111                android:name="android.support.customtabs.trusted.SCREEN_ORIENTATION"
+111-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:120:24-92
+112                android:value="@string/orientation" />
+112-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:121:17-52
+113
+114            <intent-filter>
+114-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:127:13-130:29
+115                <action android:name="android.intent.action.MAIN" />
+115-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:128:17-69
+115-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:128:25-66
+116
+117                <category android:name="android.intent.category.LAUNCHER" />
+117-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:129:17-77
+117-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:129:27-74
+118            </intent-filter>
+119            <intent-filter android:autoVerify="true" >
+119-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:132:13-138:29
+119-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:132:28-53
+120                <action android:name="android.intent.action.VIEW" />
+120-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:133:17-68
+120-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:133:25-66
+121
+122                <category android:name="android.intent.category.DEFAULT" />
+122-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:134:17-76
+122-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:134:27-73
+123                <category android:name="android.intent.category.BROWSABLE" />
+123-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:135:17-77
+123-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:135:27-75
+124
+125                <data
+125-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:136:17-137:54
+126                    android:host="@string/hostName"
+126-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:137:21-52
+127                    android:scheme="https" />
+127-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:136:23-45
+128            </intent-filter>
+129        </activity>
+130        <activity android:name="com.google.androidbrowserhelper.trusted.FocusActivity" />
+130-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:143:9-90
+130-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:143:19-87
+131        <activity
+131-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:145:9-146:62
+132            android:name="com.google.androidbrowserhelper.trusted.WebViewFallbackActivity"
+132-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:145:19-97
+133            android:configChanges="orientation|screenSize" />
+133-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:146:13-59
+134
+135        <provider
+135-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:148:9-156:20
+136            android:name="androidx.core.content.FileProvider"
+136-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:149:13-62
+137            android:authorities="@string/providerAuthority"
+137-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:150:13-60
+138            android:exported="false"
+138-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:152:13-37
+139            android:grantUriPermissions="true" >
+139-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:151:13-47
+140            <meta-data
+140-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:153:13-155:53
+141                android:name="android.support.FILE_PROVIDER_PATHS"
+141-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:154:17-67
+142                android:resource="@xml/filepaths" />
+142-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:155:17-50
+143        </provider>
+144
+145        <service
+145-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:158:9-173:19
+146            android:name="the.cube.DelegationService"
+146-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:159:13-46
+147            android:enabled="@bool/enableNotification"
+147-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:160:13-55
+148            android:exported="@bool/enableNotification" >
+148-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:161:13-56
+149            <meta-data
+149-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:164:17-166:73
+150                android:name="android.support.customtabs.trusted.SMALL_ICON"
+150-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:165:21-81
+151                android:resource="@drawable/ic_notification_icon" />
+151-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:166:21-70
+152
+153            <intent-filter>
+153-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:169:13-172:29
+154                <action android:name="android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE" />
+154-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:170:17-105
+154-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:170:25-103
+155
+156                <category android:name="android.intent.category.DEFAULT" />
+156-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:134:17-76
+156-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:134:27-73
+157            </intent-filter>
+158        </service>
+159
+160        <activity android:name="com.google.androidbrowserhelper.trusted.NotificationPermissionRequestActivity" />
+160-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:176:13-118
+160-->/Users/legion/MEGA/GITHUB/app/src/main/AndroidManifest.xml:176:23-115
+161    </application>
+162
+163</manifest>
