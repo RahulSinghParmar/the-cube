@@ -1,5 +1,5 @@
 {
-  "name": "bsehovac.github.io",
+  "name": "rahulsinghparmar.github.io",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/bsehovac/bsehovac.github.io.git"
+    "url": "git+ssh://git@github.com:RahulSinghParmar/the-cube.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bsehovac/bsehovac.github.io/issues"
+    "url": "https://github.com/RahulSinghParmar/the-cube/issues"
   },
-  "homepage": "https://github.com/bsehovac/bsehovac.github.io#readme"
+  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md"
 }
