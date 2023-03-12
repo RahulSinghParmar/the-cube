@@ -1,8 +1,0 @@
-the/cube/BuildConfig.java
- the.cube.BuildConfig
-the/cube/DelegationService.java
- the.cube.DelegationService
-the/cube/Application.java
- the.cube.Application
-the/cube/LauncherActivity.java
- the.cube.LauncherActivity
