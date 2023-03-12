@@ -108,9 +108,8 @@
         '/',
         '/assets/',
         '/src/',
-        './index.html',
-        './assets/css/styles.css',
-        './assets/js'
+        './offline.html',
+        './index.html'
     ]
 
 
