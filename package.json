@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/RahulSinghParmar/the-cube/issues"
   },
-  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md"
+  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md",
+  "dependencies": {
+    "workbox-precaching": "^6.5.4"
+  }
 }
