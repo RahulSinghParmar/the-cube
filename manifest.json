@@ -7,7 +7,7 @@
     "protocol_handlers": [],
     "name": "The Cube",
     "short_name": "The Cube",
-    "start_url": "/",
+    "start_url": "/the-cube/",
     "display": "standalone",
     "description": "The Cube - A Rubik's Cube Game",
     "lang": "en",
@@ -19,12 +19,14 @@
         {
             "src": "./assets/icons/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "./assets/icons/android-chrome-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
     "screenshots": [
@@ -32,7 +34,8 @@
             "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
             "sizes": "2880x1800",
             "type": "image/png",
-            "description": "A screenshot of the home page"
+            "description": "A screenshot of the home page",
+            "platform": "wide"
         }
     ],
     "related_applications": [],
@@ -40,5 +43,6 @@
     "shortcuts": [],
     "categories": [
         "games"
-    ]
+    ],
+    "scope": "https://rahulsinghparmar.github.io/"
 }
