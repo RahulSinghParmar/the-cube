@@ -1,0 +1,42 @@
+{
+  "packageId": "io.github.rahulsinghparmar.twa",
+  "host": "rahulsinghparmar.github.io/",
+  "name": "The Cube",
+  "launcherName": "The Cube",
+  "display": "fullscreen",
+  "themeColor": "#FFFFFF",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#FFFFFF",
+  "enableNotifications": true,
+  "startUrl": "the-cube/",
+  "iconUrl": "https://rahulsinghparmar.github.io/the-cube/assets/icons/android-chrome-512x512.png",
+  "maskableIconUrl": "https://rahulsinghparmar.github.io/the-cube/assets/icons/apple-touch-icon.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/Users/legion/MEGA/GITHUB/android/android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://rahulsinghparmar.github.io/the-cube/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://rahulsinghparmar.github.io/",
+  "minSdkVersion": 19,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1"
+}

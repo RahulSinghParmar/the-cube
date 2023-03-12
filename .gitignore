@@ -83,10 +83,17 @@ fabric.properties
 ### WebStorm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
+
+# all andriod files
+android/*
+
 # *.iml
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+node_modules/*
+.DS_Store
+.idea/*
 
 # Sonarlint plugin
 # https://plugins.jetbrains.com/plugin/7973-sonarlint
