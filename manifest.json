@@ -4,7 +4,7 @@
 "start_url": "The URL that should be loaded when your application is opened",
 "display": "standalone",
 "description": "A description for your application",
-"lang": " The default language of your application",
+"lang": "English",
 "dir": "auto",
 "theme_color": "#000000",
 "background_color": "#000000",
