@@ -117,7 +117,7 @@
     // When the service worker is installing, open the cache and add the precache resources to it
     self.addEventListener('install', (event) => {
         console.log('Service worker install event!');
-        event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(offlineFallbackPage)));
+        event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(PRECACHE_ASSETS)));
     });
 
     self.addEventListener("message", (event) => {
