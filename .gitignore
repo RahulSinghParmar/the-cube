@@ -252,3 +252,4 @@ export/
 .playwright/
 test-results/
 playwright-report/
+packages/*/dist/
