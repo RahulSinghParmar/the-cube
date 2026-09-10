@@ -85,7 +85,7 @@ class Scrambler {
 		const position = new THREE.Vector3();
 		position[ { D: 'y', U: 'y', L: 'x', R: 'x', F: 'z', B: 'z' }[ face.toUpperCase() ] ] = row;
 
-		const angle = ( Math.PI / 2 ) * - row * ( ( modifier == "'" ) ? - 1 : 1 );
+		const angle = ( Math.PI / 2 ) * - Math.sign( row ) * ( ( modifier == "'" ) ? - 1 : 1 );
 
 		return { position, axis, angle, name: move };
 

@@ -40,7 +40,7 @@ class Scores {
     data.scores.push( time );
     data.solves++;
 
-    if ( data.scores.lenght > 100 ) data.scores.shift();
+    if ( data.scores.length > 100 ) data.scores = data.scores.slice( -100 );
 
     let bestTime = false    
 

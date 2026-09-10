@@ -386,10 +386,11 @@ class Controls {
 
   }
 
-  keyboardMove( type, move, callback ) {
+  keyboardMove( type, move ) {
 
     if ( this.state !== STILL ) return;
     if ( this.enabled !== true ) return;
+    if ( this.scramble !== null ) return;
 
     if ( type === 'LAYER' ) {
 

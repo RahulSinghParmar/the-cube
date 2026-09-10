@@ -1,14 +1,24 @@
 {
   "name": "rahulsinghparmar.github.io",
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "description": "",
   "main": "",
   "devDependencies": {
-    "rollup-plugin-babel-minify": "^10.0.0"
+    "@playwright/test": "^1.50.0",
+    "@rollup/plugin-terser": "^1.0.0",
+    "rollup": "^4.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.build.js && cp upup.min.js export/ && cp upup.sw.min.js export/ && cp index.html export/ && cp -R assets export/"
+    "test": "node --test tests/unit/*.test.js",
+    "test:e2e": "playwright test",
+    "build": "rollup -c rollup.config.build.js && node scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs"
   },
   "repository": {
     "type": "git",
@@ -19,8 +29,5 @@
   "bugs": {
     "url": "https://github.com/RahulSinghParmar/the-cube/issues"
   },
-  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md",
-  "dependencies": {
-    "workbox-precaching": "^6.5.4"
-  }
+  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md"
 }

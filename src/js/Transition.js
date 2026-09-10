@@ -42,6 +42,8 @@ class Transition {
 
     const buttonTween = ( button, show ) => {
 
+      button.disabled = true;
+
       return new Tween( {
         target: button.style,
         duration: 300,
@@ -54,7 +56,10 @@ class Transition {
           button.style.transform = `translate3d(0, ${translate * 1.5}em, 0)`;
 
         },
-        onComplete: () => button.style.pointerEvents = show ? 'all' : 'none'
+        onComplete: () => {
+          button.style.pointerEvents = show ? 'all' : 'none';
+          button.disabled = !show;
+        }
       } );
 
     }

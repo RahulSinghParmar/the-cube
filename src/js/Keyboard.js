@@ -1,65 +1,40 @@
-const SHIFT = 16;
+export const KEY_BINDINGS = Object.freeze({
+  j: 'U', f: "U'", i: 'R', k: "R'", d: 'L', e: "L'",
+  h: 'F', g: "F'", w: 'B', o: "B'", s: 'D', l: "D'",
+});
 
-const CTRL = [
-  81, // q
-  87, // w
-  69, // e
-  65, // a
-  83, // s
-  68, // d
-];
-
-const ROTATION = [
-  90, // z
-  88, // x
-  67, // c
-];
-
-class Keyboard {
-
-  constructor( game ) {
-
+export class Keyboard {
+  constructor(game) {
     this.game = game;
-    this.shift = false;
-
-    this.keydown = this.keydown.bind( this );
-    this.keyup = this.keyup.bind( this );
-
-    window.addEventListener( 'keydown', this.keydown, false );
-    window.addEventListener( 'keyup', this.keyup, false );
-
+    this.keydown = this.keydown.bind(this);
+    window.addEventListener('keydown', this.keydown);
   }
 
-  keydown( e ) {
-  
-    if ( e.keyCode === SHIFT ) this.shift = true;
-
-    if ( CTRL.includes( e.keyCode ) ) {
-
-      const modifier = ( this.shift ) ? `'` : ``;
-      const face = { 65: 'L', 68: 'R', 87: 'U', 83: 'D', 81: 'F', 69: 'B' }[ e.keyCode ];
-
-      const convertedMove = this.game.scrambler.convertMove( face + modifier );
-
-      this.game.controls.keyboardMove( 'LAYER', convertedMove, () => {} );
-
-    } else if ( ROTATION.includes( e.keyCode ) ) {
-
-      const axis = { 90: 'x', 88: 'y', 67: 'z' }[ e.keyCode ];
-      const angle = ( this.shift ? 1 : -1 ) * Math.PI / 2;
-
-      this.game.controls.keyboardMove( 'CUBE', { axis, angle }, () => {} );
-
+  keydown(event) {
+    if (event.repeat || event.isComposing || event.ctrlKey || event.altKey || event.metaKey) return;
+    if (event.target?.closest?.('input, textarea, select, button, a, summary, [contenteditable]:not([contenteditable="false"]), [role="slider"]')) return;
+    const game = this.game;
+    if (game.transition.activeTransitions > 0) return;
+    const key = event.key.toLowerCase();
+    if (key === 'enter' && game.state === 0) {
+      event.preventDefault();
+      game.game(true);
+      return;
     }
-
+    if (key === 'escape') {
+      const action = { 1: 'game', 2: 'complete', 3: 'stats', 4: 'prefs', 5: 'theme' }[game.state];
+      if (action) { event.preventDefault(); game[action](false); }
+      return;
+    }
+    if (game.state !== 1 || !game.controls.enabled || game.controls.scramble !== null) return;
+    if (KEY_BINDINGS[key]) {
+      event.preventDefault();
+      game.controls.keyboardMove('LAYER', game.scrambler.convertMove(KEY_BINDINGS[key]));
+    } else if (['x', 'y', 'z'].includes(key)) {
+      event.preventDefault();
+      game.controls.keyboardMove('CUBE', { axis: key, angle: (event.shiftKey ? 1 : -1) * Math.PI / 2 });
+    }
   }
 
-  keyup( e ) {
-
-    if ( e.keyCode === SHIFT ) this.shift = false;
-
-  }
-
+  dispose() { window.removeEventListener('keydown', this.keydown); }
 }
-
-export { Keyboard };

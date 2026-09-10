@@ -1,14 +1,12 @@
-import minify from 'rollup-plugin-babel-minify';
+import terser from '@rollup/plugin-terser';
 
 export default {
   input: './src/js/Game.js',
-  plugins: [
-    minify({ comments: false, sourceMap: false }),
-  ],
+  plugins: [terser()],
   output: {
       format: 'iife',
       file: './assets/js/cube.js',
       indent: '\t',
-      sourceMap: false,
+      sourcemap: false,
   },
 };

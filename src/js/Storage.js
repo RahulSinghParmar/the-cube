@@ -35,7 +35,7 @@ class Storage {
       const gameCubeData = JSON.parse( localStorage.getItem( 'theCube_savedState' ) );
       const gameTime = parseInt( localStorage.getItem( 'theCube_time' ) );
 
-      if ( ! gameCubeData || gameTime === null ) throw new Error();
+      if ( ! gameCubeData || ! Number.isFinite( gameTime ) || gameTime < 0 ) throw new Error();
       if ( gameCubeData.size !== this.game.cube.sizeGenerated ) throw new Error();
 
       this.game.cube.loadFromData( gameCubeData );

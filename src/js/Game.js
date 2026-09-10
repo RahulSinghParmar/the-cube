@@ -11,7 +11,7 @@ import { Storage } from './Storage.js';
 import { Themes } from './Themes.js';
 import { ThemeEditor } from './ThemeEditor.js';
 import { States } from './States.js';
-// import { Keyboard } from './Keyboard.js';
+import { Keyboard } from './Keyboard.js';
 
 import { Icons } from './Icons.js';
 
@@ -86,6 +86,7 @@ class Game {
     this.state = STATE.Menu;
     this.newGame = false;
     this.saved = false;
+    this.keyboard = new Keyboard( this );
 
     this.storage.init();
     this.preferences.init();
@@ -95,10 +96,14 @@ class Game {
     this.storage.loadGame();
     this.scores.calcStats();
 
+    // Reserve the startup animation window so early input cannot race the title.
+    this.transition.activeTransitions++;
+
     setTimeout( () => {
 
       this.transition.float();
       this.transition.cube( SHOW );
+      this.transition.activeTransitions--;
 
       setTimeout( () => this.transition.title( SHOW ), 700 );
       setTimeout( () => this.transition.buttons( BUTTONS.Menu, BUTTONS.None ), 1000 );
