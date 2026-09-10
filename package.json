@@ -14,13 +14,16 @@
   "devDependencies": {
     "@playwright/test": "^1.50.0",
     "@rollup/plugin-terser": "^1.0.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "fake-indexeddb": "6.2.5",
     "rollup": "^4.0.0",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "vite": "8.3.0"
   },
   "scripts": {
     "typecheck": "tsc -p packages/practice/tsconfig.json --noEmit",
-    "build:practice": "tsc -p packages/practice/tsconfig.json",
+    "build:practice": "tsc -p packages/practice/tsconfig.json && tsc -p packages/cube-core/tsconfig.json",
     "test": "npm run build:practice && node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
     "check:architecture": "node scripts/check-architecture.mjs",
@@ -37,5 +40,9 @@
   "bugs": {
     "url": "https://github.com/RahulSinghParmar/the-cube/issues"
   },
-  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md"
+  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md",
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
 }
