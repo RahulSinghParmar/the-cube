@@ -9,7 +9,12 @@ async function start(page) {
   await page.waitForFunction(() => game.state === 1 && game.controls.enabled && game.controls.scramble === null && game.transition.activeTransitions === 0);
   await expect(page.locator('.text--title i').first()).toHaveCSS('opacity', '0');
 }
-const cubeState = page => page.evaluate(() => JSON.stringify(game.cube.pieces.map(p => [p.name, ...p.position.toArray(), ...p.rotation.toVector3().toArray()].map(v => typeof v === 'number' ? Math.round(v * 10000) : v))));
+// Euler angles are not unique: +PI and -PI describe the same orientation.
+// Compare the actual local transforms so equivalent rotations remain equal.
+const cubeState = page => page.evaluate(() => JSON.stringify(game.cube.pieces.map(piece => {
+  piece.updateMatrix();
+  return [piece.name, ...piece.matrix.elements.map(value => Math.round(value * 10000))];
+})));
 
 test('keyboard turns change the cube, inverse restores it, timer starts and game resumes', async ({ page }) => {
   const errors = [];
