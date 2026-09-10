@@ -16,6 +16,8 @@ Use neutral, product-focused names in branch names, commit messages, documentati
 4. Review the diff for unintended changes and credentials; commit with a focused message.
 5. Push the active development branch. Verify the remote SHA and inspect the resulting CI status. Fix failures with another focused commit and push.
 
+At the end of each completed change, report the current milestone, what visibly changed (or why the work was internal), verification, pushed commit, live URL, simple testing steps, remaining work and the next suggested command. Keep the status in [the build guide](docs/architecture/08-build-guide.md) aligned with verified completion.
+
 Use ordinary fast-forward pushes. If the remote branch has advanced, fetch and reconcile the work; do not force push or discard someone else's changes. If authentication or policy blocks a push, retain the local commit and report the exact blocker. Do not claim a push succeeded until the remote confirms it.
 
 Pushes to `main` run the web checks and automatically deploy the successful `export/` build to https://rahulsinghparmar.github.io/the-cube/. Pull requests run checks without deployment. Never move or deploy from the preserved `master` branch. Release tags and native app publication remain separate actions. Changes are committed and pushed during active development work; no local background watcher is installed.

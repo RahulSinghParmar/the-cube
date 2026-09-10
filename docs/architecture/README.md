@@ -29,6 +29,8 @@ flowchart LR
 
 ## Read the plan
 
+Start with [the plain-language build guide and copy-paste commands](08-build-guide.md) to see what is complete, what changes next, and how the milestones map to the original six phases.
+
 | Document | Decisions and deliverables |
 | --- | --- |
 | [Product requirements](01-product.md) | Personas, feature scope, user journeys, success criteria and non-goals |

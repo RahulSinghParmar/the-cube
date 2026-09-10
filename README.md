@@ -61,6 +61,8 @@ module boundaries, data/sync design, PostgreSQL and OpenAPI drafts, UX,
 security, deployment and the implementation backlog. Follow the
 [commit-and-push workflow](CONTRIBUTING.md) for changes.
 
+For a nontechnical overview, see [the build phases and copy-paste commands](docs/architecture/08-build-guide.md).
+
 ### Install the web app
 
 - [Click](https://rahulsinghparmar.github.io/the-cube/) here to visit the Page
