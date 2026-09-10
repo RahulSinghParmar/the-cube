@@ -37,7 +37,7 @@ The existing storage version stays unchanged, so this release does not deliberat
 - The renderer is an older vendored Three.js build. It must be isolated behind an adapter before any upgrade. Existing visual behavior and touch interactions need regression coverage during that work.
 - Web tests currently cover Chromium, desktop and a mobile viewport. Actual Android/iOS installation, touch gestures, Safari/Firefox, service-worker migration from deployed legacy versions and offline upgrades need device/staging tests.
 - The Android release workflow references missing build-project files and an unpinned third-party publishing action. It is retained for review; this release does not validate or publish Android artifacts.
-- The new web workflow has been authored but has not run on GitHub. No branch has been pushed and no live deployment changed.
+- Follow-up on 10 September 2026: the foundation and an orientation-test correction were pushed to `codex/phase-one-foundation`; GitHub web checks passed at `3b8588e`. No live deployment changed. The [full architecture plan](architecture/README.md) expands the roadmap below.
 - Original author credits remain. Licensing/provenance and old social metadata need review before rebranding or commercial release.
 - No claims are made about 90% coverage, Lighthouse >95, scanner accuracy, solver completeness or production readiness of the full ecosystem.
 

@@ -1,0 +1,2183 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "The Cube private practice API",
+    "version": "0.1.0-plan",
+    "description": "Architecture draft for milestone M5; no server is implemented. Cookie writes require CSRF protection; native bearer tokens are an alternative. Proposed limits and retention are detailed in the architecture documents.",
+    "contact": {
+      "name": "Repository owner",
+      "url": "https://github.com/RahulSinghParmar/the-cube"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "Same-origin planned API base; no provisioned service implied."
+    }
+  ],
+  "tags": [
+    {
+      "name": "profile",
+      "description": "Private authenticated profile"
+    },
+    {
+      "name": "sessions",
+      "description": "Private puzzle/mode sessions"
+    },
+    {
+      "name": "solves",
+      "description": "Versioned practice attempts"
+    },
+    {
+      "name": "sync",
+      "description": "Idempotent offline synchronization"
+    }
+  ],
+  "security": [
+    {
+      "sessionCookie": []
+    },
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/me": {
+      "get": {
+        "operationId": "getProfile",
+        "tags": [
+          "profile"
+        ],
+        "summary": "Read the authenticated private profile",
+        "description": "Read the authenticated private profile. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profile"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "get": {
+        "operationId": "listSessions",
+        "tags": [
+          "sessions"
+        ],
+        "summary": "List owned sessions",
+        "description": "List owned sessions. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "description": "Opaque browsing cursor; not a sync snapshot."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 50
+            },
+            "description": "Maximum records per page."
+          }
+        ]
+      }
+    },
+    "/sessions/{sessionId}": {
+      "parameters": [
+        {
+          "name": "sessionId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Client-generated entity UUID."
+        }
+      ],
+      "get": {
+        "operationId": "getSession",
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Read an owned session",
+        "description": "Read an owned session. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putSession",
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Create or update a session with a version precondition",
+        "description": "Create or update a session with a version precondition. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfToken": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Applied receipt, including identical replay.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Applied"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "409": {
+            "description": "Conflicting edit or deleted identity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Conflict"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Problem"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Mutation UUID; reuse only when retrying the identical request."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionWrite"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteSession",
+        "tags": [
+          "sessions"
+        ],
+        "summary": "Delete a session with a version precondition",
+        "description": "Delete a session with a version precondition. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfToken": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion receipt with a null record.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Applied"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "409": {
+            "description": "Conflicting edit or deletion.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Conflict"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Problem"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Mutation UUID; reuse only when retrying the identical request."
+          },
+          {
+            "name": "baseVersion",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647
+            },
+            "description": "Expected current version."
+          }
+        ]
+      }
+    },
+    "/solves": {
+      "get": {
+        "operationId": "listSolves",
+        "tags": [
+          "solves"
+        ],
+        "summary": "List owned attempts in a session",
+        "description": "List owned attempts in a session. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SolvePage"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Session whose attempts are requested."
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "description": "Opaque browsing cursor; not a sync snapshot."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 50
+            },
+            "description": "Maximum records per page."
+          }
+        ]
+      }
+    },
+    "/solves/{solveId}": {
+      "parameters": [
+        {
+          "name": "solveId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Client-generated entity UUID."
+        }
+      ],
+      "get": {
+        "operationId": "getSolve",
+        "tags": [
+          "solves"
+        ],
+        "summary": "Read an owned attempt",
+        "description": "Read an owned attempt. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solve"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putSolve",
+        "tags": [
+          "solves"
+        ],
+        "summary": "Create or update a solve with a version precondition",
+        "description": "Create or update a solve with a version precondition. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfToken": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Applied receipt, including identical replay.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Applied"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "409": {
+            "description": "Conflicting edit or deleted identity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Conflict"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Problem"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Mutation UUID; reuse only when retrying the identical request."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolveWrite"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteSolve",
+        "tags": [
+          "solves"
+        ],
+        "summary": "Delete a solve with a version precondition",
+        "description": "Delete a solve with a version precondition. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfToken": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion receipt with a null record.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Applied"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "409": {
+            "description": "Conflicting edit or deletion.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Conflict"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Problem"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Mutation UUID; reuse only when retrying the identical request."
+          },
+          {
+            "name": "baseVersion",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2147483647
+            },
+            "description": "Expected current version."
+          }
+        ]
+      }
+    },
+    "/sync/push": {
+      "post": {
+        "operationId": "pushChanges",
+        "tags": [
+          "sync"
+        ],
+        "summary": "Process up to 100 ordered mutations with per-item receipts",
+        "description": "Process up to 100 ordered mutations with per-item receipts. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": [],
+            "csrfToken": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PushResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PushRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sync/changes": {
+      "get": {
+        "operationId": "pullChanges",
+        "tags": [
+          "sync"
+        ],
+        "summary": "Pull committed changes after an owner-bound cursor",
+        "description": "Pull committed changes after an owner-bound cursor. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A bounded page at a fixed upper watermark.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangePage"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "410": {
+            "description": "Cursor expired; bootstrap a new snapshot.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "description": "Cursor from a snapshot or previous change page."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 50
+            },
+            "description": "Maximum changes."
+          }
+        ]
+      }
+    },
+    "/sync/snapshot": {
+      "get": {
+        "operationId": "getSnapshot",
+        "tags": [
+          "sync"
+        ],
+        "summary": "Bootstrap or continue an immutable snapshot",
+        "description": "Bootstrap or continue an immutable snapshot. See the architecture data contract for ownership, versioning and retention behavior.",
+        "security": [
+          {
+            "sessionCookie": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Immutable snapshot page. Adopt resumeCursor only after all pages are staged and applied.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SnapshotPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error401"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error404"
+          },
+          "410": {
+            "description": "Snapshot expired; restart.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "413": {
+            "$ref": "#/components/responses/Error413"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error422"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error429"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error503"
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048
+            },
+            "description": "Omit for a new snapshot; subsequent tokens are owner-bound and expire after 15 minutes."
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "sessionCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "cube_session",
+        "description": "Secure HttpOnly session cookie; Origin and CSRF checks apply to writes."
+      },
+      "csrfToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-CSRF-Token",
+        "description": "Session-bound CSRF token required together with browser cookie authentication on writes."
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Native short-lived token validated for issuer, audience, signature, expiry and scopes."
+      }
+    },
+    "schemas": {
+      "Profile": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "locale": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 20
+          }
+        },
+        "required": [
+          "id",
+          "displayName",
+          "locale"
+        ]
+      },
+      "SessionData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120,
+            "pattern": "\\S"
+          },
+          "puzzle": {
+            "type": "string",
+            "enum": [
+              "222",
+              "333",
+              "444",
+              "555"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "physical",
+              "simulator"
+            ]
+          },
+          "archivedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "title",
+          "puzzle",
+          "mode",
+          "archivedAt"
+        ]
+      },
+      "SolveData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "elapsedMs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 86400000
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "dnf",
+              "interrupted"
+            ]
+          },
+          "penaltyMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 86400000,
+            "multipleOf": 2000
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "timer",
+              "simulator",
+              "manual"
+            ]
+          },
+          "scramble": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 4096
+          },
+          "scrambleGenerator": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 120
+          },
+          "ruleVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "inspectionMs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 86400000
+          },
+          "performedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deviceSequence": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        },
+        "required": [
+          "sessionId",
+          "elapsedMs",
+          "outcome",
+          "penaltyMs",
+          "source",
+          "scramble",
+          "scrambleGenerator",
+          "ruleVersion",
+          "inspectionMs",
+          "performedAt",
+          "deviceId",
+          "deviceSequence"
+        ],
+        "if": {
+          "properties": {
+            "outcome": {
+              "const": "ok"
+            }
+          },
+          "required": [
+            "outcome"
+          ]
+        },
+        "then": {
+          "properties": {
+            "elapsedMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 86400000
+            }
+          }
+        }
+      },
+      "Session": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120,
+            "pattern": "\\S"
+          },
+          "puzzle": {
+            "type": "string",
+            "enum": [
+              "222",
+              "333",
+              "444",
+              "555"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "physical",
+              "simulator"
+            ]
+          },
+          "archivedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "title",
+          "puzzle",
+          "mode",
+          "archivedAt",
+          "id",
+          "version",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "Solve": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "elapsedMs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 86400000
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "dnf",
+              "interrupted"
+            ]
+          },
+          "penaltyMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 86400000,
+            "multipleOf": 2000
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "timer",
+              "simulator",
+              "manual"
+            ]
+          },
+          "scramble": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 4096
+          },
+          "scrambleGenerator": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 120
+          },
+          "ruleVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "inspectionMs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 86400000
+          },
+          "performedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deviceSequence": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "sessionId",
+          "elapsedMs",
+          "outcome",
+          "penaltyMs",
+          "source",
+          "scramble",
+          "scrambleGenerator",
+          "ruleVersion",
+          "inspectionMs",
+          "performedAt",
+          "deviceId",
+          "deviceSequence",
+          "id",
+          "version",
+          "createdAt",
+          "updatedAt"
+        ],
+        "if": {
+          "properties": {
+            "outcome": {
+              "const": "ok"
+            }
+          },
+          "required": [
+            "outcome"
+          ]
+        },
+        "then": {
+          "properties": {
+            "elapsedMs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 86400000
+            }
+          }
+        }
+      },
+      "Record": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Session"
+          },
+          {
+            "$ref": "#/components/schemas/Solve"
+          }
+        ]
+      },
+      "Problem": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "requestId"
+        ]
+      },
+      "SessionWrite": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "baseVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "data": {
+            "$ref": "#/components/schemas/SessionData"
+          }
+        },
+        "required": [
+          "baseVersion",
+          "data"
+        ]
+      },
+      "SolveWrite": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "baseVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "data": {
+            "$ref": "#/components/schemas/SolveData"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "baseVersion",
+          "data"
+        ],
+        "if": {
+          "properties": {
+            "baseVersion": {
+              "minimum": 1
+            }
+          },
+          "required": [
+            "baseVersion"
+          ]
+        },
+        "then": {
+          "required": [
+            "reason"
+          ],
+          "properties": {
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }
+      },
+      "SessionPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Session"
+            },
+            "maxItems": 200
+          },
+          "nextCursor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "required": [
+          "items",
+          "nextCursor"
+        ]
+      },
+      "SolvePage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Solve"
+            },
+            "maxItems": 200
+          },
+          "nextCursor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 2048
+          }
+        },
+        "required": [
+          "items",
+          "nextCursor"
+        ]
+      },
+      "Applied": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "const": "applied"
+          },
+          "entityType": {
+            "type": "string",
+            "enum": [
+              "session",
+              "solve"
+            ]
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "record": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Record"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "mutationId",
+          "status",
+          "entityType",
+          "entityId",
+          "version",
+          "record"
+        ]
+      },
+      "Conflict": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "const": "conflict"
+          },
+          "entityType": {
+            "type": "string",
+            "enum": [
+              "session",
+              "solve"
+            ]
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "record": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Record"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "version_conflict",
+              "entity_deleted"
+            ]
+          }
+        },
+        "required": [
+          "mutationId",
+          "status",
+          "entityType",
+          "entityId",
+          "version",
+          "record",
+          "code"
+        ]
+      },
+      "Rejected": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "const": "rejected"
+          },
+          "entityType": {
+            "type": "string",
+            "enum": [
+              "session",
+              "solve"
+            ]
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "mutationId",
+          "status",
+          "entityType",
+          "entityId",
+          "code",
+          "message"
+        ]
+      },
+      "Receipt": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Applied"
+          },
+          {
+            "$ref": "#/components/schemas/Conflict"
+          },
+          {
+            "$ref": "#/components/schemas/Rejected"
+          }
+        ]
+      },
+      "SessionUpsert": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityType": {
+            "const": "session"
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operation": {
+            "const": "upsert"
+          },
+          "baseVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "data": {
+            "$ref": "#/components/schemas/SessionData"
+          }
+        },
+        "required": [
+          "mutationId",
+          "entityType",
+          "entityId",
+          "operation",
+          "baseVersion",
+          "data"
+        ]
+      },
+      "SolveUpsert": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityType": {
+            "const": "solve"
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operation": {
+            "const": "upsert"
+          },
+          "baseVersion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "data": {
+            "$ref": "#/components/schemas/SolveData"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "mutationId",
+          "entityType",
+          "entityId",
+          "operation",
+          "baseVersion",
+          "data"
+        ],
+        "if": {
+          "properties": {
+            "baseVersion": {
+              "minimum": 1
+            }
+          },
+          "required": [
+            "baseVersion"
+          ]
+        },
+        "then": {
+          "required": [
+            "reason"
+          ],
+          "properties": {
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          }
+        }
+      },
+      "DeleteMutation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityType": {
+            "type": "string",
+            "enum": [
+              "session",
+              "solve"
+            ]
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "operation": {
+            "const": "delete"
+          },
+          "baseVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          }
+        },
+        "required": [
+          "mutationId",
+          "entityType",
+          "entityId",
+          "operation",
+          "baseVersion"
+        ]
+      },
+      "Mutation": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SessionUpsert"
+          },
+          {
+            "$ref": "#/components/schemas/SolveUpsert"
+          },
+          {
+            "$ref": "#/components/schemas/DeleteMutation"
+          }
+        ]
+      },
+      "PushRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mutations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Mutation"
+            },
+            "maxItems": 100,
+            "minItems": 1
+          }
+        },
+        "required": [
+          "mutations"
+        ]
+      },
+      "PushResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Receipt"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "results"
+        ]
+      },
+      "SessionChange": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sequence": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$",
+            "maxLength": 20
+          },
+          "entityType": {
+            "const": "session"
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "operation": {
+            "const": "upsert"
+          },
+          "record": {
+            "$ref": "#/components/schemas/Session"
+          }
+        },
+        "required": [
+          "sequence",
+          "entityType",
+          "entityId",
+          "version",
+          "operation",
+          "record"
+        ]
+      },
+      "SolveChange": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sequence": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$",
+            "maxLength": 20
+          },
+          "entityType": {
+            "const": "solve"
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "operation": {
+            "const": "upsert"
+          },
+          "record": {
+            "$ref": "#/components/schemas/Solve"
+          }
+        },
+        "required": [
+          "sequence",
+          "entityType",
+          "entityId",
+          "version",
+          "operation",
+          "record"
+        ]
+      },
+      "DeleteChange": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sequence": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$",
+            "maxLength": 20
+          },
+          "entityType": {
+            "type": "string",
+            "enum": [
+              "session",
+              "solve"
+            ]
+          },
+          "entityId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "operation": {
+            "const": "delete"
+          },
+          "record": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "sequence",
+          "entityType",
+          "entityId",
+          "version",
+          "operation",
+          "record"
+        ]
+      },
+      "Change": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SessionChange"
+          },
+          {
+            "$ref": "#/components/schemas/SolveChange"
+          },
+          {
+            "$ref": "#/components/schemas/DeleteChange"
+          }
+        ]
+      },
+      "ChangePage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "changes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Change"
+            },
+            "maxItems": 200
+          },
+          "nextCursor": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "watermark": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$",
+            "maxLength": 20
+          }
+        },
+        "required": [
+          "changes",
+          "nextCursor",
+          "hasMore",
+          "watermark"
+        ]
+      },
+      "SnapshotPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Session"
+            },
+            "maxItems": 200
+          },
+          "solves": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Solve"
+            },
+            "maxItems": 200
+          },
+          "nextPageToken": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "resumeCursor": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "watermark": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)$",
+            "maxLength": 20
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "sessions",
+          "solves",
+          "nextPageToken",
+          "resumeCursor",
+          "watermark",
+          "expiresAt"
+        ]
+      }
+    },
+    "responses": {
+      "Error400": {
+        "description": "Malformed request.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "Error401": {
+        "description": "Authentication required.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "Error403": {
+        "description": "CSRF or capability check failed.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "Error404": {
+        "description": "Resource missing or inaccessible.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "Error413": {
+        "description": "Body exceeds the allowed limit.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "Error422": {
+        "description": "Domain validation failed.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "Error429": {
+        "description": "Rate limited; honor Retry-After.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        },
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds before retry.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      },
+      "Error503": {
+        "description": "Temporarily unavailable; keep local data.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      }
+    }
+  }
+}

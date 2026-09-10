@@ -55,6 +55,11 @@ ignored. An expandable guide is available in the app.
 See [the audit and phased roadmap](docs/AUDIT-AND-ROADMAP.md) for findings,
 remaining limitations, the next sprint and deployment/rollback instructions.
 
+The [full architecture plan](docs/architecture/README.md) covers product scope,
+module boundaries, data/sync design, PostgreSQL and OpenAPI drafts, UX,
+security, deployment and the implementation backlog. Follow the
+[commit-and-push workflow](CONTRIBUTING.md) for changes.
+
 ### Install the web app
 
 - [Click](https://rahulsinghparmar.github.io/the-cube/) here to visit the Page

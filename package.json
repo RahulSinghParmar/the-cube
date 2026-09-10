@@ -16,6 +16,7 @@
   "scripts": {
     "test": "node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
+    "check:architecture": "node scripts/check-architecture.mjs",
     "build": "rollup -c rollup.config.build.js && node scripts/build.mjs",
     "dev": "npm run build && node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs"
