@@ -68,7 +68,7 @@ Environments: local fake identities/data, isolated staging, and production. Use 
 1. Every coherent modification gets a focused commit and push to the working branch, following [the workflow](../../CONTRIBUTING.md).
 2. CI installs the lockfile, typechecks adopted TypeScript modules, validates architecture/contracts, runs domain tests, builds the web artifact, runs browser tests and uploads evidence. Add PostgreSQL integration tests when a server exists.
 3. On a release candidate, validate license inventory, dependency findings, accessibility/device results, DB migration plans and staging rollback. Resolve the legacy Android workflow separately before creating release tags.
-4. Publish the same reviewed artifact to staging and then production. Tag only release-ready states. A push alone does not imply a merge, app-store submission or production deployment.
+4. The current static site automatically publishes the tested artifact to GitHub Pages after successful `main` checks. Preserve the original `master` branch. When an account backend is introduced, add the staging-to-production promotion gate described above. Tag only release-ready states; native app submission remains separate.
 5. Verify health, startup, relative paths, live/offline reload, current worker version and sample data integrity. Record artifact hash, schema version and commit SHA.
 
 Schema changes follow expand → compatible application rollout → migrate/backfill → validate → later contract. Long migrations are resumable/idempotent jobs. Existing clients must tolerate additive fields during the support window; boundary input schemas remain versioned. Never deploy an application requiring a schema before the compatible migration is complete.

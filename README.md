@@ -31,8 +31,9 @@ npm run test:e2e
 ```
 
 The browser suite checks cube turns, timer startup, saved-game resume, mobile
-layout and offline gameplay. The GitHub web workflow runs checks and uploads a
-site artifact without publishing it.
+layout and offline gameplay. Successful pushes to the primary `main` branch
+publish the tested site to [GitHub Pages](https://rahulsinghparmar.github.io/the-cube/).
+The `master` branch preserves the original base. Pull requests run checks without publishing.
 
 ### Keyboard controls
 

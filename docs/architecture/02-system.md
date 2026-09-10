@@ -134,7 +134,7 @@ Capacitor and Tauri reuse web features but provide separate permission/storage/u
 | ADR-006 | Deterministic solving with independent verification | LLM-only solving has no correctness guarantee |
 | ADR-007 | Shared web code for native shells | Flutter introduces a second UI/domain integration; require a device spike before choosing it |
 | ADR-008 | Explicit conflicts with version preconditions | Device-clock last-write-wins can silently lose edits |
-| ADR-009 | Push each verified change set to the working branch | Production deploy/merge remains a separate workflow |
+| ADR-009 | Push each verified change set to `main`; preserve original `master` | Successful web checks deploy the tested artifact to GitHub Pages; native releases remain separate |
 
 ## Migration sequence
 

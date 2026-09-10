@@ -63,7 +63,7 @@ Time boxes overlap only where dependencies permit. The lower milestone estimate 
 
 The repository documents are the current roadmap. Suggested GitHub Project fields: Status (Backlog/Ready/In progress/Review/Done/Blocked), Milestone, Module, Priority, Estimate, Dependency and Release gate. Issue titles use the task IDs above; each issue includes acceptance, tests, migration impact and links to the applicable contract.
 
-Project/issue creation is a separate optional administrative step; this plan does not claim that a GitHub Project has been created. The user has authorized pushing repository modifications, so each complete change set is committed and pushed to `codex/phase-one-foundation` while that is the active branch. After merging, use an agreed successor branch and the same policy. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
+Project/issue creation is a separate optional administrative step; this plan does not claim that a GitHub Project has been created. Each complete, verified change set is committed and pushed to the primary `main` branch. Successful checks publish the web build to GitHub Pages. Preserve `master` as the original base and use neutral product-focused names throughout authored repository content. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
 
 Definition of done: scoped acceptance met; meaningful checks pass; docs/contracts updated; migration/deployment impacts recorded; focused commit pushed; remote branch SHA confirmed; CI conclusion inspected and failures addressed. Production deployment/app-store publication has its own release gate. Do not mark later roadmap items complete merely because their architecture is documented.
 

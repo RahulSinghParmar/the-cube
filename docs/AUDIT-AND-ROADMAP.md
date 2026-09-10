@@ -37,7 +37,7 @@ The existing storage version stays unchanged, so this release does not deliberat
 - The renderer is an older vendored Three.js build. It must be isolated behind an adapter before any upgrade. Existing visual behavior and touch interactions need regression coverage during that work.
 - Web tests currently cover Chromium, desktop and a mobile viewport. Actual Android/iOS installation, touch gestures, Safari/Firefox, service-worker migration from deployed legacy versions and offline upgrades need device/staging tests.
 - The Android release workflow references missing build-project files and an unpinned third-party publishing action. It is retained for review; this release does not validate or publish Android artifacts.
-- Follow-up on 10 September 2026: the foundation and an orientation-test correction were pushed to `codex/phase-one-foundation`; GitHub web checks passed at `3b8588e`. No live deployment changed. The [full architecture plan](architecture/README.md) expands the roadmap below.
+- Follow-up on 10 September 2026: foundation checks passed at `3b8588e`, followed by the architecture plan. The primary branch is now `main`; `master` preserves the original base. Successful main-branch checks publish the tested build to GitHub Pages. The [full architecture plan](architecture/README.md) expands the roadmap below.
 - Original author credits remain. Licensing/provenance and old social metadata need review before rebranding or commercial release.
 - No claims are made about 90% coverage, Lighthouse >95, scanner accuracy, solver completeness or production readiness of the full ecosystem.
 
@@ -87,7 +87,7 @@ Future data concepts: Session (id, puzzle, mode, createdAt), Solve (id, sessionI
 
 ## Deployment and rollback
 
-Run `npm ci`, `npm test`, `npm run build` and `npm run test:e2e`; publish the complete `export/` artifact to an HTTPS static host. The web CI produces an artifact for review and does not deploy. Both the root path and a project subpath are supported by relative assets; the browser suite exercises `/the-cube/`.
+Run `npm ci`, `npm test`, `npm run build` and `npm run test:e2e`. Main-branch CI publishes the complete tested `export/` artifact to GitHub Pages; pull requests only run checks. Both the root path and a project subpath are supported by relative assets; the browser suite exercises `/the-cube/`.
 
 Before releasing to current users, save the previous static artifact and back up representative local storage records through browser developer tools. Use a staging origin to rehearse an upgrade from the currently deployed worker, including closed/reopened tabs, offline reopen and persisted score/theme/cube data. Avoid changing `window.gameVersion` without an explicit migration: the inherited storage constructor clears saved games/preferences when it changes.
 

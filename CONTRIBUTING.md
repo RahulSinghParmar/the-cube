@@ -2,7 +2,13 @@
 
 ## Commit and push policy
 
-The repository owner requested that modifications be pushed to GitHub as work progresses. For this workstream, use `codex/phase-one-foundation` and push **each coherent, verified change set** after committing it. A change set can span several files required to make one feature, fix or documentation update complete. Do not push half-written files on every save or deliberately publish a broken intermediate state.
+The repository owner requested that modifications be pushed to GitHub as work progresses. Use `main` as the primary working branch and push **each coherent, verified change set** after committing it. Preserve `master` as the original base. A change set can span several files required to make one feature, fix or documentation update complete. Do not push half-written files on every save or deliberately publish a broken intermediate state.
+
+## Repository naming
+
+Use neutral, product-focused names in branch names, commit messages, documentation and other authored repository content. Do not include assistant, agent or model names or add automated authorship/co-author branding. Preserve legally required third-party attribution. Keep only `main` and the original `master` unless the owner requests another branch.
+
+## Verification and publication
 
 1. Check the active branch and working tree. Preserve unrelated user changes and stage only files belonging to the change set.
 2. Implement the change and update its relevant documentation/contracts.
@@ -12,7 +18,7 @@ The repository owner requested that modifications be pushed to GitHub as work pr
 
 Use ordinary fast-forward pushes. If the remote branch has advanced, fetch and reconcile the work; do not force push or discard someone else's changes. If authentication or policy blocks a push, retain the local commit and report the exact blocker. Do not claim a push succeeded until the remote confirms it.
 
-This push policy does not automatically merge into `master`, deploy production, publish release tags or submit native apps. Those actions follow the release plan. It is a contributor workflow, not a background watcher or automation; changes are pushed during active development work.
+Pushes to `main` run the web checks and automatically deploy the successful `export/` build to https://rahulsinghparmar.github.io/the-cube/. Pull requests run checks without deployment. Never move or deploy from the preserved `master` branch. Release tags and native app publication remain separate actions. Changes are committed and pushed during active development work; no local background watcher is installed.
 
 ## Checks
 
