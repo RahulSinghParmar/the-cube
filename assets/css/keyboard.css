@@ -13,3 +13,6 @@
 .keyboard-help dt { font-weight: 700; }
 .keyboard-help dd { margin: 0; }
 button:focus-visible, summary:focus-visible { outline: 3px solid #165dce; outline-offset: 4px; }
+.practice-link { position: fixed; right: 12px; top: 12px; z-index: 19; padding: 10px 14px; min-height: 44px; color: #153ba7; background: #fff; border: 1px solid #aaa; border-radius: 10px; font: 14px/1.5 system-ui,sans-serif; text-decoration: none; }
+.practice-link:focus-visible { outline: 3px solid #165dce; outline-offset: 4px; }
+@media(max-width: 420px) { .practice-link { top: 65px; right: 12px; } }

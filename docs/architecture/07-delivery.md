@@ -24,7 +24,7 @@ The dependency graph allows independent work, but it is not permission to launch
 | Milestone | Deliverables | Exit gate | Planning range |
 | --- | --- | --- | --- |
 | M0 | Keyboard, build/PWA repairs, targeted regression tests and audit | Branch CI passes; retained simulator works | Implemented foundation; CI follow-up included |
-| M1 | Strict timing/statistics modules, physical timer, sessions, JSON backup/import, legacy migration | Boundary tests, reload/write-failure recovery, sample history preservation | 2–3 engineer-weeks |
+| M1 | Strict timing/statistics modules, physical timer, sessions, JSON backup/import, legacy migration | Boundary tests, reload/write-failure recovery, sample history preservation | Implemented web scope; see release notes |
 | M2 | React/Vite shell, typed cube-core/renderer adapter, input queue/remapping, accessible settings, locale framework | All cube-size invariants, keyboard/manual accessibility and browser/device matrix | 3–5 weeks |
 | M3 | Reviewed beginner lessons, manual state editor, verified 3×3 solver and playback | Invalid-state fixtures, engine license/device benchmark, every solution verified | 3–5 weeks plus lesson review |
 | M4 | PLL then OLL/F2L practice, content provenance, attempt tracking, optional collection | Verified setup/algorithms, content QA and progress correctness | 2–4 weeks plus content curation |
@@ -35,7 +35,9 @@ The dependency graph allows independent work, but it is not permission to launch
 
 This is roughly 23–41 engineer-weeks for the main future milestones if done serially, not a promised launch date. Community, advanced solving methods, broader scanners, complete translations and billing are separate estimates. Do not treat the large original vision as one sprint.
 
-## Next sprint: M1 tasks in order
+## M1 tasks in order (implemented web scope)
+
+T-101 through T-107 are implemented. [Release notes](09-m1-release.md) describe the verification evidence and real-device/browser limitations. The task sizes below are the original estimates, not actual elapsed time. M2 is next.
 
 | Task | Dependency | Work and acceptance | Size |
 | --- | --- | --- | --- |

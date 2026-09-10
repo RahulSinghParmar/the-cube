@@ -30,7 +30,8 @@ npm run build
 npm run test:e2e
 ```
 
-The browser suite checks cube turns, timer startup, saved-game resume, mobile
+The browser suite checks cube turns, physical timer input/inspection, sessions,
+backup/import, interrupted and failed-save recovery, saved-game resume, mobile
 layout and offline gameplay. Successful pushes to the primary `main` branch
 publish the tested site to [GitHub Pages](https://rahulsinghparmar.github.io/the-cube/).
 The `master` branch preserves the original base. Pull requests run checks without publishing.
@@ -52,6 +53,22 @@ Use X/Y/Z for whole-cube rotations, with Shift to reverse. A prime (′) means a
 counterclockwise turn when looking at that face. The simulator timer starts on
 the first face turn and stops when solved. Input during a turn animation is
 ignored. An expandable guide is available in the app.
+
+### Physical cube practice (M1)
+
+Open the [practice timer](https://rahulsinghparmar.github.io/the-cube/timer.html)
+or choose **Physical cube timer** from Play. Focus the timer pad, hold Space
+until ready, release to start, then press to stop. Touch uses the same gesture;
+**Start without holding** provides a native-button alternative. Enable inspection
+to inspect before the start gesture. Results save locally with sessions, reviewable
+penalties, DNF, personal best and trimmed Ao5/Ao12/Ao100 statistics.
+
+Export a backup regularly. Import validates and previews the file before writing;
+conflicts leave existing history untouched. Old simulator scores are imported once
+into separate archive sessions, retaining their original data. Switching apps or
+reloading during a solve records an interruption instead of a competitive time.
+See [M1 release and testing notes](docs/architecture/09-m1-release.md) for recovery,
+browser requirements and known limits.
 
 See [the audit and phased roadmap](docs/AUDIT-AND-ROADMAP.md) for findings,
 remaining limitations, the next sprint and deployment/rollback instructions.

@@ -8,7 +8,7 @@ This is the target product and engineering plan for evolving the existing reposi
 
 Build an offline-capable cube practice and learning application with a shared, deterministic TypeScript domain model. Preserve the current simulator while adding a physical-cube timer, then learning and solving. Add an authenticated modular backend for synchronization and community features when those features enter development. Use the web application as the basis of future mobile and desktop clients.
 
-The next implementation milestone is **M1: timing, statistics and safe local data**. Architecture work does not introduce a backend, buy services, migrate live data or publish a production release.
+M1 now implements the web practice timer, statistics and safe local data. See [the M1 release notes](09-m1-release.md) for tests, recovery and limits. The next implementation milestone is **M2: application interface and cube engine**. The server and later features below remain architecture proposals.
 
 ```mermaid
 flowchart LR
@@ -42,6 +42,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 | [UX and component system](05-experience.md) | Navigation, design tokens, reusable components, accessibility, localization and offline states |
 | [Security, quality and operations](06-operations.md) | Threat controls, tests, performance targets, environments, release, backup and recovery |
 | [Delivery and decision plan](07-delivery.md) | Dependency graph, milestones, sprint tasks, estimates, risks and outstanding decisions |
+| [M1 implementation and release](09-m1-release.md) | Physical timer, local sessions, backup/recovery, verification and user testing |
 | [Repository workflow](../../CONTRIBUTING.md) | Commit and push policy, branch handling and verification |
 
 The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation and concrete defects already repaired. This architecture plan supersedes that document's short future roadmap where detail differs.
@@ -51,8 +52,8 @@ The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation
 | Area | Current foundation | Target |
 | --- | --- | --- |
 | Simulator | JavaScript, vendored Three.js, 2×2–5×5, touch/mouse/keyboard | Strict typed state core, input queue, tested renderer adapter |
-| Timing | Virtual solve timer and stored arithmetic means | Dedicated physical timer, inspection, penalties, sessions and defined trimmed averages |
-| Persistence | Local storage; last 100 recorded times per size | Transactional IndexedDB, import/export, migrations and optional cloud sync |
+| Timing | Retained virtual timer plus dedicated physical timer, inspection, penalties, sessions and trimmed averages | Unified shell and broader device verification |
+| Persistence | Legacy simulator local storage plus transactional guest IndexedDB, migration and backup/import | Optional cloud sync and authenticated namespace adapters |
 | Delivery | Static Rollup build and Chromium CI | Modular web app, browser/device matrix, measured accessibility and recovery gates |
 | Solving/learning | Not implemented | Verified deterministic solutions, curated lessons and algorithm practice |
 | Accounts/scanner/AI/native | Not implemented | Gated milestones with explicit device, privacy, cost and correctness tests |

@@ -2,7 +2,9 @@
   "name": "rahulsinghparmar.github.io",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -12,6 +14,7 @@
   "devDependencies": {
     "@playwright/test": "^1.50.0",
     "@rollup/plugin-terser": "^1.0.0",
+    "fake-indexeddb": "6.2.5",
     "rollup": "^4.0.0",
     "typescript": "7.0.2"
   },

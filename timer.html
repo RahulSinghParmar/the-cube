@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="An offline practice timer for your physical cube, with sessions, averages and local backups.">
+  <title>Practice timer · The Cube</title>
+  <link rel="icon" href="assets/icons/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="assets/css/practice.css">
+  <script type="module" src="assets/js/practice.js"></script>
+</head>
+<body>
+  <a class="skip" href="#timer-pad">Skip to timer</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="The Cube simulator"><span class="brand-icon" aria-hidden="true">▦</span> THE CUBE</a>
+    <nav aria-label="Main navigation"><a href="./">Play</a><a href="timer.html" aria-current="page">Timer</a></nav>
+    <span class="local-badge">Local practice</span>
+  </header>
+  <main>
+    <div class="page-heading"><div><p class="eyebrow">ONE SOLVE AT A TIME</p><h1>Practice timer</h1><p>Pick up your cube. Find your rhythm.</p></div><p id="connection">Checking offline availability…</p></div>
+    <p id="status" class="status" role="status">Opening your local history…</p>
+    <button id="retry-open" hidden>Retry opening history</button>
+    <div class="practice-layout">
+      <section class="timer-card" aria-label="Physical cube timer">
+        <div class="session-row"><label class="grow">Session<select id="session" disabled></select></label><button id="new-session" class="secondary" disabled>New session</button></div>
+        <div class="timer-options"><label><input id="inspection" type="checkbox" disabled> 15-second inspection</label><span>Physical cube · <b id="puzzle-label">3×3</b></span></div>
+        <button id="timer-pad" class="timer-pad" aria-label="Timer pad" aria-describedby="timer-help" disabled>
+          <span id="phase">Ready when you are</span><span id="timer-display" aria-hidden="true">0:00.00</span><span id="pad-hint">Hold, then release to start</span>
+        </button>
+        <p id="timer-help">Focus the timer pad. Hold <kbd>Space</kbd> until ready, release to start, then press to stop. Touch works the same way. <kbd>Esc</kbd> cancels or interrupts.</p>
+        <div class="actions"><button id="simple-control" class="secondary" disabled>Start without holding</button><button id="next" hidden>Next solve</button><button id="retry-save" hidden>Retry save</button></div>
+        <p id="result" role="status"></p>
+        <details class="scramble-details"><summary>Record your scramble (optional)</summary><label>Scramble used for this attempt<textarea id="scramble" maxlength="2000" rows="2" placeholder="For example: R U R′ U′" disabled></textarea></label><p>Use your own scramble. This timer does not generate competition scrambles.</p></details>
+      </section>
+      <aside class="stats-card" aria-labelledby="stats-title">
+        <p class="eyebrow">YOUR SESSION</p><h2 id="stats-title">Every attempt counts</h2>
+        <dl class="stats-grid"><div><dt>Solves</dt><dd id="stat-count">0</dd></div><div><dt>Personal best</dt><dd id="stat-best">—</dd></div><div><dt>Average of 5</dt><dd id="stat-ao5">—</dd></div><div><dt>Average of 12</dt><dd id="stat-ao12">—</dd></div><div><dt>Average of 100</dt><dd id="stat-ao100">—</dd></div><div><dt>Session mean</dt><dd id="stat-mean">—</dd></div></dl>
+        <details><summary>How these numbers work</summary><p>Averages trim the fastest and slowest results: one each for 5 and 12, five each for 100. A remaining DNF makes the average DNF. Interrupted and deleted attempts are excluded. A dash means more solves are needed.</p><p>Times include penalties. Larger averages use our practice rules; results are self-recorded.</p></details>
+        <p id="legacy-summary"></p>
+      </aside>
+    </div>
+    <section class="history-card" aria-labelledby="history-title"><div class="section-heading"><div><p class="eyebrow">YOUR PROGRESS</p><h2 id="history-title">Solve history</h2></div><button id="refresh" class="secondary" disabled>Refresh history</button></div>
+      <p id="empty-history">Your first solve starts here.</p><div class="table-scroll"><table id="history-table" hidden><caption class="sr-only">Results, newest first</caption><thead><tr><th scope="col">Attempt</th><th scope="col">Time</th><th scope="col">Recorded</th><th scope="col">Review</th></tr></thead><tbody id="history"></tbody></table></div><button id="more-history" class="secondary" hidden>Show 50 more</button>
+    </section>
+    <section class="data-card" aria-labelledby="data-title"><div><p class="eyebrow">KEEP YOUR PROGRESS</p><h2 id="data-title">Your data, on this device</h2><p>History saves in this browser. Export a backup regularly: clearing browser data can remove local history. Accounts and cloud sync come later.</p></div><div class="actions"><button id="export" disabled>Export backup</button><label class="file-button">Preview import<input id="import-file" type="file" accept=".json,application/json" disabled></label><button id="persistent" class="secondary" disabled>Request storage protection</button><button id="legacy-export" class="secondary" disabled>Export original simulator data</button></div><p id="data-status" role="status"></p><div id="import-preview" hidden><p id="import-summary"></p><button id="confirm-import">Import backup</button><button id="cancel-import" class="secondary">Cancel</button></div></section>
+    <footer>Practice at your own pace. Switching apps or locking the screen interrupts an active solve.</footer>
+  </main>
+  <dialog id="session-dialog" aria-labelledby="session-title"><form id="session-form"><h2 id="session-title">New practice session</h2><label>Session name<input id="session-name" maxlength="80" required autocomplete="off"></label><label for="session-puzzle">Cube size</label><select id="session-puzzle"><option value="2">2×2</option><option value="3" selected>3×3</option><option value="4">4×4</option><option value="5">5×5</option></select><div class="actions"><button type="submit">Create session</button><button type="button" id="cancel-session" class="secondary">Cancel</button></div><p id="session-error" role="alert"></p></form></dialog>
+  <dialog id="edit-dialog" aria-labelledby="edit-title"><form id="edit-form"><h2 id="edit-title">Review result</h2><p id="edit-original"></p><p id="edit-scramble"></p><label for="edit-outcome">Outcome</label><select id="edit-outcome"><option value="ok">Completed</option><option value="dnf">DNF — did not finish</option><option value="interrupted" disabled>Interrupted</option></select><label>Total +2 penalties<input id="edit-penalties" type="number" min="0" max="43200" step="1" required></label><label>Reason for adjustment<input id="edit-reason" maxlength="500" required placeholder="For example: one face unfinished"></label><div class="actions"><button type="submit" id="save-edit">Save adjustment</button><button id="delete-solve" type="button" class="danger">Delete result</button><button id="cancel-edit" type="button" class="secondary">Cancel</button></div><p id="edit-error" role="alert"></p></form></dialog>
+</body>
+</html>
