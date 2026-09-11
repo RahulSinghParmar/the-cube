@@ -14,7 +14,11 @@ const SHELL = [
 const SHELL_URLS = new Set(SHELL.map(path => new URL(path, self.registration.scope).href));
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)));
+  // A new release must revalidate HTTP-cached HTML/assets before precaching.
+  // Otherwise an old, still-fresh response can enter the new offline cache.
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(
+    SHELL.map(path => new Request(new URL(path, self.registration.scope), { cache: 'reload' }))
+  )));
 });
 
 self.addEventListener('activate', event => {

@@ -49,13 +49,18 @@ the retained legacy entry and Timer, then adds the compiled menu. The versioned
 worker caches all four documents and resolves each document independently under
 the Pages subpath. No server rewrite or hosting change is needed.
 
+Each worker installation requests fresh HTML/assets with `cache: 'reload'`.
+Live upgrade verification exposed that a still-fresh browser HTTP response could
+otherwise populate the new offline cache with the previous homepage. A regression
+with a one-hour HTTP cache lifetime reproduces that failure and verifies the fix.
+
 After a release, finish the current solve, close app tabs and reopen to activate
 the waiting worker. Do not clear browser storage. A previous release artifact
 can be redeployed without changing saved records.
 
 ## Verification and owner testing
 
-The suite contains 32 unit tests and 34 browser scenarios. It checks the retained
+The suite contains 32 unit tests and 35 browser scenarios. It checks the retained
 M1/M2 journeys, offline navigation, all menu destinations, original settings,
 old settings bookmarks, automated accessibility on all new menu pages, and a
 Chromium touch swipe followed by Menu → Play with the same saved cube. Browser
