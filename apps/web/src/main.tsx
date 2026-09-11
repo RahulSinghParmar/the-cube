@@ -68,6 +68,7 @@ function App() {
   });
   const [checkpoint, setCheckpoint] = useState(initial.checkpoint),
     [error, setError] = useState(initial.error),
+    [rendererError, setRendererError] = useState(""),
     [status, setStatus] = useState(""),
     [queueCount, setQueueCount] = useState(0),
     [generation, setGeneration] = useState(0);
@@ -144,6 +145,7 @@ function App() {
   }, [confirmation]);
   useEffect(() => {
     if (route !== "#/play" || !host.current) return;
+    setRendererError("");
     try {
       const view = new ThreeRenderer(host.current, {
         reducedMotion: preferences.reducedMotion,
@@ -179,7 +181,7 @@ function App() {
         renderer.current = null;
       };
     } catch (error) {
-      setError(
+      setRendererError(
         `3D view unavailable. Face buttons and the text cube still work. ${String(error)}`,
       );
       return;
@@ -396,6 +398,7 @@ function App() {
             {text.update}
           </p>
         )}
+        {rendererError && <p role="status" className="notice">{rendererError}</p>}
         {error && (
           <div role="alert" className="error">
             {error}

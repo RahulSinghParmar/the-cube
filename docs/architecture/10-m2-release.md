@@ -110,15 +110,21 @@ npm run test:e2e
 npm run preview
 ```
 
-Local verification: 32 unit tests; 29 browser scenarios (17 Chromium, 6 Firefox,
-6 WebKit). Chromium covers the complete retained-game/M1 suite and automated
+Local verification: 32 unit tests; 32 browser scenarios (18 Chromium, 7 Firefox,
+7 WebKit). Chromium covers the complete retained-game/M1 suite and automated
 accessibility scans; Firefox/WebKit cover the new shell and M1 compatibility.
 Offline shell checks shut down an isolated origin server and reload cached pages.
 This avoids a reproduced Windows WebKit internal error with the test tool's
 offline toggle while still proving that uncached network access is unavailable.
 The older Chromium offline-toggle regression remains in the suite.
 
-GitHub Actions repeats these checks on Linux before deploying. The tests use
+GitHub Actions repeats these checks on Linux before deploying. Linux Firefox runs
+with Xvfb and software rendering because the runner's headless Firefox could not
+create a WebGL context. All canvas assertions remain enabled, and a separate
+no-WebGL regression verifies recovery warnings and the text-cube fallback.
+See [Playwright's headed CI setup](https://playwright.dev/docs/ci#running-headed).
+The verification job allows 20 minutes for browser/system dependencies and tests;
+the first three-engine installation took over seven minutes. The tests use
 isolated profiles and synthetic solves; they do not inspect a user's saved data.
 Actual Android/iPhone touch, suspend/resume, screen readers and native install
 behavior need owner-device testing. Automated axe checks do not certify complete
