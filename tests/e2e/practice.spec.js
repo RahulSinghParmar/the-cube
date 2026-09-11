@@ -37,6 +37,8 @@ test('physical timer keyboard journey, result adjustment, sessions, reload and s
   await page.locator('#session').selectOption('physical-default-3');
   await expect(page.locator('#stat-count')).toHaveText('1');
   await page.getByRole('link', { name: 'Play', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Make your next move.' })).toBeVisible();
+  await page.getByRole('link', { name: 'Original simulator', exact: false }).click();
   await page.waitForFunction(() => window.game && game.transition.activeTransitions === 0);
   await expect(page.getByRole('link', { name: 'Physical cube timer' })).toBeVisible();
   expect(errors).toEqual([]);

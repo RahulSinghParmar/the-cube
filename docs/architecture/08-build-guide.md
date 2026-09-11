@@ -5,15 +5,15 @@ This is the plain-language guide for the repository owner. The detailed engineer
 ## Where we are now
 
 The existing simulator is live at https://rahulsinghparmar.github.io/the-cube/.
-The foundation, architectural plan, deployment setup and M1 web timer are implemented. The full product described in the original brief is not built yet. See [M1 release and testing notes](09-m1-release.md) for the verified scope and browser limits.
+The foundation, architectural plan, deployment setup, M1 web timer and M2 web interface/engine are implemented. The full product described in the original brief is not built yet. See [M1 release and testing notes](09-m1-release.md) and [M2 release and testing notes](10-m2-release.md) for verified scope and limits.
 
 Completed: keyboard face controls and guide, build/offline repairs, selected game/data bug fixes, automated checks, architecture documents, primary `main` branch, preserved original `master`, and automatic publication after successful main-branch checks.
 
 M1 adds the dedicated physical-cube timer, inspection, session statistics/history, safe local storage, result review, backup/import and legacy migration.
 
-Still to build: the typed modular cube engine, unified application interface, lessons, solver, trainer, accounts, synchronization, scanner, coach and native applications.
+M2 adds the modern Play/Settings interface, exact typed cube engine, queued moves, custom keys, themes and English/Hindi foundations. The physical timer and original simulator remain available with their saved data. Still to build: lessons, solver, trainer, accounts, synchronization, scanner, coach and native applications.
 
-The next milestone is **M2: application interface and cube engine**. “M” means milestone: a smaller release-sized part of the original product plan. Completing M0/M1 does not mean the original Phase 1 is fully finished; M2 remains.
+The next milestone is **M3: learning and solving**. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
 
 ## How to use the commands
 
@@ -27,7 +27,7 @@ For each command, first inspect the actual repository and prerequisite status, p
 | --- | --- | --- | --- |
 | M0 — Foundation | Complete | Existing cube works with keyboard controls, offline loading and tested publishing | `Show the current build status and any remaining foundation defects.` |
 | M1 — Practice timer and data | Implemented; web release | A separate timer for a real cube, inspection, penalties, solve history, sessions, averages and backup/import | `Review the M1 release and help me test the physical-cube timer and backup recovery on my device.` |
-| M2 — Application and cube engine | Next | Clear navigation, improved mobile/accessibility controls, settings, custom keys, reliable queued moves, themes and language foundations | `Start M2 from our architecture plan. Modernize the application interface and cube engine, add accessible controls and keyboard customization, and preserve saved games and the live URL.` |
+| M2 — Application and cube engine | Implemented; web release | Clear navigation, improved mobile/accessibility controls, settings, custom keys, reliable queued moves, themes and language foundations | `Review the M2 release and help me test the new Play interface, custom keys, saved cube and offline timer on my device.` |
 | M3 — Learning and solving | Planned | Beginner lessons, manual entry of a 3x3 state, a checked solution and controllable move playback | `Start M3 from our architecture plan. Add reviewed beginner lessons, manual cube-state entry and a verified 3x3 solver with step-by-step playback.` |
 | M4 — Algorithm practice | Planned | Practice PLL, then OLL/F2L cases; track recognition and execution attempts | `Start M4 from our architecture plan. Build the algorithm trainer, beginning with PLL, then validated OLL and F2L content, with saved practice progress.` |
 | M5 — Accounts and synchronization | Planned | Optional sign-in, profile, cross-device history, export/deletion and visible conflict recovery | `Start M5 from our architecture plan. Prepare provider and operating-cost choices, then implement optional accounts and safe cross-device synchronization once those choices are settled. Keep offline guest practice working.` |
@@ -53,7 +53,7 @@ T-101 through T-107 are implemented for the web release. The original step promp
 
 ## Later features from the original vision
 
-These remain in scope as future workstreams, but are not part of the next timer release. They require their own acceptance criteria and, in some cases, operating-cost/moderation decisions.
+These remain in scope as future workstreams beyond the M1/M2 web releases. They require their own acceptance criteria and, in some cases, operating-cost/moderation decisions.
 
 | Workstream | Prerequisite | Planning command |
 | --- | --- | --- |
@@ -69,8 +69,8 @@ These remain in scope as future workstreams, but are not part of the next timer 
 
 | Original phase | Original intent | Current architecture mapping | Current completion |
 | --- | --- | --- | --- |
-| Phase 1 | Refactor, types, modules, tests, responsive UI, keyboard, timer, statistics, PWA | M0 + M1 + M2 | Partially complete: foundation and M1 web timer done; M2 remains |
-| Phase 2 | Accounts, profiles, leaderboards, sync, languages, dark mode, analytics | M2 for UI/themes/language foundations; M5 for accounts/sync; later community for rankings | Planned |
+| Phase 1 | Refactor, types, modules, tests, responsive UI, keyboard, timer, statistics, PWA | M0 + M1 + M2 | Web scope implemented; broader physical-device/accessibility qualification remains |
+| Phase 2 | Accounts, profiles, leaderboards, sync, languages, dark mode, analytics | M2 for UI/themes/language foundations; M5 for accounts/sync; later community for rankings | Themes and language foundations implemented; accounts/community planned |
 | Phase 3 | Scanner, image processing, reconstruction, solver | M3 validates the solver/manual input first; M6 adds camera input | Planned |
 | Phase 4 | Tutorials, algorithm database and OLL/PLL/F2L practice | M3 lessons + M4 trainer | Planned |
 | Phase 5 | Coach, personalized learning, solve analysis, voice | M7 plus playback voice where appropriate | Planned |
@@ -80,11 +80,11 @@ We are following the product destination, with a changed execution order. Practi
 
 ## What changed from the suggested technology stack
 
-The original brief suggested Next.js, React, TypeScript, Tailwind, NestJS, PostgreSQL, Redis, several managed services, Flutter and Tauri. The architecture keeps the existing simulator initially and proposes React/Vite, strict TypeScript domain modules, a Fastify backend when needed, PostgreSQL, and shared web-based mobile/desktop shells. Redis and provider-specific services are postponed until justified. Mobile currently proposes Capacitor rather than Flutter to reuse the web application. These are documented proposals; those migrations have not already happened.
+The original brief suggested Next.js, React, TypeScript, Tailwind, NestJS, PostgreSQL, Redis, several managed services, Flutter and Tauri. The web implementation now uses React/Vite and strict TypeScript domain modules while retaining the original simulator. Fastify, PostgreSQL and shared web-based mobile/desktop shells remain proposals. Redis and provider-specific services are postponed until justified. Mobile currently proposes Capacitor rather than Flutter to reuse the web application.
 
 If exact technology choices matter more than reuse, send: `Revise the architecture to follow my original technology stack. Explain the migration and operating-cost differences before changing application code.`
 
-The server database/API/component-library work is currently a design. A small strict practice workspace and guest IndexedDB now exist, but the database server, complete UI library, full application workspace layout and GitHub Project board have not been created. Coverage above 90%, full accessibility conformance, and Lighthouse above 95 remain targets to measure, not completed achievements.
+The server database/API/component-library work is currently a design. The strict practice and cube-core packages, guest IndexedDB and React web workspace now exist; the database server, complete UI library and GitHub Project board have not been created. Coverage above 90%, full accessibility conformance and Lighthouse above 95 remain targets to measure, not completed achievements.
 
 ## Optional visual work
 

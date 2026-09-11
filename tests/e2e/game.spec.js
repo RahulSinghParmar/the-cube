@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 async function ready(page) {
-  await page.goto('/the-cube/');
+  await page.goto('/the-cube/legacy.html');
   await page.waitForFunction(() => window.game && game.transition.activeTransitions === 0);
 }
 async function start(page) {

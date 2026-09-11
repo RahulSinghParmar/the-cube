@@ -2,7 +2,8 @@
 const PREFIX = `the-cube-${self.registration.scope}-`;
 const CACHE = PREFIX + '__BUILD_VERSION__';
 const SHELL = [
-  './', './index.html', './timer.html', './manifest.json',
+  './', './index.html', './legacy.html', './timer.html', './manifest.json',
+  /* WEB_ASSETS */
   './assets/css/styles.css', './assets/css/keyboard.css', './assets/css/practice.css',
   './assets/js/three.js', './assets/js/cube.js', './assets/js/practice.js',
   './assets/icons/android-chrome-192x192.png',
@@ -33,7 +34,7 @@ self.addEventListener('fetch', event => {
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     // Keep HTML and JS from the same release while the next worker installs.
-    const page = url.pathname === new URL('./timer.html', self.registration.scope).pathname ? './timer.html' : './index.html';
+    const page = ['./timer.html', './legacy.html'].find(path => url.pathname === new URL(path, self.registration.scope).pathname) || './index.html';
     const cached = await cache.match(navigation ? new URL(page, self.registration.scope).href : event.request);
     return cached || fetch(event.request);
   })());

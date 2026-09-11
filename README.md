@@ -12,7 +12,7 @@
 
 ### Local development
 
-Requires Node.js 22 or later.
+Requires Node.js 22.12 or a compatible supported newer runtime.
 
 ```sh
 npm ci
@@ -25,7 +25,7 @@ static output; rerun `npm run build` after source changes. `npm run build` produ
 
 ```sh
 npm test
-npx playwright install chromium
+npx playwright install --with-deps chromium firefox webkit
 npm run build
 npm run test:e2e
 ```
@@ -38,7 +38,9 @@ The `master` branch preserves the original base. Pull requests run checks withou
 
 ### Keyboard controls
 
-Press **Enter** to start/resume and **Escape** to return. Face turns use:
+In Play, focus the cube panel to use the default face keys below. Change the
+twelve bindings in Settings. In the **Original simulator**, Enter starts/resumes
+and Escape returns.
 
 | Keys | Moves |
 | --- | --- |
@@ -51,13 +53,28 @@ Press **Enter** to start/resume and **Escape** to return. Face turns use:
 
 Use X/Y/Z for whole-cube rotations, with Shift to reverse. A prime (′) means a
 counterclockwise turn when looking at that face. The simulator timer starts on
-the first face turn and stops when solved. Input during a turn animation is
-ignored. An expandable guide is available in the app.
+the first face turn after scrambling and stops when solved. Play queues up to
+32 moves during animation; the original simulator retains its previous input
+behavior. An expandable guide is available in the app.
+
+### Modern Play and Settings (M2)
+
+Play now uses an exact typed cube engine, a responsive React interface and
+reviewed cube backup/import. Settings include custom keys, light/dark/high-contrast
+themes, reduced motion, face letters and English/Hindi foundations. Dragging the
+new cube changes the view; buttons and keys turn faces. New cube checkpoints
+resume after reload. Virtual attempt history remains in the original simulator.
+
+The original saved game is available through **Original simulator**. M1 timer
+sessions and storage are preserved at the same URL. Offline use works after an
+initial online load. Close all app tabs and reopen when an update is waiting;
+do not clear saved browser data. See [M2 release and testing notes](docs/architecture/10-m2-release.md)
+for the implemented scope, state convention, checks and device testing steps.
 
 ### Physical cube practice (M1)
 
 Open the [practice timer](https://rahulsinghparmar.github.io/the-cube/timer.html)
-or choose **Physical cube timer** from Play. Focus the timer pad, hold Space
+or choose **Timer** from Play. Focus the timer pad, hold Space
 until ready, release to start, then press to stop. Touch uses the same gesture;
 **Start without holding** provides a native-button alternative. Enable inspection
 to inspect before the start gesture. Results save locally with sessions, reviewable
@@ -96,5 +113,7 @@ For a nontechnical overview, see [the build phases and copy-paste commands](docs
 
 ## 🛠️ Compatibility
 
-Any android version from Android 9.0 or above are compatible with this app.
-<br>Android 12 support is also introduced with the initial beta release.
+The web suite runs in Chromium, Firefox and WebKit, including a 320-pixel layout
+and offline reloads. Real Android/iPhone installation, touch and suspend behavior
+still require device checks; see the M1/M2 release notes. The legacy Android
+wrapper has not been updated or requalified by these web milestones.

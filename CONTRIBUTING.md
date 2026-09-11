@@ -28,11 +28,11 @@ Pushes to `main` run the web checks and automatically deploy the successful `exp
 npm ci
 npm test
 npm run build
-npx playwright install chromium
+npx playwright install --with-deps chromium firefox webkit
 npm run test:e2e
 npm run check:architecture
 ```
 
-Use Node.js 22 or a compatible supported newer runtime. Do not change dependency versions just to match a sample in the architecture plan; verify compatibility and regenerate the lockfile deliberately. Do not commit node_modules, browser downloads, caches, test screenshots or private data. Build assets currently tracked by the repository remain synchronized with source until the build migration changes that policy.
+Use Node.js 22.12 or a compatible supported newer runtime. Do not change dependency versions just to match a sample in the architecture plan; verify compatibility and regenerate the lockfile deliberately. Do not commit node_modules, browser downloads, caches, test screenshots or private data. Build assets currently tracked by the repository remain synchronized with source until the build migration changes that policy.
 
 See [the architecture plan](docs/architecture/README.md) for design decisions and [operations](docs/architecture/06-operations.md) for release, backup and rollback gates.

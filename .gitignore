@@ -253,3 +253,4 @@ export/
 test-results/
 playwright-report/
 packages/*/dist/
+.web-build/

@@ -25,7 +25,7 @@ The dependency graph allows independent work, but it is not permission to launch
 | --- | --- | --- | --- |
 | M0 | Keyboard, build/PWA repairs, targeted regression tests and audit | Branch CI passes; retained simulator works | Implemented foundation; CI follow-up included |
 | M1 | Strict timing/statistics modules, physical timer, sessions, JSON backup/import, legacy migration | Boundary tests, reload/write-failure recovery, sample history preservation | Implemented web scope; see release notes |
-| M2 | React/Vite shell, typed cube-core/renderer adapter, input queue/remapping, accessible settings, locale framework | All cube-size invariants, keyboard/manual accessibility and browser/device matrix | 3–5 weeks |
+| M2 | React/Vite shell, typed cube-core/renderer adapter, input queue/remapping, accessible settings, locale framework | Cube invariants, keyboard journeys, three-engine browser checks and automated accessibility; physical devices remain to verify | Implemented web scope; see release notes |
 | M3 | Reviewed beginner lessons, manual state editor, verified 3×3 solver and playback | Invalid-state fixtures, engine license/device benchmark, every solution verified | 3–5 weeks plus lesson review |
 | M4 | PLL then OLL/F2L practice, content provenance, attempt tracking, optional collection | Verified setup/algorithms, content QA and progress correctness | 2–4 weeks plus content curation |
 | M5 | Identity/profile, optional cloud sync, export/deletion jobs, staging/production backend | Two-user isolation, concurrent sync/restore tests, operator/privacy readiness | 4–6 weeks |
@@ -37,7 +37,7 @@ This is roughly 23–41 engineer-weeks for the main future milestones if done se
 
 ## M1 tasks in order (implemented web scope)
 
-T-101 through T-107 are implemented. [Release notes](09-m1-release.md) describe the verification evidence and real-device/browser limitations. The task sizes below are the original estimates, not actual elapsed time. M2 is next.
+T-101 through T-107 are implemented. [Release notes](09-m1-release.md) describe the verification evidence and real-device/browser limitations. The task sizes below are the original estimates, not actual elapsed time. [M2 web implementation](10-m2-release.md) is also complete; M3 is next.
 
 | Task | Dependency | Work and acceptance | Size |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Time boxes overlap only where dependencies permit. The lower milestone estimate 
 
 ## Follow-on task groups
 
-- **M2:** isolate legacy lifecycle/disposal → canonical cube fixtures and engine → renderer port → queue/input profiles → app shell/deep links → semantic settings/reduced motion → English/Hindi catalog → browser/device regression.
+- **M2 (implemented web scope):** retained legacy document → canonical cube fixtures and engine → renderer port → queue/input profiles → app shell/deep links → semantic settings/reduced motion → English/Hindi catalog → browser regression. See [M2 scope and remaining device checks](10-m2-release.md).
 - **M3:** license/benchmark solver candidates → publish state convention → manual face editor/legality validator → worker and cancellation → independent solution verifier → reviewed notation lesson → pedagogical lesson sequence → offline content packs.
 - **M4:** algorithm provenance catalog → setup/solution validator → PLL case viewer → recognition/execution attempt model → trainer UI → OLL/F2L sets → collection module if demand supports it.
 - **M5:** hosting/identity/budget ADR → real migrations/RLS/runtime role → auth/session controls → owned CRUD → per-owner feed/receipts → snapshot/conflict UX → guest link/account separation → export/deletion jobs → backup/restore/load tests → staged account launch.

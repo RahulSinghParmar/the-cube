@@ -8,7 +8,7 @@
 | Web UI | React with Vite and CSS custom properties; semantic HTML components | M2 app shell; current Rollup page stays functional through migration |
 | Rendering | Three.js behind a renderer port | Keep vendored version initially; pin and upgrade only after regression tests |
 | State | Pure domain commands/reducers; local view state in components; external store for timer/cube | No server or framework types in domain packages; high-frequency frames bypass React renders |
-| Local data | IndexedDB with a small typed repository adapter; local storage only for bootstrap theme/locale | M1; explicit schema versions and transactions |
+| Local data | IndexedDB for practice records; local storage for preferences and the bounded M2 cube checkpoint | M1 transactions retained; M2 checkpoint exception and future repository migration documented in release notes |
 | Background compute | Dedicated Web Workers; WASM only when a measured engine requires it | Solver, scramble tables and later vision; lazy-loaded and cancellable |
 | API | Node.js maintained LTS, Fastify modular monolith, JSON Schema contracts | M5; one deployable API and a separately runnable job process |
 | Cloud data | Managed PostgreSQL; SQL migrations and parameterized queries | M5; no browser DB credentials, tenant ownership in every request |

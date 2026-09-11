@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "description": "",
   "main": "",
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
     "@playwright/test": "^1.50.0",
     "@rollup/plugin-terser": "^1.0.0",
     "@types/react": "19.3.0",
@@ -22,12 +24,12 @@
     "vite": "8.3.0"
   },
   "scripts": {
-    "typecheck": "tsc -p packages/practice/tsconfig.json --noEmit",
+    "typecheck": "tsc -p packages/practice/tsconfig.json --noEmit && tsc -p packages/cube-core/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json",
     "build:practice": "tsc -p packages/practice/tsconfig.json && tsc -p packages/cube-core/tsconfig.json",
     "test": "npm run build:practice && node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
     "check:architecture": "node scripts/check-architecture.mjs",
-    "build": "npm run build:practice && rollup -c rollup.config.build.js && node scripts/build.mjs",
+    "build": "npm run build:practice && npm run typecheck && rollup -c rollup.config.build.js && vite build && node scripts/build.mjs",
     "dev": "npm run build && node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs"
   },
@@ -40,7 +42,7 @@
   "bugs": {
     "url": "https://github.com/RahulSinghParmar/the-cube/issues"
   },
-  "homepage": "https://github.com/RahulSinghParmar/the-cube/blob/master/README.md",
+  "homepage": "https://rahulsinghparmar.github.io/the-cube/",
   "dependencies": {
     "react": "19.3.0",
     "react-dom": "19.3.0"
