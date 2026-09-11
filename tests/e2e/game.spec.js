@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 async function ready(page) {
-  await page.goto('/the-cube/legacy.html');
+  await page.goto('/the-cube/');
   await page.waitForFunction(() => window.game && game.transition.activeTransitions === 0);
 }
 async function start(page) {
@@ -58,11 +58,10 @@ test('offline reload works at the project subpath and keeps unrelated caches', a
 test('mobile layout and labeled controls remain usable', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await ready(page);
-  await expect(page.getByRole('button', { name: 'Preferences', exact: true })).toBeEnabled();
-  await page.getByText('Keyboard controls', { exact: true }).click();
-  await expect(page.getByText('J / F', { exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Menu', exact: true })).toBeVisible();
+  await expect(page.locator('.keyboard-help')).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Preferences', exact: true })).toBeHidden();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.getByText('Keyboard controls', { exact: true }).click();
   await page.locator('.ui__game').dblclick({ position: { x: 190, y: 400 } });
   await page.waitForFunction(() => game.state === 1 && game.controls.enabled);
   await expect(page.getByRole('button', { name: 'Back', exact: true })).toBeEnabled();

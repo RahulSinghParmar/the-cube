@@ -9,7 +9,7 @@ test('unavailable graphics preserves recovery warnings and the text cube remains
     };
     if (!localStorage.getItem('the-cube-v2:/the-cube/')) localStorage.setItem('the-cube-v2:/the-cube/', '{"broken":true}');
   });
-  await page.goto('/the-cube/');
+  await page.goto('/the-cube/menu.html#/play');
   await expect(page.getByRole('alert')).toContainText('not been overwritten');
   await expect(page.getByText('3D view unavailable.', {exact:false})).toBeVisible();
   await expect(page.getByRole('button',{name:'R clockwise',exact:true})).toBeDisabled();

@@ -22,6 +22,7 @@ import {
   type Preferences,
 } from "./preferences";
 import { messages } from "./messages";
+import { MenuPage, InfoPage } from "./MenuPages";
 import "./styles.css";
 
 const scope = location.pathname.replace(/[^/]*$/, "");
@@ -49,7 +50,7 @@ function App() {
   const [preferences, setPreferences] = useState(readPreferences),
     [draft, setDraft] = useState(preferences);
   const text = messages[preferences.locale];
-  const [route, setRoute] = useState(location.hash || "#/play");
+  const [route, setRoute] = useState(location.hash || "#/menu");
   const [initial] = useState(() => {
     try {
       const raw = localStorage.getItem(cubeKey);
@@ -106,7 +107,7 @@ function App() {
         setStatus("Wait for queued moves to finish before changing pages.");
         return;
       }
-      setRoute(location.hash || "#/play");
+      setRoute(location.hash || "#/menu");
       if (clock.current !== null) {
         setElapsed(performance.now() - clock.current);
         clock.current = null;
@@ -215,11 +216,7 @@ function App() {
         registration.addEventListener("updatefound", () => {
           const worker = registration.installing;
           worker?.addEventListener("statechange", () => {
-            if (
-              worker.state === "installed" &&
-              hadController
-            )
-              setUpdate(true);
+            if (worker.state === "installed" && hadController) setUpdate(true);
           });
         });
       })
@@ -372,17 +369,23 @@ function App() {
         Skip to content
       </a>
       <header className="shell-header" onClickCapture={guardNavigation}>
-        <a className="wordmark" href="#/play">
+        <a className="wordmark" href="./">
           <span aria-hidden="true">▦</span> THE CUBE
         </a>
         <nav aria-label="Main navigation">
+          <a href="./">{text.play}</a>
+          <a
+            href="#/menu"
+            aria-current={route === "#/menu" ? "page" : undefined}
+          >
+            {text.menu}
+          </a>
           <a
             href="#/play"
             aria-current={route === "#/play" ? "page" : undefined}
           >
-            {text.play}
+            {text.practice}
           </a>
-          <a href="timer.html">{text.timer}</a>
           <a
             href="#/settings"
             aria-current={route === "#/settings" ? "page" : undefined}
@@ -398,8 +401,12 @@ function App() {
             {text.update}
           </p>
         )}
-        {rendererError && <p role="status" className="notice">{rendererError}</p>}
-        {error && (
+        {route === "#/play" && rendererError && (
+          <p role="status" className="notice">
+            {rendererError}
+          </p>
+        )}
+        {error && (route === "#/play" || route === "#/settings") && (
           <div role="alert" className="error">
             {error}
             {!canWrite && (
@@ -425,7 +432,14 @@ function App() {
             )}
           </div>
         )}
-        {route === "#/play" ? (
+        {route === "#/menu" ? (
+          <MenuPage text={text} />
+        ) : route === "#/about" || route === "#/license" ? (
+          <InfoPage
+            kind={route === "#/about" ? "about" : "license"}
+            text={text}
+          />
+        ) : route === "#/play" ? (
           <>
             <div className="page-heading">
               <div>
@@ -674,6 +688,21 @@ function App() {
             <p className="eyebrow">{text.settings}</p>
             <h1 tabIndex={-1}>{text.settingsTitle}</h1>
             <p>{text.settingsIntro}</p>
+            <section className="info-card settings-links">
+              <h2>Touch cube</h2>
+              <p>
+                Change the original cube's size, colors, turning speed and
+                camera.
+              </p>
+              <a href="legacy.html?panel=settings">
+                Open touch-cube settings →
+              </a>
+            </section>
+            <h2>Practice and menu</h2>
+            <p>
+              These preferences apply to the practice screen and menu. Your
+              touch cube keeps its original controls.
+            </p>
             <form className="settings-card" onSubmit={savePreferences}>
               <div className="settings-grid">
                 <label>

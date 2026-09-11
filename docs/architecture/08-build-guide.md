@@ -13,6 +13,12 @@ M1 adds the dedicated physical-cube timer, inspection, session statistics/histor
 
 M2 adds the modern Play/Settings interface, exact typed cube engine, queued moves, custom keys, themes and English/Hindi foundations. The physical timer and original simulator remain available with their saved data. Still to build: lessons, solver, trainer, accounts, synchronization, scanner, coach and native applications.
 
+Before M3, the owner requested a navigation refinement: restore the original
+full-screen touch cube at the main URL, and place Practice, Timer, Settings,
+License and About the Developer on a separate menu. [Current homepage and menu
+guide](11-home-and-menu.md). The newer cube is now labeled **Practice**; both
+saved cubes and physical sessions remain separate and available. M3 has not started.
+
 The next milestone is **M3: learning and solving**. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
 
 ## How to use the commands

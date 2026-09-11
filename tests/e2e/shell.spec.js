@@ -2,7 +2,7 @@ import { test, expect } from "./origin-fixture.js";
 import { readFile } from "node:fs/promises";
 
 async function ready(page) {
-  await page.goto("/the-cube/");
+  await page.goto("/the-cube/menu.html#/play");
   await expect(
     page.getByRole("heading", { name: "Make your next move." }),
   ).toBeVisible();
@@ -74,7 +74,7 @@ test("new renderer, queued keyboard moves, inverse, checkpoint reload and offlin
   await page.evaluate(async () => navigator.serviceWorker.ready);
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   await stopOrigin();
-  await page.goto("/the-cube/#/settings");
+  await page.goto("/the-cube/menu.html#/settings");
   await expect(
     page.getByRole("heading", { name: "Make it yours." }),
   ).toBeVisible();
@@ -98,7 +98,7 @@ test("settings validate key collisions, persist themes and locale, and remapping
   await page.getByLabel("Show face letters").check();
   await page.getByRole("button", { name: "Save preferences" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await page.getByRole("link", { name: "Play", exact: true }).click();
+  await page.getByRole("link", { name: "Practice", exact: true }).click();
   await page.getByRole("region", { name: "Interactive cube" }).focus();
   await page.keyboard.press("a");
   await settled(page);
@@ -113,7 +113,7 @@ test("settings validate key collisions, persist themes and locale, and remapping
   await expect(
     page.getByRole("heading", { name: "अपनी पसंद से खेलें।" }),
   ).toBeVisible();
-  await page.getByRole("link", { name: "खेलें", exact: true }).click();
+  await page.getByRole("link", { name: "अभ्यास", exact: true }).click();
   await expect(page.locator(".cube-view canvas")).toHaveCount(1);
 });
 test("all sizes render, reset needs review, mobile controls work and cube backup roundtrips", async ({
@@ -170,7 +170,7 @@ test("legacy saved game remains untouched and invalid new checkpoints are preser
     localStorage.setItem("theCube_savedState", "original geometry");
     localStorage.setItem("the-cube-v2:/the-cube/", '{"broken":true}');
   });
-  await page.goto("/the-cube/");
+  await page.goto("/the-cube/menu.html#/play");
   await expect(page.getByRole("alert")).toContainText("not been overwritten");
   await expect(
     page.getByRole("link", { name: "Resume original saved game" }),

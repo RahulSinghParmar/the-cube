@@ -1,5 +1,11 @@
 const en = {
   play: "Play",
+  menu: "Menu",
+  practice: "Practice",
+  menuTitle: "A little space for everything else.",
+  menuIntro: "Pick your next step. Your cube is right where you left it.",
+  license: "License",
+  about: "About the developer",
   timer: "Timer",
   settings: "Settings",
   eyebrow: "A LITTLE PRACTICE, EVERY DAY",
@@ -53,6 +59,12 @@ const en = {
 };
 const hi: typeof en = {
   play: "खेलें",
+  menu: "मेन्यू",
+  practice: "अभ्यास",
+  menuTitle: "आपके क्यूब के लिए सब कुछ।",
+  menuIntro: "अगला कदम चुनें। आपका क्यूब वहीं है जहाँ आपने छोड़ा था।",
+  license: "लाइसेंस",
+  about: "डेवलपर के बारे में",
   timer: "टाइमर",
   settings: "सेटिंग्स",
   eyebrow: "हर दिन थोड़ा अभ्यास",

@@ -10,6 +10,10 @@ Build an offline-capable cube practice and learning application with a shared, d
 
 M1 implements the web practice timer, statistics and safe local data. M2 adds the React/Vite interface, typed cube core, queued controls, settings and language foundations. See [the M1 release notes](09-m1-release.md) and [M2 release notes](10-m2-release.md) for tests, recovery and limits. The next implementation milestone is **M3: learning and solving**. The server and later features below remain architecture proposals.
 
+The owner-requested [homepage refinement](11-home-and-menu.md) puts the original
+touch cube back at the main URL and moves the newer interface and tools into a
+separate menu. This is an M2 refinement before M3, not a new milestone.
+
 ```mermaid
 flowchart LR
   User[Cube learner or speedcuber] --> Web[Web PWA]
@@ -44,6 +48,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 | [Delivery and decision plan](07-delivery.md) | Dependency graph, milestones, sprint tasks, estimates, risks and outstanding decisions |
 | [M1 implementation and release](09-m1-release.md) | Physical timer, local sessions, backup/recovery, verification and user testing |
 | [M2 implementation and release](10-m2-release.md) | Modern interface, exact cube state, compatibility decisions, browser checks and user testing |
+| [Homepage and menu refinement](11-home-and-menu.md) | Original touch homepage, menu routes, preservation and current testing steps |
 | [Repository workflow](../../CONTRIBUTING.md) | Commit and push policy, branch handling and verification |
 
 The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation and concrete defects already repaired. This architecture plan supersedes that document's short future roadmap where detail differs.

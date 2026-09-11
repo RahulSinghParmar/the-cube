@@ -38,9 +38,10 @@ The `master` branch preserves the original base. Pull requests run checks withou
 
 ### Keyboard controls
 
-In Play, focus the cube panel to use the default face keys below. Change the
-twelve bindings in Settings. In the **Original simulator**, Enter starts/resumes
-and Escape returns.
+The homepage uses the original full-screen touch cube: double tap or press Enter
+to start/resume, swipe to turn, and use Escape to return. **Menu → Practice** opens
+the newer button/keyboard cube; focus its panel to use the keys below and change
+its twelve bindings in Settings.
 
 | Keys | Moves |
 | --- | --- |
@@ -53,28 +54,33 @@ and Escape returns.
 
 Use X/Y/Z for whole-cube rotations, with Shift to reverse. A prime (′) means a
 counterclockwise turn when looking at that face. The simulator timer starts on
-the first face turn after scrambling and stops when solved. Play queues up to
+the first face turn after scrambling and stops when solved. Practice queues up to
 32 moves during animation; the original simulator retains its previous input
 behavior. An expandable guide is available in the app.
 
-### Modern Play and Settings (M2)
+### Homepage, menu and practice
 
-Play now uses an exact typed cube engine, a responsive React interface and
+The homepage keeps the original cube layout and gestures, with one **Menu** button.
+The menu holds Play, Practice, Timer, Settings, License and About the Developer,
+plus original cube statistics, settings and keyboard help.
+
+**Menu → Practice** uses an exact typed cube engine, a responsive React interface and
 reviewed cube backup/import. Settings include custom keys, light/dark/high-contrast
 themes, reduced motion, face letters and English/Hindi foundations. Dragging the
 new cube changes the view; buttons and keys turn faces. New cube checkpoints
 resume after reload. Virtual attempt history remains in the original simulator.
 
-The original saved game is available through **Original simulator**. M1 timer
+The original saved game resumes on the homepage. M1 timer
 sessions and storage are preserved at the same URL. Offline use works after an
 initial online load. Close all app tabs and reopen when an update is waiting;
 do not clear saved browser data. See [M2 release and testing notes](docs/architecture/10-m2-release.md)
-for the implemented scope, state convention, checks and device testing steps.
+for the implemented scope and state convention. See [the homepage refinement](docs/architecture/11-home-and-menu.md)
+for current navigation and testing steps.
 
 ### Physical cube practice (M1)
 
 Open the [practice timer](https://rahulsinghparmar.github.io/the-cube/timer.html)
-or choose **Timer** from Play. Focus the timer pad, hold Space
+or choose **Menu → Timer**. Focus the timer pad, hold Space
 until ready, release to start, then press to stop. Touch uses the same gesture;
 **Start without holding** provides a native-button alternative. Enable inspection
 to inspect before the start gesture. Results save locally with sessions, reviewable

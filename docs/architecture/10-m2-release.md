@@ -1,5 +1,10 @@
 # M2 web release: interface and cube engine
 
+Navigation update: the later [homepage refinement](11-home-and-menu.md) restores
+the original touch cube at the root URL. The M2 screen described below is now
+**Menu → Practice** at `menu.html#/play`; Settings is `menu.html#/settings`.
+Storage keys and the cube engine are unchanged by that navigation update.
+
 11 September 2026. M2 implements the web scope below. The public entry remains
 https://rahulsinghparmar.github.io/the-cube/. Native installation, physical-device
 qualification, a full translation and a full accessibility audit remain separate

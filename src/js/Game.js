@@ -12,6 +12,7 @@ import { Themes } from './Themes.js';
 import { ThemeEditor } from './ThemeEditor.js';
 import { States } from './States.js';
 import { Keyboard } from './Keyboard.js';
+import { setupHomeNavigation } from './HomeNavigation.js';
 
 import { Icons } from './Icons.js';
 
@@ -420,3 +421,4 @@ class Game {
 }
 
 window.game = new Game();
+setupHomeNavigation(window.game);
