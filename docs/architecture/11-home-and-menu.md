@@ -52,7 +52,9 @@ widths, the title and decorative cube sit alongside the tools. Phones stack a
 compact title/cube above the launcher. Landscape remains scrollable. Every menu
 action has at least a 44-pixel touch target and visible keyboard focus.
 
-A CSS 3D cube provides depth without starting an additional WebGL renderer. Its
+A CSS isometric cube provides depth without starting an additional WebGL renderer.
+Its three planes use explicit projections because software WebKit flattened
+nested 3D transforms during visual verification. Its
 entrance runs once; hover/press feedback uses short transforms. System reduced
 motion and the saved menu preference disable those effects. The simulator retains
 its original animation and theme controls. The shared stylesheet carries the

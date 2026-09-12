@@ -446,28 +446,31 @@ main {
 .menu-sculpture {
   position: relative;
   height: 310px;
-  perspective: 900px;
   display: grid;
   place-items: center;
 }
 .sculpture-cube {
-  --edge: 142px;
-  width: var(--edge);
-  height: var(--edge);
-  transform-style: preserve-3d;
-  transform: translateY(-5px) rotateX(-25deg) rotateY(-35deg);
+  /* Project the three planes explicitly so software WebKit cannot flatten them. */
+  --edge: 112px;
+  position: relative;
+  width: calc(var(--edge) * 1.732);
+  height: calc(var(--edge) * 2);
+  transform: translateY(-5px) rotate(-8deg);
   animation: cube-arrive 0.85s cubic-bezier(0.18, 0.7, 0.24, 1) both;
 }
 .sculpture-face {
   position: absolute;
-  inset: 0;
+  left: 0;
+  top: 0;
+  width: var(--edge);
+  height: var(--edge);
+  transform-origin: 0 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
   padding: 5px;
   border-radius: 8px;
   background: #15191e;
-  backface-visibility: hidden;
 }
 .sculpture-face i {
   border-radius: 5px;
@@ -475,13 +478,17 @@ main {
   box-shadow: inset 0 -3px 0 #00000016;
 }
 .sculpture-front {
-  transform: translateZ(calc(var(--edge) / 2));
+  top: calc(var(--edge) * 0.5);
+  transform: matrix(0.866, 0.5, 0, 1, 0, 0);
 }
 .sculpture-right {
-  transform: rotateY(90deg) translateZ(calc(var(--edge) / 2));
+  top: var(--edge);
+  left: calc(var(--edge) * 0.866);
+  transform: matrix(0.866, -0.5, 0, 1, 0, 0);
 }
 .sculpture-top {
-  transform: rotateX(90deg) translateZ(calc(var(--edge) / 2));
+  left: calc(var(--edge) * 0.866);
+  transform: matrix(0.866, 0.5, -0.866, 0.5, 0, 0);
 }
 .sculpture-right i {
   background: #9bbd17;
@@ -511,11 +518,11 @@ main {
 @keyframes cube-arrive {
   from {
     opacity: 0;
-    transform: translateY(10px) rotateX(-18deg) rotateY(-48deg);
+    transform: translateY(10px) rotate(-14deg);
   }
   to {
     opacity: 1;
-    transform: translateY(-5px) rotateX(-25deg) rotateY(-35deg);
+    transform: translateY(-5px) rotate(-8deg);
   }
 }
 @media (max-width: 800px) {
@@ -540,7 +547,7 @@ main {
     padding: 14px;
   }
   .sculpture-cube {
-    --edge: 116px;
+    --edge: 92px;
   }
   .menu-sculpture {
     height: 260px;
@@ -598,7 +605,7 @@ main {
     height: 155px;
   }
   .sculpture-cube {
-    --edge: 76px;
+    --edge: 52px;
   }
   .sculpture-face {
     padding: 3px;
