@@ -4,7 +4,7 @@ const CACHE = PREFIX + '__BUILD_VERSION__';
 const SHELL = [
   './', './index.html', './legacy.html', './menu.html', './timer.html', './manifest.json',
   /* WEB_ASSETS */
-  './assets/css/styles.css', './assets/css/keyboard.css', './assets/css/practice.css',
+  './assets/css/app-theme.css', './assets/css/app-font.css', './assets/css/styles.css', './assets/css/keyboard.css', './assets/css/practice.css',
   './assets/js/three.js', './assets/js/cube.js', './assets/js/practice.js',
   './assets/icons/android-chrome-192x192.png',
   './assets/icons/android-chrome-512x512.png',

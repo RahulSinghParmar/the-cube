@@ -672,68 +672,6 @@ dialog .actions {
   }
 }
 
-.menu-intro {
-  max-width: 620px;
-  margin-bottom: 36px;
-}
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-.menu-card {
-  position: relative;
-  display: block;
-  min-height: 224px;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface);
-  color: var(--text);
-  text-decoration: none;
-}
-.menu-card:first-child {
-  background: var(--tint);
-  border-color: var(--accent);
-}
-.menu-card:hover {
-  border-color: var(--accent);
-}
-.menu-card h2 {
-  margin: 24px 0 10px;
-  font-size: 23px;
-}
-.menu-card p {
-  margin: 0;
-  padding-right: 12px;
-  line-height: 1.65;
-}
-.menu-number {
-  color: var(--muted);
-  font:
-    600 12px/1 ui-monospace,
-    monospace;
-  letter-spacing: 2px;
-}
-.menu-arrow {
-  position: absolute;
-  right: 25px;
-  top: 24px;
-  color: var(--accent);
-  font-size: 22px;
-}
-.menu-help {
-  margin-top: 36px;
-  padding: 26px 0;
-  border-top: 1px solid var(--line);
-}
-.menu-help .actions {
-  margin-bottom: 20px;
-  gap: 26px;
-}
-.menu-help .actions a {
-  padding: 10px 0;
-}
 .info-card {
   max-width: 800px;
   margin: 28px 0;
@@ -750,33 +688,4 @@ dialog .actions {
 }
 .settings-links {
   margin-bottom: 36px;
-}
-@media (max-width: 800px) {
-  .menu-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 540px) {
-  .shell-header {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .shell-header nav {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .menu-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .menu-card {
-    min-height: 180px;
-    padding: 24px;
-  }
-  .menu-card h2 {
-    margin-top: 18px;
-  }
-  .info-card {
-    padding: 24px;
-  }
 }

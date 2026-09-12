@@ -9,7 +9,7 @@ await cp('.web-build', 'export', { recursive: true });
 await writeFile('export/menu.html', (await readFile('export/menu.html', 'utf8')).replace('</head>', '<link rel="manifest" href="./manifest.json"></head>'));
 // A release fingerprint updates the worker whenever the offline shell changes.
 const hash = createHash('sha256');
-for (const file of [...files, 'assets/js/cube.js', 'assets/js/practice.js', 'assets/js/three.js', 'assets/css/styles.css', 'assets/css/keyboard.css', 'assets/css/practice.css']) {
+for (const file of [...files, 'assets/js/cube.js', 'assets/js/practice.js', 'assets/js/three.js', 'assets/css/app-theme.css', 'assets/css/app-font.css', 'assets/css/styles.css', 'assets/css/keyboard.css', 'assets/css/practice.css']) {
   hash.update(await readFile(file));
 }
 const worker = await readFile('service-worker.js', 'utf8');

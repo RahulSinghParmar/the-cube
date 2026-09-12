@@ -17,10 +17,18 @@ button:focus-visible, summary:focus-visible { outline: 3px solid #165dce; outlin
 .practice-link:focus-visible { outline: 3px solid #165dce; outline-offset: 4px; }
 @media(max-width: 420px) { .practice-link { top: 65px; right: 12px; } }
 
-/* The touch homepage keeps utilities on the separate menu screen. */
-.cube-home .keyboard-help, .cube-home .btn--stats, .cube-home .btn--prefs { display: none; }
+/* Shortcuts live in Menu; the original trophy and settings stay on the cube. */
+.keyboard-help { display: none; }
 .home-menu { position: fixed; z-index: 30; top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-width: 88px; min-height: 48px; padding: 0 16px; border: 1px solid rgba(40,50,65,.16); border-radius: 24px; background: rgba(255,255,255,.94); color: #26354a; font: 600 14px/1.2 system-ui,sans-serif; text-decoration: none; touch-action: manipulation; box-shadow: 0 3px 16px rgba(20,30,45,.06); }
 .home-menu span { font-size: 18px; }
 .home-menu:focus-visible { outline: 3px solid #165dce; outline-offset: 4px; }
 .home-status { position: fixed; z-index: 31; top: max(76px, calc(env(safe-area-inset-top) + 60px)); right: 16px; max-width: calc(100vw - 32px); padding: 10px 14px; border-radius: 10px; background: #fff; color: #26354a; font: 14px/1.4 system-ui,sans-serif; }
 .cube-home .btn--back { bottom: max(16px, env(safe-area-inset-bottom)); }
+.btn--bl { left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom)); }
+.btn--br { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+.home-menu { color: #10151b; font-weight: 700; border-color: rgba(0,0,0,.1); transition: background .18s, box-shadow .18s; }
+.home-menu:hover { background: #fff; box-shadow: 0 5px 20px #10151b15; }
+.home-menu:active { background: #e7e9eb; }
+.text--note { left: 64px; right: 64px; top: auto; bottom: max(35px, calc(env(safe-area-inset-bottom) + 24px)); font-size: clamp(11px, 2.6vw, 17px); line-height: 1.35; }
+@media (max-height: 500px) { .text--title { font-size: 2.5em; bottom: 73%; } .home-menu { top: 12px; min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .home-menu { transition: none; } }

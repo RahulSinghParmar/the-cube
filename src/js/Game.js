@@ -29,7 +29,7 @@ const BUTTONS = {
   Menu: [ 'stats', 'prefs' ],
   Playing: [ 'back' ],
   Complete: [],
-  Stats: [],
+  Stats: [ 'back' ],
   Prefs: [ 'back', 'theme' ],
   Theme: [ 'back', 'reset' ],
   None: [],
@@ -168,6 +168,10 @@ class Game {
       } else if ( this.state === STATE.Prefs ) {
 
         this.prefs( HIDE );
+
+      } else if ( this.state === STATE.Stats ) {
+
+        this.stats( HIDE );
 
       } else if ( this.state === STATE.Theme ) {
 
@@ -356,7 +360,7 @@ class Game {
 
       this.state = STATE.Menu;
 
-      this.transition.buttons( BUTTONS.Menu, BUTTONS.None );
+      this.transition.buttons( BUTTONS.Menu, BUTTONS.Stats );
 
       this.transition.stats( HIDE );
 
@@ -395,6 +399,7 @@ class Game {
     } else {
 
       this.state = STATE.Stats;
+      this.transition.buttons( BUTTONS.Stats, BUTTONS.Complete );
       this.saved = false;
 
       this.transition.timer( HIDE );

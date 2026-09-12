@@ -24,6 +24,7 @@ import {
 import { messages } from "./messages";
 import { MenuPage, InfoPage } from "./MenuPages";
 import "./styles.css";
+import "../../../assets/css/app-theme.css";
 
 const scope = location.pathname.replace(/[^/]*$/, "");
 const cubeKey = `the-cube-v2:${scope}`,
@@ -99,6 +100,9 @@ function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = preferences.theme;
     document.documentElement.lang = preferences.locale;
+    document.documentElement.dataset.motion = preferences.reducedMotion
+      ? "reduce"
+      : "full";
   }, [preferences]);
   useEffect(() => {
     const changed = () => {
@@ -368,7 +372,10 @@ function App() {
       >
         Skip to content
       </a>
-      <header className="shell-header" onClickCapture={guardNavigation}>
+      <header
+        className={`shell-header ${route === "#/menu" ? "is-menu" : ""}`}
+        onClickCapture={guardNavigation}
+      >
         <a className="wordmark" href="./">
           <span aria-hidden="true">▦</span> THE CUBE
         </a>
@@ -393,9 +400,19 @@ function App() {
             {text.settings}
           </a>
         </nav>
-        <span className="local-tag">LOCAL / OFFLINE</span>
+        <span className="local-tag">ON YOUR DEVICE</span>
+        {route === "#/menu" && (
+          <a className="menu-close" href="./" aria-label="Close menu">
+            ✕
+          </a>
+        )}
       </header>
-      <main id="main" tabIndex={-1} onClickCapture={guardNavigation}>
+      <main
+        id="main"
+        className={route === "#/menu" ? "menu-screen" : undefined}
+        tabIndex={-1}
+        onClickCapture={guardNavigation}
+      >
         {update && (
           <p role="status" className="notice">
             {text.update}
@@ -549,7 +566,6 @@ function App() {
                         aria-label={`${face} clockwise`}
                       >
                         {face}
-                        <small>{preferences.keys[face]?.toUpperCase()}</small>
                       </button>
                       <button
                         className="move-button"
@@ -558,9 +574,6 @@ function App() {
                         aria-label={`${face} counterclockwise`}
                       >
                         {face}′
-                        <small>
-                          {preferences.keys[`${face}'`]?.toUpperCase()}
-                        </small>
                       </button>
                     </div>
                   ))}
@@ -592,11 +605,6 @@ function App() {
                 >
                   {text.undo}
                 </button>
-                <details>
-                  <summary>{text.keys}</summary>
-                  <p>{text.keyboardHint}</p>
-                  <a href="#/settings">{text.settings} →</a>
-                </details>
               </aside>
             </div>
             <section className="history-strip">
@@ -757,31 +765,30 @@ function App() {
                   {text.labels}
                 </label>
               </div>
-              <h2>{text.keys}</h2>
-              <p>{text.keyboardHint}</p>
-              <div className="key-grid">
-                {Object.keys(DEFAULT_KEYS).map((move) => (
-                  <label key={move}>
-                    {move}
-                    <input
-                      aria-label={`Key for ${move}`}
-                      maxLength={1}
-                      value={draft.keys[move] ?? ""}
-                      onChange={(e) =>
-                        setDraft({
-                          ...draft,
-                          keys: {
-                            ...draft.keys,
-                            [move]: e.target.value.toLowerCase(),
-                          },
-                        })
-                      }
-                    />
-                  </label>
-                ))}
-              </div>
-              <div className="actions">
-                <button type="submit">{text.save}</button>
+              <details className="keyboard-settings">
+                <summary>{text.keys}</summary>
+                <p>{text.keyboardHint}</p>
+                <div className="key-grid">
+                  {Object.keys(DEFAULT_KEYS).map((move) => (
+                    <label key={move}>
+                      {move}
+                      <input
+                        aria-label={`Key for ${move}`}
+                        maxLength={1}
+                        value={draft.keys[move] ?? ""}
+                        onChange={(e) =>
+                          setDraft({
+                            ...draft,
+                            keys: {
+                              ...draft.keys,
+                              [move]: e.target.value.toLowerCase(),
+                            },
+                          })
+                        }
+                      />
+                    </label>
+                  ))}
+                </div>
                 <button
                   type="button"
                   className="secondary"
@@ -791,6 +798,10 @@ function App() {
                 >
                   {text.resetKeys}
                 </button>
+              </details>
+              <div className="actions">
+                <button type="submit">{text.save}</button>
+
                 <a href="#/play">{text.back}</a>
               </div>
             </form>

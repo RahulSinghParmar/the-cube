@@ -60,9 +60,9 @@ behavior. An expandable guide is available in the app.
 
 ### Homepage, menu and practice
 
-The homepage keeps the original cube layout and gestures, with one **Menu** button.
+The homepage keeps the original cube layout and gestures, its **trophy** and **preferences** controls, and a **Menu** button.
 The menu holds Play, Practice, Timer, Settings, License and About the Developer,
-plus original cube statistics, settings and keyboard help.
+plus original cube statistics and collapsed keyboard help. The menu uses the original display font, cube colors, and a compact layout for phones, tablets, and desktop.
 
 **Menu → Practice** uses an exact typed cube engine, a responsive React interface and
 reviewed cube backup/import. Settings include custom keys, light/dark/high-contrast

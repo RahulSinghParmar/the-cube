@@ -60,7 +60,7 @@ test('mobile layout and labeled controls remain usable', async ({ page }) => {
   await ready(page);
   await expect(page.getByRole('link', { name: 'Menu', exact: true })).toBeVisible();
   await expect(page.locator('.keyboard-help')).toBeHidden();
-  await expect(page.getByRole('button', { name: 'Preferences', exact: true })).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Preferences', exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator('.ui__game').dblclick({ position: { x: 190, y: 400 } });
   await page.waitForFunction(() => game.state === 1 && game.controls.enabled);

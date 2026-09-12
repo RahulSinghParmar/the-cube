@@ -89,6 +89,7 @@ test("settings validate key collisions, persist themes and locale, and remapping
 }) => {
   await ready(page);
   await page.getByRole("link", { name: "Settings", exact: true }).click();
+  await page.getByText("Keyboard shortcuts", { exact: true }).click();
   await page.getByLabel("Key for U", { exact: true }).fill("f");
   await page.getByRole("button", { name: "Save preferences" }).click();
   await expect(page.getByRole("alert")).toContainText("different letters");

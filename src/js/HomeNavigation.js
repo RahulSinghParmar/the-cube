@@ -43,7 +43,7 @@ export function setupHomeNavigation(game) {
     };
     leave();
   });
-  // Dedicated links from Settings/Statistics keep these controls off the home.
+  // Menu links open the same original settings and statistics panels.
   const panel = new URLSearchParams(location.search).get("panel");
   if (panel === "settings" || panel === "stats") {
     const open = () => {

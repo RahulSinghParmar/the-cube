@@ -14,6 +14,7 @@ class Transition {
     };
 
     this.activeTransitions = 0;
+    this.buttonVersions = new WeakMap();
 
   }
 
@@ -43,6 +44,9 @@ class Transition {
     const buttonTween = ( button, show ) => {
 
       button.disabled = true;
+      button.style.pointerEvents = 'none';
+      const version = ( this.buttonVersions.get( button ) || 0 ) + 1;
+      this.buttonVersions.set( button, version );
 
       return new Tween( {
         target: button.style,
@@ -57,8 +61,18 @@ class Transition {
 
         },
         onComplete: () => {
-          button.style.pointerEvents = show ? 'all' : 'none';
-          button.disabled = !show;
+          // A visible button must not accept a tap that Game will discard while
+          // the cube is still entering/leaving. A later transition cancels this.
+          const enable = () => {
+            if ( this.buttonVersions.get( button ) !== version || !show ) return;
+            if ( this.activeTransitions > 0 ) {
+              setTimeout( enable, 50 );
+              return;
+            }
+            button.style.pointerEvents = 'all';
+            button.disabled = false;
+          };
+          enable();
         }
       } );
 

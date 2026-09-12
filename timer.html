@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f5f7fb">
   <meta name="description" content="An offline practice timer for your physical cube, with sessions, averages and local backups.">
   <title>Practice timer · The Cube</title>
   <link rel="icon" href="assets/icons/favicon.ico">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="assets/css/practice.css">
+  <link rel="stylesheet" href="assets/css/app-theme.css">
   <script type="module" src="assets/js/practice.js"></script>
 </head>
 <body>
@@ -29,7 +30,7 @@
         <button id="timer-pad" class="timer-pad" aria-label="Timer pad" aria-describedby="timer-help" disabled>
           <span id="phase">Ready when you are</span><span id="timer-display" aria-hidden="true">0:00.00</span><span id="pad-hint">Hold, then release to start</span>
         </button>
-        <p id="timer-help">Focus the timer pad. Hold <kbd>Space</kbd> until ready, release to start, then press to stop. Touch works the same way. <kbd>Esc</kbd> cancels or interrupts.</p>
+        <p id="timer-help" class="sr-only">Focus the timer pad. Hold <kbd>Space</kbd> until ready, release to start, then press to stop. Touch works the same way. <kbd>Esc</kbd> cancels or interrupts.</p>
         <div class="actions"><button id="simple-control" class="secondary" disabled>Start without holding</button><button id="next" hidden>Next solve</button><button id="retry-save" hidden>Retry save</button></div>
         <p id="result" role="status"></p>
         <details class="scramble-details"><summary>Record your scramble (optional)</summary><label>Scramble used for this attempt<textarea id="scramble" maxlength="2000" rows="2" placeholder="For example: R U R′ U′" disabled></textarea></label><p>Use your own scramble. This timer does not generate competition scrambles.</p></details>
