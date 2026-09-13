@@ -5,21 +5,21 @@ This is the plain-language guide for the repository owner. The detailed engineer
 ## Where we are now
 
 The existing simulator is live at https://rahulsinghparmar.github.io/the-cube/.
-The foundation, architectural plan, deployment setup, M1 web timer and M2 web interface/engine are implemented. The full product described in the original brief is not built yet. See [M1 release and testing notes](09-m1-release.md) and [M2 release and testing notes](10-m2-release.md) for verified scope and limits.
+The foundation, architectural plan, deployment setup, M1 web timer, M2 web interface/engine and M3 learning/solver web scope are implemented. The full product described in the original brief is not built yet. See [M1 release and testing notes](09-m1-release.md) and [M2 release and testing notes](10-m2-release.md) for verified scope and limits.
 
 Completed: keyboard face controls and guide, build/offline repairs, selected game/data bug fixes, automated checks, architecture documents, primary `main` branch, preserved original `master`, and automatic publication after successful main-branch checks.
 
 M1 adds the dedicated physical-cube timer, inspection, session statistics/history, safe local storage, result review, backup/import and legacy migration.
 
-M2 adds the modern Play/Settings interface, exact typed cube engine, queued moves, custom keys, themes and English/Hindi foundations. The physical timer and original simulator remain available with their saved data. Still to build: lessons, solver, trainer, accounts, synchronization, scanner, coach and native applications.
+M2 adds the modern Play/Settings interface, exact typed cube engine, queued moves, custom keys, themes and English/Hindi foundations. The physical timer and original simulator remain available with their saved data. M3 adds eight guided beginner exercises, manual 3×3 input and independently verified solution playback. Still to build: algorithm trainer, accounts, synchronization, scanner, coach and native applications. See [M3 release and testing notes](12-m3-release.md) for prepared-case scope and remaining device/content qualification.
 
 Before M3, the owner requested a navigation refinement: restore the original
 full-screen touch cube at the main URL, and place Practice, Timer, Settings,
 License and About the Developer on a separate menu. [Current homepage and menu
 guide](11-home-and-menu.md). The newer cube is now labeled **Practice**; both
-saved cubes and physical sessions remain separate and available. M3 has not started.
+saved cubes and physical sessions remain separate and available. The owner subsequently authorized M3; Learn and Solve now join the menu.
 
-The next milestone is **M3: learning and solving**. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
+The next planned milestone is **M4: algorithm practice**. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
 
 ## How to use the commands
 
@@ -34,7 +34,7 @@ For each command, first inspect the actual repository and prerequisite status, p
 | M0 — Foundation | Complete | Existing cube works with keyboard controls, offline loading and tested publishing | `Show the current build status and any remaining foundation defects.` |
 | M1 — Practice timer and data | Implemented; web release | A separate timer for a real cube, inspection, penalties, solve history, sessions, averages and backup/import | `Review the M1 release and help me test the physical-cube timer and backup recovery on my device.` |
 | M2 — Application and cube engine | Implemented; web release | Clear navigation, improved mobile/accessibility controls, settings, custom keys, reliable queued moves, themes and language foundations | `Review the M2 release and help me test the new Play interface, custom keys, saved cube and offline timer on my device.` |
-| M3 — Learning and solving | Planned | Beginner lessons, manual entry of a 3x3 state, a checked solution and controllable move playback | `Start M3 from our architecture plan. Add reviewed beginner lessons, manual cube-state entry and a verified 3x3 solver with step-by-step playback.` |
+| M3 — Learning and solving | Implemented; web scope | Beginner lessons, manual entry of a 3x3 state, a checked solution and controllable move playback | `Review the M3 release and help me test lessons, manual cube entry, solution playback and backups on my device.` |
 | M4 — Algorithm practice | Planned | Practice PLL, then OLL/F2L cases; track recognition and execution attempts | `Start M4 from our architecture plan. Build the algorithm trainer, beginning with PLL, then validated OLL and F2L content, with saved practice progress.` |
 | M5 — Accounts and synchronization | Planned | Optional sign-in, profile, cross-device history, export/deletion and visible conflict recovery | `Start M5 from our architecture plan. Prepare provider and operating-cost choices, then implement optional accounts and safe cross-device synchronization once those choices are settled. Keep offline guest practice working.` |
 | M6 — Camera scanner | Planned | Capture the six faces of a 3x3, correct uncertain colors, validate the state and obtain a solution | `Start M6 from our architecture plan. Build the guided 3x3 camera scanner with manual color correction, state validation and verified solution playback.` |
@@ -77,8 +77,8 @@ These remain in scope as future workstreams beyond the M1/M2 web releases. They 
 | --- | --- | --- | --- |
 | Phase 1 | Refactor, types, modules, tests, responsive UI, keyboard, timer, statistics, PWA | M0 + M1 + M2 | Web scope implemented; broader physical-device/accessibility qualification remains |
 | Phase 2 | Accounts, profiles, leaderboards, sync, languages, dark mode, analytics | M2 for UI/themes/language foundations; M5 for accounts/sync; later community for rankings | Themes and language foundations implemented; accounts/community planned |
-| Phase 3 | Scanner, image processing, reconstruction, solver | M3 validates the solver/manual input first; M6 adds camera input | Planned |
-| Phase 4 | Tutorials, algorithm database and OLL/PLL/F2L practice | M3 lessons + M4 trainer | Planned |
+| Phase 3 | Scanner, image processing, reconstruction, solver | M3 validates the solver/manual input first; M6 adds camera input | Manual input and verified 3×3 solver implemented; camera planned |
+| Phase 4 | Tutorials, algorithm database and OLL/PLL/F2L practice | M3 lessons + M4 trainer | Eight prepared lessons implemented; trainer planned |
 | Phase 5 | Coach, personalized learning, solve analysis, voice | M7 plus playback voice where appropriate | Planned |
 | Phase 6 | Mobile, desktop, offline and notifications | Offline begins in M0/M1; M8 packages platforms and adds optional notifications | Basic web offline done; native work planned |
 

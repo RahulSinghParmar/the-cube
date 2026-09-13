@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import {
   FACES,
@@ -25,6 +25,13 @@ import { messages } from "./messages";
 import { MenuPage, InfoPage } from "./MenuPages";
 import "./styles.css";
 import "../../../assets/css/app-theme.css";
+
+const LearnPage = lazy(() =>
+  import("./LearnPage").then((module) => ({ default: module.LearnPage })),
+);
+const SolvePage = lazy(() =>
+  import("./SolvePage").then((module) => ({ default: module.SolvePage })),
+);
 
 const scope = location.pathname.replace(/[^/]*$/, "");
 const cubeKey = `the-cube-v2:${scope}`,
@@ -456,6 +463,14 @@ function App() {
             kind={route === "#/about" ? "about" : "license"}
             text={text}
           />
+        ) : route === "#/learn" || route === "#/solve" ? (
+          <Suspense fallback={<p role="status">Opening your workspace…</p>}>
+            {route === "#/learn" ? (
+              <LearnPage preferences={preferences} />
+            ) : (
+              <SolvePage preferences={preferences} />
+            )}
+          </Suspense>
         ) : route === "#/play" ? (
           <>
             <div className="page-heading">

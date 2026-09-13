@@ -61,7 +61,7 @@ behavior. An expandable guide is available in the app.
 ### Homepage, menu and practice
 
 The homepage keeps the original cube layout and gestures, its **trophy** and **preferences** controls, and a **Menu** button.
-The menu holds Play, Practice, Timer, Settings, License and About the Developer,
+The menu holds Play, Learn, Solve, Practice, Timer, Settings, License and About the Developer,
 plus original cube statistics and collapsed keyboard help. The menu uses the original display font, cube colors, and a compact layout for phones, tablets, and desktop.
 
 **Menu → Practice** uses an exact typed cube engine, a responsive React interface and
@@ -76,6 +76,21 @@ initial online load. Close all app tabs and reopen when an update is waiting;
 do not clear saved browser data. See [M2 release and testing notes](docs/architecture/10-m2-release.md)
 for the implemented scope and state convention. See [the homepage refinement](docs/architecture/11-home-and-menu.md)
 for current navigation and testing steps.
+
+### Learn and solve (M3)
+
+**Menu → Learn** offers eight guided beginner exercises with labeled 3D playback,
+move explanations and saved practice progress. These are prepared cases; they do
+not cover every possible beginner-method case. Demonstrating a move does not
+mark it practiced.
+
+**Menu → Solve** accepts a manually entered 3×3, face letters or a copy of your
+Practice cube. It rejects impossible states and verifies each solution with a
+separate cube engine before offering next/previous, play/pause and speed controls.
+The local two-phase solver supports cancellation and offline use after the app
+has loaded online. It does not claim the shortest or a beginner-method solution.
+Input and lesson backups are separate from existing cube/timer data.
+See [M3 release and testing notes](docs/architecture/12-m3-release.md).
 
 ### Physical cube practice (M1)
 

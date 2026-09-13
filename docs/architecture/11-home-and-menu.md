@@ -5,7 +5,7 @@ again the homepage at https://rahulsinghparmar.github.io/the-cube/. The root kee
 the original full-screen cube, double-tap start and swipe gestures. The original
 trophy and preferences controls are restored at the bottom, with Menu in the top
 corner. Keyboard instructions remain hidden in the menu rather than overlaying
-the simulator. M3 remains paused while the owner reviews this foundation.
+the simulator. The owner later authorized [M3 learning and solving](12-m3-release.md); Learn and Solve now join the menu. The refinement details below describe the M2 baseline.
 
 ## Navigation
 

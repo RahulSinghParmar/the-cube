@@ -21,6 +21,18 @@ function CubeMark() {
 export function MenuPage({ text }: { text: typeof messages.en }) {
   const items = [
     {
+      title: "Learn",
+      href: "#/learn",
+      icon: "learn",
+      description: "Beginner lessons, one move at a time",
+    },
+    {
+      title: "Solve",
+      href: "#/solve",
+      icon: "solve",
+      description: "Enter a 3×3 and follow its solution",
+    },
+    {
       title: text.practice,
       href: "#/play",
       icon: "cube",
@@ -137,6 +149,9 @@ export function MenuPage({ text }: { text: typeof messages.en }) {
 
 function MenuIcon({ kind }: { kind: string }) {
   const paths: Record<string, string> = {
+    learn:
+      "M12 6C9 3 5 3 2 4v15c4-1 7-1 10 2m0-15c3-3 7-3 10-2v15c-4-1-7-1-10 2V6Z",
+    solve: "M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 3 2 2 5-5",
     cube: "M12 3 3 8v9l9 5 9-5V8L12 3ZM3 8l9 5 9-5M12 13v9M7.5 5.5l9 5",
     timer:
       "M9 2h6M12 2v3m6 1 2 2M12 9v5l3 2M21 14a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
@@ -202,6 +217,16 @@ export function InfoPage({
               The repository package metadata declares ISC. A repository-wide
               LICENSE file has not yet been included; this page does not add or
               change permission to reuse the original work.
+            </p>
+            <h2>3×3 solver</h2>
+            <p>
+              The solver uses cubejs 1.3.2 by Petri Lehtinen and Ludovic
+              Fernandez, under the MIT License. The bundled engine has ES-module
+              wrapper adaptations.{" "}
+              <a href="assets/licenses/cubejs-LICENSE.txt">
+                Read the full engine license
+              </a>
+              .
             </p>
             <h2>Acknowledgements</h2>
             <p>

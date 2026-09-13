@@ -1,4 +1,4 @@
-/*! cubejs 1.3.2 — MIT; see LICENSE. ESM wrapper adaptation only. */
+/*! cubejs 1.3.2 - MIT; see LICENSE. ESM wrapper adaptation only. */
 const Cube = (function() {
   // Centers
   var B, BL, BR, Cube, D, DB, DBL, DF, DFR, DL, DLF, DR, DRB, F, FL, FR, L, R, U, UB, UBR, UF, UFL, UL, ULB, UR, URF, centerColor, centerFacelet, cornerColor, cornerFacelet, edgeColor, edgeFacelet;

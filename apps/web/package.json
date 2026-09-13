@@ -2,5 +2,10 @@
   "name": "@the-cube/web",
   "version": "1.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@the-cube/academy": "1.0.0",
+    "@the-cube/cube-core": "1.0.0",
+    "@the-cube/solver": "1.0.0"
+  }
 }
