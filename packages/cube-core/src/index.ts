@@ -276,3 +276,5 @@ export class MoveQueue {
     this.renderer.dispose();
   }
 }
+
+export { validate3x3 } from "./legality.js";

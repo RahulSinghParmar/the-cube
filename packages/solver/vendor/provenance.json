@@ -1,0 +1,12 @@
+{
+  "package": "cubejs",
+  "version": "1.3.2",
+  "source": "https://registry.npmjs.org/cubejs/-/cubejs-1.3.2.tgz",
+  "tarballSHA256": "42ff094ab2f2cdd1fffa7fcb5f9f85f1bb65a6dc72669ba966ac83897eadcec9",
+  "upstreamSHA256": {
+    "lib/cube.js": "450a53a9acf5033fde7ca23be8fd08ac37d30f04c58aac63f053a1c05a7f5802",
+    "lib/solve.js": "faa0ccffca78f80a5fe7a197a9676af02d79d8ddece9cf3506154fea616fc445",
+    "LICENSE": "c067e8c9a595d13f5644f94388f2ad32c725bcb4a5b1851fe769b9bccd46a1fd"
+  },
+  "changes": "ES module import/export wrappers only. No search, tables, move or cubie logic changes."
+}

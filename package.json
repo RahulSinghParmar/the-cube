@@ -24,8 +24,8 @@
     "vite": "8.3.0"
   },
   "scripts": {
-    "typecheck": "tsc -p packages/practice/tsconfig.json --noEmit && tsc -p packages/cube-core/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json",
-    "build:practice": "tsc -p packages/practice/tsconfig.json && tsc -p packages/cube-core/tsconfig.json",
+    "typecheck": "tsc -p packages/practice/tsconfig.json --noEmit && tsc -p packages/cube-core/tsconfig.json --noEmit && tsc -p packages/solver/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json",
+    "build:practice": "tsc -p packages/practice/tsconfig.json && tsc -p packages/cube-core/tsconfig.json && tsc -p packages/solver/tsconfig.json",
     "test": "npm run build:practice && node --test tests/unit/*.test.js",
     "test:e2e": "playwright test",
     "check:architecture": "node scripts/check-architecture.mjs",

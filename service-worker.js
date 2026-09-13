@@ -8,6 +8,7 @@ const SHELL = [
   './assets/js/three.js', './assets/js/cube.js', './assets/js/practice.js',
   './assets/icons/android-chrome-192x192.png',
   './assets/icons/android-chrome-512x512.png',
+  './assets/licenses/cubejs-LICENSE.txt',
   './assets/icons/favicon-32x32.png', './assets/icons/favicon-16x16.png',
   './assets/icons/apple-touch-icon.png', './assets/icons/favicon.ico',
 ];
