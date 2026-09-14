@@ -61,7 +61,7 @@ behavior. An expandable guide is available in the app.
 ### Homepage, menu and practice
 
 The homepage keeps the original cube layout and gestures, its **trophy** and **preferences** controls, and a **Menu** button.
-The menu holds Play, Learn, Solve, Practice, Timer, Settings, License and About the Developer,
+The menu holds Play, Learn, Solve, Train, Practice, Timer, Settings, License and About the Developer,
 plus original cube statistics and collapsed keyboard help. The menu uses the original display font, cube colors, and a compact layout for phones, tablets, and desktop.
 
 **Menu → Practice** uses an exact typed cube engine, a responsive React interface and
@@ -91,6 +91,16 @@ The local two-phase solver supports cancellation and offline use after the app
 has loaded online. It does not claim the shortest or a beginner-method solution.
 Input and lesson backups are separate from existing cube/timer data.
 See [M3 release and testing notes](docs/architecture/12-m3-release.md).
+
+### PLL trainer (M4 first release)
+
+**Menu → Train** offers all 21 PLL cases with pattern diagrams, piece explanations,
+verified 3D playback and guided move practice. Selected cases, partial progress,
+completed guided repetitions and incorrect choices are saved locally, with separate
+backup/restore and visible write-failure recovery. Watching never earns repetitions.
+The fixed-orientation face-turn edition keeps white U on top and green F in front.
+See [PLL scope, provenance and testing](docs/architecture/13-m4-pll-release.md).
+Timed recognition and OLL/F2L are future M4 releases.
 
 ### Physical cube practice (M1)
 

@@ -19,7 +19,7 @@ License and About the Developer on a separate menu. [Current homepage and menu
 guide](11-home-and-menu.md). The newer cube is now labeled **Practice**; both
 saved cubes and physical sessions remain separate and available. The owner subsequently authorized M3; Learn and Solve now join the menu.
 
-The next planned milestone is **M4: algorithm practice**. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
+**M4 is in progress:** [PLL cases and guided practice](13-m4-pll-release.md) are implemented; timed recognition and OLL/F2L are next. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
 
 ## How to use the commands
 
@@ -35,7 +35,7 @@ For each command, first inspect the actual repository and prerequisite status, p
 | M1 — Practice timer and data | Implemented; web release | A separate timer for a real cube, inspection, penalties, solve history, sessions, averages and backup/import | `Review the M1 release and help me test the physical-cube timer and backup recovery on my device.` |
 | M2 — Application and cube engine | Implemented; web release | Clear navigation, improved mobile/accessibility controls, settings, custom keys, reliable queued moves, themes and language foundations | `Review the M2 release and help me test the new Play interface, custom keys, saved cube and offline timer on my device.` |
 | M3 — Learning and solving | Implemented; web scope | Beginner lessons, manual entry of a 3x3 state, a checked solution and controllable move playback | `Review the M3 release and help me test lessons, manual cube entry, solution playback and backups on my device.` |
-| M4 — Algorithm practice | Planned | Practice PLL, then OLL/F2L cases; track recognition and execution attempts | `Start M4 from our architecture plan. Build the algorithm trainer, beginning with PLL, then validated OLL and F2L content, with saved practice progress.` |
+| M4 — Algorithm practice | PLL first release implemented | 21 verified PLL cases, 3D playback and saved guided repetitions; timed recognition and OLL/F2L remain planned | `Help me test the PLL trainer on my device before adding timed recognition or OLL.` |
 | M5 — Accounts and synchronization | Planned | Optional sign-in, profile, cross-device history, export/deletion and visible conflict recovery | `Start M5 from our architecture plan. Prepare provider and operating-cost choices, then implement optional accounts and safe cross-device synchronization once those choices are settled. Keep offline guest practice working.` |
 | M6 — Camera scanner | Planned | Capture the six faces of a 3x3, correct uncertain colors, validate the state and obtain a solution | `Start M6 from our architecture plan. Build the guided 3x3 camera scanner with manual color correction, state validation and verified solution playback.` |
 | M7 — Coaching | Planned | Suggestions based on recorded evidence; optional AI explanations, training plans and voice | `Start M7 from our architecture plan. Add evidence-based coaching and training recommendations first, then propose optional AI and voice features with clear cost and privacy controls.` |
@@ -78,7 +78,7 @@ These remain in scope as future workstreams beyond the M1/M2 web releases. They 
 | Phase 1 | Refactor, types, modules, tests, responsive UI, keyboard, timer, statistics, PWA | M0 + M1 + M2 | Web scope implemented; broader physical-device/accessibility qualification remains |
 | Phase 2 | Accounts, profiles, leaderboards, sync, languages, dark mode, analytics | M2 for UI/themes/language foundations; M5 for accounts/sync; later community for rankings | Themes and language foundations implemented; accounts/community planned |
 | Phase 3 | Scanner, image processing, reconstruction, solver | M3 validates the solver/manual input first; M6 adds camera input | Manual input and verified 3×3 solver implemented; camera planned |
-| Phase 4 | Tutorials, algorithm database and OLL/PLL/F2L practice | M3 lessons + M4 trainer | Eight prepared lessons implemented; trainer planned |
+| Phase 4 | Tutorials, algorithm database and OLL/PLL/F2L practice | M3 lessons + M4 trainer | Eight prepared lessons and PLL trainer implemented; OLL/F2L planned |
 | Phase 5 | Coach, personalized learning, solve analysis, voice | M7 plus playback voice where appropriate | Planned |
 | Phase 6 | Mobile, desktop, offline and notifications | Offline begins in M0/M1; M8 packages platforms and adds optional notifications | Basic web offline done; native work planned |
 

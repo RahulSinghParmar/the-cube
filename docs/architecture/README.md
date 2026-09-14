@@ -8,7 +8,7 @@ This is the target product and engineering plan for evolving the existing reposi
 
 Build an offline-capable cube practice and learning application with a shared, deterministic TypeScript domain model. Preserve the current simulator while adding a physical-cube timer, then learning and solving. Add an authenticated modular backend for synchronization and community features when those features enter development. Use the web application as the basis of future mobile and desktop clients.
 
-M1 implements the web practice timer, statistics and safe local data. M2 adds the React/Vite interface, typed cube core, queued controls, settings and language foundations. See [the M1 release notes](09-m1-release.md) and [M2 release notes](10-m2-release.md) for tests, recovery and limits. M3 adds [beginner exercises, manual input and verified 3×3 solving](12-m3-release.md). The next planned milestone is **M4: algorithm practice**. The server and later features below remain architecture proposals.
+M1 implements the web practice timer, statistics and safe local data. M2 adds the React/Vite interface, typed cube core, queued controls, settings and language foundations. See [the M1 release notes](09-m1-release.md) and [M2 release notes](10-m2-release.md) for tests, recovery and limits. M3 adds [beginner exercises, manual input and verified 3×3 solving](12-m3-release.md). M4 has begun with [the PLL trainer](13-m4-pll-release.md); timed recognition and OLL/F2L remain planned. The server and later features below remain architecture proposals.
 
 The owner-requested [homepage refinement](11-home-and-menu.md) puts the original
 touch cube back at the main URL and moves the newer interface and tools into a
@@ -50,6 +50,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 | [M2 implementation and release](10-m2-release.md) | Modern interface, exact cube state, compatibility decisions, browser checks and user testing |
 | [Homepage and menu refinement](11-home-and-menu.md) | Original touch homepage, menu routes, preservation and current testing steps |
 | [M3 learning and solving](12-m3-release.md) | Lesson scope, manual entry, engine provenance, verification, backups and owner tests |
+| [M4 PLL trainer](13-m4-pll-release.md) | Verified case catalog, guided repetitions, progress recovery and testing |
 | [Repository workflow](../../CONTRIBUTING.md) | Commit and push policy, branch handling and verification |
 
 The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation and concrete defects already repaired. This architecture plan supersedes that document's short future roadmap where detail differs.
@@ -62,7 +63,7 @@ The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation
 | Timing | Retained virtual timer plus dedicated physical timer, inspection, penalties, sessions and trimmed averages | Unified shell and broader device verification |
 | Persistence | Legacy keys and bounded new cube checkpoints plus transactional guest IndexedDB, migration and backup/import | Optional cloud sync and authenticated namespace adapters |
 | Delivery | React/Vite shell, retained Rollup entries, three-engine browser CI and automated accessibility checks | Physical-device matrix, full accessibility and recovery gates |
-| Solving/learning | Eight prepared beginner lessons, legal manual 3×3 entry, independently verified local solver and playback | More reviewed cases, real-device qualification and algorithm practice |
+| Solving/learning | Eight prepared beginner lessons, legal manual 3×3 entry, independently verified local solver and playback | Broader lesson coverage, real-device qualification and further algorithm training |
 | Accounts/scanner/AI/native | Not implemented | Gated milestones with explicit device, privacy, cost and correctness tests |
 
 ## Architecture invariants

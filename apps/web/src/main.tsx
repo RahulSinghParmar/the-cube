@@ -26,6 +26,9 @@ import { MenuPage, InfoPage } from "./MenuPages";
 import "./styles.css";
 import "../../../assets/css/app-theme.css";
 
+const TrainerPage = lazy(() =>
+  import("./TrainerPage").then((module) => ({ default: module.TrainerPage })),
+);
 const LearnPage = lazy(() =>
   import("./LearnPage").then((module) => ({ default: module.LearnPage })),
 );
@@ -463,9 +466,13 @@ function App() {
             kind={route === "#/about" ? "about" : "license"}
             text={text}
           />
-        ) : route === "#/learn" || route === "#/solve" ? (
+        ) : route === "#/learn" ||
+          route === "#/solve" ||
+          route === "#/train" ? (
           <Suspense fallback={<p role="status">Opening your workspace…</p>}>
-            {route === "#/learn" ? (
+            {route === "#/train" ? (
+              <TrainerPage preferences={preferences} />
+            ) : route === "#/learn" ? (
               <LearnPage preferences={preferences} />
             ) : (
               <SolvePage preferences={preferences} />

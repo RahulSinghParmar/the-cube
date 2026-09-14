@@ -21,6 +21,12 @@ function CubeMark() {
 export function MenuPage({ text }: { text: typeof messages.en }) {
   const items = [
     {
+      title: "Train",
+      href: "#/train",
+      icon: "solve",
+      description: "PLL patterns & guided practice",
+    },
+    {
       title: "Learn",
       href: "#/learn",
       icon: "learn",

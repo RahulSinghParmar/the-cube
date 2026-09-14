@@ -707,3 +707,5 @@ h1,
 .menu-local {
   font-size: 11px;
 }
+
+.menu-tool:last-child:nth-child(even) { grid-column: 1 / -1; }

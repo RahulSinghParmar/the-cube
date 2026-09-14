@@ -11,6 +11,9 @@ export function SequencePlayer({
   initialStep = 0,
   exercise = false,
   onStep,
+  onMistake,
+  exerciseName = "Lesson exercise",
+  completionText,
 }: {
   input: CubeState;
   moves: string[];
@@ -18,6 +21,9 @@ export function SequencePlayer({
   initialStep?: number;
   exercise?: boolean;
   onStep?: (step: number, practiced: boolean) => void;
+  onMistake?: () => void;
+  exerciseName?: string;
+  completionText?: string | undefined;
 }) {
   const states = useMemo(() => {
     const all = [input];
@@ -116,6 +122,7 @@ export function SequencePlayer({
     setPlaying(false);
     if (choice !== moves[current.current]) {
       setFeedback(`Try ${moves[current.current]}. The cube has not changed.`);
+      onMistake?.();
       return;
     }
     void go(current.current + 1, true);
@@ -123,7 +130,7 @@ export function SequencePlayer({
   return (
     <section
       className="sequence-player"
-      aria-label={exercise ? "Lesson exercise" : "Solution playback"}
+      aria-label={exercise ? exerciseName : "Solution playback"}
     >
       <div className="playback-scene">
         <div className="playback-status">
@@ -152,9 +159,10 @@ export function SequencePlayer({
         <p>
           {moves[cursor]
             ? moveDescription(moves[cursor]!)
-            : exercise
-              ? "You have reached the end. Apply every move yourself to record this lesson as practiced."
-              : "All six faces are solved. Your original input remains saved separately."}
+            : (completionText ??
+              (exercise
+                ? "You have reached the end. Apply every move yourself to record this lesson as practiced."
+                : "All six faces are solved. Your original input remains saved separately."))}
         </p>
         <div className="actions playback-actions">
           <button
