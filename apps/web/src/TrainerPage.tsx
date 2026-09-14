@@ -1,5 +1,6 @@
 import "./learning.css";
 import "./trainer.css";
+import { CasePattern } from "./CasePattern";
 import { useEffect, useState } from "react";
 import {
   PLL_CASES,
@@ -27,52 +28,6 @@ import {
   SaveRecovery,
   RestoreLearning,
 } from "./learning-storage";
-
-function CasePattern({ id, small = false }: { id: PLLId; small?: boolean }) {
-  const letters = pllInput(id).facelets;
-  const grid = [
-    null,
-    47,
-    46,
-    45,
-    null,
-    36,
-    0,
-    1,
-    2,
-    11,
-    37,
-    3,
-    4,
-    5,
-    10,
-    38,
-    6,
-    7,
-    8,
-    9,
-    null,
-    18,
-    19,
-    20,
-    null,
-  ];
-  return (
-    <div
-      className={`pll-pattern ${small ? "is-small" : ""}`}
-      aria-hidden="true"
-    >
-      {grid.map((index, i) => (
-        <span
-          key={i}
-          className={index === null ? "pattern-gap" : `color-${letters[index]}`}
-        >
-          {!small && index !== null ? letters[index] : ""}
-        </span>
-      ))}
-    </div>
-  );
-}
 
 export function TrainerPage({ preferences }: { preferences: Preferences }) {
   const store = useLearningStorage(
@@ -130,6 +85,11 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
         Learn how the last-layer pieces move into place. Watch a case, then
         practice each move yourself.
       </p>
+      <div className="actions">
+        <a className="file-button" href="#/recognize">
+          Try recognition drills →
+        </a>
+      </div>
       <SaveRecovery store={store} />
       <div className="pll-overview">
         <span>
@@ -354,8 +314,7 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
         </p>
         <p>
           PLL moves the last-layer pieces into their places after orientation is
-          complete. OLL/F2L libraries and timed recognition drills will follow
-          in later M4 releases.
+          complete. OLL/F2L libraries will follow in later M4 releases.
         </p>
       </details>
     </>

@@ -100,7 +100,10 @@ completed guided repetitions and incorrect choices are saved locally, with separ
 backup/restore and visible write-failure recovery. Watching never earns repetitions.
 The fixed-orientation face-turn edition keeps white U on top and green F in front.
 See [PLL scope, provenance and testing](docs/architecture/13-m4-pll-release.md).
-Timed recognition and OLL/F2L are future M4 releases.
+**Try recognition drills** adds randomized case identification, optional timing,
+feedback and separate saved accuracy/history, with extra practice for missed cases.
+See [recognition behavior and recovery](docs/architecture/14-m4-recognition-release.md).
+OLL/F2L remain future M4 releases.
 
 ### Physical cube practice (M1)
 

@@ -222,3 +222,5 @@ export function validateProgress(value: unknown): CourseProgress {
   return { version: 1, lessons };
 }
 export * from "./pll.js";
+
+export * from "./recognition.js";

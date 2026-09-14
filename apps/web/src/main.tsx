@@ -26,6 +26,11 @@ import { MenuPage, InfoPage } from "./MenuPages";
 import "./styles.css";
 import "../../../assets/css/app-theme.css";
 
+const RecognitionPage = lazy(() =>
+  import("./RecognitionPage").then((module) => ({
+    default: module.RecognitionPage,
+  })),
+);
 const TrainerPage = lazy(() =>
   import("./TrainerPage").then((module) => ({ default: module.TrainerPage })),
 );
@@ -468,9 +473,12 @@ function App() {
           />
         ) : route === "#/learn" ||
           route === "#/solve" ||
-          route === "#/train" ? (
+          route === "#/train" ||
+          route === "#/recognize" ? (
           <Suspense fallback={<p role="status">Opening your workspace…</p>}>
-            {route === "#/train" ? (
+            {route === "#/recognize" ? (
+              <RecognitionPage preferences={preferences} />
+            ) : route === "#/train" ? (
               <TrainerPage preferences={preferences} />
             ) : route === "#/learn" ? (
               <LearnPage preferences={preferences} />

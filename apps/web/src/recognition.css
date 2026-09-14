@@ -1,0 +1,144 @@
+.recognition-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 32px;
+  margin: 28px 0;
+  padding: 20px;
+  background: var(--tint);
+  border-radius: 16px;
+}
+.recognition-stats span {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.recognition-stats b {
+  color: var(--text);
+  font-size: 24px;
+}
+.recognition-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+}
+.recognition-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.recognition-options input {
+  width: 20px;
+  height: 20px;
+}
+.recognition-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.recognition-question,
+.recognition-feedback {
+  margin: 24px 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+.recognition-prompt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.recognition-prompt h2 {
+  margin: 0;
+}
+.recognition-prompt span {
+  font-variant-numeric: tabular-nums;
+}
+.recognition-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  align-items: center;
+  gap: 24px;
+}
+.recognition-visual .cube-view {
+  height: 320px;
+  min-height: 0;
+}
+.recognition-visual figure {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+.recognition-visual figcaption {
+  font-size: 12px;
+  color: var(--muted);
+}
+.recognition-question form {
+  max-width: 500px;
+  margin-top: 20px;
+}
+.recognition-net {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 0;
+}
+.recognition-face {
+  display: grid;
+  grid-template-columns: repeat(3, 26px);
+  gap: 2px;
+  margin-top: 8px;
+}
+.recognition-face .sticker {
+  height: 26px;
+  display: grid;
+  place-items: center;
+  color: #172535;
+  border: 1px solid #24303b;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.recognition-feedback li {
+  line-height: 1.8;
+  color: var(--muted);
+}
+.recognition-feedback details {
+  margin-top: 24px;
+}
+.recognition-history {
+  padding-left: 24px;
+}
+.recognition-history li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.recognition-history small {
+  display: block;
+  color: var(--muted);
+  margin-top: 5px;
+}
+@media (max-width: 600px) {
+  .recognition-visual {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .recognition-visual .cube-view {
+    height: 250px;
+  }
+  .recognition-question,
+  .recognition-feedback {
+    padding: 16px;
+  }
+  .recognition-visual .pll-pattern {
+    width: 140px;
+  }
+}
+
+.recognition-visual .cube-view[hidden] {
+  display: none;
+}
