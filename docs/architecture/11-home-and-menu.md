@@ -133,32 +133,22 @@ The homepage and menu layout are approved. Start M3 from our architecture plan, 
 ```
 
 
-## Direct cube panels and usability refinement
+## Original cube panels and direct destinations
 
-Settings links now use `./?panel=settings`; statistics use `./?panel=stats`.
-Both destinations initialize the requested original panel before any homepage
-entrance tween is scheduled. In-page Cube / Settings / Statistics navigation
-switches without a document reload, updates the query and focuses the panel
-heading. Returning to Cube restores the saved cube in place. M4 F2L remains
-paused while the owner reviews this base-app refinement.
+The original simulator's settings and statistics layout, typography, sliders,
+spacing and colors are preserved. No card layout, decorative cube, new headings
+or panel navigation bar is added. The app's Touch cube link opens
+`./?panel=settings`; Cube statistics opens `./?panel=stats`. These destinations
+initialize the original panel directly without the homepage cube entrance.
+The existing Back and Menu controls connect it to the rest of the app.
 
-Original settings and score calculations remain authoritative. The panels add
-readable cards, a small CSS 3D cube, a highlighted best time, real 44 px slider
-handles, directly selectable values, arrow-key controls and native vertical
-scrolling on small/landscape displays. A short opacity/translation entrance
-respects reduced motion. Hidden panels are inert. The original theme editor
-remains available through the color button; the simulator entrance stays on
-ordinary homepage visits.
+Hidden panels are inert, original sliders retain keyboard and clickable-value
+support, and the existing theme editor remains available. Rendering pauses when
+the cube is hidden, but visible rendering uses the device's full pixel ratio
+with the original antialiasing, materials, lights and geometry. Resizing refreshes
+pixel ratio when moving between displays. No saved data or score formats change.
 
-The renderer stops while Settings/Statistics are open or the document is hidden;
-it resumes when the cube is shown. Device pixel ratio is capped at 2 to bound
-rendering cost on dense displays. No storage keys, score formats or learning
-records are migrated. Changing the cube size retains the original new-cube
-behavior; changing display preferences or viewing statistics retains the saved
-checkpoint. Cross-browser checks cover direct initialization without cube tweens,
-checkpoint preservation, actual-origin offline navigation, keyboard and direct
-choices, theme-editor round trips, narrow/landscape layout and touch scrolling.
-
-Owner check: Menu → Settings → Open touch-cube settings should show the panel
-immediately. Choose Smooth, reload, then switch to Statistics and back to Cube.
-Check the original theme, saved result values, and vertical scrolling on a phone.
+Owner check: open Settings from the menu, compare the original sliders and
+centered layout, then open Cube statistics from Menu. Both should land directly.
+Return to Cube and check sharpness on a high-density display. F2L remains paused
+while the owner reviews the base app experience.

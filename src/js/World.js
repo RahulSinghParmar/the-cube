@@ -12,7 +12,7 @@ class World extends Animation {
 		this.scene = new THREE.Scene();
 
 		this.renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
-		this.renderer.setPixelRatio( Math.min(window.devicePixelRatio || 1, 2) );
+		this.renderer.setPixelRatio( window.devicePixelRatio || 1 );
 		this.container.appendChild( this.renderer.domElement );
 
 		this.camera = new THREE.PerspectiveCamera( 2, 1, 0.1, 10000 );
@@ -49,6 +49,7 @@ class World extends Animation {
 		this.width = this.container.offsetWidth;
 		this.height = this.container.offsetHeight;
 
+		this.renderer.setPixelRatio(window.devicePixelRatio || 1);
 		this.renderer.setSize( this.width, this.height );
 
 	  this.camera.fov = this.fov;

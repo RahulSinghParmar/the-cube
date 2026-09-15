@@ -33,72 +33,14 @@ button:focus-visible, summary:focus-visible { outline: 3px solid #165dce; outlin
 @media (max-height: 500px) { .text--title { font-size: 2.5em; bottom: 73%; } .home-menu { top: 12px; min-height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .home-menu { transition: none; } }
 
-/* Original cube panels: readable cards, native scrolling and instant destinations. */
-.ui__prefs, .ui__stats { visibility: hidden; }
-body[data-cube-panel="settings"] .ui__prefs,
-body[data-cube-panel="stats"] .ui__stats { visibility: visible; }
+/* Keep the original panel layout; only control which destination is active. */
+.ui__prefs[inert], .ui__stats[inert], .ui__theme[inert] { visibility: hidden; }
 body[data-cube-panel="settings"] .ui__game,
 body[data-cube-panel="stats"] .ui__game,
 body[data-cube-panel="settings"] .ui__texts,
 body[data-cube-panel="stats"] .ui__texts,
 body[data-cube-panel="theme"] .ui__texts { visibility: hidden; }
-.cube-panel-nav { position: fixed; z-index: 30; top: max(16px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left)); display: flex; gap: 4px; padding: 4px; border: 1px solid #10151b18; border-radius: 28px; background: #ffffffec; }
-.cube-panel-nav[hidden] { display: none; }
-.cube-panel-nav button { border: 0; border-radius: 22px; background: transparent; padding: 0 16px; min-height: 40px; font: 650 13px/1.2 system-ui, sans-serif; text-transform: none; color: #26313a; cursor: pointer; transition: background .18s, transform .18s; }
-.cube-panel-nav button[aria-current] { background: #202a32; color: white; }
-.cube-panel-nav button:active { transform: scale(.96); }
-.cube-panel-nav button:hover:not([aria-current]) { background: #e8ebed; }
-.ui__prefs, .ui__stats { top: 88px; bottom: 88px; left: max(20px, env(safe-area-inset-left)); right: max(20px, env(safe-area-inset-right)); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; pointer-events: auto; justify-content: flex-start; align-items: stretch; padding: 24px max(12px, calc((100% - 760px) / 2)) 28px; font-size: 16px; border-radius: 24px; }
-.ui__prefs[inert], .ui__stats[inert] { pointer-events: none; }
-.cube-panel-heading { position: relative; flex: 0 0 auto; padding: 4px 94px 28px 0; }
-.cube-panel-heading h1 { font: 28px/1.25 'BungeeFont', sans-serif; margin: 12px 0; }
-.cube-panel-heading p, .cube-panel-note { font: 14px/1.6 system-ui, sans-serif; text-transform: none; color: #465360; }
-.cube-panel-heading p:first-of-type { font-size: 11px; letter-spacing: 2px; font-weight: 750; }
-.cube-panel-note { margin-top: 22px; padding: 16px 20px; border-left: 3px solid #26313a30; }
-.ui__prefs .range { width: 100%; flex: 0 0 auto; margin: 0 0 12px; padding: 20px 24px 12px; border: 1px solid #ffffffc9; border-radius: 18px; background: #ffffffb8; box-shadow: 0 4px 14px #15202d05; }
-body[data-cube-panel="settings"] .ui__prefs .range,
-body[data-cube-panel="settings"] .ui__prefs .range__label,
-body[data-cube-panel="settings"] .ui__prefs .range__track-line,
-body[data-cube-panel="settings"] .ui__prefs .range__handle,
-body[data-cube-panel="settings"] .ui__prefs .range__list div { opacity: 1 !important; transform: none !important; }
-body[data-cube-panel="settings"] .ui__prefs .range__handle { pointer-events: auto !important; }
-.ui__prefs .range__label { font-size: 15px; padding-bottom: 12px; line-height: 1.3; }
-.ui__prefs .range__track { height: 32px; margin: 0 14px; }
-.ui__prefs .range__handle { touch-action: none; width: 44px; height: 44px; margin: -22px; }
-.ui__prefs .range__handle:after { inset: 0; width: 44px; height: 44px; margin: 0; }
-.ui__prefs .range__handle > div { left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px; border-radius: 6px; box-shadow: 0 3px 8px #15202d22; }
-.ui__prefs .range__list { font: 12px/1.3 system-ui, sans-serif; color: #465360; padding-top: 2px; gap: 4px; }
-.range__list [role="button"] { cursor: pointer; }
-.ui__prefs .range__list div { min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 0 10px; border-radius: 10px; text-transform: none; }
-.ui__prefs .range__list div[aria-pressed="true"] { background: #26313a10; color: #10151b; font-weight: 750; }
-.ui__prefs .range__list div:hover { background: #26313a18; }
-body[data-cube-panel="stats"] .stats { opacity: 1 !important; transform: none !important; }
-.ui__stats .stats { width: 100%; flex: 0 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 19px 24px; margin: 0 0 10px; border: 1px solid #ffffffc9; border-radius: 16px; background: #ffffffad; font-size: 18px; line-height: 1.4; }
-.ui__stats .stats i { font: 14px/1.5 system-ui, sans-serif; text-transform: none; color: #465360; }
-.ui__stats .stats b { margin: 0; }
-.ui__stats .stats[name="best-time"] { background: #202a32; color: white; box-shadow: 0 8px 24px #202a321c; }
-.ui__stats .stats[name="best-time"] i { color: #e8edf1; }
-.panel-cube { position: absolute; right: 18px; top: 22px; width: 52px; height: 52px; transform-style: preserve-3d; transform: rotateX(-25deg) rotateY(-35deg); }
-.panel-cube i { position: absolute; inset: 0; border: 3px solid #26313a; border-radius: 5px; background: repeating-linear-gradient(0deg, transparent 0 14px, #26313a 14px 17px), repeating-linear-gradient(90deg, #fafaff 0 14px, #26313a 14px 17px); }
-.panel-cube i:nth-child(1) { transform: translateZ(26px); }
-.panel-cube i:nth-child(2) { transform: rotateY(90deg) translateZ(26px); background-color: #41aac8; background-blend-mode: multiply; }
-.panel-cube i:nth-child(3) { transform: rotateX(90deg) translateZ(26px); background-color: #82ca38; background-blend-mode: multiply; }
-body[data-cube-panel="settings"] .ui__prefs, body[data-cube-panel="stats"] .ui__stats { animation: panel-arrive .22s ease-out both; }
-@keyframes panel-arrive { from { opacity: .4; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-[role="slider"]:focus-visible:after { outline: 3px solid #165dce; outline-offset: 3px; border-radius: 8px; }
-.range__list [role="button"]:focus-visible, .cube-panel-nav button:focus-visible { outline: 3px solid #165dce; outline-offset: 2px; }
-@media(max-width: 540px) {
- .cube-panel-nav { top: max(76px, calc(env(safe-area-inset-top) + 60px)); left: 16px; right: 16px; justify-content: space-between; }
- .cube-panel-nav button { flex: 1; padding: 0 8px; }
- .ui__prefs, .ui__stats { top: max(132px, calc(env(safe-area-inset-top) + 116px)); left: 8px; right: 8px; padding: 18px 12px; }
- .cube-panel-heading { padding-right: 70px; }
- .cube-panel-heading h1 { font-size: 23px; }
- .panel-cube { transform: scale(.75) rotateX(-25deg) rotateY(-35deg); right: 8px; }
- .ui__prefs .range { padding: 18px 14px 10px; }
- .ui__prefs .range__list { font-size: 11px; gap: 0; }
- .ui__prefs .range__list div { padding: 0 7px; }
-}
-@media(prefers-reduced-motion: reduce) {
- body[data-cube-panel] .ui__prefs, body[data-cube-panel] .ui__stats { animation: none; }
- .cube-panel-nav button { transition: none; }
-}
+.range__handle { width: 3em; height: 3em; margin: -1.5em; touch-action: none; }
+.range__handle > div, .range__handle:after { left: 50%; top: 50%; }
+.range__list [role="button"] { cursor: pointer; pointer-events: auto; }
+.range__list [role="button"]:focus-visible, .range__handle:focus-visible { outline: 3px solid #165dce; outline-offset: 4px; border-radius: .2em; }

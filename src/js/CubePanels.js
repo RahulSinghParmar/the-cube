@@ -2,47 +2,13 @@
 export class CubePanels {
   constructor(game) {
     this.game = game;
-    this.nav = document.createElement("nav");
-    this.nav.className = "cube-panel-nav";
-    this.nav.setAttribute("aria-label", "Cube panels");
-    this.nav.innerHTML = `<button data-panel="cube">← Cube</button><button data-panel="settings">Settings</button><button data-panel="stats">Statistics</button>`;
-    document.body.append(this.nav);
-    this.nav.addEventListener("click", (event) => {
-      const button = event.target.closest("button");
-      if (!button || game.transition.activeTransitions) return;
-      if (button.dataset.panel === "cube") this.close();
-      else this.open(button.dataset.panel);
-    });
-    for (const [name, element, title, description] of [
-      [
-        "settings",
-        game.dom.prefs,
-        "Make it your cube.",
-        "Size, motion and color. Your original cube, tuned to you.",
-      ],
-      [
-        "stats",
-        game.dom.stats,
-        "Every solve counts.",
-        "Your touch-cube results. Times and averages for the selected cube size.",
-      ],
+    for (const [element, label] of [
+      [game.dom.prefs, "Cube settings"],
+      [game.dom.stats, "Cube statistics"],
     ]) {
-      const header = document.createElement("header");
-      header.className = "cube-panel-heading";
-      header.innerHTML = `<div class="panel-cube" aria-hidden="true"><i></i><i></i><i></i></div><p>THE CUBE / ${name === "stats" ? "STATISTICS" : "SETTINGS"}</p><h1 tabindex="-1">${title}</h1><p>${description}</p>`;
-      element.prepend(header);
-      element.setAttribute(
-        "aria-label",
-        name === "stats" ? "Cube statistics" : "Cube settings",
-      );
       element.setAttribute("role", "region");
-      const note = document.createElement("p");
-      note.className = "cube-panel-note";
-      note.textContent =
-        name === "stats"
-          ? "A dash means there are not enough solves yet. Physical-cube timer sessions stay in Timer."
-          : "Changes save automatically. Changing cube size starts a new cube when you return. Use the color button below to edit individual sticker colors.";
-      element.append(note);
+      element.setAttribute("aria-label", label);
+      element.tabIndex = -1;
     }
     for (const element of [game.dom.prefs, game.dom.stats, game.dom.theme])
       element.inert = true;
@@ -52,16 +18,10 @@ export class CubePanels {
   view(panel) {
     const game = this.game;
     document.body.dataset.cubePanel = panel;
-    this.nav.hidden = !["settings", "stats"].includes(panel);
     game.dom.prefs.inert = panel !== "settings";
     game.dom.stats.inert = panel !== "stats";
     game.dom.theme.inert = panel !== "theme";
     game.dom.game.inert = panel === "settings" || panel === "stats";
-    for (const button of this.nav.querySelectorAll("button")) {
-      if (button.dataset.panel === panel)
-        button.setAttribute("aria-current", "page");
-      else button.removeAttribute("aria-current");
-    }
     if (panel === "settings" || panel === "stats") {
       game.transition.tweens.float?.stop();
     } else if (game.transition.tweens.float) game.transition.float();
@@ -98,7 +58,17 @@ export class CubePanels {
     history.replaceState(null, "", url);
     const element = panel === "settings" ? game.dom.prefs : game.dom.stats;
     element.scrollTop = 0;
-    element.querySelector("h1").focus({ preventScroll: true });
+    // Place the original controls at their final visible positions without
+    // scheduling the homepage entrance or redesigning the panel.
+    for (const item of element.querySelectorAll(
+      ".range, .range__label, .range__track-line, .range__handle, .range__list div, .stats",
+    )) {
+      item.style.opacity = "1";
+      item.style.transform = "none";
+    }
+    for (const handle of element.querySelectorAll(".range__handle"))
+      handle.style.pointerEvents = "all";
+    element.focus({ preventScroll: true });
   }
 
   close() {
