@@ -5,7 +5,7 @@ test('new interface and settings pass automated WCAG AA checks in each theme',as
   for(const theme of ['light','dark','contrast']){
     await page.getByRole('link',{name:'Settings',exact:true}).click();
     await page.getByRole('combobox',{name:'Appearance'}).selectOption(theme);await page.getByRole('button',{name:'Save preferences'}).click();
-    for(const route of ['#/settings','#/play','#/menu','#/about','#/license','#/learn','#/solve','#/train','#/recognize']){
+    for(const route of ['#/settings','#/play','#/menu','#/about','#/license','#/learn','#/solve','#/train','#/recognize','#/oll']){
       await page.goto(`/the-cube/menu.html${route}`);
       await expect(page.locator('h1')).toBeVisible();
       if(route==='#/recognize') {

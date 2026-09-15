@@ -1,24 +1,26 @@
 import "./learning.css";
 import "./trainer.css";
-import { CasePattern } from "./CasePattern";
+import "./oll.css";
+import { FacePattern } from "./CasePattern";
 import { useEffect, useState } from "react";
 import {
-  PLL_CASES,
-  PLL_GROUPS,
-  PLL_EXPLANATIONS,
-  PLL_SOURCE,
-  pllCase,
-  pllInput,
-  pllMoves,
-  pllPieceGuide,
-  verifyPLL,
-  newPLLProgress,
-  newPLLRecord,
-  recordPLLStep,
-  validatePLLProgress,
-  type PLLGroup,
-  type PLLId,
-  type PLLRecord,
+  OLL_CASES,
+  OLL_GROUPS,
+  OLL_EXPLANATIONS,
+  OLL_SOURCE,
+  ollCase,
+  ollInput,
+  ollMoves,
+  ollOrientationGuide,
+  ollName,
+  verifyOLL,
+  newOLLProgress,
+  newOLLRecord,
+  recordOLLStep,
+  validateOLLProgress,
+  type OLLGroup,
+  type OLLId,
+  type OLLRecord,
 } from "@the-cube/academy";
 import type { Preferences } from "./preferences";
 import { SequencePlayer } from "./SequencePlayer";
@@ -29,31 +31,31 @@ import {
   RestoreLearning,
 } from "./learning-storage";
 
-export function TrainerPage({ preferences }: { preferences: Preferences }) {
+export function OLLPage({ preferences }: { preferences: Preferences }) {
   const store = useLearningStorage(
-    `the-cube-pll-v1:${learningScope}`,
-    newPLLProgress(),
-    validatePLLProgress,
+    `the-cube-oll-v1:${learningScope}`,
+    newOLLProgress(),
+    validateOLLProgress,
   );
   const [mode, setMode] = useState<"watch" | "practice">("watch");
-  const [group, setGroup] = useState<PLLGroup | "all">("all");
+  const [group, setGroup] = useState<OLLGroup | "all">("all");
   const [generation, setGeneration] = useState(0);
   const [libraryOpen, setLibraryOpen] = useState(innerWidth >= 900);
   const id = store.value.selected,
-    item = pllCase(id),
-    moves = pllMoves(id),
-    progress = store.value.cases[id] ?? newPLLRecord();
-  const cases = PLL_CASES.filter(
+    item = ollCase(id),
+    moves = ollMoves(id),
+    progress = store.value.cases[id] ?? newOLLRecord();
+  const cases = OLL_CASES.filter(
     (item) => group === "all" || item.group === group,
   );
-  const learned = PLL_CASES.filter(
+  const learned = OLL_CASES.filter(
     (item) => (store.value.cases[item.id]?.repetitions ?? 0) > 0,
   ).length;
-  const guide = pllPieceGuide(id);
+  const guide = ollOrientationGuide(id);
   // A broken catalog entry must never offer instructional playback.
   let verificationError = "";
   try {
-    verifyPLL(id);
+    verifyOLL(id);
   } catch {
     verificationError =
       "This case could not be verified. Choose another case and report this issue.";
@@ -61,12 +63,12 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
   useEffect(() => {
     document.querySelector<HTMLElement>("h1")?.focus();
   }, []);
-  function choose(next: PLLId) {
+  function choose(next: OLLId) {
     store.save({ ...store.value, selected: next });
     setMode("watch");
     if (innerWidth < 900) setLibraryOpen(false);
   }
-  function saveRecord(record: PLLRecord) {
+  function saveRecord(record: OLLRecord) {
     store.save({
       ...store.value,
       cases: { ...store.value.cases, [id]: record },
@@ -79,24 +81,25 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
   }
   return (
     <>
-      <p className="eyebrow">ALGORITHM TRAINER · PLL</p>
-      <h1 tabIndex={-1}>Find your next pattern.</h1>
+      <p className="eyebrow">ALGORITHM TRAINER · OLL</p>
+      <h1 tabIndex={-1}>Orient the last layer.</h1>
       <p>
-        Learn how the last-layer pieces move into place. Watch a case, then
-        practice each move yourself.
+        Turn every white last-layer sticker upward. Start with Sune (OLL 27),
+        then explore the full library. OLL orients the top; PLL places its
+        pieces afterward.
       </p>
       <div className="actions">
-        <a className="file-button" href="#/oll">
-          Learn OLL →
+        <a className="file-button" href="#/train">
+          PLL library →
         </a>
         <a className="file-button" href="#/recognize">
-          Try recognition drills →
+          PLL recognition drills →
         </a>
       </div>
       <SaveRecovery store={store} />
       <div className="pll-overview">
         <span>
-          <b>{learned}</b> / 21 cases practiced
+          <b>{learned}</b> / 57 cases practiced
         </span>
         <span>Saved on this device</span>
         <a href="#/learn">New to notation? Start with Learn →</a>
@@ -104,43 +107,43 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
       <div className="pll-layout">
         <aside>
           <label className="pll-picker">
-            Choose a PLL case
+            Choose an OLL case
             <select
-              aria-label="Choose a PLL case"
+              aria-label="Choose an OLL case"
               value={id}
-              onChange={(event) => choose(event.target.value as PLLId)}
+              onChange={(event) => choose(event.target.value as OLLId)}
             >
-              {PLL_CASES.map((item) => (
+              {OLL_CASES.map((item) => (
                 <option key={item.id} value={item.id}>
-                  {item.id} · {PLL_GROUPS[item.group]}
+                  {ollName(item.id)} · {OLL_GROUPS[item.group]}
                 </option>
               ))}
             </select>
           </label>
           <details
-            className="pll-library"
+            className="pll-library oll-library"
             open={libraryOpen}
             onToggle={(event) => setLibraryOpen(event.currentTarget.open)}
           >
-            <summary>Browse all 21 patterns</summary>
+            <summary>Browse all 57 patterns</summary>
             <label>
               Filter patterns
               <select
                 aria-label="Filter patterns"
                 value={group}
                 onChange={(event) =>
-                  setGroup(event.target.value as PLLGroup | "all")
+                  setGroup(event.target.value as OLLGroup | "all")
                 }
               >
                 <option value="all">All groups</option>
-                {Object.entries(PLL_GROUPS).map(([key, label]) => (
+                {Object.entries(OLL_GROUPS).map(([key, label]) => (
                   <option key={key} value={key}>
                     {label}
                   </option>
                 ))}
               </select>
             </label>
-            <div className="pll-cases" role="group" aria-label="PLL cases">
+            <div className="pll-cases" role="group" aria-label="OLL cases">
               {cases.map((item) => (
                 <button
                   key={item.id}
@@ -149,8 +152,12 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
                   aria-label={`${item.id} case${(store.value.cases[item.id]?.repetitions ?? 0) > 0 ? ", practiced" : ""}`}
                   onClick={() => choose(item.id)}
                 >
-                  <CasePattern id={item.id} small />
-                  <strong>{item.id}</strong>
+                  <FacePattern
+                    facelets={ollInput(item.id).facelets}
+                    small
+                    orientationOnly
+                  />
+                  <strong>{item.number}</strong>
                   <small>
                     {(store.value.cases[item.id]?.repetitions ?? 0) > 0
                       ? "Practiced ✓"
@@ -166,32 +173,32 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
         <article className="pll-workspace">
           <div className="pll-case-heading">
             <div>
-              <p className="eyebrow">{PLL_GROUPS[item.group]}</p>
-              <h2 data-testid="pll-case-title">{id} permutation</h2>
-              <p>{PLL_EXPLANATIONS[item.group]}</p>
+              <p className="eyebrow">{OLL_GROUPS[item.group]}</p>
+              <h2 data-testid="oll-case-title">{ollName(id)}</h2>
+              <p>{OLL_EXPLANATIONS[item.group]}</p>
             </div>
             <figure>
-              <CasePattern id={id} />
+              <FacePattern facelets={ollInput(id).facelets} orientationOnly />
               <figcaption>Top view · B above · F below</figcaption>
             </figure>
           </div>
           <div className="pll-orientation">
-            <b>White U on top · green F in front.</b> The white face is already
-            complete; compare the colored side rows. The two lower layers are
-            solved. Keep this orientation while following the moves.
+            <b>White U center on top · green F center in front.</b> White
+            stickers are highlighted; gray means a different color. The two
+            lower layers start solved. Match all white stickers around the top
+            and side rows, then keep this viewing angle during playback.
           </div>
           <details className="pll-piece-guide">
-            <summary>Which pieces move in this setup?</summary>
+            <summary>Where are the white stickers?</summary>
             <ul>
-              {guide.map((move) => (
-                <li key={move.from}>
-                  The <b>{move.from}</b> belongs at the <b>{move.to}</b>.
-                </li>
+              {guide.map((description) => (
+                <li key={description}>{description}</li>
               ))}
             </ul>
             <p>
-              Directions name slots on the upper layer, looking down with F in
-              front. The pattern and setup show this exact viewing angle.
+              Directions name the sticker faces in this exact setup. The center
+              stays on U; corner and edge stickers must turn upward. Side colors
+              are not used to recognize OLL.
             </p>
           </details>
           <div className="pll-mode" role="group" aria-label="Training mode">
@@ -222,20 +229,20 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
           ) : (
             <SequencePlayer
               key={`${id}:${mode}:${generation}`}
-              input={pllInput(id)}
+              input={ollInput(id)}
               moves={moves}
               preferences={preferences}
               exercise={mode === "practice"}
               initialStep={mode === "practice" ? progress.step : 0}
-              exerciseName="PLL practice"
+              exerciseName="OLL practice"
               completionText={
                 mode === "watch"
-                  ? "This prepared PLL case is solved. Switch to Practice moves to try it yourself."
-                  : "This repetition has reached its final step. Only moves applied yourself count toward a guided repetition."
+                  ? "The top face is oriented and both lower layers are preserved. The side pieces still need PLL. Switch to Practice moves to try this case yourself."
+                  : "The top face is oriented; PLL is still needed. Only moves applied yourself count toward a guided repetition."
               }
               onStep={(step, manual) => {
                 if (mode === "practice")
-                  saveRecord(recordPLLStep(id, progress, step, manual));
+                  saveRecord(recordOLLStep(id, progress, step, manual));
               }}
               onMistake={() =>
                 saveRecord({
@@ -271,9 +278,9 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
               className="secondary"
               onClick={() =>
                 choose(
-                  PLL_CASES[
-                    (PLL_CASES.findIndex((item) => item.id === id) + 1) %
-                      PLL_CASES.length
+                  OLL_CASES[
+                    (OLL_CASES.findIndex((item) => item.id === id) + 1) %
+                      OLL_CASES.length
                   ]!.id,
                 )
               }
@@ -286,14 +293,14 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
       <details className="lesson-notes">
         <summary>Progress backups & algorithm sources</summary>
         <p>
-          Download your PLL progress before moving devices or clearing browser
+          Download your OLL progress before moving devices or clearing browser
           data. This record is separate from lessons, cube checkpoints and timer
           history. Guided repetitions measure practice with the displayed moves,
           not memorization or physical solve speed.
         </p>
         <div className="actions">
           <button className="secondary" onClick={store.backup}>
-            Download PLL progress
+            Download OLL progress
           </button>
           <RestoreLearning
             restore={async (file) => {
@@ -305,20 +312,23 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
           />
         </div>
         <p>
-          Case revision 1 · Conventional PLL algorithms checked against the{" "}
-          <a href={PLL_SOURCE} target="_blank" rel="noreferrer">
+          Case revision 1 · OLL numbering and conventional algorithms checked
+          against the{" "}
+          <a href={OLL_SOURCE} target="_blank" rel="noreferrer">
             CubeSkills reference by Feliks Zemdegs and Andy Klise
           </a>
           . Our explanations and diagrams are independently authored. These
           face-turn versions keep the cube orientation fixed; slice moves and
           rotations are expanded, so some sequences are longer than
-          speed-focused finger-trick versions. Final U adjustments are included.
-          Every case is verified with the cube engine before playback.
+          speed-focused finger-trick versions. These prepared exercises end in a
+          valid PLL case, not a fully solved cube. Every case is verified with
+          the cube engine before playback.
         </p>
         <p>
-          PLL moves the last-layer pieces into their places after orientation is
-          complete. OLL training is available from Learn OLL; F2L will follow in
-          a later M4 release.
+          The Cross group contains seven corner-orientation cases. The Line,
+          Angle and Dot groups cover the remaining edge orientations. All 57 OLL
+          cases are included. OLL recognition drills and F2L remain later M4
+          work.
         </p>
       </details>
     </>

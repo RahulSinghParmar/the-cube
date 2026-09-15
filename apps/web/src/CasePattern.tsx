@@ -1,5 +1,4 @@
 import { pllInput, type PLLId } from "@the-cube/academy";
-
 export function CasePattern({
   id,
   small = false,
@@ -7,7 +6,17 @@ export function CasePattern({
   id: PLLId;
   small?: boolean;
 }) {
-  const letters = pllInput(id).facelets;
+  return <FacePattern facelets={pllInput(id).facelets} small={small} />;
+}
+export function FacePattern({
+  facelets: letters,
+  small = false,
+  orientationOnly = false,
+}: {
+  facelets: string;
+  small?: boolean;
+  orientationOnly?: boolean;
+}) {
   const grid = [
     null,
     47,
@@ -43,9 +52,19 @@ export function CasePattern({
       {grid.map((index, i) => (
         <span
           key={i}
-          className={index === null ? "pattern-gap" : `color-${letters[index]}`}
+          className={
+            index === null
+              ? "pattern-gap"
+              : orientationOnly && letters[index] !== "U"
+                ? "orientation-other"
+                : `color-${letters[index]}`
+          }
         >
-          {!small && index !== null ? letters[index] : ""}
+          {!small &&
+          index !== null &&
+          (!orientationOnly || letters[index] === "U")
+            ? letters[index]
+            : ""}
         </span>
       ))}
     </div>

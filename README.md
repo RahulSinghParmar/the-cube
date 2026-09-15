@@ -103,7 +103,10 @@ See [PLL scope, provenance and testing](docs/architecture/13-m4-pll-release.md).
 **Try recognition drills** adds randomized case identification, optional timing,
 feedback and separate saved accuracy/history, with extra practice for missed cases.
 See [recognition behavior and recovery](docs/architecture/14-m4-recognition-release.md).
-OLL/F2L remain future M4 releases.
+**Learn OLL** opens all 57 orientation cases with white-sticker diagrams,
+explanations, 3D playback and separate saved guided practice. OLL exercises
+finish with the top oriented and PLL still needed. See [OLL release notes](docs/architecture/15-m4-oll-release.md).
+F2L remains a future M4 release.
 
 ### Physical cube practice (M1)
 
