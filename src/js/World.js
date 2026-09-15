@@ -12,7 +12,7 @@ class World extends Animation {
 		this.scene = new THREE.Scene();
 
 		this.renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
-		this.renderer.setPixelRatio( window.devicePixelRatio );
+		this.renderer.setPixelRatio( Math.min(window.devicePixelRatio || 1, 2) );
 		this.container.appendChild( this.renderer.domElement );
 
 		this.camera = new THREE.PerspectiveCamera( 2, 1, 0.1, 10000 );
@@ -24,10 +24,19 @@ class World extends Animation {
 
 		this.onResize = [];
 
+		this.rendering = true;
+		document.addEventListener('visibilitychange', () => this.setRendering());
 		this.resize();
 		window.addEventListener( 'resize', () => this.resize(), false );
 
 	}
+
+	setRendering() {
+    const enabled = !document.hidden && !['settings', 'stats'].includes(document.body.dataset.cubePanel);
+    if (enabled === this.rendering) return;
+    this.rendering = enabled;
+    if (enabled) this.start(); else this.stop();
+  }
 
 	update() {
 

@@ -131,3 +131,34 @@ Next owner command, after trying the layout:
 ```text
 The homepage and menu layout are approved. Start M3 from our architecture plan, preserving the touch homepage, saved data and live URL.
 ```
+
+
+## Direct cube panels and usability refinement
+
+Settings links now use `./?panel=settings`; statistics use `./?panel=stats`.
+Both destinations initialize the requested original panel before any homepage
+entrance tween is scheduled. In-page Cube / Settings / Statistics navigation
+switches without a document reload, updates the query and focuses the panel
+heading. Returning to Cube restores the saved cube in place. M4 F2L remains
+paused while the owner reviews this base-app refinement.
+
+Original settings and score calculations remain authoritative. The panels add
+readable cards, a small CSS 3D cube, a highlighted best time, real 44 px slider
+handles, directly selectable values, arrow-key controls and native vertical
+scrolling on small/landscape displays. A short opacity/translation entrance
+respects reduced motion. Hidden panels are inert. The original theme editor
+remains available through the color button; the simulator entrance stays on
+ordinary homepage visits.
+
+The renderer stops while Settings/Statistics are open or the document is hidden;
+it resumes when the cube is shown. Device pixel ratio is capped at 2 to bound
+rendering cost on dense displays. No storage keys, score formats or learning
+records are migrated. Changing the cube size retains the original new-cube
+behavior; changing display preferences or viewing statistics retains the saved
+checkpoint. Cross-browser checks cover direct initialization without cube tweens,
+checkpoint preservation, actual-origin offline navigation, keyboard and direct
+choices, theme-editor round trips, narrow/landscape layout and touch scrolling.
+
+Owner check: Menu → Settings → Open touch-cube settings should show the panel
+immediately. Choose Smooth, reload, then switch to Statistics and back to Cube.
+Check the original theme, saved result values, and vertical scrolling on a phone.

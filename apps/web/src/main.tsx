@@ -738,7 +738,7 @@ function App() {
                 Change the original cube's size, colors, turning speed and
                 camera.
               </p>
-              <a href="legacy.html?panel=settings">
+              <a href="./?panel=settings">
                 Open touch-cube settings →
               </a>
             </section>

@@ -12,6 +12,7 @@ import { Themes } from './Themes.js';
 import { ThemeEditor } from './ThemeEditor.js';
 import { States } from './States.js';
 import { Keyboard } from './Keyboard.js';
+import { CubePanels } from './CubePanels.js';
 import { setupHomeNavigation } from './HomeNavigation.js';
 
 import { Icons } from './Icons.js';
@@ -96,6 +97,13 @@ class Game {
 
     this.storage.loadGame();
     this.scores.calcStats();
+
+    this.panels = new CubePanels(this);
+    const requestedPanel = new URLSearchParams(location.search).get('panel');
+    if (requestedPanel === 'settings' || requestedPanel === 'stats') {
+      this.panels.open(requestedPanel);
+      return;
+    }
 
     // Reserve the startup animation window so early input cannot race the title.
     this.transition.activeTransitions++;
@@ -260,35 +268,8 @@ class Game {
   }
 
   prefs( show ) {
-
-    if ( show ) {
-
-      if ( this.transition.activeTransitions > 0 ) return;
-
-      this.state = STATE.Prefs;
-
-      this.transition.buttons( BUTTONS.Prefs, BUTTONS.Menu );
-
-      this.transition.title( HIDE );
-      this.transition.cube( HIDE );
-
-      setTimeout( () => this.transition.preferences( SHOW ), 1000 );
-
-    } else {
-
-      this.cube.resize();
-
-      this.state = STATE.Menu;
-
-      this.transition.buttons( BUTTONS.Menu, BUTTONS.Prefs );
-
-      this.transition.preferences( HIDE );
-
-      setTimeout( () => this.transition.cube( SHOW ), 500 );
-      setTimeout( () => this.transition.title( SHOW ), 1200 );
-
-    }
-
+    if (show) this.panels.open('settings');
+    else this.panels.close();
   }
 
   theme( show ) {
@@ -304,6 +285,7 @@ class Game {
       this.themeEditor.setHSL( null, false );
 
       this.state = STATE.Theme;
+      this.panels.view('theme');
 
       this.transition.buttons( BUTTONS.Theme, BUTTONS.Prefs );
 
@@ -315,6 +297,7 @@ class Game {
     } else {
 
       this.state = STATE.Prefs;
+      this.panels.view('settings');
 
       this.transition.buttons( BUTTONS.Prefs, BUTTONS.Theme );
 
@@ -342,33 +325,8 @@ class Game {
   }
 
   stats( show ) {
-
-    if ( show ) {
-
-      if ( this.transition.activeTransitions > 0 ) return;
-
-      this.state = STATE.Stats;
-
-      this.transition.buttons( BUTTONS.Stats, BUTTONS.Menu );
-
-      this.transition.title( HIDE );
-      this.transition.cube( HIDE );
-
-      setTimeout( () => this.transition.stats( SHOW ), 1000 );
-
-    } else {
-
-      this.state = STATE.Menu;
-
-      this.transition.buttons( BUTTONS.Menu, BUTTONS.Stats );
-
-      this.transition.stats( HIDE );
-
-      setTimeout( () => this.transition.cube( SHOW ), 500 );
-      setTimeout( () => this.transition.title( SHOW ), 1200 );
-
-    }
-
+    if (show) this.panels.open('stats');
+    else this.panels.close();
   }
 
   complete( show ) {
@@ -399,6 +357,7 @@ class Game {
     } else {
 
       this.state = STATE.Stats;
+      this.panels.view('stats');
       this.transition.buttons( BUTTONS.Stats, BUTTONS.Complete );
       this.saved = false;
 

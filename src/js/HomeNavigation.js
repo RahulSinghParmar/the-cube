@@ -43,20 +43,4 @@ export function setupHomeNavigation(game) {
     };
     leave();
   });
-  // Menu links open the same original settings and statistics panels.
-  const panel = new URLSearchParams(location.search).get("panel");
-  if (panel === "settings" || panel === "stats") {
-    const open = () => {
-      if (
-        game.dom.buttons.prefs.disabled ||
-        game.transition.activeTransitions
-      ) {
-        setTimeout(open, 100);
-        return;
-      }
-      if (panel === "settings") game.prefs(true);
-      else game.stats(true);
-    };
-    open();
-  }
 }

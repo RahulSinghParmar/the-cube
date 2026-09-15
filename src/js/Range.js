@@ -73,6 +73,27 @@ class Range {
     this.onUpdate = options.onUpdate;
     this.onComplete = options.onComplete;
 
+    this.handle.tabIndex = 0;
+    this.handle.setAttribute('role', 'slider');
+    this.handle.setAttribute('aria-label', this.element.querySelector('.range__label').textContent);
+    this.handle.setAttribute('aria-valuemin', this.min);
+    this.handle.setAttribute('aria-valuemax', this.max);
+    this.handle.addEventListener('keydown', event => {
+      const direction = {ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1}[event.key];
+      if (!direction && !['Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const value = event.key === 'Home' ? this.min : event.key === 'End' ? this.max : this.value + direction * (this.step || (this.max - this.min) / 100);
+      this.choose(value);
+    });
+    this.list.forEach((item, index) => {
+      item.setAttribute('role', 'button');
+      item.tabIndex = 0;
+      const choose = () => this.choose(this.min + index * (this.max - this.min) / (this.list.length - 1));
+      item.addEventListener('click', choose);
+      item.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(); }
+      });
+    });
     this.setValue( this.value );
 
     this.initDraggable();
@@ -84,6 +105,12 @@ class Range {
     this.value = this.round( this.limitValue( value ) );
     this.setHandlePosition();
 
+  }
+
+  choose(value) {
+    this.setValue(value);
+    this.onUpdate(this.value);
+    this.onComplete(this.value);
   }
 
   initDraggable() {
@@ -163,6 +190,13 @@ class Range {
   setHandlePosition() {
 
     this.handle.style.left = this.percentsFromValue( this.value ) * 100 + '%';
+    const index = Math.round(this.percentsFromValue(this.value) * (this.list.length - 1));
+    const discrete = this.step > 0 && this.list[index];
+    this.handle.setAttribute('aria-valuenow', Math.round(this.value * 100) / 100);
+    this.handle.setAttribute('aria-valuetext', discrete ? this.list[index].textContent.trim() : String(Math.round(this.value)));
+    this.list.forEach((item, i) => {
+      if (discrete) item.setAttribute('aria-pressed', String(i === index));
+    });
 
   }
 

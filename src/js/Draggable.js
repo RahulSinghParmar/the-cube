@@ -1,5 +1,8 @@
 window.addEventListener( 'touchmove', () => {} );
-document.addEventListener( 'touchmove',  event => { event.preventDefault(); }, { passive: false } );
+// Keep cube gestures contained while allowing native scrolling in panels.
+document.addEventListener('touchmove', event => {
+  if (event.target.closest('.ui__game, .range__handle')) event.preventDefault();
+}, { passive: false });
 
 class Draggable {
 
