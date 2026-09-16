@@ -1,5 +1,7 @@
 # Product requirements
 
+The [v2 platform plan](17-platform-architecture.md) adds separate application sections, GAN connectivity and cross-platform delivery to these requirements. [P0–P10](07-delivery.md) is the current execution sequence; M labels below retain the original requirement traceability.
+
 ## Product promise and users
 
 Help a user learn notation, practice solves, understand progress and obtain trustworthy solving guidance. Keep the existing playful simulator available throughout migration.

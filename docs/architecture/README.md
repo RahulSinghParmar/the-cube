@@ -1,12 +1,12 @@
-# The Cube / CubeMaster AI architecture plan
+# The Cube architecture plan
 
-Version 1.0 · 10 September 2026 · Owner: Rahul Singh Parmar
+Version 2.0 · 16 September 2026 · Owner: Rahul Singh Parmar
 
-This is the target product and engineering plan for evolving the existing repository. The first foundation release is implemented; the capabilities described below are planned unless explicitly marked otherwise. CubeMaster AI is a working product name, pending a branding and provenance decision.
+Start with [platform architecture v2](17-platform-architecture.md) for the current upgrade plan, [reference and dependency review](18-reference-review.md) for the requested tools and inspiration, and [copy-paste phase prompts](08-build-guide.md) for what to do next. This revision preserves completed work and replaces the earlier future stack/navigation/order where they differ. Planned capabilities are not implemented merely because they appear here.
 
 ## Recommended direction
 
-Build an offline-capable cube practice and learning application with a shared, deterministic TypeScript domain model. Preserve the current simulator while adding a physical-cube timer, then learning and solving. Add an authenticated modular backend for synchronization and community features when those features enter development. Use the web application as the basis of future mobile and desktop clients.
+Build an offline-capable cube practice and learning application with shared TypeScript domain modules. Keep the original simulator and its theme at the homepage. Organize the tools into Algorithms, Training, Guides, Solve, Practice, Timer, Statistics and Settings. Retain React for P1, evaluate SvelteKit and cubing.js through P2, and introduce optional Supabase sync and platform-specific GAN adapters in later phases. Capacitor mobile and Tauri desktop remain candidates requiring real-device qualification.
 
 M1 implements the web practice timer, statistics and safe local data. M2 adds the React/Vite interface, typed cube core, queued controls, settings and language foundations. See [the M1 release notes](09-m1-release.md) and [M2 release notes](10-m2-release.md) for tests, recovery and limits. M3 adds [beginner exercises, manual input and verified 3×3 solving](12-m3-release.md). M4 has begun with [the PLL trainer](13-m4-pll-release.md); [recognition drills](14-m4-recognition-release.md) are also implemented, and [all 57 OLL cases](15-m4-oll-release.md) are available; [12 beginner F2L setups](16-m4-f2l-release.md) now add guided pairing and insertion. The server and later features below remain architecture proposals.
 
@@ -24,9 +24,9 @@ flowchart LR
   Domain --> Local[Local persistence and outbox]
   Domain --> Worker[Solver and vision workers]
   Local --> Sync[Optional authenticated sync]
-  Sync --> API[Modular API]
-  API --> DB[(PostgreSQL)]
-  API --> Jobs[Background jobs]
+  Sync --> API[Optional Supabase adapter]
+  API --> DB[(PostgreSQL with ownership policies)]
+  API --> Jobs[Privileged functions and jobs]
   Jobs --> Assets[Private object storage]
   Jobs --> Coach[Optional AI provider]
 ```
@@ -37,6 +37,8 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 
 | Document | Decisions and deliverables |
 | --- | --- |
+| [Platform architecture v2](17-platform-architecture.md) | Current sections, stack decisions, preserved data, content validation, GAN, cloud and cross-platform design |
+| [Reference and dependency review](18-reference-review.md) | All requested reference sites and tools, adoption phases, source rights and license discrepancies |
 | [Product requirements](01-product.md) | Personas, feature scope, user journeys, success criteria and non-goals |
 | [System architecture](02-system.md) | Stack, package boundaries, cube representation, timer state machine, solver/scanner design and decision records |
 | [Data and synchronization](03-data.md) | Local stores, entities, migration, ownership, conflict resolution and backup format |
@@ -45,7 +47,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 | [OpenAPI draft](openapi.json) | Machine-readable account/session/solve/sync API contract; no server is implemented |
 | [UX and component system](05-experience.md) | Navigation, design tokens, reusable components, accessibility, localization and offline states |
 | [Security, quality and operations](06-operations.md) | Threat controls, tests, performance targets, environments, release, backup and recovery |
-| [Delivery and decision plan](07-delivery.md) | Dependency graph, milestones, sprint tasks, estimates, risks and outstanding decisions |
+| [Delivery and decision plan](07-delivery.md) | P0–P10 phases, dependencies, acceptance gates and mapping from earlier milestones |
 | [M1 implementation and release](09-m1-release.md) | Physical timer, local sessions, backup/recovery, verification and user testing |
 | [M2 implementation and release](10-m2-release.md) | Modern interface, exact cube state, compatibility decisions, browser checks and user testing |
 | [Homepage and menu refinement](11-home-and-menu.md) | Original touch homepage, menu routes, preservation and current testing steps |
@@ -78,7 +80,7 @@ The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation
 5. Simulator, physical, imported and competition results retain their source and are never silently mixed.
 6. Device timestamps never decide synchronization conflicts or official rankings.
 7. User data survives upgrades through versioned migrations and exportable backups.
-8. Production deployment is a distinct action from committing or pushing development work.
+8. Successful main-branch checks automatically publish the web build; confirm the matching deployment and rendered routes. Native store publication remains a separate gate.
 
 ## Validation status
 

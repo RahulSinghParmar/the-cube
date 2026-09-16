@@ -1,5 +1,7 @@
 # System architecture and decisions
 
+**v2 precedence:** [Platform architecture v2](17-platform-architecture.md) is the current stack and platform decision record. The domain/worker/timer invariants below remain applicable. The future repository tree and older ADRs are historical proposals where v2 differs; do not scaffold a custom API/jobs service from them by default.
+
 ## Technology decisions
 
 | Layer | Reference decision | Adoption boundary |
@@ -10,15 +12,15 @@
 | State | Pure domain commands/reducers; local view state in components; external store for timer/cube | No server or framework types in domain packages; high-frequency frames bypass React renders |
 | Local data | IndexedDB for practice records; local storage for preferences and the bounded M2 cube checkpoint | M1 transactions retained; M2 checkpoint exception and future repository migration documented in release notes |
 | Background compute | Dedicated Web Workers; WASM only when a measured engine requires it | Solver, scramble tables and later vision; lazy-loaded and cancellable |
-| API | Node.js maintained LTS, Fastify modular monolith, JSON Schema contracts | M5; one deployable API and a separately runnable job process |
-| Cloud data | Managed PostgreSQL; SQL migrations and parameterized queries | M5; no browser DB credentials, tenant ownership in every request |
-| Identity | Managed OIDC/OAuth provider behind an identity adapter | Vendor selected before M5 after provider, region, export, deletion and pricing review |
-| Jobs/assets | PostgreSQL job table plus worker; S3-compatible private object storage | M5; add Redis only if queue/rate-limit measurements justify it |
+| API | Optional Supabase adapter with audited transactional RPCs/functions | P8 candidate; revise the old HTTP/auth draft first; no custom Fastify service by default |
+| Cloud data | Supabase PostgreSQL candidate; reviewed migrations, grants and RLS | P8; publishable client keys only, never secret/service-role credentials in clients |
+| Identity | Supabase Auth candidate behind an adapter | P8 region/cost/PKCE/session decision; v2 proposes memory-only initial web sessions |
+| Jobs/assets | Bounded functions/jobs and optional private Supabase Storage | P8 only when needed; no extra queue/cache service by default |
 | Mobile | Capacitor wrapping the web app, native storage/camera adapters as needed | M8; Flutter only if a device spike establishes a requirement that this approach cannot meet |
 | Desktop | Tauri wrapper with narrowly scoped commands | M8; platform signing and upgrades tested separately |
 | Repo | npm workspaces as packages are extracted, one lockfile, explicit package exports | M1; no task orchestrator until build times justify one |
 
-These are project decisions, not claims that a particular framework is universally best. Exact dependency versions are selected and locked at implementation time. TypeScript's strict setting enables a family of stronger checks; Vite documents its build/dev workflow. [TypeScript](https://www.typescriptlang.org/tsconfig/strict.html), [Vite](https://vite.dev/guide/), [Fastify](https://fastify.dev/docs/latest/).
+These are project decisions, not claims that a framework is universally best. P2 evaluates SvelteKit against the current React implementation; P1 stays on React. Exact versions are locked at adoption. See [TypeScript](https://www.typescriptlang.org/tsconfig/strict.html), [Vite](https://vite.dev/guide/) and [v2 dependency decisions](18-reference-review.md).
 
 ## Target repository
 

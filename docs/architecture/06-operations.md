@@ -1,5 +1,7 @@
 # Security, quality, deployment and operations
 
+**v2 amendment:** Follow [platform architecture v2](17-platform-architecture.md) and [current delivery gates](07-delivery.md) for P0–P10. Cookie/CSRF controls below apply to the earlier backend-for-frontend option; the proposed static Supabase client uses PKCE, memory-only initial web sessions, authorization/RLS tests and an explicit native secure-storage adapter. Do not claim HttpOnly cookies from a static Pages client or enable persistent tokens by SDK default. Physical hardware qualification is required for every native/BLE support claim. Other threat, recovery and quality invariants remain applicable.
+
 ## Threat boundaries and controls
 
 | Threat | Required control | Evidence before release |

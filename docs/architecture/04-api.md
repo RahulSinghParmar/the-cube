@@ -1,5 +1,7 @@
 # API and worker contracts
 
+**v2 transport decision:** [Platform architecture v2](17-platform-architecture.md) proposes a static client with optional Supabase Auth/RPC adapters. The same-origin cookie API below and [OpenAPI draft](openapi.json) describe the earlier custom-backend option, not the selected provider's wire contract. Preserve ownership/idempotency/conflict semantics, but revise transport, auth and schemas in P8 before implementation. GitHub Pages does not run an API server. No cloud endpoints or account service are currently deployed.
+
 ## Contract scope
 
 [openapi.json](openapi.json) is an OpenAPI 3.1.1 design for the M5 private practice API. It covers profile reads, session/solve reads and versioned writes, deletion, change push/pull and consistent bootstrap snapshots. It is not a running service. [OpenAPI specification](https://spec.openapis.org/oas/v3.1.1.html).

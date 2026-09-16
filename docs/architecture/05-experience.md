@@ -2,37 +2,28 @@
 
 ## Navigation and layout
 
-Preserve the existing cube appearance during foundation work. Introduce a restrained application shell around it rather than replacing the game with an unrelated dashboard. Main destinations: **Play**, **Timer**, **Learn**, **Train**, **Solve**, and **Progress**. Collection lives under Progress; profile, backup, preferences and support live under Settings. Community appears only when its module ships.
+Preserve the original cube appearance, homepage and original settings/statistics panels. Main tools destinations are **Algorithms**, **Training**, **Guides**, **Solve**, **Practice**, **Timer**, **Statistics** and **Settings**, with About and Licenses available. The [v2 route table](17-platform-architecture.md) is authoritative; new sections arrive in P1 while current links remain compatible. Profile/devices appear only when implemented. Algorithms is a reference library; Training records drills; Guides teaches a progression.
 
 On desktop, use a compact top navigation and a content area with optional supporting panels. On mobile, expose the four most-used destinations with a More menu; keep the timer pad and cube interaction area clear of overlays. Lesson and solver pages can show a split instruction/cube view on wide screens and a stacked view on narrow ones. Do not require horizontal scrolling at a 320 CSS-pixel width for ordinary controls and text.
 
 | Route family | Primary action | Required states |
 | --- | --- | --- |
-| `/play` | Start/resume virtual solve | Menu, scrambling, ready, turning, complete, saved, interrupted |
-| `/timer` | Start/stop physical attempt | Inspection, holding, armed, running, saving, review, save failed |
-| `/learn`, `/learn/:lesson` | Continue lesson | Locked prerequisite, downloaded, missing offline pack, step correction, complete |
-| `/train` | Practice selected cases | Filter/select, recognition, execution, feedback, session summary |
-| `/solve` | Enter/scan and solve | Manual grid, camera permission, face review, invalid state, computing, playback |
-| `/progress` | Review personal history | Empty, filtered, edited result, pending sync, conflict, export |
-| `/settings` | Configure controls/data | Key collision, theme preview, storage quota, import preview, account separation |
+| Home `/the-cube/`; Practice `menu.html#/play` | Start/resume the selected virtual cube | Separate saved cubes; scrambling, turning, complete, interrupted |
+| `menu.html#/algorithms` | Find and understand a case | Search/filter, variant selection, favorite, provenance, offline availability |
+| `menu.html#/guides`; retain `#/learn` | Continue learning | Prerequisites, step correction, completion, saved resume |
+| `menu.html#/training`; retain existing trainer hashes | Practice selected cases | Recognition, execution, feedback, saved summary |
+| `timer.html` | Time a physical attempt | Inspection, armed, running, saving, review, save failed |
+| `menu.html#/solve` | Enter and solve; scan later | Manual grid, invalid state, computing, checked playback |
+| `menu.html#/statistics`; original `?panel=stats` | Review a chosen source of history | Empty, filtered, sample counts, edits, export; sync states later |
+| `menu.html#/settings`; original `?panel=settings` | Configure app/cube/data | Direct original panels, controls, quota, backup preview |
 
-Paths are proposed router routes. The current GitHub Pages subpath must continue working: use static route output or a tested hash-route fallback for deep links on a host without rewrite rules. Public lesson/catalog pages need prebuilt crawlable HTML, metadata, canonical URLs and share cards; private progress/account pages must not be indexed.
+New route entries are planned, not shipped by this document. Preserve the Pages subpath, HTML entry points and hashes. Public guide/catalog metadata may later use static generated pages; private history must not enter public output. Route changes must preserve storage scopes and support back/forward/reload/offline navigation. Direct original-panel links skip the cube intro and keep the original controls.
 
 ## Visual tokens
 
-Define semantic CSS variables in `packages/ui/tokens`; theme colors never enter the logical cube state. These are starting design values to test for contrast, not a completed redesign.
+Derive semantic CSS variables from the existing original theme and current compatible tools styles. The old proposed blue/gray token palette is superseded. Record actual surfaces, text, focus, spacing and motion values during P1; test contrast before adjusting them. Theme colors never enter logical cube state. Scope any Tailwind reset or component-library styles to the tools application. Keep the original settings/statistics appearance and meaningful achievement symbol.
 
-| Token | Light | Dark |
-| --- | --- | --- |
-| `surface` | `#FFFFFF` | `#111827` |
-| `surface-muted` | `#F3F4F6` | `#1F2937` |
-| `text` | `#111827` | `#F9FAFB` |
-| `text-muted` | `#4B5563` | `#D1D5DB` |
-| `accent` | `#1D4ED8` | `#93C5FD` |
-| `focus-ring` | `#1D4ED8` | `#FBBF24` |
-| `danger` | `#B91C1C` | `#FCA5A5` |
-
-Spacing scale: 4/8/12/16/24/32/48 px. Body type: system sans-serif, 16 px base and 1.5 line height; timer: tabular numerals with fluid sizing; the existing display font remains an optional Play identity. Use 8/12 px corner radii and restrained borders. Core pointer targets should be at least 44×44 CSS pixels as a product preference. Keep motion short and optional; long decorative cube intros should be skippable and cannot block timer readiness.
+Keep the original display identity and readable body type; use tabular timer numerals and fluid sizing. Reuse measured spacing/radii before inventing another theme. Primary touch targets should be at least 44×44 CSS pixels as a product preference. Short, optional transitions must not block input. Keep keyboard guides hidden until requested. Show a static diagram for case grids and mount 3D only where useful; test rendering cleanup and reduced motion.
 
 ## Component contracts
 

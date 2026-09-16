@@ -1,5 +1,7 @@
 # Data model, migration and synchronization
 
+**v2 amendment:** These ownership, migration and sync invariants remain required. [Platform architecture v2](17-platform-architecture.md) adds the current saved-data inventory, stable content revisions, GAN measurements and native storage transfer. Supabase is the proposed P8 provider, not an automatic sync solution. Sessions/solves remain the first cloud slice; training/learning require a separately tested extension. The SQL draft is not an applied Supabase migration.
+
 ## Shared value conventions
 
 Entity IDs and mutation IDs are client-generated UUIDs. API dates are ISO 8601 UTC strings; durations are nonnegative integer milliseconds capped at 86,400,000 for the initial practice product. The cap is a product input bound, not a competition rule. Profiles identify users by internal ID; external identities are mapped by `(issuer, subject)`, never by email alone.

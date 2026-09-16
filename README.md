@@ -137,6 +137,13 @@ security, deployment and the implementation backlog. Follow the
 
 For a nontechnical overview, see [the build phases and copy-paste commands](docs/architecture/08-build-guide.md).
 
+The [v2 platform architecture](docs/architecture/17-platform-architecture.md)
+updates the plan for separate algorithms, training and guides sections, GAN
+connectivity, optional cloud sync and cross-platform apps. The
+[reference and dependency review](docs/architecture/18-reference-review.md)
+explains the requested library choices and migration gates. These are planned
+upgrades; the original simulator, saved data and live URL remain the foundation.
+
 ### Install the web app
 
 - [Click](https://rahulsinghparmar.github.io/the-cube/) here to visit the Page

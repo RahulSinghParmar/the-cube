@@ -1,125 +1,193 @@
-# Build guide: what changes next and what to ask for
+# Build guide v2: phases and copy-paste prompts
 
-This is the plain-language guide for the repository owner. The detailed engineering plan remains in [the architecture index](README.md).
+16 September 2026. These are messages to paste into the development conversation, **not terminal commands**. Send one phase at a time. See [architecture v2](17-platform-architecture.md), [reference review](18-reference-review.md) and [delivery gates](07-delivery.md).
 
-## Where we are now
+## Current position
 
-The existing simulator is live at https://rahulsinghparmar.github.io/the-cube/.
-The foundation, architectural plan, deployment setup, M1 web timer, M2 web interface/engine and M3 learning/solver web scope are implemented. The full product described in the original brief is not built yet. See [M1 release and testing notes](09-m1-release.md) and [M2 release and testing notes](10-m2-release.md) for verified scope and limits.
+The original simulator remains at [the live URL](https://rahulsinghparmar.github.io/the-cube/). M0–M3 web scope and M4's PLL, PLL recognition, OLL and 12 beginner F2L setups are implemented. Accounts, GAN connectivity, camera capture and qualified native apps are not implemented. The F2L release is recorded at commit `18e6f1e` in [its release notes](16-m4-f2l-release.md).
 
-Completed: keyboard face controls and guide, build/offline repairs, selected game/data bug fixes, automated checks, architecture documents, primary `main` branch, preserved original `master`, and automatic publication after successful main-branch checks.
+P0 is this architecture revision: documentation, not an interface or storage change. P1 is next. Previous milestone names remain historical; P0–P10 incorporate the additional requirements without rebuilding completed work.
 
-M1 adds the dedicated physical-cube timer, inspection, session statistics/history, safe local storage, result review, backup/import and legacy migration.
+## Overall build prompt
 
-M2 adds the modern Play/Settings interface, exact typed cube engine, queued moves, custom keys, themes and English/Hindi foundations. The physical timer and original simulator remain available with their saved data. M3 adds eight guided beginner exercises, manual 3×3 input and independently verified solution playback. Still to build: expanded algorithm training, accounts, synchronization, scanner, coach and native applications. See [M3 release and testing notes](12-m3-release.md) for prepared-case scope and remaining device/content qualification.
-
-Before M3, the owner requested a navigation refinement: restore the original
-full-screen touch cube at the main URL, and place Practice, Timer, Settings,
-License and About the Developer on a separate menu. [Current homepage and menu
-guide](11-home-and-menu.md). The newer cube is now labeled **Practice**; both
-saved cubes and physical sessions remain separate and available. The owner subsequently authorized M3; Learn and Solve now join the menu.
-
-**M4 is in progress:** [PLL cases and guided practice](13-m4-pll-release.md) are implemented; [recognition drills](14-m4-recognition-release.md) are also implemented; [OLL training](15-m4-oll-release.md) and [12 beginner F2L guided setups](16-m4-f2l-release.md) are implemented. The full F2L catalog, additional recognition drills and optional collections remain future work. “M” means milestone: a smaller release-sized part of the original product plan. M0–M2 deliver the initial web foundation; full accessibility certification, device qualification and later original-vision features are not implied.
-
-## How to use the commands
-
-The commands in this guide are messages to paste into the development conversation. They are not terminal commands and do not require any software setup by the owner. Send one milestone command at a time. Do not send all of them together.
-
-For each command, first inspect the actual repository and prerequisite status, preserve existing functionality/data, implement the named scope, run relevant checks, commit and push verified changes to `main`, and verify the resulting Pages deployment. Preserve `master` and the neutral naming policy in [CONTRIBUTING.md](../../CONTRIBUTING.md). A service purchase or migration to a different host is not implied by a milestone prompt; present actual provider/cost choices before that decision is required.
-
-## Milestones and copy-paste commands
-
-| Milestone | Status | What changes for the user | Message to send |
-| --- | --- | --- | --- |
-| M0 — Foundation | Complete | Existing cube works with keyboard controls, offline loading and tested publishing | `Show the current build status and any remaining foundation defects.` |
-| M1 — Practice timer and data | Implemented; web release | A separate timer for a real cube, inspection, penalties, solve history, sessions, averages and backup/import | `Review the M1 release and help me test the physical-cube timer and backup recovery on my device.` |
-| M2 — Application and cube engine | Implemented; web release | Clear navigation, improved mobile/accessibility controls, settings, custom keys, reliable queued moves, themes and language foundations | `Review the M2 release and help me test the new Play interface, custom keys, saved cube and offline timer on my device.` |
-| M3 — Learning and solving | Implemented; web scope | Beginner lessons, manual entry of a 3x3 state, a checked solution and controllable move playback | `Review the M3 release and help me test lessons, manual cube entry, solution playback and backups on my device.` |
-| M4 — Algorithm practice | PLL, recognition, OLL and beginner F2L implemented | 21 verified PLL cases, guided practice, randomized recognition, optional timing and saved history, plus 57 OLL cases and 12 beginner F2L setups with saved guided practice | `Help me test F2L guided practice on my device before expanding M4.` |
-| M5 — Accounts and synchronization | Planned | Optional sign-in, profile, cross-device history, export/deletion and visible conflict recovery | `Start M5 from our architecture plan. Prepare provider and operating-cost choices, then implement optional accounts and safe cross-device synchronization once those choices are settled. Keep offline guest practice working.` |
-| M6 — Camera scanner | Planned | Capture the six faces of a 3x3, correct uncertain colors, validate the state and obtain a solution | `Start M6 from our architecture plan. Build the guided 3x3 camera scanner with manual color correction, state validation and verified solution playback.` |
-| M7 — Coaching | Planned | Suggestions based on recorded evidence; optional AI explanations, training plans and voice | `Start M7 from our architecture plan. Add evidence-based coaching and training recommendations first, then propose optional AI and voice features with clear cost and privacy controls.` |
-| M8 — Mobile and desktop | Planned | Installable Android/iOS and desktop applications with tested permissions, storage and updates | `Start M8 from our architecture plan. Evaluate the native wrappers on real devices, then package the web product for mobile and desktop with tested offline storage and updates.` |
-
-At M5 and M8, work can begin with architecture/provider/device preparation; it cannot honestly finish account hosting or store publication without the necessary owner decisions, accounts and credentials. Report the exact remaining dependency rather than marking the milestone complete.
-
-## Completed M1 implementation steps
-
-T-101 through T-107 are implemented for the web release. The original step prompts below are retained for traceability; use the release review command above instead of rebuilding completed steps. Some necessary engineering work has no immediate visible interface change.
-
-| Step | Change | What you can see | Message |
-| --- | --- | --- | --- |
-| T-101 | Add strict typed module/build setup for timing and statistics | Existing game stays the same; stronger checks appear in CI | `Implement T-101 from M1 only, verify it and push the change.` |
-| T-102 | Implement timer states, keyboard/touch events, inspection and interruption handling | Engine work first; the timer page arrives in T-106 | `Implement T-102 from M1 with timing-boundary and input tests.` |
-| T-103 | Implement penalties, DNF, trimmed averages and personal-best calculations | Calculation engine first; visible statistics arrive in T-106 | `Implement T-103 from M1 with tested Ao5, Ao12, Ao100, penalties and DNF handling.` |
-| T-104 | Add transactional local storage and failure recovery | Data infrastructure; no cloud account required | `Implement T-104 from M1 with safe local sessions and solve persistence.` |
-| T-105 | Preserve/import old history and add JSON backup/import | Backup and migration functions; controls connect in T-106 | `Implement T-105 from M1. Preserve legacy data and add validated backup, import and recovery.` |
-| T-106 | Connect the physical timer page, session picker, history and statistics | This is the main visible timer release | `Implement T-106 from M1. Connect the tested timer, statistics and storage into an accessible physical-cube timer interface.` |
-| T-107 | Verify complete journeys, mobile layout, offline reload and data recovery | A tested, published M1 release plus steps you can try | `Complete T-107 and verify all M1 acceptance criteria. Publish the tested result and tell me exactly how to test it.` |
-
-## Later features from the original vision
-
-These remain in scope as future workstreams beyond the M1/M2 web releases. They require their own acceptance criteria and, in some cases, operating-cost/moderation decisions.
-
-| Workstream | Prerequisite | Planning command |
-| --- | --- | --- |
-| Friends, clubs, shared progress, public feed | Accounts/sync, privacy and moderation capacity | `Prepare the community milestone from our original vision, with private sharing first and moderation before public posting.` |
-| Leaderboards and virtual competitions | Accounts, defined result trust classes, anti-replay and moderation | `Prepare the leaderboard and virtual competition milestone. Keep official, self-reported and simulator results clearly separated.` |
-| Official profiles and competition finder | Validated upstream source/permissions, cache/freshness policy | `Plan official competition-profile integration and a competition finder, including source verification and identity linking.` |
-| Cube collection | Core progress/data system | `Plan the cube collection manager with equipment, setup and maintenance records.` |
-| More solver methods and larger-cube scans | Validated 3x3 solver/scanner and dedicated research | `Assess the next supported cube size and pedagogical solving method. Give me correctness and device-test requirements before implementation.` |
-| All requested languages | Message catalog and reviewed translations | `Plan the remaining requested languages after English and Hindi, with reviewed lessons and accessible layouts.` |
-| Premium/billing | A useful free product, paid-feature validation, operator/legal decisions | `Prepare a monetization plan with clear free features, cost estimates, entitlements and cancellation handling. Do not purchase services yet.` |
-
-## How this maps to the original six phases
-
-| Original phase | Original intent | Current architecture mapping | Current completion |
-| --- | --- | --- | --- |
-| Phase 1 | Refactor, types, modules, tests, responsive UI, keyboard, timer, statistics, PWA | M0 + M1 + M2 | Web scope implemented; broader physical-device/accessibility qualification remains |
-| Phase 2 | Accounts, profiles, leaderboards, sync, languages, dark mode, analytics | M2 for UI/themes/language foundations; M5 for accounts/sync; later community for rankings | Themes and language foundations implemented; accounts/community planned |
-| Phase 3 | Scanner, image processing, reconstruction, solver | M3 validates the solver/manual input first; M6 adds camera input | Manual input and verified 3×3 solver implemented; camera planned |
-| Phase 4 | Tutorials, algorithm database and OLL/PLL/F2L practice | M3 lessons + M4 trainer | Eight prepared lessons, PLL/OLL training and 12 beginner F2L setups implemented; expanded F2L remains planned |
-| Phase 5 | Coach, personalized learning, solve analysis, voice | M7 plus playback voice where appropriate | Planned |
-| Phase 6 | Mobile, desktop, offline and notifications | Offline begins in M0/M1; M8 packages platforms and adds optional notifications | Basic web offline done; native work planned |
-
-We are following the product destination, with a changed execution order. Practice and lessons come before the cost and complexity of accounts. A checked solver comes before camera reconstruction, because a scanner needs a trustworthy way to validate and solve its output.
-
-## What changed from the suggested technology stack
-
-The original brief suggested Next.js, React, TypeScript, Tailwind, NestJS, PostgreSQL, Redis, several managed services, Flutter and Tauri. The web implementation now uses React/Vite and strict TypeScript domain modules while retaining the original simulator. Fastify, PostgreSQL and shared web-based mobile/desktop shells remain proposals. Redis and provider-specific services are postponed until justified. Mobile currently proposes Capacitor rather than Flutter to reuse the web application.
-
-If exact technology choices matter more than reuse, send: `Revise the architecture to follow my original technology stack. Explain the migration and operating-cost differences before changing application code.`
-
-The server database/API/component-library work is currently a design. The strict practice and cube-core packages, guest IndexedDB and React web workspace now exist; the database server, complete UI library and GitHub Project board have not been created. Coverage above 90%, full accessibility conformance and Lighthouse above 95 remain targets to measure, not completed achievements.
-
-## Optional visual work
-
-External creative tools can help with decorative artwork, achievement illustrations, marketing images and trailers. Keep accurate cube diagrams and instructional moves generated from the tested cube engine. A generated picture or video is not evidence that a move sequence is legal or correct.
-
-Useful planning message: `Prepare an optional visual asset plan for the game. List each asset, purpose, size and expected generation cost. Keep the existing repository and live site, and wait for my budget approval before paid generation.`
-
-Do not move the app to another builder/host simply to add visuals. Evaluate a separate prototype first if a hosting migration is desired. Verify current plan entitlements, generation credits, export terms and connection availability at that time.
-
-## Status and recovery commands
+Use this when starting a new development conversation or restating the full direction.
 
 ```text
-Show our current phase, completed features, remaining work, latest pushed commit and live deployment status. Do not change code.
+Work on RahulSinghParmar/the-cube using docs/architecture/17-platform-architecture.md,
+18-reference-review.md, 07-delivery.md and 08-build-guide.md. Inspect the repository,
+current phase, unfinished changes and latest deployment first. Continue the first
+authorized unfinished phase; if none has started, begin P1 only.
+
+Keep the original homepage simulator, theme, 3D appearance, settings and statistics.
+Organize the tools into Algorithms, Training, Guides, Solve, Practice, Timer,
+Statistics and Settings, with About and Licenses. Preserve existing features,
+saved data, backups, bookmarks and the live URL. Design for beginners through
+competitors and for phones, tablets and desktop.
+
+Reuse the TypeScript cube, timing, solver, training and data modules. Keep React
+for P1. Evaluate SvelteKit, cubing.js and the requested UI libraries through P2
+before any framework cutover. Use libraries only for their documented roles.
+Plan GAN web/native adapters, optional Supabase sync, Capacitor mobile and Tauri
+desktop with honest capability limits. Keep guest practice and downloaded core
+content usable offline.
+
+Implement one bounded, reviewable outcome at a time. Verify correctness, data
+preservation, accessibility, performance and relevant browser behavior. Use the
+built-in browser for UI review. Commit and push each coherent verified change
+to main, preserve master and neutral naming, inspect matching CI/Pages results
+and test live routes. Do not buy services or publish native store releases
+without the required owner decisions.
+
+After each release explain changes, checks/limits, commit/live status, my test
+steps, remaining work and the next command. Stop at the named phase boundary
+unless I authorize the next phase.
+```
+
+## Phase prompts
+
+The preservation, verification and publication rules above apply to every implementation prompt. Preparation can proceed while hardware/provider choices are pending; report the exact remaining dependency.
+
+### P1 — Organize the app (recommended next)
+
+```text
+Start P1 from our v2 architecture. Create clear sections for Algorithms, Training,
+Guides, Solve, Practice, Timer, Statistics and Settings, linking existing features.
+Keep About and Licenses. Preserve the original homepage cube, original settings
+and statistics panels, theme, 3D quality, saved data and old URLs. Keep keyboard
+help hidden until requested. Make navigation clear on desktop, iPad and phones,
+with direct original-panel links and useful back navigation. Stay on React;
+do not migrate storage or add cloud/Bluetooth yet. Test in the built-in browser
+and relevant regression suite, push verified changes to main, verify deployment
+and explain my tests.
+```
+
+### P2 — Prove the technology choices
+
+```text
+Start P2. Compare our existing interface with a small SvelteKit static prototype
+using the original theme and shared TypeScript modules. Evaluate cubing.js,
+Tailwind, shadcn-svelte/Bits UI and Lucide for their proposed roles. Resolve
+sr-visualizer licensing before use. Measure size, interaction, accessibility,
+playback, saved data, old URLs and offline upgrades. Investigate GAN web/native
+BLE feasibility and label missing hardware evidence. Record a keep-or-migrate
+recommendation; keep the live framework until selection is recorded. Qualify
+any selected migration route by route, separate from storage/timer changes.
+Push verified work and report the evidence.
+```
+
+### P3 — Build the algorithm library
+
+```text
+Start P3. Build a searchable algorithm library with diagrams, recognition cues,
+beginner-friendly explanations, variants, favorites and source notes. Reuse our
+PLL/OLL/F2L content and stable progress IDs. Expand F2L in verified batches toward
+the declared full taxonomy. Check independent case fixtures, stage outcomes,
+orientation and AUF, not only an algorithm against its inverse. Add controllable
+3D playback and guided-practice links. Preserve data/theme, test, push verified
+changes and verify deployment.
+```
+
+### P4 — Complete the beginner learning path
+
+```text
+Start P4. Expand Guides into an original, reviewed beginner-to-CFOP path: holding
+and orientation, notation, first solve, intuitive F2L and two-look last layer.
+Give each step a goal, short explanation, controllable 3D example, learner check,
+mistake recovery and saved resume position. Distinguish prepared examples from
+solving an arbitrary real cube. Preserve lessons/progress, support offline and
+reduced motion, test and publish verified work.
+```
+
+### P5 — Expand training and saved review
+
+```text
+Start P5. Expand OLL/F2L recognition and guided execution alongside existing PLL
+drills. Add selected/mixed case practice, optional timing, clear feedback,
+weak-case review and saved spaced-review scheduling. Distinguish recognition
+accuracy, watched examples and completed execution. Verify coverage, interruptions,
+scheduling and data recovery. Preserve theme/history, test in the built-in browser,
+push verified changes and verify deployment.
+```
+
+### P6 — Improve timer and statistics
+
+```text
+Start P6. Improve Timer and Statistics while preserving the tested engine,
+sessions, penalties, original simulator statistics and backups. Add trends,
+distributions, filters and accessible chart/table views with Chart.js where
+justified. Keep physical, virtual and training results separate. Recheck official
+rules before changing practice profiles; do not claim competition certification.
+Test calculations, device input, large histories and saved data, then push and
+verify deployment.
+```
+
+### P7 — Connect a GAN cube in supported browsers
+
+```text
+Start P7. Add GAN connectivity through SmartCubePort and gan-web-bluetooth for
+supported browsers. Include connection guidance, state synchronization, validated
+moves, disconnect recovery and manual fallback. Preserve host/device timing
+evidence and detect duplicate/missing events. Integrate training/timer flows.
+Ask for my exact cube model when hardware qualification needs it. Do not claim
+Firefox/Safari/native support from mocked tests. Push verified changes, verify
+deployment and provide a real-device test checklist.
+```
+
+### P8 — Optional account and cross-device history
+
+```text
+Start P8. Prepare Supabase region, auth, costs, backup and deletion choices,
+then implement optional accounts/sync in stages once needed choices are settled.
+Start with sessions/solves, then learning/training. Preserve offline guests and
+require explicit guest linking. Follow v2 auth decisions and update the old API
+draft first. Test ownership/RLS, concurrent edits, retries, conflicts, restore
+and sign-out. Do not purchase services. Push verified work and verify live flows.
+```
+
+### P9 — Native mobile and desktop beta
+
+```text
+Start P9. Prepare Capacitor mobile and Tauri desktop builds with our shared app
+and platform adapters. Begin with an offline guest beta and explicit browser
+backup transfer. Qualify installation, updates, storage, lifecycle, input and
+each claimed native BLE/camera feature on real target devices. Report missing
+signing/toolchain/device requirements precisely. Preserve the web URL and data;
+push verified work. Do not publish to stores or claim untested platform support.
+```
+
+### P10 — Select one advanced release
+
+```text
+Plan the next P10 release. Assess guided 3x3 camera capture, evidence-based
+coaching, additional puzzle/method packs, solve analysis and optional Satori
+share cards. Recommend one bounded slice with prerequisites, verification,
+source rights, privacy and costs. Keep community, official-result integrations,
+voice and paid services separately scoped. Do not start several advanced
+features or purchase services from this planning command.
+```
+
+## Status and recovery prompts
+
+```text
+Show our current phase, completed work, remaining decisions, latest pushed
+commit and live deployment status. Do not change code.
 ```
 
 ```text
-Continue the current milestone from the last verified checkpoint. Do not start the next milestone yet.
+Continue the current phase from the last verified checkpoint. Preserve existing
+work and saved data. Do not start the next phase yet.
 ```
 
 ```text
-Explain the latest change in plain language and give me the steps to test it on the live site.
+Help me test the latest release on my device. Give me one short round at a time
+and explain what I should see before moving on.
 ```
 
 ```text
-Review the live site for regressions, fix confirmed issues, verify them, and push each complete correction.
+Pause new features. Diagnose the reported regression, preserve data, fix the
+confirmed cause, test recovery and publish the verified correction.
 ```
 
-```text
-Pause implementation and show the current status, remaining decisions and next recommended command.
-```
+## What finished means
 
-After a completed change, report: **current milestone; what visibly changed (or why it was internal work); checks; pushed commit; live URL; simple user test; remaining work; next command**. Update this guide's status only when the acceptance criteria have actually passed.
+Report evidence, not planned libraries. A mocked BLE demo is not a hardware release; a prototype is not a framework migration; a build is not proof of data preservation; a native folder is not a store release. Use the [phase exit gates](07-delivery.md). No phase is complete just because this guide contains its prompt.

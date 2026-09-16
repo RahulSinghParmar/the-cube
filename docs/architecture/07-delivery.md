@@ -1,94 +1,83 @@
-# Delivery, estimates, risks and decision gates
+# Delivery plan v2
 
-## Dependency plan
+16 September 2026. This plan replaces the old M5–M8 execution order with smaller phases covering navigation, libraries, GAN and cross-platform delivery. M0–M4 retain their historical meaning and working features. **P0–P10** are the revised plan, not completed releases.
+
+See [architecture v2](17-platform-architecture.md), [dependency review](18-reference-review.md) and [copy-paste prompts](08-build-guide.md).
+
+## Phases and acceptance
+
+| Phase | User-visible outcome | Work and dependencies | Exit gate |
+| --- | --- | --- | --- |
+| P0 — Architecture revision | Clear destination and build commands | Repository/reference analysis, stack decisions, preservation inventory | Reviewed documentation and working links/contracts; no runtime changes |
+| P1 — Clear application sections | Algorithms, Training, Guides, Solve, Practice, Timer, Statistics, Settings | Existing React shell; landing pages connect current features and retain original home/panels | Every destination has a real action; old bookmarks, direct panels, back navigation, data and offline checks pass |
+| P2 — Technology and platform proof | A measured foundation for later work | After P1; SvelteKit static prototype, cubing.js adapters, styling/icon candidates and BLE/native feasibility | Recorded keep/migrate decision, license checks, comparable measurements and data/worker/offline proof; missing hardware evidence labeled |
+| P3 — Algorithm library | Find, understand, favorite and choose case variants | P1/P2; versioned catalog, existing PLL/OLL and expanded F2L with declared taxonomy | Independent fixtures prove cases and stage outcomes; preserved progress IDs; search/filter/variant/favorite and provenance checks |
+| P4 — Complete beginner guides | First full solve, then a route into CFOP | P3 content boundaries; original reviewed explanations, orientation cues, examples and recovery | Intended lesson inputs, wrong-state help, saved resume, offline, accessibility and content review pass |
+| P5 — Training and review | Recognition, guided execution, weak-case practice and spaced review | P3; expand PLL/OLL/F2L drills, optional timing and mixed sets | Scoring, randomness/coverage, answer hiding, interruptions, scheduling and saved history verified |
+| P6 — Timer and statistics | Focused timing plus trends and competitor practice | P1; preserve engine, add chart/table views, filters, source separation and versioned rule profiles | Statistics/DNF fixtures, input/focus, edits, large-history performance, backup and original statistics checks |
+| P7 — GAN browser support | Practice with real turns from a supported smart cube | P2 device port plus P5/P6 flows; browser adapter, state/timestamp checks and reconnection | Named hardware/firmware and browser/OS tested; stream-gap/duplicate/disconnect recovery; manual fallback |
+| P8 — Optional accounts and sync | Carry private history/progress across devices | P2 boundaries; Supabase region/cost/auth decisions; sessions/solves first, then learning/training | Two-user isolation, concurrent/retried sync, guest linking, conflicts, sign-out, export/deletion and restore |
+| P9 — Mobile and desktop beta | Installable apps with honest capability lists | P2 platform proof, P7 for GAN claims; Capacitor mobile and Tauri desktop; guest beta independent of P8 | Real-device install/update/offline/migration/recovery; native capabilities where claimed; signing/store gates separate |
+| P10 — Advanced capabilities | Camera capture, evidence-based coaching and selected advanced tools | Separate slices: scanner needs solver/device proof; coaching needs reliable evidence; new puzzles need domain support | Each slice has correctness, rights, privacy, cost and device gates; no blanket advanced-feature completion |
+
+P0 is the documentation scope of this revision. P1 is next. P2 retains the working framework unless comparison justifies migration; it does not automatically replace the live UI. Finish and qualify any selected migration before P3 expands the affected UI.
+
+Split phases into coherent releases. P3 ships the catalog and existing sets first, then verified F2L batches. P4 ships reviewed lesson stages. P5 ships one drill family at a time. P8 splits by data domain, P9 by platform. A phase prompt does not imply one huge commit.
+
+## Dependencies and order
 
 ```mermaid
-flowchart TD
-  M0[M0 Verified simulator foundation] --> M1[M1 Timing and safe local data]
-  M1 --> M2[M2 Accessible shell and typed cube core]
-  M2 --> M3[M3 Beginner lessons and 3x3 solver]
-  M3 --> M4[M4 Algorithm training]
-  M1 --> M5[M5 Identity and sync]
-  M2 --> M5
-  M3 --> M6[M6 Guided 3x3 scanner]
-  M4 --> M7[M7 Evidence-based coaching]
-  M5 --> M7
-  M2 --> M8[M8 Native distribution]
-  M5 --> Community[Community and virtual competitions]
-  M5 --> Billing[Optional premium entitlements]
-  M6 --> Live[Experimental live move recognition]
+flowchart LR
+  P0[Plan] --> P1[Navigation]
+  P1 --> P2[Technology proof]
+  P2 --> P3[Algorithm library]
+  P3 --> P4[Guides]
+  P3 --> P5[Training]
+  P1 --> P6[Timer and statistics]
+  P2 --> P7[GAN web]
+  P5 --> P7
+  P6 --> P7
+  P2 --> P8[Optional sync]
+  P2 --> P9[Native beta]
+  P7 --> NativeBLE[Qualified native GAN]
+  P9 --> NativeBLE
+  P4 --> P10[Advanced slices]
+  P5 --> P10
 ```
 
-The dependency graph allows independent work, but it is not permission to launch every stream simultaneously. The default delivery sequence is M1 → M2 → M3 → M4 → M5 → M6 → M7/M8. Prioritize based on actual use and defects. The estimates below are planning ranges for one experienced engineer with periodic product/content review; they exclude app-store waiting, legal review and externally authored content. Re-estimate after each milestone.
+Default sequence: P1 → P2 → P3 → P4 → P5 → P6 → P7 → P8 → P9 → selected P10 slices. Dependencies allow reprioritization: timer/statistics can precede expanded guides, and native guest testing can precede accounts. This is not permission for simultaneous implementation streams.
 
-| Milestone | Deliverables | Exit gate | Planning range |
-| --- | --- | --- | --- |
-| M0 | Keyboard, build/PWA repairs, targeted regression tests and audit | Branch CI passes; retained simulator works | Implemented foundation; CI follow-up included |
-| M1 | Strict timing/statistics modules, physical timer, sessions, JSON backup/import, legacy migration | Boundary tests, reload/write-failure recovery, sample history preservation | Implemented web scope; see release notes |
-| M2 | React/Vite shell, typed cube-core/renderer adapter, input queue/remapping, accessible settings, locale framework | Cube invariants, keyboard journeys, three-engine browser checks and automated accessibility; physical devices remain to verify | Implemented web scope; see release notes |
-| M3 | Reviewed beginner lessons, manual state editor, verified 3×3 solver and playback | Invalid-state fixtures, engine license/device benchmark, every solution verified | Implemented web scope; prepared-case and device limits in release notes |
-| M4 | PLL then OLL/F2L practice, content provenance, attempt tracking, optional collection | Verified setup/algorithms, content QA and progress correctness | PLL, recognition, OLL and beginner F2L implemented; expanded sets planned |
-| M5 | Identity/profile, optional cloud sync, export/deletion jobs, staging/production backend | Two-user isolation, concurrent sync/restore tests, operator/privacy readiness | 4–6 weeks |
-| M6 | Guided 3×3 capture/classification/correction, camera permission lifecycle | Device/lighting benchmark, manual fallback, no unchecked impossible states | 3–6 weeks; recognition research can extend this |
-| M7 | Measured training summaries, rule-based suggestions, optional AI/voice | Evidence tests, consent, cost limits, hallucination/fallback evaluation | 2–4 weeks after sufficient telemetry/data |
-| M8 | Capacitor/Tauri shells, native adapters, signing/upgrades and platform QA | Real-device installation/offline/permission/recovery checks per OS | 4–8 weeks; stores/signing external |
+Estimate the next bounded release after inspecting its code and tests. Do not carry forward the old total-week estimate: framework selection, authored content, source rights, hardware and native toolchains materially change scope. No completion date, usage-quota guarantee or service budget is implied.
 
-This is roughly 23–41 engineer-weeks for the main future milestones if done serially, not a promised launch date. Community, advanced solving methods, broader scanners, complete translations and billing are separate estimates. Do not treat the large original vision as one sprint.
+## Earlier milestones and original vision
 
-## M1 tasks in order (implemented web scope)
+| Earlier work | Current treatment |
+| --- | --- |
+| M0 foundation | Retain tested build, offline and repository workflow |
+| M1 timer/data | Retain; P6 improves presentation/analysis, P8 adds optional sync |
+| M2 shell/engine | Retain original home and typed domain; P1 organizes, P2 evaluates upgrades |
+| M3 lessons/solver | Retain; P4 expands teaching, P10 may add camera input |
+| M4 PLL/recognition/OLL/F2L | Retain shipped sets/progress; P3/P5 extend learning tools |
+| M5 accounts/sync | P8; Supabase replaces the default custom-backend proposal |
+| M6 scanner | P10 scanner slice after solver/input/device proof |
+| M7 coaching | P10 evidence-first slice, optional provider after cost/privacy review |
+| M8 native | P2 early feasibility, P9 platform releases |
 
-T-101 through T-107 are implemented. [Release notes](09-m1-release.md) describe the verification evidence and real-device/browser limitations. The task sizes below are the original estimates, not actual elapsed time. [M2 web implementation](10-m2-release.md) is also complete; [M3 learning and solving](12-m3-release.md) is implemented for the web; [M4 PLL practice](13-m4-pll-release.md) is the first algorithm-training release.
+The original six-phase destination remains covered: foundation/UI/PWA (M0–M2, P1/P2), accounts/profiles/sync (P8), solver/scanner (M3, P10), tutorials/algorithms (P3–P5), coaching (P10), and mobile/desktop/offline (P2/P9). Community, official-profile integration, leaderboards, collections, wider puzzles, additional languages and monetization remain separately scoped future slices. Public community features require moderation capacity. None is silently included in the first native beta.
 
-| Task | Dependency | Work and acceptance | Size |
-| --- | --- | --- | --- |
-| T-101 | M0 green | Add workspace/typecheck setup for timing/statistics only; strict flags; existing build still passes | 1–2 days |
-| T-102 | T-101 | Injected-clock state machine; press/release ownership; inspection boundary/focus-loss/auto-repeat tests | 2–3 days |
-| T-103 | T-101 | Pure statistics: effective times, DNF, ties, trim count, missing samples, PB recalculation; documented rule versions | 1–2 days |
-| T-104 | T-101 | Typed IndexedDB repository; transaction/error/reopen tests; namespace isolation | 1–2 days |
-| T-105 | T-104 | Legacy migration and JSON import/export; deterministic IDs, quarantine, readback and rollback fixtures | 2–3 days |
-| T-106 | T-102/T-103/T-104 | Physical timer UI, session picker/history, inspection option, penalty review; retain simulator entry | 2–3 days |
-| T-107 | T-105/T-106 | Keyboard/touch/offline/reload tests, visual/accessibility review and release notes | 1–2 days |
+## Risks and release rules
 
-Time boxes overlap only where dependencies permit. The lower milestone estimate assumes reusable UI/test infrastructure; the task upper bounds indicate where a spike may expand the milestone. Finish correctness/recovery before adding trend charts or polish.
+| Risk | Required response |
+| --- | --- |
+| Framework work repeats solved problems | Measure prototype and migration cost; retain React without demonstrated benefit |
+| Lost data or changed route scope | Namespace inventory, exact backups, idempotent migrations and recovery fixtures |
+| Styling erases original theme | Baseline visuals, scoped CSS, original panels and responsive review |
+| Incorrect/mislabeled case | Independent fixtures, stage predicates, orientation/AUF checks and provenance |
+| Unclear reuse rights | Review exact artifacts; author/link content when reuse is unresolved |
+| BLE works on only one device | Capability detection and named hardware matrix; manual fallback |
+| Sync overwrites attempts | Transactional outbox, receipts, version checks, preserved conflicts and restore tests |
+| Endless scope growth | One bounded outcome per release; update status and next command |
 
-## Follow-on task groups
+Application releases require relevant unit/type/build/browser checks, built-in browser inspection, data/offline upgrade checks, a focused commit, ordinary push to main, matching remote SHA/CI/Pages verification and owner test steps. Documentation-only releases require architecture/link checks and diff review, followed by the same repository publication policy. Preserve master, keep only the authorized branches and use neutral names under [CONTRIBUTING.md](../../CONTRIBUTING.md).
 
-- **M2 (implemented web scope):** retained legacy document → canonical cube fixtures and engine → renderer port → queue/input profiles → app shell/deep links → semantic settings/reduced motion → English/Hindi catalog → browser regression. See [M2 scope and remaining device checks](10-m2-release.md).
-- **M3 (implemented web scope; see [scope and qualification limits](12-m3-release.md)):** license/benchmark solver candidates → publish state convention → manual face editor/legality validator → worker and cancellation → independent solution verifier → reviewed notation lesson → pedagogical lesson sequence → offline content packs.
-- **M4 (PLL, recognition, OLL and beginner F2L implemented; expanded sets planned):** algorithm provenance catalog → setup/solution validator → PLL case viewer → recognition/execution attempt model → trainer UI → OLL/F2L sets → collection module if demand supports it.
-- **M5:** hosting/identity/budget ADR → real migrations/RLS/runtime role → auth/session controls → owned CRUD → per-owner feed/receipts → snapshot/conflict UX → guest link/account separation → export/deletion jobs → backup/restore/load tests → staged account launch.
-- **M6:** camera capture prototype → lighting/color benchmark → orientation guide → classifier/confidence correction → legality integration → camera lifecycle/device QA → research live assistant separately.
-- **M7:** measurable evidence definitions → deterministic drill recommendations → reviewed content references → optional model adapter/evaluation → voice/localization → cost and privacy controls.
-- **M8:** web/PWA device gaps → native platform spike → storage/auth/camera adapters → build/sign/update pipeline → store review and per-platform rollout.
-
-## GitHub tracking and change workflow
-
-The repository documents are the current roadmap. Suggested GitHub Project fields: Status (Backlog/Ready/In progress/Review/Done/Blocked), Milestone, Module, Priority, Estimate, Dependency and Release gate. Issue titles use the task IDs above; each issue includes acceptance, tests, migration impact and links to the applicable contract.
-
-Project/issue creation is a separate optional administrative step; this plan does not claim that a GitHub Project has been created. Each complete, verified change set is committed and pushed to the primary `main` branch. Successful checks publish the web build to GitHub Pages. Preserve `master` as the original base and use neutral product-focused names throughout authored repository content. See [CONTRIBUTING.md](../../CONTRIBUTING.md).
-
-Definition of done: scoped acceptance met; meaningful checks pass; docs/contracts updated; migration/deployment impacts recorded; focused commit pushed; remote branch SHA confirmed; CI conclusion inspected and failures addressed. Production deployment/app-store publication has its own release gate. Do not mark later roadmap items complete merely because their architecture is documented.
-
-## Risks and mitigation
-
-| Risk | Impact | Mitigation / decision owner |
-| --- | --- | --- |
-| Scope exceeds one person's capacity | Incomplete features and long delays | Rahul prioritizes one release outcome; use milestones and defer social/native work |
-| Legacy geometry is authoritative | Invalid moves/resume regressions | Typed integer core, golden fixtures, renderer adapter and retained legacy loader |
-| Lost local history | Loss of user trust | Transactional writes, immutable migration backup, tested import/export and quota UX |
-| Browser/device timing differences | Incorrect practice measurements | Interrupted-state policy, monotonic clock tests, real-device suspend checks |
-| Scanner accuracy varies by lighting/cube | Unsolvable or wrong state | Guided capture, manual correction, validator and published device benchmark |
-| Method-specific solving is oversold | Bad teaching | Separate generic solver from reviewed pedagogical methods |
-| Sync reorders or overwrites data | Silent data loss | Owner-serialized feed, version preconditions, immutable snapshots and preserved conflicts |
-| Fake community results/abuse | Untrustworthy rankings and moderation burden | Explicit trust labels; gated launch; block/report/staffing requirements |
-| Unclear content/code rights | Rebranding/commercial launch risk | Provenance/license inventory and owner review before publication |
-| Vendor cost/lock-in | Unplanned operating cost | Adapters, budget caps, open export formats and provider ADR at adoption |
-| Old clients/workers survive deployment | Mixed assets or failed migrations | Content-hashed artifacts, compatible migrations and legacy-worker staging tests |
-
-## Decisions still required before their milestones
-
-These do not block M1: final product name/branding; public domain; target regions and audience/age policy; primary mobile reference devices; monthly hosting/AI budget; identity/hosting provider; reviewed algorithm/lesson sources; public moderation capacity; launch languages beyond English/Hindi; premium feature proposition. Record decisions as dated ADR amendments with the evidence and tradeoff, not silent changes to the architecture.
-
-## Reference review
-
-Primary sources were checked on 10 September 2026 and are linked next to the decisions they support. WCA rule version observed: 1 April 2026. Recheck official rules before implementing/updating the practice rule profile. Stack versions, service prices, platform/store policies and provider capabilities must be revalidated at their implementation milestone. Architectural targets and cost/effort assumptions belong to this project and are not claims from those sources.
+Owner input is needed when actual GAN hardware, physical devices, production budget/region or signing/store credentials become prerequisites. Continue independent preparation meanwhile. Do not purchase services, invent device verification or claim store publication without evidence.
