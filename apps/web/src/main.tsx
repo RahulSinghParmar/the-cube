@@ -26,6 +26,9 @@ import { MenuPage, InfoPage } from "./MenuPages";
 import "./styles.css";
 import "../../../assets/css/app-theme.css";
 
+const F2LPage = lazy(() =>
+  import("./F2LPage").then((module) => ({ default: module.F2LPage })),
+);
 const OLLPage = lazy(() =>
   import("./OLLPage").then((module) => ({ default: module.OLLPage })),
 );
@@ -478,9 +481,12 @@ function App() {
           route === "#/solve" ||
           route === "#/train" ||
           route === "#/recognize" ||
+          route === "#/f2l" ||
           route === "#/oll" ? (
           <Suspense fallback={<p role="status">Opening your workspace…</p>}>
-            {route === "#/oll" ? (
+            {route === "#/f2l" ? (
+              <F2LPage preferences={preferences} />
+            ) : route === "#/oll" ? (
               <OLLPage preferences={preferences} />
             ) : route === "#/recognize" ? (
               <RecognitionPage preferences={preferences} />
@@ -738,9 +744,7 @@ function App() {
                 Change the original cube's size, colors, turning speed and
                 camera.
               </p>
-              <a href="./?panel=settings">
-                Open touch-cube settings →
-              </a>
+              <a href="./?panel=settings">Open touch-cube settings →</a>
             </section>
             <h2>Practice and menu</h2>
             <p>

@@ -1,0 +1,51 @@
+.f2l-intro {
+  margin-top: 20px;
+}
+.f2l-intro li {
+  margin: 10px 0;
+  line-height: 1.7;
+}
+.f2l-cases {
+  display: grid;
+  gap: 8px;
+}
+.f2l-case {
+  grid-template-columns: 32px minmax(0, 1fr);
+  justify-items: start;
+  align-items: center;
+  text-align: left;
+  padding: 12px 8px;
+}
+.f2l-case strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.f2l-case small {
+  display: block;
+  margin-top: 4px;
+}
+.f2l-number {
+  font-size: 16px;
+  font-weight: 750;
+  color: var(--muted);
+}
+.f2l-step-guide {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+}
+.f2l-step-guide > p:not(.eyebrow) {
+  font-size: 14px;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .f2l-cases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 380px) {
+  .f2l-cases {
+    grid-template-columns: 1fr;
+  }
+}

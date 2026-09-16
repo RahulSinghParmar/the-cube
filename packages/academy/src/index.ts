@@ -226,3 +226,5 @@ export * from "./pll.js";
 export * from "./recognition.js";
 
 export * from "./oll.js";
+
+export * from "./f2l.js";

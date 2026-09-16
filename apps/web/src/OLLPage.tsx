@@ -89,6 +89,9 @@ export function OLLPage({ preferences }: { preferences: Preferences }) {
         pieces afterward.
       </p>
       <div className="actions">
+        <a className="file-button" href="#/f2l">
+          Learn F2L →
+        </a>
         <a className="file-button" href="#/train">
           PLL library →
         </a>
@@ -327,8 +330,8 @@ export function OLLPage({ preferences }: { preferences: Preferences }) {
         <p>
           The Cross group contains seven corner-orientation cases. The Line,
           Angle and Dot groups cover the remaining edge orientations. All 57 OLL
-          cases are included. OLL recognition drills and F2L remain later M4
-          work.
+          cases are included. Beginner F2L guided setups are available from
+          Learn F2L; OLL recognition drills remain later M4 work.
         </p>
       </details>
     </>

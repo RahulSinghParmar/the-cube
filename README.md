@@ -106,7 +106,10 @@ See [recognition behavior and recovery](docs/architecture/14-m4-recognition-rele
 **Learn OLL** opens all 57 orientation cases with white-sticker diagrams,
 explanations, 3D playback and separate saved guided practice. OLL exercises
 finish with the top oriented and PLL still needed. See [OLL release notes](docs/architecture/15-m4-oll-release.md).
-F2L remains a future M4 release.
+**Learn F2L** adds 12 beginner setups for pairing and inserting a corner and edge,
+with phase explanations, a live piece-location guide, 3D playback and separate saved
+guided practice. This is a beginner path; the full 41-case catalog remains future work.
+See [F2L scope, progress and testing](docs/architecture/16-m4-f2l-release.md).
 
 ### Physical cube practice (M1)
 

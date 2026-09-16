@@ -86,6 +86,9 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
         practice each move yourself.
       </p>
       <div className="actions">
+        <a className="file-button" href="#/f2l">
+          Learn F2L →
+        </a>
         <a className="file-button" href="#/oll">
           Learn OLL →
         </a>
@@ -317,8 +320,8 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
         </p>
         <p>
           PLL moves the last-layer pieces into their places after orientation is
-          complete. OLL training is available from Learn OLL; F2L will follow in
-          a later M4 release.
+          complete. OLL training and beginner F2L guided setups are also
+          available.
         </p>
       </details>
     </>

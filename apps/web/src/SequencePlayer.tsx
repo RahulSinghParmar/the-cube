@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { apply, inverse, parseMove, type CubeState } from "@the-cube/cube-core";
 import { moveDescription } from "@the-cube/academy";
 import { ThreeRenderer } from "./renderer";
@@ -14,6 +14,7 @@ export function SequencePlayer({
   onMistake,
   exerciseName = "Lesson exercise",
   completionText,
+  guideForStep,
 }: {
   input: CubeState;
   moves: string[];
@@ -24,6 +25,7 @@ export function SequencePlayer({
   onMistake?: () => void;
   exerciseName?: string;
   completionText?: string | undefined;
+  guideForStep?: (step: number, state: CubeState) => ReactNode;
 }) {
   const states = useMemo(() => {
     const all = [input];
@@ -150,6 +152,7 @@ export function SequencePlayer({
         </button>
       </div>
       <div className="playback-guide">
+        {guideForStep?.(cursor, states[cursor]!)}
         <p className="eyebrow">
           {cursor === moves.length ? "SEQUENCE COMPLETE" : "NEXT MOVE"}
         </p>

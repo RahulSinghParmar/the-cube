@@ -8,7 +8,7 @@ This is the target product and engineering plan for evolving the existing reposi
 
 Build an offline-capable cube practice and learning application with a shared, deterministic TypeScript domain model. Preserve the current simulator while adding a physical-cube timer, then learning and solving. Add an authenticated modular backend for synchronization and community features when those features enter development. Use the web application as the basis of future mobile and desktop clients.
 
-M1 implements the web practice timer, statistics and safe local data. M2 adds the React/Vite interface, typed cube core, queued controls, settings and language foundations. See [the M1 release notes](09-m1-release.md) and [M2 release notes](10-m2-release.md) for tests, recovery and limits. M3 adds [beginner exercises, manual input and verified 3×3 solving](12-m3-release.md). M4 has begun with [the PLL trainer](13-m4-pll-release.md); [recognition drills](14-m4-recognition-release.md) are also implemented, and [all 57 OLL cases](15-m4-oll-release.md) are available; F2L remains planned. The server and later features below remain architecture proposals.
+M1 implements the web practice timer, statistics and safe local data. M2 adds the React/Vite interface, typed cube core, queued controls, settings and language foundations. See [the M1 release notes](09-m1-release.md) and [M2 release notes](10-m2-release.md) for tests, recovery and limits. M3 adds [beginner exercises, manual input and verified 3×3 solving](12-m3-release.md). M4 has begun with [the PLL trainer](13-m4-pll-release.md); [recognition drills](14-m4-recognition-release.md) are also implemented, and [all 57 OLL cases](15-m4-oll-release.md) are available; [12 beginner F2L setups](16-m4-f2l-release.md) now add guided pairing and insertion. The server and later features below remain architecture proposals.
 
 The owner-requested [homepage refinement](11-home-and-menu.md) puts the original
 touch cube back at the main URL and moves the newer interface and tools into a
@@ -53,6 +53,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 | [M4 PLL trainer](13-m4-pll-release.md) | Verified case catalog, guided repetitions, progress recovery and testing |
 | [M4 recognition drills](14-m4-recognition-release.md) | Randomized PLL identification, optional timing, history and recovery |
 | [M4 OLL training](15-m4-oll-release.md) | Full orientation catalog, verified playback, separate progress and owner tests |
+| [M4 beginner F2L](16-m4-f2l-release.md) | Verified pairing setups, phase explanations, guided progress and recovery |
 | [Repository workflow](../../CONTRIBUTING.md) | Commit and push policy, branch handling and verification |
 
 The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation and concrete defects already repaired. This architecture plan supersedes that document's short future roadmap where detail differs.
