@@ -3,6 +3,27 @@ import AxeBuilder from "@axe-core/playwright";
 
 const routes = ["algorithms", "training", "guides", "statistics"];
 
+test("tool search stays open when reopened while a new route is rendering", async ({ page }) => {
+  await page.goto("/the-cube/menu.html");
+  await page.getByRole("button", { name: "Find a tool", exact: true }).click();
+  const dialog = page.getByRole("dialog", { name: "Find a tool" });
+  const input = dialog.getByRole("searchbox", { name: "Search tools" });
+  await input.fill("PLL recognition");
+  // Reopen after the URL changes, before React commits its pending page update.
+  await dialog.getByRole("link").evaluate(link => {
+    window.addEventListener("hashchange", () => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", ctrlKey: true, bubbles: true }));
+    }, { once: true });
+    link.click();
+  });
+  await expect(page.locator("h1")).toHaveText("Know the pattern.");
+  await expect(dialog).toBeVisible();
+  await input.fill("timer");
+  await expect(dialog.getByRole("link").first()).toBeVisible();
+  await input.press("Escape");
+  await expect(dialog).not.toBeVisible();
+});
+
 test("tool search supports keyboard, touch, empty results and original-panel links", async ({ page }) => {
   await page.goto("/the-cube/menu.html");
   const trigger = page.getByRole("button", { name: "Find a tool", exact: true });

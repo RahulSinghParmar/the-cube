@@ -27,6 +27,13 @@ original-panel navigation. The full suite retains saved-data/offline tests.
 The [whole-product plan](21-product-coverage.md) records the broader scope;
 search is the first small implementation release, not feature parity.
 
+The first remote run blocked deployment after finding a route-transition race:
+reopening search immediately after following a result could be dismissed by the
+previous page's delayed update. Search now records the URL at opening and only
+closes for a different route. A deterministic regression exercises the shortcut
+between the URL change and the page update on all three engines. This adds three
+cases to the full suite (143 total); the matching remote run gates deployment.
+
 ## Device test
 
 1. Open [Menu](https://rahulsinghparmar.github.io/the-cube/menu.html).

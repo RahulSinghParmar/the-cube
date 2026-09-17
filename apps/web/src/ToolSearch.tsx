@@ -31,6 +31,7 @@ export function ToolSearch({ route, text }: { route: string; text: Text }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
+  const openedOnRoute = useRef<string | null>(null);
   const input = useRef<HTMLInputElement>(null);
   const results = useRef<HTMLUListElement>(null);
   const [query, setQuery] = useState("");
@@ -43,6 +44,7 @@ export function ToolSearch({ route, text }: { route: string; text: Text }) {
   function open(opener?: HTMLElement | null) {
     if (document.querySelector("dialog[open]")) return;
     returnFocus.current = opener ?? (document.activeElement as HTMLElement);
+    openedOnRoute.current = location.hash || "#/menu";
     setQuery("");
     dialog.current?.showModal();
     input.current?.focus();
@@ -52,7 +54,9 @@ export function ToolSearch({ route, text }: { route: string; text: Text }) {
     if (returnFocus.current?.isConnected) returnFocus.current.focus();
   }
   useEffect(() => {
-    dialog.current?.close();
+    // A new search can open before the preceding navigation commits.
+    // Dismiss only a dialog belonging to a different URL.
+    if (openedOnRoute.current !== route) dialog.current?.close();
   }, [route]);
   useEffect(() => {
     const shortcut = (event: KeyboardEvent) => {
