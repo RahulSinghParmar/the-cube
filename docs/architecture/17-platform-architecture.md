@@ -47,6 +47,11 @@ Use the established theme as the token source. Preserve the original heading ide
 
 ## Learning pathways
 
+The [tutorial experience specification](20-tutorial-experience.md) adds the
+owner-requested reference layout, synchronized instructional playback and complete
+2×2–5×5 course releases. It is the detailed learning requirement after P1; current
+prepared exercises remain available until those courses are independently released.
+
 | Audience | Path | Evidence of progress |
 | --- | --- | --- |
 | First-time learner | Hold the cube → notation → cross → corners → middle layer → last layer | Short checks, saved lesson position, explanation of mistakes and next action |

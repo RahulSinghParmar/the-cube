@@ -8,6 +8,12 @@ The original simulator remains at [the live URL](https://rahulsinghparmar.github
 
 P0 is complete. P1 now organizes the eight sections on React, with original-panel return links and preserved bookmarks/data. See [P1 release notes and device tests](19-p1-release.md). P2 is the next phase when authorized. Previous milestone names remain historical; P0–P10 incorporate the additional requirements without rebuilding completed work.
 
+The owner's tutorial reference is now specified in [the tutorial experience plan](20-tutorial-experience.md).
+It defines closely matched lesson layout and playback, then complete courses for
+3×3, 2×2, 4×4 and 5×5. P4A can be selected before P2 to prioritize learning on
+React; its implementation prompt is in that document. This specification adds
+requirements; the full courses are not implemented yet.
+
 ## Overall build prompt
 
 Use this when starting a new development conversation or restating the full direction.
@@ -89,6 +95,11 @@ changes and verify deployment.
 ```
 
 ### P4 — Complete the beginner learning path
+
+Deliver as P4A (3×3), P4B (2×2), P4C (4×4), P4D (5×5), then P4E (faster-solving
+bridges), following [the tutorial specification](20-tutorial-experience.md).
+Select one course release per implementation pass. P4A uses existing domain
+modules and does not require the expanded P3 catalog or a framework migration.
 
 ```text
 Start P4. Expand Guides into an original, reviewed beginner-to-CFOP path: holding

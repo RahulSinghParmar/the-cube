@@ -12,7 +12,7 @@ See [architecture v2](17-platform-architecture.md), [dependency review](18-refer
 | P1 — Clear application sections | Algorithms, Training, Guides, Solve, Practice, Timer, Statistics, Settings | Existing React shell; landing pages connect current features and retain original home/panels | Every destination has a real action; old bookmarks, direct panels, back navigation, data and offline checks pass |
 | P2 — Technology and platform proof | A measured foundation for later work | After P1; SvelteKit static prototype, cubing.js adapters, styling/icon candidates and BLE/native feasibility | Recorded keep/migrate decision, license checks, comparable measurements and data/worker/offline proof; missing hardware evidence labeled |
 | P3 — Algorithm library | Find, understand, favorite and choose case variants | P1/P2; versioned catalog, existing PLL/OLL and expanded F2L with declared taxonomy | Independent fixtures prove cases and stage outcomes; preserved progress IDs; search/filter/variant/favorite and provenance checks |
-| P4 — Complete beginner guides | First full solve, then a route into CFOP | P3 content boundaries; original reviewed explanations, orientation cues, examples and recovery | Intended lesson inputs, wrong-state help, saved resume, offline, accessibility and content review pass |
+| P4 — Complete beginner guides | Complete 3×3, 2×2, 4×4 and 5×5 courses, then a route into CFOP | Separate P4A–P4E releases under the tutorial specification; P4A can use existing modules before P2/P3; advanced bridges reuse catalog work | Intended lesson inputs, case/stage coverage, wrong-state help, saved resume, offline, accessibility and content review pass |
 | P5 — Training and review | Recognition, guided execution, weak-case practice and spaced review | P3; expand PLL/OLL/F2L drills, optional timing and mixed sets | Scoring, randomness/coverage, answer hiding, interruptions, scheduling and saved history verified |
 | P6 — Timer and statistics | Focused timing plus trends and competitor practice | P1; preserve engine, add chart/table views, filters, source separation and versioned rule profiles | Statistics/DNF fixtures, input/focus, edits, large-history performance, backup and original statistics checks |
 | P7 — GAN browser support | Practice with real turns from a supported smart cube | P2 device port plus P5/P6 flows; browser adapter, state/timestamp checks and reconnection | Named hardware/firmware and browser/OS tested; stream-gap/duplicate/disconnect recovery; manual fallback |
@@ -24,6 +24,10 @@ P0 is complete. P1 implements the eight application sections on React; see [its 
 
 Split phases into coherent releases. P3 ships the catalog and existing sets first, then verified F2L batches. P4 ships reviewed lesson stages. P5 ships one drill family at a time. P8 splits by data domain, P9 by platform. A phase prompt does not imply one huge commit.
 
+The [tutorial experience specification](20-tutorial-experience.md) defines P4A–P4E
+and the requested reference layout. The owner can prioritize P4A on React before
+P2; this does not authorize a framework migration or claim completed courses.
+
 ## Dependencies and order
 
 ```mermaid
@@ -31,7 +35,9 @@ flowchart LR
   P0[Plan] --> P1[Navigation]
   P1 --> P2[Technology proof]
   P2 --> P3[Algorithm library]
-  P3 --> P4[Guides]
+  P1 --> P4A[3x3 beginner guide]
+  P4A --> P4[Multi-size guides]
+  P3 --> P4E[Faster-solving bridges]
   P3 --> P5[Training]
   P1 --> P6[Timer and statistics]
   P2 --> P7[GAN web]
@@ -45,7 +51,7 @@ flowchart LR
   P5 --> P10
 ```
 
-Default sequence: P1 → P2 → P3 → P4 → P5 → P6 → P7 → P8 → P9 → selected P10 slices. Dependencies allow reprioritization: timer/statistics can precede expanded guides, and native guest testing can precede accounts. This is not permission for simultaneous implementation streams.
+Default sequence: P1 → P2 → P3 → P4 → P5 → P6 → P7 → P8 → P9 → selected P10 slices. Dependencies allow reprioritization: the 3×3 beginner course can follow P1 on React, timer/statistics can precede expanded guides, and native guest testing can precede accounts. This is not permission for simultaneous implementation streams.
 
 Estimate the next bounded release after inspecting its code and tests. Do not carry forward the old total-week estimate: framework selection, authored content, source rights, hardware and native toolchains materially change scope. No completion date, usage-quota guarantee or service budget is implied.
 
