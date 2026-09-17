@@ -24,6 +24,7 @@ import {
 import { messages } from "./messages";
 import { MenuPage, InfoPage } from "./MenuPages";
 import { SectionPage, SectionNavigation, type Section } from "./Sections";
+import { ToolSearch } from "./ToolSearch";
 import "./styles.css";
 import "../../../assets/css/app-theme.css";
 import "./sections.css";
@@ -436,7 +437,10 @@ function App() {
         tabIndex={-1}
         onClickCapture={guardNavigation}
       >
-        {route !== "#/menu" && <SectionNavigation route={route} text={text} />}
+        <div className="section-utilities">
+          {route !== "#/menu" && <SectionNavigation route={route} text={text} />}
+          <ToolSearch route={route} text={text} />
+        </div>
         {update && (
           <p role="status" className="notice">
             {text.update}

@@ -1,0 +1,16 @@
+.section-utilities { display: flex; align-items: start; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.section-utilities .section-navigation { flex: 1 1 280px; margin: 0; }
+.tool-search-launcher { margin-left: auto; }
+.tool-search-trigger { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+.tool-search-dialog { width: min(580px, calc(100vw - 24px)); max-height: min(720px, calc(100dvh - 32px)); padding: 20px; overflow-y: auto; color: var(--text); background: var(--surface); }
+.tool-search-heading { display: flex; gap: 16px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.tool-search-heading h2 { margin: 0; font-size: 22px; }
+.tool-search-heading button { min-width: 44px; min-height: 44px; font-size: 22px; }
+.tool-search-label { display: block; margin-bottom: 6px; }
+.tool-search-dialog input { width: 100%; min-height: 48px; font-size: 16px; }
+.tool-search-count { color: var(--muted); font-size: 14px; margin: 12px 0; }
+.tool-search-results { margin: 0; padding: 0; list-style: none; }
+.tool-search-results a { display: flex; flex-direction: column; gap: 4px; min-height: 56px; padding: 14px 10px; color: var(--text); text-decoration: none; border-top: 1px solid var(--line); border-radius: 6px; overflow-wrap: anywhere; }
+.tool-search-results a:hover, .tool-search-results a:focus-visible { background: var(--tint); }
+.tool-search-results span { color: var(--muted); font-size: 14px; line-height: 1.5; }
+@media (max-width: 420px) { .tool-search-dialog { padding: 14px; } }

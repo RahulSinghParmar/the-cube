@@ -1,6 +1,12 @@
 # The Cube architecture plan
 
-Version 2.0 · 16 September 2026 · Owner: Rahul Singh Parmar
+Version 2.1 · 17 September 2026 · Owner: Rahul Singh Parmar
+
+The [whole-product coverage plan](21-product-coverage.md) and
+[tracked inventory](reference-coverage.json) now expand the scope beyond 3×3
+tutorials: all observed multi-puzzle catalogs, trainers, analysis, account and
+device features have named releases. P1A adds search for existing tools; P2A
+is the next shared foundation. Planned entries are not working app features.
 
 Start with [platform architecture v2](17-platform-architecture.md) for the current upgrade plan, [reference and dependency review](18-reference-review.md) for the requested tools and inspiration, and [copy-paste phase prompts](08-build-guide.md) for what to do next. This revision preserves completed work and replaces the earlier future stack/navigation/order where they differ. Planned capabilities are not implemented merely because they appear here.
 

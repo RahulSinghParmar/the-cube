@@ -1,6 +1,51 @@
 import { test, expect } from "./origin-fixture.js";
+import AxeBuilder from "@axe-core/playwright";
 
 const routes = ["algorithms", "training", "guides", "statistics"];
+
+test("tool search supports keyboard, touch, empty results and original-panel links", async ({ page }) => {
+  await page.goto("/the-cube/menu.html");
+  const trigger = page.getByRole("button", { name: "Find a tool", exact: true });
+  await trigger.click();
+  const dialog = page.getByRole("dialog", { name: "Find a tool" });
+  const input = dialog.getByRole("searchbox", { name: "Search tools" });
+  await expect(input).toBeFocused();
+  const accessibility = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+  expect(accessibility.violations).toEqual([]);
+  await input.fill("PLL recognition");
+  await expect(dialog.getByRole("link")).toHaveCount(1);
+  await input.press("ArrowDown");
+  await expect(dialog.getByRole("link")).toBeFocused();
+  await dialog.getByRole("link").press("Enter");
+  await expect(page).toHaveURL(/#\/recognize$/);
+  await expect(dialog).not.toBeVisible();
+  await page.keyboard.press("Control+k");
+  await expect(input).toBeFocused();
+  await input.fill("not-a-real-tool");
+  await expect(dialog.getByRole("status")).toContainText("No matching tools");
+  await expect(dialog.getByRole("link")).toHaveCount(0);
+  await input.press("Escape");
+  await expect(dialog).not.toBeVisible();
+  await trigger.click();
+  await input.press("Escape");
+  await expect(trigger).toBeFocused();
+  for (const width of [320, 820, 1440]) {
+    await page.setViewportSize({ width, height: 800 });
+    await trigger.click();
+    const box = await dialog.boundingBox();
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(width);
+    await input.fill("cube settings");
+    await expect(dialog.getByRole("link", { name: /Cube settings/ })).toHaveAttribute("href", "./?panel=settings&return=settings");
+    await dialog.getByRole("button", { name: "Close search" }).click();
+  }
+  await trigger.click();
+  await input.fill("cube settings");
+  await input.press("Enter");
+  await expect(page.getByRole("region", { name: "Cube settings", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Back", exact: true }).click();
+  await expect(page).toHaveURL(/menu\.html#\/settings$/);
+});
 
 test("sections fit touch layouts and link to every existing tool with keyboard navigation", async ({
   page,

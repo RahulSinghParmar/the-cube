@@ -1,0 +1,1413 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-09-17",
+  "signedInReviewAt": "2026-09-18",
+  "reference": "https://speedcube.quest/",
+  "referenceVersionObserved": "1.0.297",
+  "scope": "Public pages plus owner-authorized signed-in profile, statistics, import/export and account controls; no account mutations or hardware pairing. Individual algorithms and populated solve charts were not exhaustively tested.",
+  "sources": {
+    "catalogue": {
+      "url": "https://speedcube.quest/algorithms",
+      "evidence": "live-ui",
+      "note": "26 set links in the public catalogue; individual algorithms were not exhaustively tested."
+    },
+    "library": {
+      "url": "https://speedcube.quest/algorithms/3x3/pll",
+      "evidence": "public-page",
+      "note": "Shared catalogue/case functions; sampled content, not independent correctness verification."
+    },
+    "f2l": {
+      "url": "https://speedcube.quest/algorithms/3x3/f2l",
+      "evidence": "public-page",
+      "note": "Case taxonomy, slots, variants and usage controls."
+    },
+    "big": {
+      "url": "https://speedcube.quest/algorithms/big-cubes/6x6",
+      "evidence": "public-page",
+      "note": "Inner-slice notation, last edges and centres."
+    },
+    "lookup": {
+      "url": "https://speedcube.quest/algorithms/lookup",
+      "evidence": "public-page",
+      "note": "Sequence and fragment lookup."
+    },
+    "guide": {
+      "url": "https://speedcube.quest/guides/how-to-solve-a-rubiks-cube",
+      "evidence": "live-ui",
+      "note": "Tutorial layout and playback inspected in the built-in browser."
+    },
+    "guides": {
+      "url": "https://speedcube.quest/guides",
+      "evidence": "public-page",
+      "note": "Three teaching and three reference guides in the public index."
+    },
+    "intuitive": {
+      "url": "https://speedcube.quest/guides/beginner-f2l",
+      "evidence": "public-page",
+      "note": "Intuitive pairing and walkthroughs."
+    },
+    "twolook": {
+      "url": "https://speedcube.quest/guides/2-look-oll-pll",
+      "evidence": "public-page",
+      "note": "Four-stage last-layer guide."
+    },
+    "notation": {
+      "url": "https://speedcube.quest/guides/rubiks-cube-notation",
+      "evidence": "public-page",
+      "note": "Face, wide, slice and rotation notation."
+    },
+    "glossary": {
+      "url": "https://speedcube.quest/guides/glossary",
+      "evidence": "public-page",
+      "note": "Searchable terms; links to BLD guide and trainer do not prove access."
+    },
+    "trainers": {
+      "url": "https://speedcube.quest/trainers/algorithms",
+      "evidence": "public-page",
+      "note": "Ten algorithm drill families and mode selector."
+    },
+    "cross": {
+      "url": "https://speedcube.quest/trainers/cross",
+      "evidence": "public-page",
+      "note": "Cross and X-cross settings and playback."
+    },
+    "pll": {
+      "url": "https://speedcube.quest/trainers/pll-recognition",
+      "evidence": "public-page",
+      "note": "Two-sided recognition, weights and confusion feedback."
+    },
+    "oll": {
+      "url": "https://speedcube.quest/trainers/oll-recognition",
+      "evidence": "public-page",
+      "note": "Shape selection and recognition statistics."
+    },
+    "corners": {
+      "url": "https://speedcube.quest/trainers/corner-deduction",
+      "evidence": "live-ui",
+      "note": "Colour answers, top-colour selection, charts and pair heatmaps inspected."
+    },
+    "timer": {
+      "url": "https://speedcube.quest/timer",
+      "evidence": "live-ui",
+      "note": "Session and timer dialogs inspected, including 2x2 through 7x7."
+    },
+    "stats": {
+      "url": "https://speedcube.quest/statistics",
+      "evidence": "signed-in-ui",
+      "note": "Personal bests, activity calendar, algorithm progress and import/export inspected; solve history is empty, so populated charts remain unverified."
+    },
+    "analyze": {
+      "url": "https://speedcube.quest/solve-analyzer",
+      "evidence": "live-ui",
+      "note": "Public CFOP/Roux entry and example inspected."
+    },
+    "smart": {
+      "url": "https://speedcube.quest/smart-cube",
+      "evidence": "signed-in-ui",
+      "note": "GAN, MoYu and QiYi, saved-cube list and capability checks inspected. No hardware connection qualified; reference setup instructions are not our compatibility guarantee."
+    },
+    "settings": {
+      "url": "https://speedcube.quest/settings",
+      "evidence": "live-ui",
+      "note": "Theme and algorithm display preferences inspected."
+    },
+    "search": {
+      "url": "https://speedcube.quest/",
+      "evidence": "live-ui",
+      "note": "Search dialog inspected; sample reconstruction query returned no matches."
+    },
+    "about": {
+      "url": "https://speedcube.quest/about",
+      "evidence": "public-page",
+      "note": "Installation and feedback information."
+    },
+    "changes": {
+      "url": "https://speedcube.quest/change-log",
+      "evidence": "release-notes",
+      "note": "Historical reports, not proof of current public availability."
+    },
+    "credits": {
+      "url": "https://speedcube.quest/credits",
+      "evidence": "public-page",
+      "note": "Source discovery only; each imported artifact requires its own license review."
+    },
+    "privacy": {
+      "url": "https://speedcube.quest/privacy",
+      "evidence": "public-page",
+      "note": "Reference account/data practices; our own policy must match our implementation."
+    },
+    "terms": {
+      "url": "https://speedcube.quest/terms",
+      "evidence": "public-page",
+      "note": "Reference account/legal surface, not legal terms to copy."
+    },
+    "owner": {
+      "url": null,
+      "evidence": "owner-request",
+      "note": "Requested project scope beyond the public reference."
+    },
+    "bld": {
+      "url": "https://speedcube.quest/guides/bld-lettering",
+      "evidence": "alpha-gated",
+      "note": "The guide redirects to alpha access even after ordinary sign-in. Course content remains unverified."
+    },
+    "speffz": {
+      "url": "https://speedcube.quest/trainers/speffz",
+      "evidence": "alpha-gated",
+      "note": "The trainer remains restricted to alpha testers after ordinary sign-in; no restricted content accessed."
+    },
+    "interface": {
+      "url": "https://speedcube.quest/",
+      "evidence": "interface-advertised",
+      "note": "Public browser interface descriptions advertise letter-pair practice; actual UI workflow unverified."
+    },
+    "account": {
+      "url": "https://speedcube.quest/account",
+      "evidence": "signed-in-ui",
+      "note": "Profile and account controls inspected read-only. Private profile URL and account values deliberately excluded."
+    },
+    "trainingStats": {
+      "url": "https://speedcube.quest/statistics/training",
+      "evidence": "signed-in-ui",
+      "note": "Per-set and per-case summaries, skill, success, timing and drill links inspected without changing attempts."
+    }
+  },
+  "features": [
+    {
+      "id": "set-2x2-ortega",
+      "section": "Algorithms",
+      "feature": "2x2: ortega",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/ortega"
+    },
+    {
+      "id": "set-2x2-cll",
+      "section": "Algorithms",
+      "feature": "2x2: cll",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/cll"
+    },
+    {
+      "id": "set-2x2-eg-1",
+      "section": "Algorithms",
+      "feature": "2x2: eg-1",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/eg-1"
+    },
+    {
+      "id": "set-2x2-eg-2",
+      "section": "Algorithms",
+      "feature": "2x2: eg-2",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/eg-2"
+    },
+    {
+      "id": "set-2x2-leg-1",
+      "section": "Algorithms",
+      "feature": "2x2: leg-1",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/leg-1"
+    },
+    {
+      "id": "set-2x2-tcll-plus",
+      "section": "Algorithms",
+      "feature": "2x2: tcll-plus",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/tcll-plus"
+    },
+    {
+      "id": "set-2x2-tcll-minus",
+      "section": "Algorithms",
+      "feature": "2x2: tcll-minus",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/tcll-minus"
+    },
+    {
+      "id": "set-2x2-fh",
+      "section": "Algorithms",
+      "feature": "2x2: fh",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/fh"
+    },
+    {
+      "id": "set-2x2-teg-1",
+      "section": "Algorithms",
+      "feature": "2x2: teg-1",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/teg-1"
+    },
+    {
+      "id": "set-2x2-teg-2",
+      "section": "Algorithms",
+      "feature": "2x2: teg-2",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/teg-2"
+    },
+    {
+      "id": "set-2x2-ls",
+      "section": "Algorithms",
+      "feature": "2x2: ls",
+      "source": "catalogue",
+      "release": "P3B",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/2x2/ls"
+    },
+    {
+      "id": "set-3x3-f2l",
+      "section": "Algorithms",
+      "feature": "3x3: f2l",
+      "source": "catalogue",
+      "release": "P3A",
+      "status": "partial",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/f2l",
+      "existingNote": "12 beginner setups; not full standard or advanced taxonomy."
+    },
+    {
+      "id": "set-3x3-2-look-oll-and-pll",
+      "section": "Algorithms",
+      "feature": "3x3: 2-look-oll-and-pll",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/2-look-oll-and-pll"
+    },
+    {
+      "id": "set-3x3-oll",
+      "section": "Algorithms",
+      "feature": "3x3: oll",
+      "source": "catalogue",
+      "release": "P3A",
+      "status": "partial",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/oll",
+      "existingNote": "57 verified cases and guided practice exist."
+    },
+    {
+      "id": "set-3x3-pll",
+      "section": "Algorithms",
+      "feature": "3x3: pll",
+      "source": "catalogue",
+      "release": "P3A",
+      "status": "partial",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/pll",
+      "existingNote": "21 verified cases and guided practice exist."
+    },
+    {
+      "id": "set-3x3-coll",
+      "section": "Algorithms",
+      "feature": "3x3: coll",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/coll"
+    },
+    {
+      "id": "set-3x3-wv",
+      "section": "Algorithms",
+      "feature": "3x3: wv",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/wv"
+    },
+    {
+      "id": "set-3x3-vls",
+      "section": "Algorithms",
+      "feature": "3x3: vls",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/vls"
+    },
+    {
+      "id": "set-3x3-zbls",
+      "section": "Algorithms",
+      "feature": "3x3: zbls",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/zbls"
+    },
+    {
+      "id": "set-3x3-zbll",
+      "section": "Algorithms",
+      "feature": "3x3: zbll",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/zbll"
+    },
+    {
+      "id": "set-3x3-second-block",
+      "section": "Algorithms",
+      "feature": "3x3: second-block",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/second-block"
+    },
+    {
+      "id": "set-3x3-cmll",
+      "section": "Algorithms",
+      "feature": "3x3: cmll",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/cmll"
+    },
+    {
+      "id": "set-3x3-eo",
+      "section": "Algorithms",
+      "feature": "3x3: eo",
+      "source": "catalogue",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/3x3/eo"
+    },
+    {
+      "id": "set-big-cubes-4x4",
+      "section": "Algorithms",
+      "feature": "big-cubes: 4x4",
+      "source": "catalogue",
+      "release": "P3D",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/big-cubes/4x4"
+    },
+    {
+      "id": "set-big-cubes-5x5",
+      "section": "Algorithms",
+      "feature": "big-cubes: 5x5",
+      "source": "catalogue",
+      "release": "P3D",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/big-cubes/5x5"
+    },
+    {
+      "id": "set-big-cubes-6x6",
+      "section": "Algorithms",
+      "feature": "big-cubes: 6x6",
+      "source": "catalogue",
+      "release": "P3D",
+      "status": "missing",
+      "acceptance": "Independent case fixtures, stage predicates, orientation/AUF and every shipped variant pass; source rights and stable progress IDs recorded.",
+      "dependencies": [
+        "puzzle-capabilities",
+        "library-core"
+      ],
+      "referenceURL": "https://speedcube.quest/algorithms/big-cubes/6x6"
+    },
+    {
+      "id": "navigation",
+      "section": "Menu",
+      "feature": "Eight sections, breadcrumbs and return to original cube",
+      "source": "owner",
+      "release": "P1",
+      "status": "existing",
+      "acceptance": "Existing routes and original panels survive navigation.",
+      "dependencies": []
+    },
+    {
+      "id": "tool-search",
+      "section": "Menu",
+      "feature": "Search available tools with keyboard and touch",
+      "source": "search",
+      "release": "P1A",
+      "status": "existing",
+      "acceptance": "Find current destinations, handle no matches, Escape/focus return and small screens; case/sequence search belongs to P3.",
+      "dependencies": []
+    },
+    {
+      "id": "resume-dashboard",
+      "section": "Menu",
+      "feature": "Resume lessons, recent activity and progress summary",
+      "source": "search",
+      "release": "P6C",
+      "status": "missing",
+      "acceptance": "Only real records shown; separate watched, practiced and timed activity.",
+      "dependencies": [
+        "stats-training"
+      ]
+    },
+    {
+      "id": "puzzle-capabilities",
+      "section": "Foundation",
+      "feature": "Puzzle and method registry with explicit capabilities",
+      "source": "owner",
+      "release": "P2A",
+      "status": "missing",
+      "acceptance": "Model, renderer, parser, scrambler, solver, lessons and device support declared independently; preserve 2-5 checkpoints.",
+      "dependencies": []
+    },
+    {
+      "id": "player",
+      "section": "Foundation",
+      "feature": "Shared 3D play/pause, seek, reverse, speed, loop and reset",
+      "source": "guide",
+      "release": "P2A",
+      "status": "partial",
+      "acceptance": "All input methods resolve to the same state; interrupt/reduced-motion/disposal and low-end performance verified.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "notation-engine",
+      "section": "Foundation",
+      "feature": "Wide, slice, inner-layer and rotation notation adapters",
+      "source": "big",
+      "release": "P2A",
+      "status": "partial",
+      "acceptance": "Parser round trips and independently expected piece permutations; reject unsupported notation visibly.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "stack-proof",
+      "section": "Foundation",
+      "feature": "Measured React/SvelteKit and cubing.js decision",
+      "source": "owner",
+      "release": "P2B",
+      "status": "missing",
+      "acceptance": "No cutover without route/data/offline and frame/bundle comparisons.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "library-core",
+      "section": "Algorithms",
+      "feature": "Searchable sets/cases, grouped overview, filters and sorting",
+      "source": "library",
+      "release": "P3A",
+      "status": "partial",
+      "acceptance": "Stable IDs and declared taxonomy; filters compose, clear visibly and persist intentionally.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "favorites",
+      "section": "Algorithms",
+      "feature": "Favorite sets and preferred algorithm variants",
+      "source": "library",
+      "release": "P3A",
+      "status": "missing",
+      "acceptance": "Guest preferences survive restart and content upgrades; deletion never erases attempts.",
+      "dependencies": [
+        "library-core"
+      ]
+    },
+    {
+      "id": "knowledge",
+      "section": "Algorithms",
+      "feature": "Shared per-case and per-variant learning status",
+      "source": "library",
+      "release": "P3A",
+      "status": "missing",
+      "acceptance": "Catalog and trainers share explicit ratings without treating playback as mastery.",
+      "dependencies": [
+        "library-core"
+      ]
+    },
+    {
+      "id": "triggers",
+      "section": "Algorithms",
+      "feature": "Trigger groups, commutators, conjugates and accessible notation",
+      "source": "notation",
+      "release": "P3A",
+      "status": "missing",
+      "acceptance": "Equivalent expansion preserves moves; no color-only information.",
+      "dependencies": [
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "alg-lookup",
+      "section": "Algorithms",
+      "feature": "Exact sequence and fragment lookup across packs",
+      "source": "lookup",
+      "release": "P3E",
+      "status": "missing",
+      "acceptance": "Declare exact/equivalent matching and return valid case/variant links.",
+      "dependencies": [
+        "library-core",
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "alg-equivalence",
+      "section": "Algorithms",
+      "feature": "Equivalent notation, rotations, inverses and mirror handling",
+      "source": "library",
+      "release": "P3E",
+      "status": "missing",
+      "acceptance": "Independent equivalence fixtures; keep handedness and orientation semantics.",
+      "dependencies": [
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "usage-ranking",
+      "section": "Algorithms",
+      "feature": "Sourced usage, votes, consensus and year/grip/method filters",
+      "source": "f2l",
+      "release": "P10B",
+      "status": "missing",
+      "acceptance": "Show metric definition, provenance, sample size and missing data; no invented popularity.",
+      "dependencies": [
+        "reconstruction-library"
+      ]
+    },
+    {
+      "id": "f2l-slots",
+      "section": "Algorithms",
+      "feature": "Four F2L slots, advanced cases and rotation/reduction views",
+      "source": "f2l",
+      "release": "P3C",
+      "status": "partial",
+      "acceptance": "Slot and preservation predicates checked; disclose taxonomy instead of equating all counts.",
+      "dependencies": [
+        "library-core",
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "f2l-effects",
+      "section": "Algorithms",
+      "feature": "Piece disturbance, EO and last-slot effect diagrams",
+      "source": "f2l",
+      "release": "P3C",
+      "status": "missing",
+      "acceptance": "Derive affected pieces from verified moves; compare before/after diagrams.",
+      "dependencies": [
+        "f2l-slots"
+      ]
+    },
+    {
+      "id": "video-sources",
+      "section": "Algorithms",
+      "feature": "Case-specific external tutorials and source attribution",
+      "source": "credits",
+      "release": "P3E",
+      "status": "missing",
+      "acceptance": "Permission/embedding terms checked; every timestamp actually teaches its linked variant.",
+      "dependencies": [
+        "library-core"
+      ]
+    },
+    {
+      "id": "guide-3",
+      "section": "Guides",
+      "feature": "Complete first-solve 3x3 course",
+      "source": "guide",
+      "release": "P4A",
+      "status": "partial",
+      "acceptance": "Complete stage coverage and wrong-state recovery; preserve eight old exercise IDs.",
+      "dependencies": [
+        "player"
+      ]
+    },
+    {
+      "id": "guide-2",
+      "section": "Guides",
+      "feature": "Complete 2x2 course and Ortega bridge",
+      "source": "owner",
+      "release": "P4B",
+      "status": "missing",
+      "acceptance": "Reviewed corner-only learning path and all course examples independently verified.",
+      "dependencies": [
+        "player",
+        "set-2x2-ortega"
+      ]
+    },
+    {
+      "id": "guide-4",
+      "section": "Guides",
+      "feature": "Complete 4x4 course with reduction and parity",
+      "source": "owner",
+      "release": "P4C",
+      "status": "missing",
+      "acceptance": "Centres, edge pairing and both relevant parity situations covered.",
+      "dependencies": [
+        "player",
+        "set-big-cubes-4x4"
+      ]
+    },
+    {
+      "id": "guide-5",
+      "section": "Guides",
+      "feature": "Complete 5x5 course with centres and last edges",
+      "source": "owner",
+      "release": "P4D",
+      "status": "missing",
+      "acceptance": "Size-specific piece roles and last-edge cases; do not reuse even-cube parity claims.",
+      "dependencies": [
+        "player",
+        "set-big-cubes-5x5"
+      ]
+    },
+    {
+      "id": "guide-large",
+      "section": "Guides",
+      "feature": "6x6 and 7x7 learning extensions",
+      "source": "owner",
+      "release": "P4F",
+      "status": "missing",
+      "acceptance": "Puzzle capability and notation verified before lessons; include even/odd distinctions.",
+      "dependencies": [
+        "player",
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "guide-f2l",
+      "section": "Guides",
+      "feature": "Intuitive F2L, mirrored explanations and full walkthroughs",
+      "source": "intuitive",
+      "release": "P4E",
+      "status": "partial",
+      "acceptance": "Locate/pair/insert checkpoints, mistakes and worked solves; keep existing prepared practice.",
+      "dependencies": [
+        "player",
+        "f2l-slots"
+      ]
+    },
+    {
+      "id": "guide-two-look",
+      "section": "Guides",
+      "feature": "Two-look OLL/PLL path",
+      "source": "twolook",
+      "release": "P4E",
+      "status": "missing",
+      "acceptance": "Correct prerequisite and resulting state for each of four stages.",
+      "dependencies": [
+        "player",
+        "set-3x3-2-look-oll-and-pll"
+      ]
+    },
+    {
+      "id": "guide-reference",
+      "section": "Guides",
+      "feature": "Notation, F2L naming and searchable tagged glossary",
+      "source": "guides",
+      "release": "P4E",
+      "status": "partial",
+      "acceptance": "Terms link to real examples; beginner learning order and search work offline.",
+      "dependencies": [
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "guide-layout",
+      "section": "Guides",
+      "feature": "Stage contents, goal diagrams, synced text and recovery help",
+      "source": "guide",
+      "release": "P4A",
+      "status": "partial",
+      "acceptance": "Sticky desktop contents and mobile selector do not obscure player; completed stages resume safely.",
+      "dependencies": [
+        "player"
+      ]
+    },
+    {
+      "id": "guide-print",
+      "section": "Guides",
+      "feature": "Printable cheat sheets and text/diagram alternatives",
+      "source": "twolook",
+      "release": "P4E",
+      "status": "missing",
+      "acceptance": "Printed content readable and complete without animated-only instructions.",
+      "dependencies": [
+        "guide-two-look"
+      ]
+    },
+    {
+      "id": "guide-language",
+      "section": "Guides",
+      "feature": "Localized lessons and terminology",
+      "source": "changes",
+      "release": "P4F",
+      "status": "missing",
+      "acceptance": "Human-reviewed content and language fallback; preserve progress across language changes.",
+      "dependencies": [
+        "guide-layout"
+      ]
+    },
+    {
+      "id": "guide-bld",
+      "section": "Guides",
+      "feature": "Speffz lettering and blindfold foundations",
+      "source": "bld",
+      "release": "P4F",
+      "status": "missing",
+      "acceptance": "Review corner/edge sticker mappings and buffer/orientation explanations.",
+      "dependencies": [
+        "notation-engine"
+      ]
+    },
+    {
+      "id": "drill-modes",
+      "section": "Training",
+      "feature": "Virtual execution, flashcard and physical scramble modes",
+      "source": "trainers",
+      "release": "P5A",
+      "status": "partial",
+      "acceptance": "Answer concealment, explicit self-assessment and input-source separation.",
+      "dependencies": [
+        "library-core",
+        "player",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "drill-selection",
+      "section": "Training",
+      "feature": "Selected cases, random/ordered/weighted practice",
+      "source": "changes",
+      "release": "P5A",
+      "status": "partial",
+      "acceptance": "Seeded coverage tests, zero/one-case handling and no accidental excluded cases.",
+      "dependencies": [
+        "drill-modes"
+      ]
+    },
+    {
+      "id": "drill-sets",
+      "section": "Training",
+      "feature": "OLL, PLL, COLL, WV, VLS, ZBLS, ZBLL, CMLL, second block and EO",
+      "source": "trainers",
+      "release": "P5A",
+      "status": "partial",
+      "acceptance": "Only verified installed packs selectable; unknown sets are not fake working pages.",
+      "dependencies": [
+        "drill-modes"
+      ]
+    },
+    {
+      "id": "pll-recognition",
+      "section": "Training",
+      "feature": "Two-sided PLL patterns, weighting and confusion feedback",
+      "source": "pll",
+      "release": "P5B",
+      "status": "partial",
+      "acceptance": "Existing history preserved; view/AUF invariance and answer labels independently checked.",
+      "dependencies": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "oll-recognition",
+      "section": "Training",
+      "feature": "OLL shape recognition and lookalike comparison",
+      "source": "oll",
+      "release": "P5B",
+      "status": "missing",
+      "acceptance": "All selected cases reachable and answer-hidden rotations do not leak labels.",
+      "dependencies": [
+        "set-3x3-oll"
+      ]
+    },
+    {
+      "id": "corner-deduction",
+      "section": "Training",
+      "feature": "Hidden-corner colour deduction",
+      "source": "corners",
+      "release": "P5B",
+      "status": "missing",
+      "acceptance": "All valid colour triples/orientations tested; reveal correct answer and explanation.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "corner-stats",
+      "section": "Statistics",
+      "feature": "Colour-pair accuracy/time heatmaps and per-case drill stats",
+      "source": "corners",
+      "release": "P6C",
+      "status": "missing",
+      "acceptance": "Directional pair labels, units, empty state and accessible data tables.",
+      "dependencies": [
+        "corner-deduction"
+      ]
+    },
+    {
+      "id": "cross",
+      "section": "Training",
+      "feature": "Cross/X-cross planning and solution replay",
+      "source": "cross",
+      "release": "P5C",
+      "status": "missing",
+      "acceptance": "Verify cross preservation and optimum claims independently for supported depth.",
+      "dependencies": [
+        "notation-engine",
+        "player"
+      ]
+    },
+    {
+      "id": "f2l-lookahead",
+      "section": "Training",
+      "feature": "Partial F2L and next-pair prediction",
+      "source": "changes",
+      "release": "P5D",
+      "status": "missing",
+      "acceptance": "Prepared-state constraints, pair counts and reveal timing verified; reference historically tester-restricted.",
+      "dependencies": [
+        "f2l-slots",
+        "player"
+      ]
+    },
+    {
+      "id": "review",
+      "section": "Training",
+      "feature": "Weak-case and spaced review",
+      "source": "owner",
+      "release": "P5E",
+      "status": "missing",
+      "acceptance": "Versioned schedule, lapse handling, clock changes, export and recovery.",
+      "dependencies": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "bld-trainer",
+      "section": "Training",
+      "feature": "Sticker-letter recall",
+      "source": "speffz",
+      "release": "P5F",
+      "status": "missing",
+      "acceptance": "Orientation and edge/corner labels verified, unbiased selection and saved attempts.",
+      "dependencies": [
+        "guide-bld"
+      ]
+    },
+    {
+      "id": "letter-pairs",
+      "section": "Training",
+      "feature": "Editable letter-pair words and forward/reverse review",
+      "source": "interface",
+      "release": "P5F",
+      "status": "missing",
+      "acceptance": "UI availability still unverified; authored dictionary with editable personal words and tested schedule.",
+      "dependencies": [
+        "review",
+        "guide-bld"
+      ]
+    },
+    {
+      "id": "timer-sessions",
+      "section": "Timer",
+      "feature": "Named event sessions, inspection and partial/full classification",
+      "source": "timer",
+      "release": "P6A",
+      "status": "partial",
+      "acceptance": "Existing times preserved; partial practice excluded from full-solve PBs.",
+      "dependencies": []
+    },
+    {
+      "id": "timer-events",
+      "section": "Timer",
+      "feature": "2x2 through 7x7 scrambling",
+      "source": "timer",
+      "release": "P6A",
+      "status": "partial",
+      "acceptance": "Correct event generator with documented distribution; no official certification claim.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "timer-controls",
+      "section": "Timer",
+      "feature": "Scramble visibility, hidden running time and wake lock",
+      "source": "timer",
+      "release": "P6A",
+      "status": "partial",
+      "acceptance": "Keyboard/touch focus and interruptions tested; unsupported wake lock degrades cleanly.",
+      "dependencies": []
+    },
+    {
+      "id": "timer-edit",
+      "section": "Timer",
+      "feature": "History, penalties, deletion recovery and backups",
+      "source": "owner",
+      "release": "P6A",
+      "status": "existing",
+      "acceptance": "Retain existing timer transactions and restore behavior.",
+      "dependencies": []
+    },
+    {
+      "id": "stats-solves",
+      "section": "Statistics",
+      "feature": "Solves, averages, bests, charts, sessions and activity calendar",
+      "source": "stats",
+      "release": "P6B",
+      "status": "partial",
+      "acceptance": "Local-first equivalents with DNF/trim fixtures, filters, visible units and chart alternatives.",
+      "dependencies": [
+        "timer-sessions"
+      ]
+    },
+    {
+      "id": "stats-training",
+      "section": "Statistics",
+      "feature": "Training insights, accuracy, speed and activity",
+      "source": "trainingStats",
+      "release": "P6C",
+      "status": "partial",
+      "acceptance": "Per-set/case skill, recent-form timing, success and recognition with sample counts; skips separate from failures; drill links resolve correctly.",
+      "dependencies": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "timer-import",
+      "section": "Timer",
+      "feature": "csTimer/own JSON import and JSON/CSV export",
+      "source": "stats",
+      "release": "P6B",
+      "status": "missing",
+      "acceptance": "Each format independently validated, bounded, previewed and deduplicated with original source retained; no imports performed during reference audit.",
+      "dependencies": [
+        "timer-sessions"
+      ]
+    },
+    {
+      "id": "analyzer",
+      "section": "Solve",
+      "feature": "CFOP/Roux reconstruction segmentation and case detection",
+      "source": "analyze",
+      "release": "P10A",
+      "status": "missing",
+      "acceptance": "Validate state and segment boundaries; unknown method/case remains unknown.",
+      "dependencies": [
+        "notation-engine",
+        "library-core"
+      ]
+    },
+    {
+      "id": "analysis-player",
+      "section": "Solve",
+      "feature": "Stage replay, masks, metrics and algorithm links",
+      "source": "analyze",
+      "release": "P10A",
+      "status": "missing",
+      "acceptance": "Move indices and state checkpoints align; no invented TPS without timestamps.",
+      "dependencies": [
+        "analyzer",
+        "player"
+      ]
+    },
+    {
+      "id": "reconstruction-library",
+      "section": "Solve",
+      "feature": "Searchable reconstructions, solver and reconstructor profiles",
+      "source": "changes",
+      "release": "P10B",
+      "status": "missing",
+      "acceptance": "Current reference routes/access not verified; licensed datasets, source links and filters required.",
+      "dependencies": [
+        "analyzer"
+      ]
+    },
+    {
+      "id": "share",
+      "section": "Solve",
+      "feature": "Shareable analysis and optional result cards",
+      "source": "owner",
+      "release": "P10C",
+      "status": "missing",
+      "acceptance": "Explicitly chosen public fields only; export works without account.",
+      "dependencies": [
+        "analysis-player"
+      ]
+    },
+    {
+      "id": "gan",
+      "section": "Devices",
+      "feature": "GAN live moves and synchronization",
+      "source": "smart",
+      "release": "P7A",
+      "status": "missing",
+      "acceptance": "Named model/firmware/browser qualified; gaps, duplicates and reconnect recover.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "moyu",
+      "section": "Devices",
+      "feature": "MoYu adapter",
+      "source": "smart",
+      "release": "P7B",
+      "status": "missing",
+      "acceptance": "Separate protocol/license and real hardware qualification.",
+      "dependencies": [
+        "gan"
+      ]
+    },
+    {
+      "id": "qiyi",
+      "section": "Devices",
+      "feature": "QiYi adapter",
+      "source": "smart",
+      "release": "P7C",
+      "status": "missing",
+      "acceptance": "Separate protocol/license and real hardware qualification.",
+      "dependencies": [
+        "gan"
+      ]
+    },
+    {
+      "id": "device-management",
+      "section": "Devices",
+      "feature": "Remember/name devices, diagnostics and connection guidance",
+      "source": "smart",
+      "release": "P7A",
+      "status": "missing",
+      "acceptance": "Capability detection, permission denial and forget-device flow; no automatic unsupported-platform claims.",
+      "dependencies": [
+        "gan"
+      ]
+    },
+    {
+      "id": "device-training",
+      "section": "Training",
+      "feature": "Smart-cube timing, guided execution and move replay",
+      "source": "cross",
+      "release": "P7A",
+      "status": "missing",
+      "acceptance": "Host/device clock provenance; verify outcomes after complete state reconciliation.",
+      "dependencies": [
+        "gan",
+        "drill-modes"
+      ]
+    },
+    {
+      "id": "virtual-input",
+      "section": "Practice",
+      "feature": "Keyboard and touch/swipe virtual controller fallback",
+      "source": "smart",
+      "release": "P7A",
+      "status": "partial",
+      "acceptance": "Existing practice retained; device-like input does not pretend to be physical hardware.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "theme",
+      "section": "Settings",
+      "feature": "Light/dark/system preferences",
+      "source": "settings",
+      "release": "P2A",
+      "status": "partial",
+      "acceptance": "Retain original home identity and current saved preferences; scoped tool styles.",
+      "dependencies": []
+    },
+    {
+      "id": "notation-settings",
+      "section": "Settings",
+      "feature": "Notation font/spacing, trigger labels, slice preference and colour-blind palette",
+      "source": "settings",
+      "release": "P3A",
+      "status": "missing",
+      "acceptance": "Reversible previews, readable extremes and reset without wiping data.",
+      "dependencies": [
+        "triggers"
+      ]
+    },
+    {
+      "id": "account-auth",
+      "section": "Account",
+      "feature": "Optional Google, WCA or email sign-in and account recovery",
+      "source": "account",
+      "release": "P8A",
+      "status": "missing",
+      "acceptance": "Verify provider availability; account operations tested without requiring login for local learning.",
+      "dependencies": []
+    },
+    {
+      "id": "account-sync",
+      "section": "Account",
+      "feature": "Cross-device solves, preferences and progress",
+      "source": "privacy",
+      "release": "P8B",
+      "status": "missing",
+      "acceptance": "Two-user isolation, explicit guest import, retries, conflicts and offline edits.",
+      "dependencies": [
+        "account-auth"
+      ]
+    },
+    {
+      "id": "profile",
+      "section": "Account",
+      "feature": "Private account settings and optional public profile",
+      "source": "account",
+      "release": "P8C",
+      "status": "missing",
+      "acceptance": "Username editing, profile visibility, personal bests and progress; privacy defaults explicit and public fields opt-in. Never expose private records.",
+      "dependencies": [
+        "account-auth"
+      ]
+    },
+    {
+      "id": "data-rights",
+      "section": "Account",
+      "feature": "Export, correction, deletion and truthful privacy controls",
+      "source": "account",
+      "release": "P8C",
+      "status": "partial",
+      "acceptance": "Email/password changes, WCA linking and unlinking policy, profile privacy, export and deletion scopes tested separately; irreversible deletion needs explicit confirmation.",
+      "dependencies": [
+        "account-sync"
+      ]
+    },
+    {
+      "id": "pwa",
+      "section": "Platform",
+      "feature": "Installable app, offline downloads and update recovery",
+      "source": "about",
+      "release": "P9A",
+      "status": "partial",
+      "acceptance": "Qualification per platform, content size budget and rollback/data survival.",
+      "dependencies": []
+    },
+    {
+      "id": "native",
+      "section": "Platform",
+      "feature": "Phone/tablet/desktop packages with platform adapters",
+      "source": "owner",
+      "release": "P9B",
+      "status": "missing",
+      "acceptance": "Real-device install/lifecycle/update, storage and input checks; separate store/signing decisions.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "native-devices",
+      "section": "Platform",
+      "feature": "Native BLE and camera qualification",
+      "source": "owner",
+      "release": "P9C",
+      "status": "missing",
+      "acceptance": "Actual platform transport tests; web results do not imply native support.",
+      "dependencies": [
+        "native",
+        "gan"
+      ]
+    },
+    {
+      "id": "credits",
+      "section": "About",
+      "feature": "Credits, licenses, app history and developer information",
+      "source": "credits",
+      "release": "P3A",
+      "status": "partial",
+      "acceptance": "Every incorporated artifact traced to reviewed terms and attribution.",
+      "dependencies": []
+    },
+    {
+      "id": "feedback",
+      "section": "About",
+      "feature": "Feedback/reporting and community links",
+      "source": "about",
+      "release": "P8C",
+      "status": "missing",
+      "acceptance": "Clear destination and no automatic uploads of private solves.",
+      "dependencies": []
+    },
+    {
+      "id": "legal",
+      "section": "About",
+      "feature": "Privacy and terms matching actual behavior",
+      "source": "terms",
+      "release": "P8A",
+      "status": "missing",
+      "acceptance": "Draft for actual operators, data and services; do not copy another site's legal identity.",
+      "dependencies": []
+    },
+    {
+      "id": "other-puzzles",
+      "section": "Future packs",
+      "feature": "ZZ, Pyraminx and Megaminx",
+      "source": "search",
+      "release": "P10D",
+      "status": "missing",
+      "acceptance": "Reference labels these planned; own puzzle-specific notation, validators, content and acceptance.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "additional-sets",
+      "section": "Future packs",
+      "feature": "Other credited sets, Skewb and Square-1",
+      "source": "credits",
+      "release": "P10D",
+      "status": "missing",
+      "acceptance": "Credits alone do not prove functionality; separately discover data rights and implement each pack.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    },
+    {
+      "id": "scanner-coach",
+      "section": "Project extensions",
+      "feature": "Camera entry and evidence-based coaching",
+      "source": "owner",
+      "release": "P10E",
+      "status": "missing",
+      "acceptance": "Explicit confidence, local validation, privacy and bounded optional provider costs.",
+      "dependencies": [
+        "puzzle-capabilities"
+      ]
+    }
+  ]
+}

@@ -135,6 +135,12 @@ case coverage and the remaining physical-device tests.
 
 ## Relationship to the whole reference site
 
+The [whole-product audit](21-product-coverage.md) supersedes the short capability
+map below. Tutorials are one workstream within the complete product scope.
+The next shared foundation is P2A; the P4A prompt below remains a focused course
+command, not the default answer to the full-site request. Larger-cube and
+blindfold extensions are now explicitly tracked as P4F.
+
 The [main reference site](https://speedcube.quest/) combines lessons, algorithm
 collections, trainers, timing, statistics and advanced tools. Track functional
 coverage by release instead of treating “everything” as one publishable change:

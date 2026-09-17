@@ -6,6 +6,14 @@ This revision incorporates the requested reference sites, separate application s
 
 ## Direction and upgrade assessment
 
+The [whole-product coverage contract](21-product-coverage.md) extends this baseline
+with 2×2 advanced sets, big cubes, Roux, recognition and blindfold tools, analysis,
+multi-brand devices and signed-in features. Use its inventory for exact scope,
+source evidence and delivery dependencies. P2A adds explicit puzzle capabilities
+and a shared player on React; P2B evaluates the framework independently. GAN,
+MoYu and QiYi require separate adapters and qualification. P10A analysis can
+follow its domain/catalog prerequisites without waiting for cloud or native apps.
+
 Evolve the existing application in small releases. Keep the original simulator at `https://rahulsinghparmar.github.io/the-cube/`, including its familiar settings, statistics, typography, colors and cube appearance. Build a coherent tools application behind Menu. Borrow the references' clear organization and teaching patterns; create our own interface and reviewed content.
 
 The current React/Vite shell, strict TypeScript domain packages and local persistence are a useful foundation. Replacing all of them would repeat solved work and increase data and playback risks. Recommendation: retain React for the first navigation release, then measure a SvelteKit prototype before choosing a migration. SvelteKit remains a supported target option, not an already approved production cutover. Cross-platform delivery does not depend on that choice.

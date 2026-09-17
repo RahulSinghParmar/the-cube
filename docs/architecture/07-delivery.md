@@ -6,6 +6,15 @@ See [architecture v2](17-platform-architecture.md), [dependency review](18-refer
 
 ## Phases and acceptance
 
+17 September scope expansion: [the whole-product plan](21-product-coverage.md)
+subdivides these phases into explicit releases and tracks every observed feature.
+It is authoritative for expanded scope and ordering. P1A adds available-tool
+search. P2A (multi-puzzle/player foundation) is next; P2B retains the measured
+stack decision. P3 covers all 26 reference sets, P4 adds complete multi-size
+courses, P5 includes cross/lookahead/blindfold, P7 covers three brands, and P10A
+names solve analysis explicitly. Restricted/reference-planned features remain
+labeled; none is silently dropped into an unspecified future bucket.
+
 | Phase | User-visible outcome | Work and dependencies | Exit gate |
 | --- | --- | --- | --- |
 | P0 — Architecture revision | Clear destination and build commands | Repository/reference analysis, stack decisions, preservation inventory | Reviewed documentation and working links/contracts; no runtime changes |
@@ -20,7 +29,7 @@ See [architecture v2](17-platform-architecture.md), [dependency review](18-refer
 | P9 — Mobile and desktop beta | Installable apps with honest capability lists | P2 platform proof, P7 for GAN claims; Capacitor mobile and Tauri desktop; guest beta independent of P8 | Real-device install/update/offline/migration/recovery; native capabilities where claimed; signing/store gates separate |
 | P10 — Advanced capabilities | Camera capture, evidence-based coaching and selected advanced tools | Separate slices: scanner needs solver/device proof; coaching needs reliable evidence; new puzzles need domain support | Each slice has correctness, rights, privacy, cost and device gates; no blanket advanced-feature completion |
 
-P0 is complete. P1 implements the eight application sections on React; see [its release and testing notes](19-p1-release.md). P2 is next when authorized. It retains the working framework unless comparison justifies migration; it does not automatically replace the live UI. Finish and qualify any selected migration before P3 expands the affected UI.
+P0 is complete. P1 implements the eight application sections on React; see [its release and testing notes](19-p1-release.md). P1A adds [tool search](22-search-release.md). Next is P2A from the whole-product plan. Retain the working framework unless comparison justifies migration; qualify any selected migration before expanding its affected UI.
 
 Split phases into coherent releases. P3 ships the catalog and existing sets first, then verified F2L batches. P4 ships reviewed lesson stages. P5 ships one drill family at a time. P8 splits by data domain, P9 by platform. A phase prompt does not imply one huge commit.
 

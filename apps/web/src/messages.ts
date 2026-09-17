@@ -1,4 +1,10 @@
 const en = {
+  searchTools: "Find a tool",
+  closeSearch: "Close search",
+  searchLabel: "Search tools",
+  searchPlaceholder: "Try PLL, lessons or cube settings",
+  searchResults: "matching tools",
+  searchEmpty: "No matching tools. Try lessons, timer or settings.",
   play: "Play",
   menu: "Menu",
   practice: "Practice",
@@ -71,6 +77,12 @@ const en = {
     "An update is ready. Finish your attempt, then close all app tabs and reopen.",
 };
 const hi: typeof en = {
+  searchTools: "टूल खोजें",
+  closeSearch: "खोज बंद करें",
+  searchLabel: "टूल खोजें",
+  searchPlaceholder: "PLL, lessons या cube settings खोजें",
+  searchResults: "टूल मिले",
+  searchEmpty: "कोई टूल नहीं मिला। lessons, timer या settings खोजें।",
   play: "खेलें",
   menu: "मेन्यू",
   practice: "अभ्यास",

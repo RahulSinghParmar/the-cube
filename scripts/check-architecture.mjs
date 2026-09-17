@@ -3,6 +3,35 @@ import { readFile, readdir, access } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
 const base = 'docs/architecture';
+const coverage = JSON.parse(await readFile(`${base}/reference-coverage.json`, 'utf8'));
+assert.equal(coverage.schemaVersion, 1);
+const featureIds = new Set(coverage.features.map(feature => feature.id));
+assert.equal(featureIds.size, coverage.features.length, 'Duplicate coverage ID');
+for (const feature of coverage.features) {
+  assert.match(feature.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+  assert.ok(coverage.sources[feature.source], `Unknown source: ${feature.id}`);
+  assert.ok(['existing', 'partial', 'missing'].includes(feature.status), `Invalid status: ${feature.id}`);
+  assert.match(feature.release, /^P(?:[0-9]|10)[A-F]?$/);
+  assert.ok(feature.acceptance?.trim(), `Missing acceptance: ${feature.id}`);
+  assert.ok(Array.isArray(feature.dependencies), `Missing dependencies: ${feature.id}`);
+  for (const dependency of feature.dependencies)
+    assert.ok(featureIds.has(dependency) && dependency !== feature.id, `Unknown/self dependency: ${feature.id} -> ${dependency}`);
+}
+const checked = new Set();
+const visiting = new Set();
+function checkDependencies(id) {
+  if (checked.has(id)) return;
+  assert.ok(!visiting.has(id), `Dependency cycle at ${id}`);
+  visiting.add(id);
+  coverage.features.find(feature => feature.id === id).dependencies.forEach(checkDependencies);
+  visiting.delete(id);
+  checked.add(id);
+}
+featureIds.forEach(checkDependencies);
+const coverageText = await readFile(`${base}/21-product-coverage.md`, 'utf8');
+for (const feature of coverage.features)
+  assert.ok(coverageText.includes(`| ${feature.id} | ${feature.section}: ${feature.feature} | ${feature.status} | ${feature.release} |`), `Coverage table is stale: ${feature.id}`);
+console.log(`Coverage checks passed: ${featureIds.size} tracked capabilities and acyclic dependencies.`);
 const names = await readdir(base);
 const markdown = ['README.md', 'CONTRIBUTING.md', 'docs/AUDIT-AND-ROADMAP.md', ...names.filter(name => name.endsWith('.md')).map(name => `${base}/${name}`)];
 let links = 0;
