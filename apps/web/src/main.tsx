@@ -23,8 +23,10 @@ import {
 } from "./preferences";
 import { messages } from "./messages";
 import { MenuPage, InfoPage } from "./MenuPages";
+import { SectionPage, SectionNavigation, type Section } from "./Sections";
 import "./styles.css";
 import "../../../assets/css/app-theme.css";
+import "./sections.css";
 
 const F2LPage = lazy(() =>
   import("./F2LPage").then((module) => ({ default: module.F2LPage })),
@@ -434,6 +436,7 @@ function App() {
         tabIndex={-1}
         onClickCapture={guardNavigation}
       >
+        {route !== "#/menu" && <SectionNavigation route={route} text={text} />}
         {update && (
           <p role="status" className="notice">
             {text.update}
@@ -472,6 +475,10 @@ function App() {
         )}
         {route === "#/menu" ? (
           <MenuPage text={text} />
+        ) : ["#/algorithms", "#/training", "#/guides", "#/statistics"].includes(
+            route,
+          ) ? (
+          <SectionPage section={route.slice(2) as Section} text={text} />
         ) : route === "#/about" || route === "#/license" ? (
           <InfoPage
             kind={route === "#/about" ? "about" : "license"}
@@ -744,7 +751,9 @@ function App() {
                 Change the original cube's size, colors, turning speed and
                 camera.
               </p>
-              <a href="./?panel=settings">Open touch-cube settings →</a>
+              <a href="./?panel=settings&return=settings">
+                Open touch-cube settings →
+              </a>
             </section>
             <h2>Practice and menu</h2>
             <p>
@@ -853,7 +862,7 @@ function App() {
           </>
         )}
         <footer>
-          The Cube · <a href="timer.html">{text.data}</a>
+          The Cube · <a href="#/statistics">{text.data}</a>
         </footer>
       </main>
       <dialog

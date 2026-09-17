@@ -119,6 +119,7 @@ test("menu information, original settings and old settings bookmarks remain reac
     .click();
   await expect(page.locator("article")).toContainText("ISC");
   await page.getByRole("link", { name: "← Menu", exact: true }).click();
+  await page.getByRole("link", { name: "Statistics", exact: true }).click();
   await page
     .getByRole("link", { name: "Cube statistics", exact: true })
     .click();

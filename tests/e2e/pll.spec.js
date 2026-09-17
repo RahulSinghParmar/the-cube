@@ -167,13 +167,11 @@ test("PLL backup restoration, write recovery and malformed records preserve olde
   await expect(page.getByTestId("pll-case-title")).toHaveText("Ua permutation");
   await expect(page.getByTestId("playback-step")).toHaveText("1");
   const before = await page.evaluate((k) => localStorage.getItem(k), key);
-  await page
-    .getByLabel("Restore learning backup")
-    .setInputFiles({
-      name: "invalid.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify({ version: 1, lessons: {} })),
-    });
+  await page.getByLabel("Restore learning backup").setInputFiles({
+    name: "invalid.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify({ version: 1, lessons: {} })),
+  });
   await expect(page.getByRole("alert")).toContainText("could not be verified");
   expect(await page.evaluate((k) => localStorage.getItem(k), key)).toBe(before);
   await page.evaluate((k) => {
@@ -217,7 +215,10 @@ test("PLL loads offline from the menu and remains usable without 3D", async ({
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   await stopOrigin();
-  await page.getByRole("link", { name: "Train", exact: true }).click();
+  await page.getByRole("link", { name: "Training", exact: true }).click();
+  await page
+    .getByRole("link", { name: "PLL guided practice", exact: true })
+    .click();
   await expect(page.getByTestId("pll-case-title")).toHaveText("Ua permutation");
   await expect(
     page.getByText("3D is unavailable in this browser.", { exact: false }),

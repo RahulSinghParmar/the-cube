@@ -74,6 +74,13 @@ export class CubePanels {
   close() {
     const game = this.game;
     if (game.transition.activeTransitions) return;
+    // App entry links return to their section; original panel links still close
+    // onto the cube. Restrict destinations to known local routes.
+    const returnTo = new URLSearchParams(location.search).get("return");
+    if (["settings", "statistics"].includes(returnTo)) {
+      location.assign(`menu.html#/${returnTo}`);
+      return;
+    }
     if (game.state === 4) game.cube.resize();
     game.state = 0;
     // Resume the existing cube in place; no falling-cube entrance on panel exit.

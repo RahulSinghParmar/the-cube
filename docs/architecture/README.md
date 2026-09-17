@@ -62,6 +62,11 @@ The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation
 
 ## Current versus planned
 
+[P1 application sections](19-p1-release.md) are implemented on React. Algorithms,
+Training, Guides and Statistics organize the existing tools alongside Solve,
+Practice, Timer and Settings. Original home/panels and old routes remain available.
+P2 is the next authorized phase to consider; no framework migration has shipped.
+
 | Area | Current foundation | Target |
 | --- | --- | --- |
 | Simulator | Strict typed 2×2–5×5 core, renderer adapter, queued keyboard/button moves; retained original simulator | Solver playback and further device verification |

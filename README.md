@@ -61,8 +61,12 @@ behavior. An expandable guide is available in the app.
 ### Homepage, menu and practice
 
 The homepage keeps the original cube layout and gestures, its **trophy** and **preferences** controls, and a **Menu** button.
-The menu holds Play, Learn, Solve, Train, Practice, Timer, Settings, License and About the Developer,
-plus original cube statistics and collapsed keyboard help. The menu uses the original display font, cube colors, and a compact layout for phones, tablets, and desktop.
+The menu organizes Algorithms, Training, Guides, Solve, Practice, Timer, Statistics
+and Settings, alongside Play, License and About the Developer. Keyboard help stays
+collapsed until requested. The menu uses the original display font, cube colors,
+and a compact layout for phones, tablets, and desktop. Each section connects the
+existing tools; original settings and trophy statistics open directly and return
+to their app section. See [P1 navigation and testing](docs/architecture/19-p1-release.md).
 
 **Menu → Practice** uses an exact typed cube engine, a responsive React interface and
 reviewed cube backup/import. Settings include custom keys, light/dark/high-contrast
@@ -79,7 +83,7 @@ for current navigation and testing steps.
 
 ### Learn and solve (M3)
 
-**Menu → Learn** offers eight guided beginner exercises with labeled 3D playback,
+**Menu → Guides → Beginner lessons** offers eight guided beginner exercises with labeled 3D playback,
 move explanations and saved practice progress. These are prepared cases; they do
 not cover every possible beginner-method case. Demonstrating a move does not
 mark it practiced.
@@ -94,7 +98,7 @@ See [M3 release and testing notes](docs/architecture/12-m3-release.md).
 
 ### PLL trainer (M4 first release)
 
-**Menu → Train** offers all 21 PLL cases with pattern diagrams, piece explanations,
+**Menu → Algorithms → PLL** offers all 21 PLL cases with pattern diagrams, piece explanations,
 verified 3D playback and guided move practice. Selected cases, partial progress,
 completed guided repetitions and incorrect choices are saved locally, with separate
 backup/restore and visible write-failure recovery. Watching never earns repetitions.

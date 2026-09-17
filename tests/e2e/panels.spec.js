@@ -26,6 +26,7 @@ test("original panels open directly from the app and preserve saved cubes offlin
     localStorage.getItem("theCube_savedState"),
   );
   await page.getByRole("link", { name: "Menu", exact: true }).click();
+  await page.getByRole("link", { name: "Statistics", exact: true }).click();
   await page
     .getByRole("link", { name: "Cube statistics", exact: true })
     .click();
@@ -44,6 +45,11 @@ test("original panels open directly from the app and preserve saved cubes offlin
     await page.evaluate(() => localStorage.getItem("theCube_savedState")),
   ).toBe(saved);
   await page.getByRole("button", { name: "Back", exact: true }).click();
+  await expect(page).toHaveURL(/menu\.html#\/statistics$/);
+  await page.getByRole("link", { name: "Play", exact: true }).click();
+  await page.waitForFunction(
+    () => window.game && game.transition.activeTransitions === 0,
+  );
   await page.waitForFunction(() => game.transition.activeTransitions === 0);
   expect(await page.evaluate(() => game.world.rendering)).toBe(true);
   expect(
@@ -101,12 +107,10 @@ test("original layout fits each viewport and full-density rendering is preserved
         page.getByRole("slider", { name: label, exact: true }),
       ).toBeInViewport();
     expect(
-      await page
-        .locator('.range[name="size"]')
-        .evaluate((el) => ({
-          background: getComputedStyle(el).backgroundColor,
-          radius: getComputedStyle(el).borderRadius,
-        })),
+      await page.locator('.range[name="size"]').evaluate((el) => ({
+        background: getComputedStyle(el).backgroundColor,
+        radius: getComputedStyle(el).borderRadius,
+      })),
     ).toEqual({ background: "rgba(0, 0, 0, 0)", radius: "0px" });
     await page.screenshot({
       path: `test-results/original-settings-${browserName}-${size.width}.png`,

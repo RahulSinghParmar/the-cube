@@ -6,7 +6,7 @@
 
 The original simulator remains at [the live URL](https://rahulsinghparmar.github.io/the-cube/). M0–M3 web scope and M4's PLL, PLL recognition, OLL and 12 beginner F2L setups are implemented. Accounts, GAN connectivity, camera capture and qualified native apps are not implemented. The F2L release is recorded at commit `18e6f1e` in [its release notes](16-m4-f2l-release.md).
 
-P0 is this architecture revision: documentation, not an interface or storage change. P1 is next. Previous milestone names remain historical; P0–P10 incorporate the additional requirements without rebuilding completed work.
+P0 is complete. P1 now organizes the eight sections on React, with original-panel return links and preserved bookmarks/data. See [P1 release notes and device tests](19-p1-release.md). P2 is the next phase when authorized. Previous milestone names remain historical; P0–P10 incorporate the additional requirements without rebuilding completed work.
 
 ## Overall build prompt
 
@@ -16,7 +16,8 @@ Use this when starting a new development conversation or restating the full dire
 Work on RahulSinghParmar/the-cube using docs/architecture/17-platform-architecture.md,
 18-reference-review.md, 07-delivery.md and 08-build-guide.md. Inspect the repository,
 current phase, unfinished changes and latest deployment first. Continue the first
-authorized unfinished phase; if none has started, begin P1 only.
+authorized unfinished phase; if none remains, report the next phase prompt
+and wait for its authorization.
 
 Keep the original homepage simulator, theme, 3D appearance, settings and statistics.
 Organize the tools into Algorithms, Training, Guides, Solve, Practice, Timer,
@@ -47,7 +48,7 @@ unless I authorize the next phase.
 
 The preservation, verification and publication rules above apply to every implementation prompt. Preparation can proceed while hardware/provider choices are pending; report the exact remaining dependency.
 
-### P1 — Organize the app (recommended next)
+### P1 — Organize the app (implemented)
 
 ```text
 Start P1 from our v2 architecture. Create clear sections for Algorithms, Training,
@@ -61,7 +62,7 @@ and relevant regression suite, push verified changes to main, verify deployment
 and explain my tests.
 ```
 
-### P2 — Prove the technology choices
+### P2 — Prove the technology choices (next)
 
 ```text
 Start P2. Compare our existing interface with a small SvelteKit static prototype

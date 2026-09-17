@@ -16,7 +16,7 @@
   <a class="skip" href="#timer-pad">Skip to timer</a>
   <header class="topbar">
     <a class="brand" href="./" aria-label="The Cube simulator"><span class="brand-icon" aria-hidden="true">▦</span> THE CUBE</a>
-    <nav aria-label="Main navigation"><a href="./">Play</a><a href="menu.html">Menu</a><a href="timer.html" aria-current="page">Timer</a></nav>
+    <nav aria-label="Main navigation"><a href="./">Play</a><a href="menu.html">Menu</a><a href="timer.html" aria-current="page">Timer</a><a href="menu.html#/statistics">Statistics</a></nav>
     <span class="local-badge">Local practice</span>
   </header>
   <main>
@@ -36,7 +36,7 @@
         <details class="scramble-details"><summary>Record your scramble (optional)</summary><label>Scramble used for this attempt<textarea id="scramble" maxlength="2000" rows="2" placeholder="For example: R U R′ U′" disabled></textarea></label><p>Use your own scramble. This timer does not generate competition scrambles.</p></details>
       </section>
       <aside class="stats-card" aria-labelledby="stats-title">
-        <p class="eyebrow">YOUR SESSION</p><h2 id="stats-title">Every attempt counts</h2>
+        <p class="eyebrow">YOUR SESSION</p><h2 id="stats-title" tabindex="-1">Every attempt counts</h2>
         <dl class="stats-grid"><div><dt>Solves</dt><dd id="stat-count">0</dd></div><div><dt>Personal best</dt><dd id="stat-best">—</dd></div><div><dt>Average of 5</dt><dd id="stat-ao5">—</dd></div><div><dt>Average of 12</dt><dd id="stat-ao12">—</dd></div><div><dt>Average of 100</dt><dd id="stat-ao100">—</dd></div><div><dt>Session mean</dt><dd id="stat-mean">—</dd></div></dl>
         <details><summary>How these numbers work</summary><p>Averages trim the fastest and slowest results: one each for 5 and 12, five each for 100. A remaining DNF makes the average DNF. Interrupted and deleted attempts are excluded. A dash means more solves are needed.</p><p>Times include penalties. Larger averages use our practice rules; results are self-recorded.</p></details>
         <p id="legacy-summary"></p>
