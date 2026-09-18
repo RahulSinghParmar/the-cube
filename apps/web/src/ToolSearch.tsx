@@ -9,6 +9,7 @@ type Destination = { title: string; href: string; description: string; aliases?:
 function destinations(text: Text): Destination[] {
   return [
     ...sections(text),
+    { title: "Move explorer", href: "#/explore", description: "Controllable 3D playback for 2×2–5×5 with move explanations.", aliases: "notation wide inner slice animation timeline rewind" },
     { title: "Beginner lessons", href: "#/learn", description: "Eight guided 3×3 exercises with saved progress.", aliases: "learn tutorial notation first solve basics" },
     { title: "F2L guided practice", href: "#/f2l", description: "Pair and insert corners and edges: 12 beginner setups.", aliases: "first two layers algorithms" },
     { title: "OLL guided practice", href: "#/oll", description: "Explore and practice all 57 orientation cases.", aliases: "orient last layer algorithms" },

@@ -578,9 +578,10 @@
       "feature": "Puzzle and method registry with explicit capabilities",
       "source": "owner",
       "release": "P2A",
-      "status": "missing",
+      "status": "existing",
       "acceptance": "Model, renderer, parser, scrambler, solver, lessons and device support declared independently; preserve 2-5 checkpoints.",
-      "dependencies": []
+      "dependencies": [],
+      "implementation": "P2A: docs/architecture/23-playback-release.md; separately tested 2x2-5x5 only. Physical low-end hardware profiling remains open."
     },
     {
       "id": "player",
@@ -588,11 +589,12 @@
       "feature": "Shared 3D play/pause, seek, reverse, speed, loop and reset",
       "source": "guide",
       "release": "P2A",
-      "status": "partial",
+      "status": "existing",
       "acceptance": "All input methods resolve to the same state; interrupt/reduced-motion/disposal and low-end performance verified.",
       "dependencies": [
         "puzzle-capabilities"
-      ]
+      ],
+      "implementation": "P2A: docs/architecture/23-playback-release.md; separately tested 2x2-5x5 only. Physical low-end hardware profiling remains open."
     },
     {
       "id": "notation-engine",
@@ -600,11 +602,12 @@
       "feature": "Wide, slice, inner-layer and rotation notation adapters",
       "source": "big",
       "release": "P2A",
-      "status": "partial",
+      "status": "existing",
       "acceptance": "Parser round trips and independently expected piece permutations; reject unsupported notation visibly.",
       "dependencies": [
         "puzzle-capabilities"
-      ]
+      ],
+      "implementation": "P2A: docs/architecture/23-playback-release.md; separately tested 2x2-5x5 only. Physical low-end hardware profiling remains open."
     },
     {
       "id": "stack-proof",

@@ -5,6 +5,8 @@ export type Vector = readonly [number, number, number];
 export interface Move {
   face: Face | "x" | "y" | "z";
   layers: number;
+  // A single inner slice, counted from the named face. Absent for outer blocks.
+  depth?: number;
   turns: 1 | 2 | 3;
 }
 export interface CubeState {
@@ -78,7 +80,14 @@ export function solved(size: Size): CubeState {
   };
 }
 export function parseMove(input: string, size: Size): Move {
-  const token = input.replaceAll("′", "'");
+  sizeOf(size);
+  const token = input.replaceAll("′", "'").replace(/^([urfdlb])/, (_, face: string) => `${face.toUpperCase()}w`);
+  const slice = /^([MES])(2|')?$/.exec(token);
+  if (slice) {
+    if (size % 2 === 0) throw new Error(`Use numbered inner layers on ${size}×${size}; ${slice[1]} needs a single middle layer.`);
+    return { face: ({ M: "L", E: "D", S: "F" } as const)[slice[1] as "M" | "E" | "S"], layers: 1, depth: (size + 1) / 2,
+      turns: slice[2] === "2" ? 2 : slice[2] === "'" ? 3 : 1 };
+  }
   const rotation = /^([xyz])(2|')?$/.exec(token);
   if (rotation)
     return {
@@ -89,8 +98,13 @@ export function parseMove(input: string, size: Size): Move {
   const match = /^(?:(\d))?([URFDLB])(w)?(2|')?$/.exec(token);
   if (!match) throw new Error(`Unsupported move: ${input}`);
   const layers = match[1] ? Number(match[1]) : match[3] ? 2 : 1;
-  if ((match[1] && !match[3]) || layers < 1 || layers > size)
+  if (layers < 1 || layers > size)
     throw new Error(`Invalid layer count: ${input}`);
+  if (match[1] && !match[3]) {
+    if (layers < 2 || layers >= size) throw new Error(`Inner layer must be between 2 and ${size - 1}: ${input}`);
+    return { face: match[2] as Face, layers: 1, depth: layers,
+      turns: match[4] === "2" ? 2 : match[4] === "'" ? 3 : 1 };
+  }
   return {
     face: match[2] as Face,
     layers,
@@ -99,7 +113,7 @@ export function parseMove(input: string, size: Size): Move {
 }
 export function notation(move: Move): string {
   const rotation = ["x", "y", "z"].includes(move.face);
-  return `${!rotation && move.layers > 2 ? move.layers : ""}${move.face}${!rotation && move.layers > 1 ? "w" : ""}${move.turns === 2 ? "2" : move.turns === 3 ? "'" : ""}`;
+  return `${move.depth ?? (!rotation && move.layers > 2 ? move.layers : "")}${move.face}${!rotation && move.layers > 1 ? "w" : ""}${move.turns === 2 ? "2" : move.turns === 3 ? "'" : ""}`;
 }
 export function inverse(move: Move): Move {
   return { ...move, turns: move.turns === 1 ? 3 : move.turns === 3 ? 1 : 2 };
@@ -123,6 +137,7 @@ export function transform(move: Move): {
 }
 export function affected(position: Vector, move: Move, size: Size): boolean {
   const { axis, sign } = transform(move);
+  if (move.depth !== undefined) return position[axis] * sign === size - 1 - 2 * (move.depth - 1);
   return position[axis] * sign >= size - 1 - 2 * (move.layers - 1);
 }
 function rotate(v: Vector, axis: number, positive: boolean): Vector {
@@ -141,7 +156,7 @@ export function apply(state: CubeState, move: Move): CubeState {
   if (![1, 2, 3].includes(move.turns) || !Number.isInteger(move.layers))
     throw new Error("Invalid move");
   const parsed = parseMove(notation(move), state.size);
-  if (parsed.layers !== move.layers) throw new Error("Invalid move layers");
+  if (parsed.layers !== move.layers || parsed.depth !== move.depth) throw new Error("Invalid move layers");
   const cacheKey = `${state.size}:${notation(move)}`;
   let permutation = permutations.get(cacheKey);
   if (!permutation) {
@@ -278,3 +293,4 @@ export class MoveQueue {
 }
 
 export { validate3x3 } from "./legality.js";
+export * from "./playback.js";

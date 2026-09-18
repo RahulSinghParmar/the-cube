@@ -43,6 +43,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 
 | Document | Decisions and deliverables |
 | --- | --- |
+| [Shared playback release](23-playback-release.md) | P2A capabilities, notation, reversible player, preservation and test steps |
 | [Platform architecture v2](17-platform-architecture.md) | Current sections, stack decisions, preserved data, content validation, GAN, cloud and cross-platform design |
 | [Reference and dependency review](18-reference-review.md) | All requested reference sites and tools, adoption phases, source rights and license discrepancies |
 | [Tutorial experience and multi-size courses](20-tutorial-experience.md) | Reference-led lesson layout, playback contract, 3×3/2×2/4×4/5×5 releases and implementation assessment |

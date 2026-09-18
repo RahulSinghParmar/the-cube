@@ -1,21 +1,9 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { apply, inverse, parseMove, type CubeState } from "@the-cube/cube-core";
-import { moveDescription } from "@the-cube/academy";
+import { compilePlayback, describeMove, inverse, type CubeState } from "@the-cube/cube-core";
 import { ThreeRenderer } from "./renderer";
 import type { Preferences } from "./preferences";
 
-export function SequencePlayer({
-  input,
-  moves,
-  preferences,
-  initialStep = 0,
-  exercise = false,
-  onStep,
-  onMistake,
-  exerciseName = "Lesson exercise",
-  completionText,
-  guideForStep,
-}: {
+interface PlayerProps {
   input: CubeState;
   moves: string[];
   preferences: Preferences;
@@ -24,104 +12,132 @@ export function SequencePlayer({
   onStep?: (step: number, practiced: boolean) => void;
   onMistake?: () => void;
   exerciseName?: string;
+  playLabel?: string;
   completionText?: string | undefined;
   guideForStep?: (step: number, state: CubeState) => ReactNode;
-}) {
-  const states = useMemo(() => {
-    const all = [input];
-    for (const token of moves)
-      all.push(apply(all.at(-1)!, parseMove(token, 3)));
-    return all;
-  }, [input.facelets, moves.join(" ")]);
-  const [cursor, setCursor] = useState(Math.min(initialStep, moves.length)),
-    [busy, setBusy] = useState(false),
-    [playing, setPlaying] = useState(false);
-  const [speed, setSpeed] = useState(900),
-    [choice, setChoice] = useState("R"),
-    [feedback, setFeedback] = useState(""),
-    [viewError, setViewError] = useState("");
-  const host = useRef<HTMLDivElement>(null),
-    view = useRef<ThreeRenderer | null>(null),
-    lock = useRef(false),
-    current = useRef(cursor),
-    alive = useRef(true);
+}
+export function SequencePlayer(props: PlayerProps) {
+  // Saved callbacks may change every step; only new content resets the player.
+  return <Playback key={`${props.input.size}:${props.input.facelets}:${props.moves.join(" ")}`} {...props} />;
+}
+function Playback({ input, moves, preferences, initialStep = 0, exercise = false,
+  onStep, onMistake, exerciseName = "Lesson exercise", playLabel = "Play solution", completionText, guideForStep }: PlayerProps) {
+  const { states, moves: parsed } = useMemo(() => compilePlayback(input, moves), [input.size, input.facelets, moves.join(" ")]);
+  const [cursor, setCursor] = useState(Math.max(0, Math.min(Number.isFinite(initialStep) ? Math.trunc(initialStep) : 0, moves.length)));
+  const [busy, setBusy] = useState(false), [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1), [loop, setLoop] = useState(false);
+  const [choice, setChoice] = useState("R"), [feedback, setFeedback] = useState(""), [viewError, setViewError] = useState("");
+  const [systemMotion, setSystemMotion] = useState(() => matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const [still, setStill] = useState(false);
+  const reducedMotion = preferences.reducedMotion || systemMotion || still;
+  const host = useRef<HTMLDivElement>(null), section = useRef<HTMLElement>(null), view = useRef<ThreeRenderer | null>(null);
+  const lock = useRef(false), current = useRef(cursor), generation = useRef(0), alive = useRef(true), visible = useRef(true);
   const callback = useRef(onStep);
   callback.current = onStep;
+  const currentLoop = useRef(loop);
+  currentLoop.current = loop;
+  const autoplay = useRef(false);
+  const scheduled = useRef<ReturnType<typeof setTimeout> | null>(null);
+  function stopAutoplay() {
+    autoplay.current = false;
+    if (scheduled.current !== null) clearTimeout(scheduled.current);
+    scheduled.current = null;
+    setPlaying(false);
+  }
+  function interrupt() {
+    generation.current++;
+    view.current?.interrupt();
+    view.current?.setState(states[current.current]!);
+    lock.current = false;
+    setBusy(false);
+  }
+  function pause() {
+    stopAutoplay();
+    interrupt();
+  }
   useEffect(() => {
     alive.current = true;
     try {
-      view.current = new ThreeRenderer(host.current!, {
-        reducedMotion:
-          preferences.reducedMotion ||
-          matchMedia("(prefers-reduced-motion: reduce)").matches,
-        labels: true,
-      });
+      view.current = new ThreeRenderer(host.current!, { reducedMotion, labels: true });
       view.current.setState(states[current.current]!);
     } catch {
-      setViewError(
-        "3D is unavailable in this browser. The face grids and move instructions still work.",
-      );
+      setViewError("3D is unavailable in this browser. The face grids and move instructions still work.");
     }
     return () => {
       alive.current = false;
+      autoplay.current = false;
+      if (scheduled.current !== null) clearTimeout(scheduled.current);
+      generation.current++;
       view.current?.dispose();
       view.current = null;
     };
-  }, [preferences.reducedMotion]);
-  useEffect(() => {
-    const hidden = () => {
-      if (document.hidden) setPlaying(false);
-    };
-    document.addEventListener("visibilitychange", hidden);
-    return () => document.removeEventListener("visibilitychange", hidden);
   }, []);
-  async function go(target: number, practiced = false) {
-    if (
-      lock.current ||
-      target < 0 ||
-      target > moves.length ||
-      target === current.current
-    )
-      return;
+  useEffect(() => {
+    pause();
+    view.current?.configure({ reducedMotion, labels: true });
+  }, [reducedMotion]);
+  useEffect(() => {
+    const media = matchMedia("(prefers-reduced-motion: reduce)");
+    const change = () => setSystemMotion(media.matches);
+    media.addEventListener("change", change);
+    const hidden = () => { if (document.hidden) pause(); };
+    document.addEventListener("visibilitychange", hidden);
+    const observer = new IntersectionObserver(entries => {
+      visible.current = entries[0]?.isIntersecting ?? false;
+      if (!visible.current) pause();
+    });
+    observer.observe(section.current!);
+    return () => {
+      media.removeEventListener("change", change);
+      document.removeEventListener("visibilitychange", hidden);
+      observer.disconnect();
+    };
+  }, []);
+  async function go(target: number, practiced = false, animate = true) {
+    if (lock.current || target < 0 || target > moves.length || target === current.current) return;
     lock.current = true;
     setBusy(true);
     setFeedback("");
-    const before = current.current;
+    const before = current.current, operation = ++generation.current;
     try {
-      const token = target > before ? moves[before] : moves[target];
-      const move = token ? parseMove(token, 3) : null;
-      if (view.current && move && Math.abs(target - before) === 1)
-        await view.current.animate(
-          states[before]!,
-          target > before ? move : inverse(move),
-          states[target]!,
-        );
+      const move = parsed[target > before ? before : target];
+      if (animate && view.current && move && Math.abs(target - before) === 1)
+        await view.current.animate(states[before]!, target > before ? move : inverse(move), states[target]!, 320 / speed);
       else view.current?.setState(states[target]!);
-      if (!alive.current) return;
+      if (!alive.current || generation.current !== operation) return;
       current.current = target;
       setCursor(target);
       callback.current?.(target, practiced);
-      if (target === moves.length) setPlaying(false);
+      if (target === moves.length && !currentLoop.current) stopAutoplay();
     } catch {
-      if (alive.current) {
-        setPlaying(false);
+      if (alive.current && generation.current === operation) {
+        stopAutoplay();
         view.current?.setState(states[before]!);
-        setFeedback(
-          "The move was interrupted. Your last completed step is preserved.",
-        );
+        setFeedback("The move was interrupted. Your last completed step is preserved.");
       }
     } finally {
-      lock.current = false;
-      if (alive.current) setBusy(false);
+      if (alive.current && generation.current === operation) {
+        lock.current = false;
+        setBusy(false);
+      }
     }
   }
+  function seek(target: number) {
+    pause();
+    void go(target, false, false);
+  }
   useEffect(() => {
-    if (!playing || busy || cursor >= moves.length) return;
-    const timer = setTimeout(() => void go(current.current + 1), speed);
+    if (!playing || busy || !moves.length || document.hidden || !visible.current) return;
+    if (cursor === moves.length && !loop) { stopAutoplay(); return; }
+    const timer = setTimeout(() => {
+      if (!autoplay.current || document.hidden || !visible.current) return;
+      void go(current.current === moves.length ? 0 : current.current + 1, false, current.current !== moves.length);
+    }, 650 / speed);
+    scheduled.current = timer;
     return () => clearTimeout(timer);
-  }, [playing, busy, cursor, speed]);
+  }, [playing, busy, cursor, speed, loop]);
   function attempt() {
-    setPlaying(false);
+    pause();
     if (choice !== moves[current.current]) {
       setFeedback(`Try ${moves[current.current]}. The cube has not changed.`);
       onMistake?.();
@@ -132,6 +148,8 @@ export function SequencePlayer({
   return (
     <section
       className="sequence-player"
+      ref={section}
+      data-motion={reducedMotion ? "reduce" : "full"}
       aria-label={exercise ? exerciseName : "Solution playback"}
     >
       <div className="playback-scene">
@@ -142,7 +160,7 @@ export function SequencePlayer({
           <span>
             {cursor === moves.length
               ? "Complete"
-              : "Keep U on top · F in front"}
+              : `${input.size}×${input.size} · Follow the face labels`}
           </span>
         </div>
         <div className="cube-view" ref={host} />
@@ -161,18 +179,18 @@ export function SequencePlayer({
         </h3>
         <p>
           {moves[cursor]
-            ? moveDescription(moves[cursor]!)
+            ? describeMove(moves[cursor]!, input.size)
             : (completionText ??
               (exercise
                 ? "You have reached the end. Apply every move yourself to record this lesson as practiced."
-                : "All six faces are solved. Your original input remains saved separately."))}
+                : "Sequence complete. Rewind to explore the moves again."))}
         </p>
         <div className="actions playback-actions">
           <button
             className="secondary"
             disabled={busy || cursor === 0}
             onClick={() => {
-              setPlaying(false);
+              stopAutoplay();
               void go(cursor - 1);
             }}
           >
@@ -181,45 +199,50 @@ export function SequencePlayer({
           <button
             disabled={busy || cursor === moves.length}
             onClick={() => {
-              setPlaying(false);
+              stopAutoplay();
               void go(cursor + 1);
             }}
           >
             {exercise ? "Show next move" : "Next move"}
           </button>
-          {!exercise && (
+          {(
             <button
               className="secondary"
-              disabled={cursor === moves.length}
-              onClick={() => setPlaying((value) => !value)}
+              disabled={!moves.length}
+              onClick={() => {
+                if (playing) pause();
+                else { if (current.current === moves.length) seek(0); autoplay.current = true; setPlaying(true); }
+              }}
             >
-              {playing ? "Pause" : "Play solution"}
+              {playing ? "Pause" : exercise ? "Play demonstration" : playLabel}
             </button>
           )}
           <button
             className="quiet"
-            disabled={busy || cursor === 0}
-            onClick={() => {
-              setPlaying(false);
-              void go(0);
-            }}
+            disabled={cursor === 0 && !busy}
+            onClick={() => seek(0)}
           >
             Restart
           </button>
         </div>
-        {!exercise && (
-          <label className="playback-speed">
-            Pause between moves
-            <select
-              value={speed}
-              onChange={(event) => setSpeed(Number(event.target.value))}
-            >
-              <option value={1400}>Slow · 1.4 seconds</option>
-              <option value={900}>Comfortable · 0.9 seconds</option>
-              <option value={400}>Quick · 0.4 seconds</option>
+        <label className="playback-timeline">
+          Move timeline  -  {cursor} of {moves.length}
+          <input type="range" min={0} max={moves.length} step={1} value={cursor}
+            disabled={!moves.length} aria-label="Move timeline"
+            aria-valuetext={`Step ${cursor} of ${moves.length}${moves[cursor] ? `, next ${moves[cursor]}` : ", complete"}`}
+            onChange={event => seek(Number(event.target.value))} />
+        </label>
+        <div className="playback-options">
+          <label className="playback-speed">Playback speed
+            <select value={speed} onChange={event => { pause(); setSpeed(Number(event.target.value)); }}>
+              <option value={0.5}>0.5× · Slow</option>
+              <option value={1}>1× · Comfortable</option>
+              <option value={2}>2× · Quick</option>
             </select>
           </label>
-        )}
+          <label className="playback-check"><input type="checkbox" checked={loop} onChange={event => setLoop(event.target.checked)} /> Loop sequence</label>
+          <label className="playback-check"><input type="checkbox" checked={reducedMotion} disabled={preferences.reducedMotion || systemMotion} onChange={event => setStill(event.target.checked)} /> Reduce motion</label>
+        </div>
         {exercise && (
           <div className="exercise-input">
             <label>
@@ -229,13 +252,10 @@ export function SequencePlayer({
                 onChange={(event) => setChoice(event.target.value)}
                 disabled={busy || cursor === moves.length}
               >
-                {[..."URFDLB"].flatMap((face) =>
-                  ["", "'", "2"].map((suffix) => (
-                    <option key={face + suffix} value={face + suffix}>
-                      {face + suffix}
-                    </option>
-                  )),
-                )}
+                {[...new Set([..."URFDLB"].flatMap(face =>
+                  ["", "'", "2"].map(suffix => face + suffix)).concat(moves))].map(token => (
+                  <option key={token} value={token}>{token}</option>
+                ))}
               </select>
             </label>
             <button
@@ -258,12 +278,13 @@ export function SequencePlayer({
           <summary>Move sequence</summary>
           <p className="notation">
             {moves.map((move, index) => (
-              <span
+              <button type="button" className={`playback-token ${index === cursor ? "current-token" : ""}`}
+                aria-label={`Go to move ${index + 1}: ${move}`} aria-current={index === cursor ? "step" : undefined}
+                onClick={() => seek(index)}
                 key={index}
-                className={index === cursor ? "current-token" : undefined}
               >
                 {move}{" "}
-              </span>
+              </button>
             ))}
           </p>
         </details>
@@ -276,15 +297,15 @@ export function SequencePlayer({
               <h3>{face}</h3>
               <div
                 className="net-face"
-                style={{ gridTemplateColumns: "repeat(3,1fr)" }}
+                style={{ gridTemplateColumns: `repeat(${input.size},1fr)` }}
               >
                 {[
-                  ...states[cursor]!.facelets.slice(index * 9, index * 9 + 9),
+                  ...states[cursor]!.facelets.slice(index * input.size ** 2, (index + 1) * input.size ** 2),
                 ].map((color, i) => (
                   <span
                     key={i}
                     className={`sticker color-${color}`}
-                    aria-label={`${face} row ${Math.floor(i / 3) + 1} column ${(i % 3) + 1}: ${color}`}
+                    aria-label={`${face} row ${Math.floor(i / input.size) + 1} column ${(i % input.size) + 1}: ${color}`}
                   >
                     {color}
                   </span>

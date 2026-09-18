@@ -76,6 +76,7 @@ export class ThreeRenderer implements RendererPort {
   private group: Object3D;
   private entries: { object: Object3D; position: Vector }[] = [];
   private resources: Disposable[] = [];
+  private assets: { key: string; box: Disposable; plane: Disposable; dark: Disposable; materials: Record<string, Disposable> } | null = null;
   private resizeObserver: ResizeObserver;
   private disposed = false;
   private frame = 0;
@@ -152,37 +153,42 @@ export class ThreeRenderer implements RendererPort {
     if (this.disposed) return;
     this.state = state;
     this.view.remove(this.group);
-    this.resources.forEach((r) => r.dispose());
-    this.resources = [];
     const T = this.api;
     this.group = new T.Object3D();
     this.view.add(this.group);
     this.entries = [];
-    const step = 3 / state.size,
-      box = new T.BoxGeometry(step * 0.94, step * 0.94, step * 0.94),
-      plane = new T.PlaneGeometry(step * 0.8, step * 0.8),
-      dark = new T.MeshBasicMaterial({ color: "#182131" });
-    this.resources.push(box, plane, dark);
-    const materials: Record<string, Disposable> = {};
-    for (const [face, color] of Object.entries(colors)) {
-      if (this.options.labels) {
-        const canvas = document.createElement("canvas");
-        canvas.width = 128;
-        canvas.height = 128;
-        const ctx = canvas.getContext("2d")!;
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, 128, 128);
-        ctx.fillStyle = "#122035";
-        ctx.font = "bold 64px system-ui";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(face, 64, 67);
-        const texture = new T.CanvasTexture(canvas);
-        this.resources.push(texture);
-        materials[face] = new T.MeshBasicMaterial({ map: texture });
-      } else materials[face] = new T.MeshBasicMaterial({ color });
-      this.resources.push(materials[face]!);
+    const step = 3 / state.size;
+    const assetKey = `${state.size}:${this.options.labels}`;
+    if (this.assets?.key !== assetKey) {
+      this.resources.forEach(resource => resource.dispose());
+      this.resources = [];
+      const box = new T.BoxGeometry(step * 0.94, step * 0.94, step * 0.94),
+        plane = new T.PlaneGeometry(step * 0.8, step * 0.8),
+        dark = new T.MeshBasicMaterial({ color: "#182131" });
+      this.resources.push(box, plane, dark);
+      const materials: Record<string, Disposable> = {};
+      for (const [face, color] of Object.entries(colors)) {
+        if (this.options.labels) {
+          const canvas = document.createElement("canvas");
+          canvas.width = 128;
+          canvas.height = 128;
+          const ctx = canvas.getContext("2d")!;
+          ctx.fillStyle = color;
+          ctx.fillRect(0, 0, 128, 128);
+          ctx.fillStyle = "#122035";
+          ctx.font = "bold 64px system-ui";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(face, 64, 67);
+          const texture = new T.CanvasTexture(canvas);
+          this.resources.push(texture);
+          materials[face] = new T.MeshBasicMaterial({ map: texture });
+        } else materials[face] = new T.MeshBasicMaterial({ color });
+        this.resources.push(materials[face]!);
+      }
+      this.assets = { key: assetKey, box, plane, dark, materials };
     }
+    const { box, plane, dark, materials } = this.assets;
     const m = state.size - 1;
     for (let x = -m; x <= m; x += 2)
       for (let y = -m; y <= m; y += 2)
@@ -210,7 +216,13 @@ export class ThreeRenderer implements RendererPort {
     });
     this.draw();
   }
-  animate(before: CubeState, move: Move, after: CubeState): Promise<void> {
+  interrupt(): void {
+    cancelAnimationFrame(this.frame);
+    this.frame = 0;
+    this.cancelAnimation?.();
+    this.cancelAnimation = null;
+  }
+  animate(before: CubeState, move: Move, after: CubeState, duration = 170): Promise<void> {
     if (this.disposed) return Promise.reject(new Error("Renderer disposed"));
     if (this.options.reducedMotion) {
       this.setState(after);
@@ -231,7 +243,7 @@ export class ThreeRenderer implements RendererPort {
       this.cancelAnimation = () => reject(new Error("Animation cancelled"));
       const tick = (now: number) => {
         if (this.disposed) return;
-        const t = Math.min(1, (now - start) / 170);
+        const t = Math.min(1, (now - start) / Math.max(1, duration));
         pivot.rotation[name] = angle * (1 - Math.pow(1 - t, 3));
         this.draw();
         if (t < 1) this.frame = requestAnimationFrame(tick);

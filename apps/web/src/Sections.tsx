@@ -58,6 +58,7 @@ export function sections(text: Text) {
 }
 
 const childSections: Record<string, { parent: Section; title: string }> = {
+  "#/explore": { parent: "guides", title: "Move explorer" },
   "#/train": { parent: "training", title: "PLL" },
   "#/oll": { parent: "training", title: "OLL" },
   "#/f2l": { parent: "training", title: "F2L" },
@@ -188,6 +189,13 @@ const content: Record<
         note: "Learn notation and solving ideas with prepared examples, step-by-step playback and saved progress.",
         href: "#/learn",
         icon: "learn",
+      },
+      {
+        title: "Move explorer",
+        meta: "2×2 · 3×3 · 4×4 · 5×5",
+        note: "See each turn in 3D. Play, pause, rewind or drag the timeline, with plain-language move explanations.",
+        href: "#/explore",
+        icon: "cube",
       },
       {
         title: "Understand F2L",

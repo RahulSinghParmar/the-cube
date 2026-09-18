@@ -32,6 +32,7 @@ import "./sections.css";
 const F2LPage = lazy(() =>
   import("./F2LPage").then((module) => ({ default: module.F2LPage })),
 );
+const PlaybackPage = lazy(() => import("./PlaybackPage").then(module => ({ default: module.PlaybackPage })));
 const OLLPage = lazy(() =>
   import("./OLLPage").then((module) => ({ default: module.OLLPage })),
 );
@@ -488,14 +489,16 @@ function App() {
             kind={route === "#/about" ? "about" : "license"}
             text={text}
           />
-        ) : route === "#/learn" ||
+        ) : route === "#/explore" || route === "#/learn" ||
           route === "#/solve" ||
           route === "#/train" ||
           route === "#/recognize" ||
           route === "#/f2l" ||
           route === "#/oll" ? (
           <Suspense fallback={<p role="status">Opening your workspace…</p>}>
-            {route === "#/f2l" ? (
+            {route === "#/explore" ? (
+              <PlaybackPage preferences={preferences} />
+            ) : route === "#/f2l" ? (
               <F2LPage preferences={preferences} />
             ) : route === "#/oll" ? (
               <OLLPage preferences={preferences} />

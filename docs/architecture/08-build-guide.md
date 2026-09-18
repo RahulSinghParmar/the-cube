@@ -8,8 +8,9 @@ The owner's request now covers the whole reference product. Start with
 [the 99-capability audit, expanded releases and continuation prompts](21-product-coverage.md)
 and [its inventory](reference-coverage.json). These supersede the earlier
 3×3-first recommendation and narrow GAN-only/selected-puzzle scope below.
-P1A adds [search for current tools](22-search-release.md); next is P2A, the
-multi-puzzle capability/player foundation on React. These are implementation
+P1A adds [search for current tools](22-search-release.md).
+P2A adds [shared multi-puzzle capabilities and playback](23-playback-release.md)
+on React. Next is P2B: measured stack/rendering evaluation, before P3A catalog work. These are implementation
 steps toward full scope, not a claim that the reference has been reproduced.
 
 The original simulator remains at [the live URL](https://rahulsinghparmar.github.io/the-cube/). M0–M3 web scope and M4's PLL, PLL recognition, OLL and 12 beginner F2L setups are implemented. Accounts, GAN connectivity, camera capture and qualified native apps are not implemented. The F2L release is recorded at commit `18e6f1e` in [its release notes](16-m4-f2l-release.md).

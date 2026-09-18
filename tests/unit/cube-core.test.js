@@ -68,7 +68,7 @@ test("golden face orientation: R takes front right column to up right column; U 
   assert.equal(isSolved(apply(solved(3), parseMove("x", 3))), true);
 });
 test("invalid notation and unreachable state are rejected without guessing", () => {
-  for (const token of ["Q", "R3", "4Rw", "2R", "r", "R U"])
+  for (const token of ["Q", "R3", "4Rw", "3R", "rw", "R U"])
     assert.throws(() => parseMove(token, 3));
   assert.throws(() =>
     validateCheckpoint({

@@ -60,7 +60,7 @@ These subdivisions preserve P0–P10 and historical M releases. Completion requi
 | P10D | Other methods/puzzles, including reference-planned or credited items |
 | P10E | Project camera input and evidence-based coaching |
 
-Next is **P2A**, retaining React. P2B is evaluation, not a mandatory framework migration. P3A follows the shared foundation. Then deliver an early complete 2×2 path (P3B Ortega + P4B) alongside P4A, rather than postponing every non-3×3 experience until advanced work ends. Expand packs and drills in verified batches. P10A can follow its catalog prerequisites without waiting for accounts/native: phase numbers do not force dependency-independent work to the end.
+**P2A is implemented**, retaining React; see [shared playback release](23-playback-release.md). Next is **P2B**. P2B is evaluation, not a mandatory framework migration. P3A follows the shared foundation. Then deliver an early complete 2×2 path (P3B Ortega + P4B) alongside P4A, rather than postponing every non-3×3 experience until advanced work ends. Expand packs and drills in verified batches. P10A can follow its catalog prerequisites without waiting for accounts/native: phase numbers do not force dependency-independent work to the end.
 
 ## Hosting
 
@@ -111,9 +111,9 @@ Exact evidence, acceptance and dependencies are in the JSON inventory. This is a
 | navigation | Menu: Eight sections, breadcrumbs and return to original cube | existing | P1 | Owner request |
 | tool-search | Menu: Search available tools with keyboard and touch | existing | P1A | [live-ui](https://speedcube.quest/) |
 | resume-dashboard | Menu: Resume lessons, recent activity and progress summary | missing | P6C | [live-ui](https://speedcube.quest/) |
-| puzzle-capabilities | Foundation: Puzzle and method registry with explicit capabilities | missing | P2A | Owner request |
-| player | Foundation: Shared 3D play/pause, seek, reverse, speed, loop and reset | partial | P2A | [live-ui](https://speedcube.quest/guides/how-to-solve-a-rubiks-cube) |
-| notation-engine | Foundation: Wide, slice, inner-layer and rotation notation adapters | partial | P2A | [public-page](https://speedcube.quest/algorithms/big-cubes/6x6) |
+| puzzle-capabilities | Foundation: Puzzle and method registry with explicit capabilities | existing | P2A | Owner request |
+| player | Foundation: Shared 3D play/pause, seek, reverse, speed, loop and reset | existing | P2A | [live-ui](https://speedcube.quest/guides/how-to-solve-a-rubiks-cube) |
+| notation-engine | Foundation: Wide, slice, inner-layer and rotation notation adapters | existing | P2A | [public-page](https://speedcube.quest/algorithms/big-cubes/6x6) |
 | stack-proof | Foundation: Measured React/SvelteKit and cubing.js decision | missing | P2B | Owner request |
 | library-core | Algorithms: Searchable sets/cases, grouped overview, filters and sorting | partial | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
 | favorites | Algorithms: Favorite sets and preferred algorithm variants | missing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
@@ -205,7 +205,7 @@ Test relevant behavior and the built-in browser, push verified changes to main,
 verify CI/Pages and live routes, and explain my test steps and next release.
 ```
 
-## Next focused prompt
+## P2A implementation prompt (completed)
 
 ```text
 Start P2A from our whole-product coverage plan. Add a multi-puzzle capability

@@ -117,6 +117,19 @@
   display: block;
   max-width: 240px;
 }
+.playback-timeline { display: block; margin: 18px 0; }
+.playback-timeline input { display: block; width: 100%; min-height: 44px; padding: 0; accent-color: var(--accent); }
+.playback-options { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.playback-check { display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; }
+.playback-check input { width: 18px; height: 18px; min-height: 18px; margin: 0; accent-color: var(--accent); }
+.sequence-player .notation { display: flex; flex-wrap: wrap; gap: 4px; }
+.sequence-player .playback-token { color: var(--text); background: var(--field); border: 1px solid var(--line); min-width: 44px; min-height: 44px; padding: 8px; font: inherit; }
+.sequence-player .playback-token.current-token { background: var(--tint); border-color: var(--accent); }
+.playback-editor { display: grid; grid-template-columns: minmax(90px, 140px) minmax(0, 1fr) auto; gap: 16px; align-items: end; margin-top: 24px; }
+.playback-editor textarea { display: block; width: 100%; box-sizing: border-box; resize: vertical; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--field); color: var(--text); font: 15px/1.5 monospace; }
+.playback-editor label { min-width: 0; }
+.step-explanation { padding: 12px; background: var(--tint); border-radius: 12px; }
+@media (max-width: 760px) { .playback-editor { grid-template-columns: 1fr; } }
 .exercise-input {
   display: flex;
   align-items: end;
