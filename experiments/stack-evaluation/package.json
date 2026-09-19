@@ -1,0 +1,25 @@
+{
+  "name": "cube-stack-evaluation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node prepare.mjs && vite build && vite build --config vite.react.config.js && node offline.mjs",
+    "preview": "node server.mjs",
+    "measure": "node measure.mjs"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "3.0.10",
+    "@sveltejs/kit": "2.70.3",
+    "@sveltejs/vite-plugin-svelte": "7.3.0",
+    "@tailwindcss/vite": "4.3.3",
+    "bits-ui": "2.19.2",
+    "cubing": "0.63.6",
+    "@lucide/svelte": "1.47.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "svelte": "5.57.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.2",
+    "vite": "8.3.0"
+  }
+}

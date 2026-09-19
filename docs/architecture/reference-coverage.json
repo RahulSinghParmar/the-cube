@@ -615,11 +615,12 @@
       "feature": "Measured React/SvelteKit and cubing.js decision",
       "source": "owner",
       "release": "P2B",
-      "status": "missing",
+      "status": "existing",
       "acceptance": "No cutover without route/data/offline and frame/bundle comparisons.",
       "dependencies": [
         "puzzle-capabilities"
-      ]
+      ],
+      "implementation": "P2B evaluation: docs/architecture/24-stack-evaluation.md and experiments/stack-evaluation. Keep React/current renderer; no cutover. Physical device and Bluetooth qualification remain open."
     },
     {
       "id": "library-core",

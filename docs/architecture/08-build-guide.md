@@ -10,12 +10,12 @@ and [its inventory](reference-coverage.json). These supersede the earlier
 3×3-first recommendation and narrow GAN-only/selected-puzzle scope below.
 P1A adds [search for current tools](22-search-release.md).
 P2A adds [shared multi-puzzle capabilities and playback](23-playback-release.md)
-on React. Next is P2B: measured stack/rendering evaluation, before P3A catalog work. These are implementation
+on React. [P2B evaluation](24-stack-evaluation.md) retains React and the current renderer. Next is P3A catalog work. These are implementation
 steps toward full scope, not a claim that the reference has been reproduced.
 
 The original simulator remains at [the live URL](https://rahulsinghparmar.github.io/the-cube/). M0–M3 web scope and M4's PLL, PLL recognition, OLL and 12 beginner F2L setups are implemented. Accounts, GAN connectivity, camera capture and qualified native apps are not implemented. The F2L release is recorded at commit `18e6f1e` in [its release notes](16-m4-f2l-release.md).
 
-P0 is complete. P1 now organizes the eight sections on React, with original-panel return links and preserved bookmarks/data. See [P1 release notes and device tests](19-p1-release.md). P2 is the next phase when authorized. Previous milestone names remain historical; P0–P10 incorporate the additional requirements without rebuilding completed work.
+P0 is complete. P1 organizes the eight sections on React, with original-panel return links and preserved bookmarks/data. See [P1 release notes and device tests](19-p1-release.md). P2A/P2B are complete; P3A is next when authorized. Previous milestone names remain historical; P0–P10 incorporate the additional requirements without rebuilding completed work.
 
 The owner's tutorial reference is now specified in [the tutorial experience plan](20-tutorial-experience.md).
 It defines closely matched lesson layout and playback, then complete courses for
@@ -78,7 +78,7 @@ and relevant regression suite, push verified changes to main, verify deployment
 and explain my tests.
 ```
 
-### P2B — Prove the technology choices (after the P2A foundation)
+### P2B — Prove the technology choices (completed; retain React)
 
 ```text
 Start P2. Compare our existing interface with a small SvelteKit static prototype

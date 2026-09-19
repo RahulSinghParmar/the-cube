@@ -1,0 +1,2974 @@
+{
+  "recordedAt": "2026-09-19T08:50:03.800Z",
+  "environment": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "13th Gen Intel(R) Core(TM) i3-13100",
+    "node": "v22.23.1",
+    "chromium": "153.0.8010.12"
+  },
+  "method": "Cold fresh browser contexts; localhost, no network/CPU throttling; five Chromium samples. Estimated gzip per response body, not observed CDN transfer. Frame gaps are browser scheduling measurements, not physical-device FPS.",
+  "loads": {
+    "svelte": [
+      {
+        "round": 0,
+        "readyMs": 111.7000000178814,
+        "domContentLoaded": 26.900000005960464,
+        "paint": 64,
+        "bytes": 695244,
+        "gzip": 206337,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/",
+            "bytes": 2620,
+            "gzip": 1175
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/2.PY1zwsDZ.js",
+            "bytes": 14053,
+            "gzip": 6037
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 1,
+        "readyMs": 130.40000000596046,
+        "domContentLoaded": 35.30000001192093,
+        "paint": 72,
+        "bytes": 695244,
+        "gzip": 206337,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/",
+            "bytes": 2620,
+            "gzip": 1175
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/2.PY1zwsDZ.js",
+            "bytes": 14053,
+            "gzip": 6037
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 2,
+        "readyMs": 102.19999998807907,
+        "domContentLoaded": 34.89999997615814,
+        "paint": 36,
+        "bytes": 695244,
+        "gzip": 206337,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/",
+            "bytes": 2620,
+            "gzip": 1175
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/2.PY1zwsDZ.js",
+            "bytes": 14053,
+            "gzip": 6037
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 3,
+        "readyMs": 102.69999998807907,
+        "domContentLoaded": 21,
+        "paint": 48,
+        "bytes": 695244,
+        "gzip": 206337,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/",
+            "bytes": 2620,
+            "gzip": 1175
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/2.PY1zwsDZ.js",
+            "bytes": 14053,
+            "gzip": 6037
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 4,
+        "readyMs": 110.30000001192093,
+        "domContentLoaded": 26.400000005960464,
+        "paint": 56,
+        "bytes": 695244,
+        "gzip": 206337,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/",
+            "bytes": 2620,
+            "gzip": 1175
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/2.PY1zwsDZ.js",
+            "bytes": 14053,
+            "gzip": 6037
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "react": [
+      {
+        "round": 0,
+        "readyMs": 145.89999997615814,
+        "domContentLoaded": 54.29999998211861,
+        "paint": 80,
+        "bytes": 825919,
+        "gzip": 238898,
+        "requests": 6,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/react/react/index.html",
+            "bytes": 551,
+            "gzip": 313
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-B9mYHzbI.js",
+            "bytes": 233462,
+            "gzip": 73175
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 1,
+        "readyMs": 130.30000001192093,
+        "domContentLoaded": 40.5,
+        "paint": 136,
+        "bytes": 825919,
+        "gzip": 238898,
+        "requests": 6,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/react/react/index.html",
+            "bytes": 551,
+            "gzip": 313
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-B9mYHzbI.js",
+            "bytes": 233462,
+            "gzip": 73175
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 2,
+        "readyMs": 130.19999998807907,
+        "domContentLoaded": 42.69999998807907,
+        "paint": 136,
+        "bytes": 825919,
+        "gzip": 238898,
+        "requests": 6,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/react/react/index.html",
+            "bytes": 551,
+            "gzip": 313
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-B9mYHzbI.js",
+            "bytes": 233462,
+            "gzip": 73175
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 3,
+        "readyMs": 173.09999999403954,
+        "domContentLoaded": 45.30000001192093,
+        "paint": 88,
+        "bytes": 825919,
+        "gzip": 238898,
+        "requests": 6,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/react/react/index.html",
+            "bytes": 551,
+            "gzip": 313
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-B9mYHzbI.js",
+            "bytes": 233462,
+            "gzip": 73175
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 4,
+        "readyMs": 129.5,
+        "domContentLoaded": 39.30000001192093,
+        "paint": 64,
+        "bytes": 825919,
+        "gzip": 238898,
+        "requests": 6,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/react/react/index.html",
+            "bytes": 551,
+            "gzip": 313
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/react/assets/index-B9mYHzbI.js",
+            "bytes": 233462,
+            "gzip": 73175
+          },
+          {
+            "url": "/the-cube/evaluation/assets/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "cubing": [
+      {
+        "round": 0,
+        "readyMs": 140.5,
+        "domContentLoaded": 38.80000001192093,
+        "paint": 44,
+        "bytes": 824034,
+        "gzip": 242435,
+        "requests": 16,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/cubing/",
+            "bytes": 3340,
+            "gzip": 1441
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/4.BPlo5q4n.js",
+            "bytes": 4750,
+            "gzip": 2362
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+            "bytes": 20332,
+            "gzip": 5772
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+            "bytes": 159687,
+            "gzip": 42927
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+            "bytes": 504049,
+            "gzip": 129528
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 1,
+        "readyMs": 132.7000000178814,
+        "domContentLoaded": 20.30000001192093,
+        "paint": 52,
+        "bytes": 824034,
+        "gzip": 242435,
+        "requests": 16,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/cubing/",
+            "bytes": 3340,
+            "gzip": 1441
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/4.BPlo5q4n.js",
+            "bytes": 4750,
+            "gzip": 2362
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+            "bytes": 20332,
+            "gzip": 5772
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+            "bytes": 159687,
+            "gzip": 42927
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+            "bytes": 504049,
+            "gzip": 129528
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 2,
+        "readyMs": 150.40000000596046,
+        "domContentLoaded": 52.60000002384186,
+        "paint": 56,
+        "bytes": 824034,
+        "gzip": 242435,
+        "requests": 16,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/cubing/",
+            "bytes": 3340,
+            "gzip": 1441
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/4.BPlo5q4n.js",
+            "bytes": 4750,
+            "gzip": 2362
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+            "bytes": 20332,
+            "gzip": 5772
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+            "bytes": 159687,
+            "gzip": 42927
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+            "bytes": 504049,
+            "gzip": 129528
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 3,
+        "readyMs": 168.09999999403954,
+        "domContentLoaded": 30.5,
+        "paint": 68,
+        "bytes": 824034,
+        "gzip": 242435,
+        "requests": 16,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/cubing/",
+            "bytes": 3340,
+            "gzip": 1441
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/4.BPlo5q4n.js",
+            "bytes": 4750,
+            "gzip": 2362
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+            "bytes": 20332,
+            "gzip": 5772
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+            "bytes": 159687,
+            "gzip": 42927
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+            "bytes": 504049,
+            "gzip": 129528
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 4,
+        "readyMs": 134.80000001192093,
+        "domContentLoaded": 21.400000005960464,
+        "paint": 48,
+        "bytes": 824034,
+        "gzip": 242435,
+        "requests": 16,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/cubing/",
+            "bytes": 3340,
+            "gzip": 1441
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/4.BPlo5q4n.js",
+            "bytes": 4750,
+            "gzip": 2362
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+            "bytes": 20332,
+            "gzip": 5772
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+            "bytes": 159687,
+            "gzip": 42927
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+            "bytes": 504049,
+            "gzip": 129528
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "components": [
+      {
+        "round": 0,
+        "readyMs": 51,
+        "domContentLoaded": 32.5,
+        "paint": 36,
+        "bytes": 185204,
+        "gzip": 77673,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/components/",
+            "bytes": 2948,
+            "gzip": 1300
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/3.CDcJt6Uq.css",
+            "bytes": 372,
+            "gzip": 244
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/3.CLIiDhpB.js",
+            "bytes": 50008,
+            "gzip": 15724
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 1,
+        "readyMs": 52,
+        "domContentLoaded": 20.900000005960464,
+        "paint": 44,
+        "bytes": 185204,
+        "gzip": 77673,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/components/",
+            "bytes": 2948,
+            "gzip": 1300
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/3.CDcJt6Uq.css",
+            "bytes": 372,
+            "gzip": 244
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/3.CLIiDhpB.js",
+            "bytes": 50008,
+            "gzip": 15724
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 2,
+        "readyMs": 51.599999994039536,
+        "domContentLoaded": 33,
+        "paint": 36,
+        "bytes": 185204,
+        "gzip": 77673,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/components/",
+            "bytes": 2948,
+            "gzip": 1300
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/3.CDcJt6Uq.css",
+            "bytes": 372,
+            "gzip": 244
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/3.CLIiDhpB.js",
+            "bytes": 50008,
+            "gzip": 15724
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 3,
+        "readyMs": 79,
+        "domContentLoaded": 33.89999997615814,
+        "paint": 68,
+        "bytes": 185204,
+        "gzip": 77673,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/components/",
+            "bytes": 2948,
+            "gzip": 1300
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/3.CDcJt6Uq.css",
+            "bytes": 372,
+            "gzip": 244
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/3.CLIiDhpB.js",
+            "bytes": 50008,
+            "gzip": 15724
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 4,
+        "readyMs": 55.900000005960464,
+        "domContentLoaded": 24.400000005960464,
+        "paint": 48,
+        "bytes": 185204,
+        "gzip": 77673,
+        "requests": 14,
+        "assets": [
+          {
+            "url": "/the-cube/evaluation/components/",
+            "bytes": 2948,
+            "gzip": 1300
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/start.K7V6TJbt.js",
+            "bytes": 77,
+            "gzip": 89
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-theme.css",
+            "bytes": 13809,
+            "gzip": 3544
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/entry/app.Bhywq4-l.js",
+            "bytes": 3140,
+            "gzip": 1364
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+            "bytes": 1233,
+            "gzip": 685
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+            "bytes": 65,
+            "gzip": 80
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/DoI_hQIW.js",
+            "bytes": 26667,
+            "gzip": 10216
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+            "bytes": 1492,
+            "gzip": 718
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/assets/3.CDcJt6Uq.css",
+            "bytes": 372,
+            "gzip": 244
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/0.B6V80V6i.js",
+            "bytes": 1265,
+            "gzip": 798
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/chunks/2lN8MJHQ.js",
+            "bytes": 53640,
+            "gzip": 20156
+          },
+          {
+            "url": "/the-cube/evaluation/assets/app-font.css",
+            "bytes": 29910,
+            "gzip": 22428
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/3.CLIiDhpB.js",
+            "bytes": 50008,
+            "gzip": 15724
+          },
+          {
+            "url": "/the-cube/evaluation/_app/immutable/nodes/1.CjuJYawX.js",
+            "bytes": 578,
+            "gzip": 327
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "production": [
+      {
+        "round": 0,
+        "readyMs": 405,
+        "domContentLoaded": 43.099999994039536,
+        "paint": 80,
+        "bytes": 898582,
+        "gzip": 263080,
+        "requests": 7,
+        "assets": [
+          {
+            "url": "/the-cube/menu.html",
+            "bytes": 914,
+            "gzip": 495
+          },
+          {
+            "url": "/the-cube/assets/web/menu-CYixcAOA.css",
+            "bytes": 53324,
+            "gzip": 29518
+          },
+          {
+            "url": "/the-cube/assets/web/menu-Dw5hh0uh.js",
+            "bytes": 274784,
+            "gzip": 85931
+          },
+          {
+            "url": "/the-cube/assets/js/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-BJAMnTCl.css",
+            "bytes": 7330,
+            "gzip": 1858
+          },
+          {
+            "url": "/the-cube/assets/web/PlaybackPage-zZF6sGDI.js",
+            "bytes": 3279,
+            "gzip": 1638
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-EebQk4K2.js",
+            "bytes": 12256,
+            "gzip": 4920
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 1,
+        "readyMs": 414.69999998807907,
+        "domContentLoaded": 43.19999998807907,
+        "paint": 88,
+        "bytes": 898582,
+        "gzip": 263080,
+        "requests": 7,
+        "assets": [
+          {
+            "url": "/the-cube/menu.html",
+            "bytes": 914,
+            "gzip": 495
+          },
+          {
+            "url": "/the-cube/assets/web/menu-CYixcAOA.css",
+            "bytes": 53324,
+            "gzip": 29518
+          },
+          {
+            "url": "/the-cube/assets/web/menu-Dw5hh0uh.js",
+            "bytes": 274784,
+            "gzip": 85931
+          },
+          {
+            "url": "/the-cube/assets/js/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-BJAMnTCl.css",
+            "bytes": 7330,
+            "gzip": 1858
+          },
+          {
+            "url": "/the-cube/assets/web/PlaybackPage-zZF6sGDI.js",
+            "bytes": 3279,
+            "gzip": 1638
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-EebQk4K2.js",
+            "bytes": 12256,
+            "gzip": 4920
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 2,
+        "readyMs": 401.69999998807907,
+        "domContentLoaded": 40.099999994039536,
+        "paint": 88,
+        "bytes": 898582,
+        "gzip": 263080,
+        "requests": 7,
+        "assets": [
+          {
+            "url": "/the-cube/menu.html",
+            "bytes": 914,
+            "gzip": 495
+          },
+          {
+            "url": "/the-cube/assets/web/menu-CYixcAOA.css",
+            "bytes": 53324,
+            "gzip": 29518
+          },
+          {
+            "url": "/the-cube/assets/web/menu-Dw5hh0uh.js",
+            "bytes": 274784,
+            "gzip": 85931
+          },
+          {
+            "url": "/the-cube/assets/js/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-BJAMnTCl.css",
+            "bytes": 7330,
+            "gzip": 1858
+          },
+          {
+            "url": "/the-cube/assets/web/PlaybackPage-zZF6sGDI.js",
+            "bytes": 3279,
+            "gzip": 1638
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-EebQk4K2.js",
+            "bytes": 12256,
+            "gzip": 4920
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 3,
+        "readyMs": 420.19999998807907,
+        "domContentLoaded": 56,
+        "paint": 100,
+        "bytes": 898582,
+        "gzip": 263080,
+        "requests": 7,
+        "assets": [
+          {
+            "url": "/the-cube/menu.html",
+            "bytes": 914,
+            "gzip": 495
+          },
+          {
+            "url": "/the-cube/assets/web/menu-CYixcAOA.css",
+            "bytes": 53324,
+            "gzip": 29518
+          },
+          {
+            "url": "/the-cube/assets/js/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          },
+          {
+            "url": "/the-cube/assets/web/menu-Dw5hh0uh.js",
+            "bytes": 274784,
+            "gzip": 85931
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-BJAMnTCl.css",
+            "bytes": 7330,
+            "gzip": 1858
+          },
+          {
+            "url": "/the-cube/assets/web/PlaybackPage-zZF6sGDI.js",
+            "bytes": 3279,
+            "gzip": 1638
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-EebQk4K2.js",
+            "bytes": 12256,
+            "gzip": 4920
+          }
+        ],
+        "errors": []
+      },
+      {
+        "round": 4,
+        "readyMs": 426.89999997615814,
+        "domContentLoaded": 45.599999994039536,
+        "paint": 92,
+        "bytes": 898582,
+        "gzip": 263080,
+        "requests": 7,
+        "assets": [
+          {
+            "url": "/the-cube/menu.html",
+            "bytes": 914,
+            "gzip": 495
+          },
+          {
+            "url": "/the-cube/assets/web/menu-CYixcAOA.css",
+            "bytes": 53324,
+            "gzip": 29518
+          },
+          {
+            "url": "/the-cube/assets/web/menu-Dw5hh0uh.js",
+            "bytes": 274784,
+            "gzip": 85931
+          },
+          {
+            "url": "/the-cube/assets/js/three.js",
+            "bytes": 546695,
+            "gzip": 138720
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-BJAMnTCl.css",
+            "bytes": 7330,
+            "gzip": 1858
+          },
+          {
+            "url": "/the-cube/assets/web/PlaybackPage-zZF6sGDI.js",
+            "bytes": 3279,
+            "gzip": 1638
+          },
+          {
+            "url": "/the-cube/assets/web/SequencePlayer-EebQk4K2.js",
+            "bytes": 12256,
+            "gzip": 4920
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "qualification": [
+    {
+      "browser": "chromium",
+      "framework": "svelte",
+      "size": 2,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "svelte",
+      "size": 3,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "svelte",
+      "size": 4,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "svelte",
+      "size": 5,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "svelte",
+      "widths": [
+        320,
+        820,
+        1440
+      ],
+      "axeViolations": 0
+    },
+    {
+      "browser": "chromium",
+      "framework": "react",
+      "size": 2,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "react",
+      "size": 3,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "react",
+      "size": 4,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "react",
+      "size": 5,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "react",
+      "widths": [
+        320,
+        820,
+        1440
+      ],
+      "axeViolations": 0
+    },
+    {
+      "browser": "chromium",
+      "framework": "cubing",
+      "size": 2,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "cubing",
+      "size": 3,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "cubing",
+      "size": 4,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "cubing",
+      "size": 5,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "chromium",
+      "framework": "cubing",
+      "axeViolations": []
+    },
+    {
+      "browser": "chromium",
+      "components": {
+        "focusTrap": true,
+        "escape": true,
+        "focusReturn": true,
+        "axeViolations": 0
+      }
+    },
+    {
+      "browser": "chromium",
+      "svelteClientNavigation": {
+        "canvas": true,
+        "step": true
+      }
+    },
+    {
+      "browser": "firefox",
+      "framework": "svelte",
+      "size": 2,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "svelte",
+      "size": 3,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "svelte",
+      "size": 4,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "svelte",
+      "size": 5,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "svelte",
+      "widths": [
+        320,
+        820,
+        1440
+      ],
+      "axeViolations": 0
+    },
+    {
+      "browser": "firefox",
+      "framework": "react",
+      "size": 2,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "react",
+      "size": 3,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "react",
+      "size": 4,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "react",
+      "size": 5,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "firefox",
+      "framework": "react",
+      "widths": [
+        320,
+        820,
+        1440
+      ],
+      "axeViolations": 0
+    },
+    {
+      "browser": "firefox",
+      "framework": "cubing",
+      "qualified": false,
+      "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('candidate-ready')\nExpected: \"Ready\"\nReceived: \"Preparing 3D…\"\nTimeout:  30000ms\n\nCall log:\n  - Expect \"toHaveText\" getByTestId('candidate-ready') with timeout 30000ms\n  - waiting for getByTestId('candidate-ready')\n    62 × locator resolved to <p data-testid=\"candidate-ready\">Preparing 3D…</p>\n       - unexpected value \"Preparing 3D…\"\n",
+      "consoleErrors": [
+        "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  WebGL creation failed: \n* AllowWebgl2:false restricts context creation on this system. ()",
+        "THREE.WebGLRenderer: Error creating WebGL context.",
+        "Error: Error creating WebGL context."
+      ]
+    },
+    {
+      "browser": "firefox",
+      "components": {
+        "focusTrap": true,
+        "escape": true,
+        "focusReturn": true,
+        "axeViolations": 0
+      }
+    },
+    {
+      "browser": "firefox",
+      "svelteClientNavigation": {
+        "canvas": true,
+        "step": true
+      }
+    },
+    {
+      "browser": "webkit",
+      "framework": "svelte",
+      "size": 2,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "svelte",
+      "size": 3,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "svelte",
+      "size": 4,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "svelte",
+      "size": 5,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "svelte",
+      "widths": [
+        320,
+        820,
+        1440
+      ],
+      "axeViolations": 0
+    },
+    {
+      "browser": "webkit",
+      "framework": "react",
+      "size": 2,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "react",
+      "size": 3,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "react",
+      "size": 4,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "react",
+      "size": 5,
+      "state": true,
+      "seek": true,
+      "reverse": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "react",
+      "widths": [
+        320,
+        820,
+        1440
+      ],
+      "axeViolations": 0
+    },
+    {
+      "browser": "webkit",
+      "framework": "cubing",
+      "size": 2,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "cubing",
+      "size": 3,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "cubing",
+      "size": 4,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "cubing",
+      "size": 5,
+      "reverse": true,
+      "canvas": true
+    },
+    {
+      "browser": "webkit",
+      "framework": "cubing",
+      "axeViolations": []
+    },
+    {
+      "browser": "webkit",
+      "components": {
+        "focusTrap": true,
+        "escape": true,
+        "focusReturn": true,
+        "axeViolations": 0
+      }
+    },
+    {
+      "browser": "webkit",
+      "svelteClientNavigation": {
+        "canvas": true,
+        "step": true
+      }
+    }
+  ],
+  "animation": [
+    {
+      "framework": "svelte",
+      "size": 2,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        864.5651000000071,
+        382.9429999999993,
+        858.0693000000028,
+        860.2011999999959,
+        862.3194999999978,
+        849.0179999999964,
+        853.8332999999984,
+        867.5041000000056,
+        374.4524999999994,
+        843.6176000000123
+      ],
+      "frameSamples": 457,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.700000000000728
+    },
+    {
+      "framework": "svelte",
+      "size": 3,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        881.6952999999921,
+        874.4625999999989,
+        851.9724999999889,
+        855.8592000000062,
+        859.568100000004,
+        863.4728999999934,
+        860.2422999999981,
+        868.3830000000016,
+        866.8819999999978,
+        870.8508000000002
+      ],
+      "frameSamples": 520,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.799999999999272
+    },
+    {
+      "framework": "svelte",
+      "size": 4,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        870.8193000000028,
+        368.21770000000834,
+        892.3196000000025,
+        857.4122000000061,
+        858.885500000004,
+        855.3904999999941,
+        864.1414000000077,
+        390.7691999999952,
+        406.329899999997,
+        864.5512000000017
+      ],
+      "frameSamples": 434,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.799999999999272
+    },
+    {
+      "framework": "svelte",
+      "size": 5,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        375.8935999999958,
+        851.6312000000034,
+        373.5060999999987,
+        854.9601000000112,
+        858.7795000000042,
+        870.6376000000018,
+        871.2534000000014,
+        384.88980000000447,
+        847.0662999999913,
+        858.1117999999988
+      ],
+      "frameSamples": 428,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.799999999999272
+    },
+    {
+      "framework": "react",
+      "size": 2,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        878.4330000000045,
+        873.8845000000001,
+        857.7926000000007,
+        867.6079000000027,
+        858.8892000000051,
+        869.9512999999861,
+        861.0690000000031,
+        855.2660000000033,
+        887.5580999999947,
+        865.5862999999954
+      ],
+      "frameSamples": 521,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.700000000000728
+    },
+    {
+      "framework": "react",
+      "size": 3,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        866.2880999999907,
+        403.9109999999928,
+        854.6785000000091,
+        858.9999000000098,
+        869.3905000000086,
+        868.4906000000046,
+        852.4014000000025,
+        858.4137000000046,
+        375.99090000000433,
+        859.1474000000017
+      ],
+      "frameSamples": 461,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.700000000000728
+    },
+    {
+      "framework": "react",
+      "size": 4,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        387.44710000000487,
+        856.6445999999996,
+        856.2796999999991,
+        860.9527000000089,
+        858.9850999999908,
+        860.385500000004,
+        858.0633999999991,
+        870.0323999999964,
+        852.2140000000072,
+        862.7067999999999
+      ],
+      "frameSamples": 488,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.799999999999727
+    },
+    {
+      "framework": "react",
+      "size": 5,
+      "turnDurationMs": 320,
+      "clickToCommittedMs": [
+        382.13559999999416,
+        871.7387000000017,
+        859.5820000000094,
+        873.1759999999922,
+        868.9726000000082,
+        869.1414999999979,
+        876.9717999999993,
+        872.3424999999988,
+        856.1983999999939,
+        370.96620000000985
+      ],
+      "frameSamples": 463,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.700000000000728
+    }
+  ],
+  "preservation": {
+    "updateWaitsForOpenTab": true,
+    "productionCachePreserved": true,
+    "offlineTimerAndLessonPreserved": true,
+    "oldUrlsOffline": true
+  },
+  "notation": [
+    {
+      "size": 2,
+      "sequence": "R U R' U'",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 2,
+      "sequence": "Rw",
+      "accepted": false,
+      "error": "Error: Invalid move for KPuzzle (2x2x2): Rw"
+    },
+    {
+      "size": 2,
+      "sequence": "2R",
+      "accepted": false,
+      "error": "Error: Invalid move for KPuzzle (2x2x2): 2R"
+    },
+    {
+      "size": 2,
+      "sequence": "M",
+      "accepted": false,
+      "error": "Error: Invalid move for KPuzzle (2x2x2): M"
+    },
+    {
+      "size": 2,
+      "sequence": "[R,U]",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 2,
+      "sequence": "(R U)3",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 3,
+      "sequence": "R U R' U'",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 3,
+      "sequence": "Rw",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 3,
+      "sequence": "2R",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 3,
+      "sequence": "M",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 3,
+      "sequence": "[R,U]",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 3,
+      "sequence": "(R U)3",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 4,
+      "sequence": "R U R' U'",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 4,
+      "sequence": "Rw",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 4,
+      "sequence": "2R",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 4,
+      "sequence": "M",
+      "accepted": false,
+      "error": "Error: Bad grip in move M"
+    },
+    {
+      "size": 4,
+      "sequence": "[R,U]",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 4,
+      "sequence": "(R U)3",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 5,
+      "sequence": "R U R' U'",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 5,
+      "sequence": "Rw",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 5,
+      "sequence": "2R",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 5,
+      "sequence": "M",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 5,
+      "sequence": "[R,U]",
+      "accepted": true,
+      "inverseRestores": true
+    },
+    {
+      "size": 5,
+      "sequence": "(R U)3",
+      "accepted": true,
+      "inverseRestores": true
+    }
+  ],
+  "candidateRendering": [
+    {
+      "size": 2,
+      "sequence": "R U R' U'",
+      "before": {
+        "alg": "R U R' U'",
+        "timeline": {
+          "timestamp": 0,
+          "timeRange": {
+            "start": 0,
+            "end": 4000
+          },
+          "atStart": true,
+          "atEnd": false
+        },
+        "duration": 4000,
+        "tempo": 1
+      },
+      "after": {
+        "timestamp": 4000,
+        "timeRange": {
+          "start": 0,
+          "end": 4000
+        },
+        "atStart": false,
+        "atEnd": true
+      },
+      "autoplayCompleted": true,
+      "autoplayTimingQualified": true,
+      "elapsedMs": 4108.8994999999995,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.799999999999727,
+      "frameSamples": 246,
+      "bytes": 1030193,
+      "gzip": 282534,
+      "assets": [
+        {
+          "url": "/the-cube/evaluation/cubing/",
+          "bytes": 3341,
+          "gzip": 1442
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/start.DGxXqnJ0.js",
+          "bytes": 77,
+          "gzip": 89
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+          "bytes": 1492,
+          "gzip": 718
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-theme.css",
+          "bytes": 13809,
+          "gzip": 3544
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/app.2Y-Cgfcc.js",
+          "bytes": 3140,
+          "gzip": 1365
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BLDrwUsc.js",
+          "bytes": 26676,
+          "gzip": 10223
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+          "bytes": 1233,
+          "gzip": 685
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+          "bytes": 65,
+          "gzip": 80
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/0.BK6FB2EG.js",
+          "bytes": 1270,
+          "gzip": 799
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/4.DLu53sMa.js",
+          "bytes": 4750,
+          "gzip": 2357
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BqI3YZS8.js",
+          "bytes": 54051,
+          "gzip": 20313
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-font.css",
+          "bytes": 29910,
+          "gzip": 22428
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/1.B36FgFbK.js",
+          "bytes": 578,
+          "gzip": 327
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+          "bytes": 20332,
+          "gzip": 5772
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+          "bytes": 159687,
+          "gzip": 42927
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+          "bytes": 504049,
+          "gzip": 129528
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/Bg9CJise.js",
+          "bytes": 136906,
+          "gzip": 18390
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BlgIVEVX.js",
+          "bytes": 68827,
+          "gzip": 21547
+        }
+      ]
+    },
+    {
+      "size": 3,
+      "sequence": "R U R' U'",
+      "before": {
+        "alg": "R U R' U'",
+        "timeline": {
+          "timestamp": 0,
+          "timeRange": {
+            "start": 0,
+            "end": 4000
+          },
+          "atStart": true,
+          "atEnd": false
+        },
+        "duration": 4000,
+        "tempo": 1
+      },
+      "after": {
+        "timestamp": 4000,
+        "timeRange": {
+          "start": 0,
+          "end": 4000
+        },
+        "atStart": false,
+        "atEnd": true
+      },
+      "autoplayCompleted": true,
+      "autoplayTimingQualified": true,
+      "elapsedMs": 4058.5570000000007,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.799999999999955,
+      "frameSamples": 244,
+      "bytes": 824460,
+      "gzip": 242597,
+      "assets": [
+        {
+          "url": "/the-cube/evaluation/cubing/",
+          "bytes": 3341,
+          "gzip": 1442
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/start.DGxXqnJ0.js",
+          "bytes": 77,
+          "gzip": 89
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+          "bytes": 1492,
+          "gzip": 718
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-theme.css",
+          "bytes": 13809,
+          "gzip": 3544
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+          "bytes": 1233,
+          "gzip": 685
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/app.2Y-Cgfcc.js",
+          "bytes": 3140,
+          "gzip": 1365
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BLDrwUsc.js",
+          "bytes": 26676,
+          "gzip": 10223
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+          "bytes": 65,
+          "gzip": 80
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/0.BK6FB2EG.js",
+          "bytes": 1270,
+          "gzip": 799
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/4.DLu53sMa.js",
+          "bytes": 4750,
+          "gzip": 2357
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BqI3YZS8.js",
+          "bytes": 54051,
+          "gzip": 20313
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-font.css",
+          "bytes": 29910,
+          "gzip": 22428
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/1.B36FgFbK.js",
+          "bytes": 578,
+          "gzip": 327
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+          "bytes": 20332,
+          "gzip": 5772
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+          "bytes": 159687,
+          "gzip": 42927
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+          "bytes": 504049,
+          "gzip": 129528
+        }
+      ]
+    },
+    {
+      "size": 4,
+      "sequence": "R U R' U'",
+      "before": {
+        "alg": "R U R' U'",
+        "timeline": {
+          "timestamp": 0,
+          "timeRange": {
+            "start": 0,
+            "end": 4000
+          },
+          "atStart": true,
+          "atEnd": false
+        },
+        "duration": 4000,
+        "tempo": 1
+      },
+      "after": {
+        "timestamp": 4000,
+        "timeRange": {
+          "start": 0,
+          "end": 4000
+        },
+        "atStart": false,
+        "atEnd": true
+      },
+      "autoplayCompleted": true,
+      "autoplayTimingQualified": true,
+      "elapsedMs": 4091.8413,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.700000000000728,
+      "frameSamples": 246,
+      "bytes": 894069,
+      "gzip": 264622,
+      "assets": [
+        {
+          "url": "/the-cube/evaluation/cubing/",
+          "bytes": 3341,
+          "gzip": 1442
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/start.DGxXqnJ0.js",
+          "bytes": 77,
+          "gzip": 89
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-theme.css",
+          "bytes": 13809,
+          "gzip": 3544
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+          "bytes": 1492,
+          "gzip": 718
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BLDrwUsc.js",
+          "bytes": 26676,
+          "gzip": 10223
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+          "bytes": 1233,
+          "gzip": 685
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/app.2Y-Cgfcc.js",
+          "bytes": 3140,
+          "gzip": 1365
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/0.BK6FB2EG.js",
+          "bytes": 1270,
+          "gzip": 799
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+          "bytes": 65,
+          "gzip": 80
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/4.DLu53sMa.js",
+          "bytes": 4750,
+          "gzip": 2357
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BqI3YZS8.js",
+          "bytes": 54051,
+          "gzip": 20313
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-font.css",
+          "bytes": 29910,
+          "gzip": 22428
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/1.B36FgFbK.js",
+          "bytes": 578,
+          "gzip": 327
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+          "bytes": 20332,
+          "gzip": 5772
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+          "bytes": 159687,
+          "gzip": 42927
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+          "bytes": 504049,
+          "gzip": 129528
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BlgIVEVX.js",
+          "bytes": 68827,
+          "gzip": 21547
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/C306hFpF.js",
+          "bytes": 782,
+          "gzip": 478
+        }
+      ]
+    },
+    {
+      "size": 5,
+      "sequence": "R U R' U'",
+      "before": {
+        "alg": "R U R' U'",
+        "timeline": {
+          "timestamp": 0,
+          "timeRange": {
+            "start": 0,
+            "end": 4000
+          },
+          "atStart": true,
+          "atEnd": false
+        },
+        "duration": 4000,
+        "tempo": 1
+      },
+      "after": {
+        "timestamp": 4000,
+        "timeRange": {
+          "start": 0,
+          "end": 4000
+        },
+        "atStart": false,
+        "atEnd": true
+      },
+      "autoplayCompleted": true,
+      "autoplayTimingQualified": true,
+      "elapsedMs": 4098.707999999999,
+      "medianFrameGapMs": 16.699999999999818,
+      "p95FrameGapMs": 16.700000000000728,
+      "frameSamples": 246,
+      "bytes": 894069,
+      "gzip": 264622,
+      "assets": [
+        {
+          "url": "/the-cube/evaluation/cubing/",
+          "bytes": 3341,
+          "gzip": 1442
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/start.DGxXqnJ0.js",
+          "bytes": 77,
+          "gzip": 89
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-theme.css",
+          "bytes": 13809,
+          "gzip": 3544
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/assets/0.CvoJXjP0.css",
+          "bytes": 1492,
+          "gzip": 718
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BLDrwUsc.js",
+          "bytes": 26676,
+          "gzip": 10223
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/entry/app.2Y-Cgfcc.js",
+          "bytes": 3140,
+          "gzip": 1365
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/uBIymjUX.js",
+          "bytes": 1233,
+          "gzip": 685
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/xihTtKlq.js",
+          "bytes": 65,
+          "gzip": 80
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/4.DLu53sMa.js",
+          "bytes": 4750,
+          "gzip": 2357
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/0.BK6FB2EG.js",
+          "bytes": 1270,
+          "gzip": 799
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BqI3YZS8.js",
+          "bytes": 54051,
+          "gzip": 20313
+        },
+        {
+          "url": "/the-cube/evaluation/assets/app-font.css",
+          "bytes": 29910,
+          "gzip": 22428
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/nodes/1.B36FgFbK.js",
+          "bytes": 578,
+          "gzip": 327
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/8H7Xwvkr.js",
+          "bytes": 20332,
+          "gzip": 5772
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/ISDWS7Fn.js",
+          "bytes": 159687,
+          "gzip": 42927
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/Dm_gYMY1.js",
+          "bytes": 504049,
+          "gzip": 129528
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/BlgIVEVX.js",
+          "bytes": 68827,
+          "gzip": 21547
+        },
+        {
+          "url": "/the-cube/evaluation/_app/immutable/chunks/C306hFpF.js",
+          "bytes": 782,
+          "gzip": 478
+        }
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "secureContext": true,
+      "webBluetooth": true,
+      "webGL2": true,
+      "hardwarePaired": false
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "secureContext": true,
+      "webBluetooth": false,
+      "webGL2": false,
+      "hardwarePaired": false
+    },
+    {
+      "browser": "webkit",
+      "version": "26.6",
+      "secureContext": true,
+      "webBluetooth": false,
+      "webGL2": true,
+      "hardwarePaired": false
+    }
+  ],
+  "productionBaseline": "b114698d6fd0c87f014eb287e3f949239653929d",
+  "productionInputsUnchanged": true,
+  "productionExport": {
+    "files": 254,
+    "sha256": "86fd8a7f40e3e5871dccdd4fdc6ff3cbc99775e91ab7b1a8eecb5af2d2813895",
+    "containsPrototype": false
+  }
+}

@@ -18,7 +18,7 @@ The [machine-readable inventory](reference-coverage.json) records **99 capabilit
 
 ## Architecture changes
 
-- Separate puzzle capabilities: model, notation, renderer, scrambler, solver, courses and devices. The current core validates sizes 2–5; the course player assumes 3×3. A selector does not establish big-cube or non-cube support.
+- Separate puzzle capabilities: model, notation, renderer, scrambler, solver, courses and devices. The core and shared player support sizes 2–5; existing learning packs and solver remain 3×3. A selector does not establish complete big-cube courses or non-cube support.
 - Share a reversible lesson/case player: play/pause, seek, speed, looping, camera reset, highlights and synchronized instructions. Lazy-load it, pause hidden players and dispose WebGL resources.
 - Version content packs with puzzle/method, prerequisites, stable case IDs, independent fixtures, stage predicates, orientation/AUF, variants and provenance. Catalog, training, guides and analysis reference the same identities.
 - Separate preferences, explicit learning ratings, recognition answers, guided repetitions and timed solves. Watching animation does not prove mastery. Preserve current storage keys and IDs through additive adapters.
@@ -60,7 +60,7 @@ These subdivisions preserve P0–P10 and historical M releases. Completion requi
 | P10D | Other methods/puzzles, including reference-planned or credited items |
 | P10E | Project camera input and evidence-based coaching |
 
-**P2A is implemented**, retaining React; see [shared playback release](23-playback-release.md). Next is **P2B**. P2B is evaluation, not a mandatory framework migration. P3A follows the shared foundation. Then deliver an early complete 2×2 path (P3B Ortega + P4B) alongside P4A, rather than postponing every non-3×3 experience until advanced work ends. Expand packs and drills in verified batches. P10A can follow its catalog prerequisites without waiting for accounts/native: phase numbers do not force dependency-independent work to the end.
+**P2A is implemented**; see [shared playback release](23-playback-release.md). **P2B is complete** with a [measured decision to retain React and the current renderer](24-stack-evaluation.md); no migration has shipped. Next is **P3A** catalog consolidation. Then deliver an early complete 2×2 path (P3B Ortega + P4B) alongside P4A, rather than postponing every non-3×3 experience until advanced work ends. Expand packs and drills in verified batches. P10A can follow its catalog prerequisites without waiting for accounts/native: phase numbers do not force dependency-independent work to the end.
 
 ## Hosting
 
@@ -114,7 +114,7 @@ Exact evidence, acceptance and dependencies are in the JSON inventory. This is a
 | puzzle-capabilities | Foundation: Puzzle and method registry with explicit capabilities | existing | P2A | Owner request |
 | player | Foundation: Shared 3D play/pause, seek, reverse, speed, loop and reset | existing | P2A | [live-ui](https://speedcube.quest/guides/how-to-solve-a-rubiks-cube) |
 | notation-engine | Foundation: Wide, slice, inner-layer and rotation notation adapters | existing | P2A | [public-page](https://speedcube.quest/algorithms/big-cubes/6x6) |
-| stack-proof | Foundation: Measured React/SvelteKit and cubing.js decision | missing | P2B | Owner request |
+| stack-proof | Foundation: Measured React/SvelteKit and cubing.js decision | existing | P2B | Owner request |
 | library-core | Algorithms: Searchable sets/cases, grouped overview, filters and sorting | partial | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
 | favorites | Algorithms: Favorite sets and preferred algorithm variants | missing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
 | knowledge | Algorithms: Shared per-case and per-variant learning status | missing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |

@@ -1,0 +1,8 @@
+node_modules/
+.svelte-kit/
+build/
+react-build/
+static/
+results/
+*.tgz
+results-audit.json
