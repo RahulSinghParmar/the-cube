@@ -628,7 +628,7 @@
       "feature": "Searchable sets/cases, grouped overview, filters and sorting",
       "source": "library",
       "release": "P3A",
-      "status": "partial",
+      "status": "existing",
       "acceptance": "Stable IDs and declared taxonomy; filters compose, clear visibly and persist intentionally.",
       "dependencies": [
         "puzzle-capabilities"
@@ -640,7 +640,7 @@
       "feature": "Favorite sets and preferred algorithm variants",
       "source": "library",
       "release": "P3A",
-      "status": "missing",
+      "status": "existing",
       "acceptance": "Guest preferences survive restart and content upgrades; deletion never erases attempts.",
       "dependencies": [
         "library-core"
@@ -652,7 +652,7 @@
       "feature": "Shared per-case and per-variant learning status",
       "source": "library",
       "release": "P3A",
-      "status": "missing",
+      "status": "existing",
       "acceptance": "Catalog and trainers share explicit ratings without treating playback as mastery.",
       "dependencies": [
         "library-core"
@@ -664,11 +664,12 @@
       "feature": "Trigger groups, commutators, conjugates and accessible notation",
       "source": "notation",
       "release": "P3A",
-      "status": "missing",
+      "status": "partial",
       "acceptance": "Equivalent expansion preserves moves; no color-only information.",
       "dependencies": [
         "notation-engine"
-      ]
+      ],
+      "implementation": "P3A ships four labeled move groups with unchanged expansion. General commutator/conjugate parsing remains future notation work."
     },
     {
       "id": "alg-lookup",
@@ -1260,11 +1261,12 @@
       "feature": "Notation font/spacing, trigger labels, slice preference and colour-blind palette",
       "source": "settings",
       "release": "P3A",
-      "status": "missing",
+      "status": "existing",
       "acceptance": "Reversible previews, readable extremes and reset without wiping data.",
       "dependencies": [
         "triggers"
-      ]
+      ],
+      "implementation": "Catalog/trainer text font, spacing and trigger previews; verified reference preference; opt-in labeled catalog palette. Original simulator and trainer 3D colors unchanged."
     },
     {
       "id": "account-auth",

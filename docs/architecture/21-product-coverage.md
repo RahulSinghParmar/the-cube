@@ -60,7 +60,7 @@ These subdivisions preserve P0–P10 and historical M releases. Completion requi
 | P10D | Other methods/puzzles, including reference-planned or credited items |
 | P10E | Project camera input and evidence-based coaching |
 
-**P2A is implemented**; see [shared playback release](23-playback-release.md). **P2B is complete** with a [measured decision to retain React and the current renderer](24-stack-evaluation.md); no migration has shipped. Next is **P3A** catalog consolidation. Then deliver an early complete 2×2 path (P3B Ortega + P4B) alongside P4A, rather than postponing every non-3×3 experience until advanced work ends. Expand packs and drills in verified batches. P10A can follow its catalog prerequisites without waiting for accounts/native: phase numbers do not force dependency-independent work to the end.
+**P2A is implemented**; see [shared playback release](23-playback-release.md). **P2B is complete** with a [measured decision to retain React and the current renderer](24-stack-evaluation.md); no migration has shipped. The [P3A catalog slice](25-catalog-release.md) is implemented. Next is **P3B**, starting with 2×2 Ortega. General commutator/conjugate parsing remains partial. Then deliver an early complete 2×2 path (P3B Ortega + P4B) alongside P4A, rather than postponing every non-3×3 experience until advanced work ends. Expand packs and drills in verified batches. P10A can follow its catalog prerequisites without waiting for accounts/native: phase numbers do not force dependency-independent work to the end.
 
 ## Hosting
 
@@ -115,10 +115,10 @@ Exact evidence, acceptance and dependencies are in the JSON inventory. This is a
 | player | Foundation: Shared 3D play/pause, seek, reverse, speed, loop and reset | existing | P2A | [live-ui](https://speedcube.quest/guides/how-to-solve-a-rubiks-cube) |
 | notation-engine | Foundation: Wide, slice, inner-layer and rotation notation adapters | existing | P2A | [public-page](https://speedcube.quest/algorithms/big-cubes/6x6) |
 | stack-proof | Foundation: Measured React/SvelteKit and cubing.js decision | existing | P2B | Owner request |
-| library-core | Algorithms: Searchable sets/cases, grouped overview, filters and sorting | partial | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
-| favorites | Algorithms: Favorite sets and preferred algorithm variants | missing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
-| knowledge | Algorithms: Shared per-case and per-variant learning status | missing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
-| triggers | Algorithms: Trigger groups, commutators, conjugates and accessible notation | missing | P3A | [public-page](https://speedcube.quest/guides/rubiks-cube-notation) |
+| library-core | Algorithms: Searchable sets/cases, grouped overview, filters and sorting | existing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
+| favorites | Algorithms: Favorite sets and preferred algorithm variants | existing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
+| knowledge | Algorithms: Shared per-case and per-variant learning status | existing | P3A | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
+| triggers | Algorithms: Trigger groups, commutators, conjugates and accessible notation | partial | P3A | [public-page](https://speedcube.quest/guides/rubiks-cube-notation) |
 | alg-lookup | Algorithms: Exact sequence and fragment lookup across packs | missing | P3E | [public-page](https://speedcube.quest/algorithms/lookup) |
 | alg-equivalence | Algorithms: Equivalent notation, rotations, inverses and mirror handling | missing | P3E | [public-page](https://speedcube.quest/algorithms/3x3/pll) |
 | usage-ranking | Algorithms: Sourced usage, votes, consensus and year/grip/method filters | missing | P10B | [public-page](https://speedcube.quest/algorithms/3x3/f2l) |
@@ -167,7 +167,7 @@ Exact evidence, acceptance and dependencies are in the JSON inventory. This is a
 | device-training | Training: Smart-cube timing, guided execution and move replay | missing | P7A | [public-page](https://speedcube.quest/trainers/cross) |
 | virtual-input | Practice: Keyboard and touch/swipe virtual controller fallback | partial | P7A | [signed-in-ui](https://speedcube.quest/smart-cube) |
 | theme | Settings: Light/dark/system preferences | partial | P2A | [live-ui](https://speedcube.quest/settings) |
-| notation-settings | Settings: Notation font/spacing, trigger labels, slice preference and colour-blind palette | missing | P3A | [live-ui](https://speedcube.quest/settings) |
+| notation-settings | Settings: Notation font/spacing, trigger labels, slice preference and colour-blind palette | existing | P3A | [live-ui](https://speedcube.quest/settings) |
 | account-auth | Account: Optional Google, WCA or email sign-in and account recovery | missing | P8A | [signed-in-ui](https://speedcube.quest/account) |
 | account-sync | Account: Cross-device solves, preferences and progress | missing | P8B | [public-page](https://speedcube.quest/privacy) |
 | profile | Account: Private account settings and optional public profile | missing | P8C | [signed-in-ui](https://speedcube.quest/account) |

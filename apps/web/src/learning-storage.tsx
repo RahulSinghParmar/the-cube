@@ -17,6 +17,7 @@ export function useLearningStorage<T>(
   key: string,
   fallback: T,
   validate: (value: unknown) => T,
+  backupFilename = "the-cube-learning-backup.json",
 ) {
   const [initial] = useState(() => {
     let raw: string | null = null;
@@ -80,7 +81,7 @@ export function useLearningStorage<T>(
     backup: () =>
       downloadRecord(
         blocked.current && initial.raw ? initial.raw : current.current,
-        "the-cube-learning-backup.json",
+        backupFilename,
         Boolean(blocked.current && initial.raw),
       ),
     replace: () => {

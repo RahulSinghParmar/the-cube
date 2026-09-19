@@ -198,7 +198,7 @@ test("new navigation keeps cube checkpoints, learning records and timer history 
   for (const route of routes) {
     await page.goto(`/the-cube/menu.html#/${route}`);
     await page.reload();
-    await expect(page.locator(".section-cards")).toBeVisible();
+    await expect(page.locator(route === 'algorithms' ? '.catalog-case' : '.section-cards')).toBeVisible();
   }
   expect(
     await page.evaluate(

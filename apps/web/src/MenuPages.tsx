@@ -167,6 +167,7 @@ export function InfoPage({
               .
             </p>
             <h2>Acknowledgements</h2>
+            <p>The algorithm catalog reuses our verified PLL/OLL fixtures and twelve project-authored F2L setups. CubeSkills references by Feliks Zemdegs and Andy Klise are linked per case. Reference links do not grant reuse rights to their PDFs, videos, diagrams or text; these assets are not bundled. <a href="#/algorithms">Read each case's source notes →</a></p>
             <p>
               The original cube credits Boris Sehovac. The renderer uses
               Three.js, whose license notice is retained in its bundled source.

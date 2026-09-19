@@ -21,6 +21,7 @@ import {
 } from "@the-cube/academy";
 import type { Preferences } from "./preferences";
 import { SequencePlayer } from "./SequencePlayer";
+import { TrainerLearning } from './catalog-controls';
 import {
   learningScope,
   useLearningStorage,
@@ -28,7 +29,7 @@ import {
   RestoreLearning,
 } from "./learning-storage";
 
-export function F2LPage({ preferences }: { preferences: Preferences }) {
+export function F2LPage({ preferences, requestedCase }: { preferences: Preferences; requestedCase: string | null }) {
   const store = useLearningStorage(
     `the-cube-f2l-v1:${learningScope}`,
     newF2LProgress(),
@@ -60,6 +61,7 @@ export function F2LPage({ preferences }: { preferences: Preferences }) {
     setMode("watch");
     if (innerWidth < 900) setLibraryOpen(false);
   }
+  useEffect(() => { if (requestedCase && F2L_CASES.some(c=>c.id===requestedCase)) choose(requestedCase as F2LId); }, [requestedCase]);
   function saveRecord(record: F2LRecord) {
     store.save({
       ...store.value,
@@ -204,6 +206,7 @@ export function F2LPage({ preferences }: { preferences: Preferences }) {
               <p>{item.explanation}</p>
             </div>
           </div>
+          <TrainerLearning key={id} id={id}/>
           <div className="pll-orientation">
             <b>Target: yellow–green–red corner + green–red edge.</b> Their home
             is the front-right slot. Keep white U on top and green F in front.

@@ -7,6 +7,7 @@ interface PlayerProps {
   input: CubeState;
   moves: string[];
   preferences: Preferences;
+  palette?: 'original' | 'distinct';
   initialStep?: number;
   exercise?: boolean;
   onStep?: (step: number, practiced: boolean) => void;
@@ -20,7 +21,7 @@ export function SequencePlayer(props: PlayerProps) {
   // Saved callbacks may change every step; only new content resets the player.
   return <Playback key={`${props.input.size}:${props.input.facelets}:${props.moves.join(" ")}`} {...props} />;
 }
-function Playback({ input, moves, preferences, initialStep = 0, exercise = false,
+function Playback({ input, moves, preferences, palette = 'original', initialStep = 0, exercise = false,
   onStep, onMistake, exerciseName = "Lesson exercise", playLabel = "Play solution", completionText, guideForStep }: PlayerProps) {
   const { states, moves: parsed } = useMemo(() => compilePlayback(input, moves), [input.size, input.facelets, moves.join(" ")]);
   const [cursor, setCursor] = useState(Math.max(0, Math.min(Number.isFinite(initialStep) ? Math.trunc(initialStep) : 0, moves.length)));
@@ -58,7 +59,7 @@ function Playback({ input, moves, preferences, initialStep = 0, exercise = false
   useEffect(() => {
     alive.current = true;
     try {
-      view.current = new ThreeRenderer(host.current!, { reducedMotion, labels: true });
+      view.current = new ThreeRenderer(host.current!, { reducedMotion, labels: true, palette });
       view.current.setState(states[current.current]!);
     } catch {
       setViewError("3D is unavailable in this browser. The face grids and move instructions still work.");
@@ -74,8 +75,8 @@ function Playback({ input, moves, preferences, initialStep = 0, exercise = false
   }, []);
   useEffect(() => {
     pause();
-    view.current?.configure({ reducedMotion, labels: true });
-  }, [reducedMotion]);
+    view.current?.configure({ reducedMotion, labels: true, palette });
+  }, [reducedMotion, palette]);
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const change = () => setSystemMotion(media.matches);

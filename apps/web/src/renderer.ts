@@ -67,6 +67,7 @@ const colors: Record<string, string> = {
   L: "#ef953f",
   B: "#4d85dc",
 };
+const distinctColors: Record<string, string> = { U: '#f5f6ef', R: '#e69f00', F: '#56b4ae', D: '#f0e442', L: '#cc79a7', B: '#56b4e9' };
 export class ThreeRenderer implements RendererPort {
   private api: ThreeAPI;
   private scene: Object3D;
@@ -85,7 +86,7 @@ export class ThreeRenderer implements RendererPort {
   private drag: { id: number; x: number; y: number } | null = null;
   constructor(
     private host: HTMLElement,
-    private options: { reducedMotion: boolean; labels: boolean },
+    private options: { reducedMotion: boolean; labels: boolean; palette?: 'original' | 'distinct' },
   ) {
     this.api = (window as unknown as { THREE: ThreeAPI }).THREE;
     const T = this.api;
@@ -134,7 +135,7 @@ export class ThreeRenderer implements RendererPort {
     this.view.rotation.set(0, 0, 0);
     this.draw();
   }
-  configure(options: { reducedMotion: boolean; labels: boolean }): void {
+  configure(options: { reducedMotion: boolean; labels: boolean; palette?: 'original' | 'distinct' }): void {
     this.options = options;
     if (this.state) this.setState(this.state);
   }
@@ -158,7 +159,7 @@ export class ThreeRenderer implements RendererPort {
     this.view.add(this.group);
     this.entries = [];
     const step = 3 / state.size;
-    const assetKey = `${state.size}:${this.options.labels}`;
+    const assetKey = `${state.size}:${this.options.labels}:${this.options.palette ?? 'original'}`;
     if (this.assets?.key !== assetKey) {
       this.resources.forEach(resource => resource.dispose());
       this.resources = [];
@@ -167,7 +168,7 @@ export class ThreeRenderer implements RendererPort {
         dark = new T.MeshBasicMaterial({ color: "#182131" });
       this.resources.push(box, plane, dark);
       const materials: Record<string, Disposable> = {};
-      for (const [face, color] of Object.entries(colors)) {
+      for (const [face, color] of Object.entries(this.options.palette === 'distinct' ? distinctColors : colors)) {
         if (this.options.labels) {
           const canvas = document.createElement("canvas");
           canvas.width = 128;

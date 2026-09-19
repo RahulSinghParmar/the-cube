@@ -7,7 +7,7 @@ The [whole-product coverage plan](21-product-coverage.md) and
 tutorials: all observed multi-puzzle catalogs, trainers, analysis, account and
 device features have named releases. P1A adds search, P2A adds shared playback,
 and [P2B records the measured decision to retain React](24-stack-evaluation.md).
-P3A catalog consolidation is next. Planned entries are not working app features.
+[P3A consolidates the existing algorithm catalog](25-catalog-release.md), with favorites, verified variants, explicit ratings and notation preferences. P3B is next. Planned entries are not working app features.
 
 Start with [platform architecture v2](17-platform-architecture.md) for the current upgrade plan, [reference and dependency review](18-reference-review.md) for the requested tools and inspiration, and [copy-paste phase prompts](08-build-guide.md) for what to do next. This revision preserves completed work and replaces the earlier future stack/navigation/order where they differ. Planned capabilities are not implemented merely because they appear here.
 
@@ -45,6 +45,7 @@ Start with [the plain-language build guide and copy-paste commands](08-build-gui
 | Document | Decisions and deliverables |
 | --- | --- |
 | [Stack evaluation](24-stack-evaluation.md) | P2B measured comparisons, keep-React decision, licensing and Bluetooth feasibility |
+| [Algorithm catalog release](25-catalog-release.md) | P3A shared cases, variants, preferences, preservation and test steps |
 | [Shared playback release](23-playback-release.md) | P2A capabilities, notation, reversible player, preservation and test steps |
 | [Platform architecture v2](17-platform-architecture.md) | Current sections, stack decisions, preserved data, content validation, GAN, cloud and cross-platform design |
 | [Reference and dependency review](18-reference-review.md) | All requested reference sites and tools, adoption phases, source rights and license discrepancies |
@@ -75,7 +76,7 @@ The [initial audit](../AUDIT-AND-ROADMAP.md) records the starting implementation
 [P1 application sections](19-p1-release.md) are implemented on React. Algorithms,
 Training, Guides and Statistics organize the existing tools alongside Solve,
 Practice, Timer and Settings. Original home/panels and old routes remain available.
-P2A playback and P2B evaluation are complete. P3A is next; no framework migration has shipped.
+P2A playback, P2B evaluation and the requested P3A catalog slice are implemented. P3B is next; no framework migration has shipped. General commutator/conjugate parsing remains tracked separately from the shipped trigger labels.
 
 | Area | Current foundation | Target |
 | --- | --- | --- |

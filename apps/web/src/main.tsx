@@ -33,6 +33,8 @@ const F2LPage = lazy(() =>
   import("./F2LPage").then((module) => ({ default: module.F2LPage })),
 );
 const PlaybackPage = lazy(() => import("./PlaybackPage").then(module => ({ default: module.PlaybackPage })));
+const CatalogPage = lazy(() => import("./CatalogPage").then(module => ({ default: module.CatalogPage })));
+const CatalogSettings = lazy(() => import("./catalog-controls").then(module => ({ default: module.CatalogSettings })));
 const OLLPage = lazy(() =>
   import("./OLLPage").then((module) => ({ default: module.OLLPage })),
 );
@@ -76,7 +78,9 @@ function App() {
   const [preferences, setPreferences] = useState(readPreferences),
     [draft, setDraft] = useState(preferences);
   const text = messages[preferences.locale];
-  const [route, setRoute] = useState(location.hash || "#/menu");
+  const [address, setRoute] = useState(location.hash || "#/menu");
+  const route = address.split('?')[0]!;
+  const requestedCase = new URLSearchParams(address.split('?')[1] ?? '').get('case');
   const [initial] = useState(() => {
     try {
       const raw = localStorage.getItem(cubeKey);
@@ -119,7 +123,7 @@ function App() {
   const dialog = useRef<HTMLDialogElement>(null);
   const focusReturn = useRef<HTMLElement | null>(null);
   const activeRoute = useRef(route);
-  activeRoute.current = route;
+  activeRoute.current = address;
   current.current = checkpoint;
   prefs.current = preferences;
   useEffect(() => {
@@ -480,7 +484,9 @@ function App() {
         )}
         {route === "#/menu" ? (
           <MenuPage text={text} />
-        ) : ["#/algorithms", "#/training", "#/guides", "#/statistics"].includes(
+        ) : route === "#/algorithms" ? (
+          <Suspense fallback={<p role="status">Opening algorithm catalog…</p>}><CatalogPage key={address} preferences={preferences} requestedCase={requestedCase}/></Suspense>
+        ) : ["#/training", "#/guides", "#/statistics"].includes(
             route,
           ) ? (
           <SectionPage section={route.slice(2) as Section} text={text} />
@@ -499,13 +505,13 @@ function App() {
             {route === "#/explore" ? (
               <PlaybackPage preferences={preferences} />
             ) : route === "#/f2l" ? (
-              <F2LPage preferences={preferences} />
+              <F2LPage key={address} preferences={preferences} requestedCase={requestedCase} />
             ) : route === "#/oll" ? (
-              <OLLPage preferences={preferences} />
+              <OLLPage key={address} preferences={preferences} requestedCase={requestedCase} />
             ) : route === "#/recognize" ? (
               <RecognitionPage preferences={preferences} />
             ) : route === "#/train" ? (
-              <TrainerPage preferences={preferences} />
+              <TrainerPage key={address} preferences={preferences} requestedCase={requestedCase} />
             ) : route === "#/learn" ? (
               <LearnPage preferences={preferences} />
             ) : (
@@ -762,6 +768,7 @@ function App() {
                 Open touch-cube settings →
               </a>
             </section>
+            <Suspense fallback={<p>Opening notation preferences…</p>}><CatalogSettings/></Suspense>
             <h2>Practice and menu</h2>
             <p>
               These preferences apply to the practice screen and menu. Your

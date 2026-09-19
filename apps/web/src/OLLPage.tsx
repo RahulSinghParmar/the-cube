@@ -24,6 +24,7 @@ import {
 } from "@the-cube/academy";
 import type { Preferences } from "./preferences";
 import { SequencePlayer } from "./SequencePlayer";
+import { TrainerLearning } from './catalog-controls';
 import {
   learningScope,
   useLearningStorage,
@@ -31,7 +32,7 @@ import {
   RestoreLearning,
 } from "./learning-storage";
 
-export function OLLPage({ preferences }: { preferences: Preferences }) {
+export function OLLPage({ preferences, requestedCase }: { preferences: Preferences; requestedCase: string | null }) {
   const store = useLearningStorage(
     `the-cube-oll-v1:${learningScope}`,
     newOLLProgress(),
@@ -68,6 +69,7 @@ export function OLLPage({ preferences }: { preferences: Preferences }) {
     setMode("watch");
     if (innerWidth < 900) setLibraryOpen(false);
   }
+  useEffect(() => { if (requestedCase && OLL_CASES.some(c=>c.id===requestedCase)) choose(requestedCase as OLLId); }, [requestedCase]);
   function saveRecord(record: OLLRecord) {
     store.save({
       ...store.value,
@@ -185,6 +187,7 @@ export function OLLPage({ preferences }: { preferences: Preferences }) {
               <figcaption>Top view · B above · F below</figcaption>
             </figure>
           </div>
+          <TrainerLearning key={id} id={id}/>
           <div className="pll-orientation">
             <b>White U center on top · green F center in front.</b> White
             stickers are highlighted; gray means a different color. The two

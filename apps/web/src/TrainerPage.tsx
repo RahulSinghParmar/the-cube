@@ -22,6 +22,7 @@ import {
 } from "@the-cube/academy";
 import type { Preferences } from "./preferences";
 import { SequencePlayer } from "./SequencePlayer";
+import { TrainerLearning } from './catalog-controls';
 import {
   learningScope,
   useLearningStorage,
@@ -29,7 +30,7 @@ import {
   RestoreLearning,
 } from "./learning-storage";
 
-export function TrainerPage({ preferences }: { preferences: Preferences }) {
+export function TrainerPage({ preferences, requestedCase }: { preferences: Preferences; requestedCase: string | null }) {
   const store = useLearningStorage(
     `the-cube-pll-v1:${learningScope}`,
     newPLLProgress(),
@@ -66,6 +67,7 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
     setMode("watch");
     if (innerWidth < 900) setLibraryOpen(false);
   }
+  useEffect(() => { if (requestedCase && PLL_CASES.some(c=>c.id===requestedCase)) choose(requestedCase as PLLId); }, [requestedCase]);
   function saveRecord(record: PLLRecord) {
     store.save({
       ...store.value,
@@ -178,6 +180,7 @@ export function TrainerPage({ preferences }: { preferences: Preferences }) {
               <figcaption>Top view · B above · F below</figcaption>
             </figure>
           </div>
+          <TrainerLearning key={id} id={id}/>
           <div className="pll-orientation">
             <b>White U on top · green F in front.</b> The white face is already
             complete; compare the colored side rows. The two lower layers are
