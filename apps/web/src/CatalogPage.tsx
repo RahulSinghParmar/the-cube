@@ -70,7 +70,7 @@ export function CatalogPage({
         F2L covers twelve guided setups, not the full case collection. Ratings
         are your assessment; guided practice keeps its existing progress.
       </p>
-      <nav className="actions" aria-label="Guided collections">
+      <nav className="actions catalog-guides" aria-label="Guided collections">
         <span>Guided practice:</span>
         <a href="#/f2l">F2L</a>
         <a href="#/oll">OLL</a>

@@ -111,6 +111,8 @@ test("catalog case links share ratings with trainers and preserve existing repet
     ),
   );
   await page.goto("/the-cube/menu.html#/algorithms?case=H");
+  // A hash navigation returns before React has rendered the requested case.
+  await expect(page.locator("#catalog-case-title")).toHaveText("H permutation");
   await page
     .getByRole("combobox", { name: "My case rating", exact: true })
     .selectOption("comfortable");
@@ -151,6 +153,7 @@ test("catalog case links share ratings with trainers and preserve existing repet
     ["F2L-right-insert", "f2l", "Insert with the right face"],
   ]) {
     await page.goto(`/the-cube/menu.html#/algorithms?case=${id}`);
+    await expect(page.locator("#catalog-case-title")).toHaveText(title);
     await page.getByRole("link", { name: "Practice this case →" }).click();
     await expect(page).toHaveURL(new RegExp(`#/${route}\\?case=${id}$`));
     await expect(
@@ -217,7 +220,7 @@ test("catalog stays readable at phone/tablet/desktop widths and supports offline
   for (const theme of ['light', 'dark', 'contrast']) {
     await page.evaluate(theme => document.documentElement.dataset.theme = theme, theme);
     const result = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+      .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
       .analyze();
     expect(result.violations).toEqual([]);
   }
